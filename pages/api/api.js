@@ -23,14 +23,14 @@ const createToken=(tokens)=>{
     }
     return token;
 }
-export default async(req,res)=>{
-    const client=await dbClient
-    const data=client.db().collection("data")
-    if((await data.find({id:"sto"})).toArray().length==0){
-        data.insertOne(storage)
+module.exports=async(req,res)=>{
+    const client=await dbClient;
+    const data=client.db().collection("data");
+    if((await data.find({id:"sto"}).toArray()).length==0){
+        data.insertOne(storage);
     }
     else{
-        storage=await data.findOne({id:"sto"})
+        storage=await data.findOne({id:"sto"});
     }
     switch(req.query.type){
         case "getMap":
@@ -39,4 +39,5 @@ export default async(req,res)=>{
         case "getActivePlayer":
             res.status(200).send(storage.activePlayer)
     }
+    data.updateOne({id:"sto"},{$set:storage});
 }
