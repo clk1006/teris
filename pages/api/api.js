@@ -23,6 +23,18 @@ const createToken=(tokens)=>{
     }
     return token;
 }
+const getTroops=(map,player)=>{
+    let troops=3
+    map.continents.forEach((x)=>{
+        for(let i=0;i<x.tiles.length;i++){
+            if(map.tiles[x.tiles[i]].controller!=player){
+                return
+            }
+        }
+        troops+=x.reward
+    })
+    return troops
+}
 module.exports=async(req,res)=>{
     const client=await dbClient;
     const data=client.db().collection("data");
@@ -38,6 +50,10 @@ module.exports=async(req,res)=>{
             break
         case "getActivePlayer":
             res.status(200).send(storage.activePlayer)
+            break
+        case "getTroopCount":
+            res.status(200).send(getTroops(storage.map,req.query.player))
+            break
     }
     data.updateOne({id:"sto"},{$set:storage});
 }
