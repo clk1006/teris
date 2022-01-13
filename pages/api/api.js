@@ -1,6 +1,7 @@
 const dbClient=require("./db.js")
 let storage={
     id:"sto",
+    state:0,
     activePlayer:0,
     map:{
         tiles:[
@@ -45,6 +46,43 @@ module.exports=async(req,res)=>{
         storage=await data.findOne({id:"sto"});
     }
     switch(req.query.type){
+        case "getToken":
+            if(storage.state==1){
+                let token=createToken(storage.tokens)
+                let player=storage.tokens.length
+                storage.tokens.push(token)
+                res.status(200).json({
+                    token:token,
+                    id:player
+                })
+            }
+            else{
+                res.status(404).send()
+            }
+            break
+        case "openGame":
+            storage.state=1
+            storage.tokens=[]
+            storage.map.tiles=storage.map.tiles.map((x)=>{
+                x.controller=-1
+                x.troops=0
+                return x
+            })
+            res.status(200).send()
+            break
+        case "startGame":
+            if(storage.state==1&&storage.tokens.length>=2){
+                storage.state=2
+                storage.map.tiles.map((_,i)=>{
+                    return i
+                }).sort((a,b)=>{0.5-Math.random()}).forEach((x,i)=>{
+                    storage.map.tiles[x].controller=i%(storage.tokens.length)
+                })
+            }
+            else{
+                res.status(404).send()
+            }
+            break
         case "getMap":
             res.status(200).json(storage.map)
             break
@@ -54,6 +92,8 @@ module.exports=async(req,res)=>{
         case "getTroopCount":
             res.status(200).send(getTroops(storage.map,req.query.player))
             break
+        default:
+            res.status(404).send()
     }
     data.updateOne({id:"sto"},{$set:storage});
 }
