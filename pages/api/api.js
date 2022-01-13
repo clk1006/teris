@@ -8,6 +8,7 @@ let storage={
             {
                 controller,
                 troops,
+                troopsMovable,
                 neighbours:[]
             }
         ],
@@ -43,15 +44,39 @@ const getTroops=(map,player)=>{
     })
     return troops
 }
+const rollDice=(num)=>{
+    return Array(num).map((_)=>Math.ceil(Math.random()*6)).sort()
+}
 const moveTroops=(player,tiles,numTroops,start,target)=>{
-    if(tiles[start].neighbours.includes(target)&&tiles[start].controller==player&&tiles[start].troops>numTroops){
+    if(tiles[start].neighbours.includes(target)&&tiles[start].controller==player&&tiles[start].troopsMovable>numTroops){
         if(tiles[target].controller==player){
             tiles[start].troops-=numTroops
+            tiles[start].troopsMovable-=numTroops
             tiles[target].troops+=numTroops
         }
         else{
-            
+            let attackers=numTroops
+            let defenders=tiles[target].troops
+            while(Math.min(attackers,defenders)>0){
+                let numDiceAtt=Math.min(attackers,3)
+                let numDiceDef=Math.min(defenders,2)
+                let diceAtt=rollDice(numDiceAtt)
+                let diceDef=rollDice(numDiceDef)
+                diceDef.forEach((x,i)=>{
+                    if(x>=diceAtt[i+1]){
+                        attackers-=1
+                        return
+                    }
+                    defenders-=1
+                })
+            }
+            tiles[target].troops=Math.max(attackers,defenders)
+            tiles[target].troopsMovable=Math.max(attackers,defenders)
+            if(defenders==0){
+                tiles[target].controller=player
+            }
         }
+        return tiles
     }
     else{
         return false
@@ -99,6 +124,7 @@ module.exports=async(req,res)=>{
                 }).sort((a,b)=>{0.5-Math.random()}).forEach((x,i)=>{
                     storage.map.tiles[x].controller=i%(storage.tokens.length)
                 })
+                res.status(200).send()
             }
             else{
                 res.status(404).send()
