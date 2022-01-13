@@ -5,10 +5,17 @@ let storage={
     activePlayer:0,
     map:{
         tiles:[
-
+            {
+                controller,
+                troops,
+                neighbours:[]
+            }
         ],
         continents:[
-
+            {
+                tiles:[],
+                reward
+            }
         ]
     },
     tokens:[
@@ -35,6 +42,20 @@ const getTroops=(map,player)=>{
         troops+=x.reward
     })
     return troops
+}
+const moveTroops=(player,tiles,numTroops,start,target)=>{
+    if(tiles[start].neighbours.includes(target)&&tiles[start].controller==player&&tiles[start].troops>numTroops){
+        if(tiles[target].controller==player){
+            tiles[start].troops-=numTroops
+            tiles[target].troops+=numTroops
+        }
+        else{
+            
+        }
+    }
+    else{
+        return false
+    }
 }
 module.exports=async(req,res)=>{
     const client=await dbClient;
