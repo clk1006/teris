@@ -6,16 +6,16 @@ let storage={
     map:{
         tiles:[
             {
-                controller,
-                troops,
-                troopsMovable,
+                controller:0,
+                troops:0,
+                troopsMovable:0,
                 neighbours:[]
             }
         ],
         continents:[
             {
                 tiles:[],
-                reward
+                reward:0
             }
         ]
     },
@@ -76,10 +76,10 @@ const moveTroops=(player,tiles,numTroops,start,target)=>{
                 tiles[target].controller=player
             }
         }
-        return tiles
+        return [true,tiles]
     }
     else{
-        return false
+        return [false]
     }
 }
 module.exports=async(req,res)=>{
@@ -125,6 +125,44 @@ module.exports=async(req,res)=>{
                     storage.map.tiles[x].controller=i%(storage.tokens.length)
                 })
                 res.status(200).send()
+            }
+            else{
+                res.status(404).send()
+            }
+            break
+        case "moveTroops":
+            if(storage.state==1){
+                let player=storage.tokens.indexOf(req.query.token)
+                if(player==activePlayer){
+                    let ret=moveTroops(player,storage.map.tiles,req.query.numTroops,req.query.start,req.query.target)
+                    if(ret[0]){
+                        storage.map.tiles=ret[1]
+                        res.status(200).send()
+                    }
+                    else{
+                        res.status(404).send("Bad Request")
+                    }
+                }
+                else{
+                    res.status(404).send()
+                }
+            }
+            else{
+                res.status(404).send()
+            }
+            break
+        case "endTurn":
+            let player=storage.tokens.indexOf(req.query.token)
+            if(player==activePlayer){
+                storage.map.tiles.forEach((x)=>{
+                    if(x.controller==player){
+                        x.troopsMovable=x.troops
+                    }
+                })
+                activePlayer++
+                if(activePlayer==storage.tokens.length){
+                    activePlayer=0
+                }
             }
             else{
                 res.status(404).send()
