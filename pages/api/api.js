@@ -91,6 +91,7 @@ module.exports=async(req,res)=>{
     else{
         storage=await data.findOne({id:"sto"});
     }
+    let player=storage.tokens.indexOf(req.query.token)
     switch(req.query.type){
         case "getToken":
             if(storage.state==1){
@@ -121,7 +122,7 @@ module.exports=async(req,res)=>{
                 storage.state=2
                 storage.map.tiles.map((_,i)=>{
                     return i
-                }).sort((a,b)=>{0.5-Math.random()}).forEach((x,i)=>{
+                }).sort(0.5-Math.random()).forEach((x,i)=>{
                     storage.map.tiles[x].controller=i%(storage.tokens.length)
                 })
                 res.status(200).send()
@@ -131,7 +132,6 @@ module.exports=async(req,res)=>{
             }
             break
         case "moveTroops":
-            let player=storage.tokens.indexOf(req.query.token)
             if(storage.state==2&&player==storage.activePlayer){
                 let ret=moveTroops(player,storage.map.tiles,req.query.numTroops,req.query.start,req.query.target)
                 if(ret[0]){
@@ -147,7 +147,6 @@ module.exports=async(req,res)=>{
             }
             break
         case "endTurn":
-            let player=storage.tokens.indexOf(req.query.token)
             if(player==storage.activePlayer&&storage.state==2){
                 storage.map.tiles.forEach((x)=>{
                     if(x.controller==player){
