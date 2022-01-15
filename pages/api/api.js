@@ -131,20 +131,15 @@ module.exports=async(req,res)=>{
             }
             break
         case "moveTroops":
-            if(storage.state==1){
-                let player=storage.tokens.indexOf(req.query.token)
-                if(player==activePlayer){
-                    let ret=moveTroops(player,storage.map.tiles,req.query.numTroops,req.query.start,req.query.target)
-                    if(ret[0]){
-                        storage.map.tiles=ret[1]
-                        res.status(200).send()
-                    }
-                    else{
-                        res.status(404).send("Bad Request")
-                    }
+            let player=storage.tokens.indexOf(req.query.token)
+            if(storage.state==2&&player==storage.activePlayer){
+                let ret=moveTroops(player,storage.map.tiles,req.query.numTroops,req.query.start,req.query.target)
+                if(ret[0]){
+                    storage.map.tiles=ret[1]
+                    res.status(200).send()
                 }
                 else{
-                    res.status(404).send()
+                    res.status(404).send("Bad Request")
                 }
             }
             else{
@@ -153,15 +148,15 @@ module.exports=async(req,res)=>{
             break
         case "endTurn":
             let player=storage.tokens.indexOf(req.query.token)
-            if(player==activePlayer){
+            if(player==storage.activePlayer&&storage.state==2){
                 storage.map.tiles.forEach((x)=>{
                     if(x.controller==player){
                         x.troopsMovable=x.troops
                     }
                 })
-                activePlayer++
-                if(activePlayer==storage.tokens.length){
-                    activePlayer=0
+                storage.activePlayer++
+                if(storage.activePlayer==storage.tokens.length){
+                    storage.activePlayer=0
                 }
             }
             else{
