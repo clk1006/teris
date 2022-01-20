@@ -76,7 +76,7 @@ module.exports=async(req,res)=>{
     }
     switch(req.query.type){
         case "getState":
-            res.status(200).json([score,storage.tiles,storage.current,storage.next])
+            res.status(200).json([storage.score,storage.tiles,storage.current,storage.next])
         default:
             res.status(404).send()
     }
