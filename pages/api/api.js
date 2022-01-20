@@ -74,7 +74,6 @@ module.exports=async(req,res)=>{
     else{
         storage=await data.findOne({id:"stoTet"});
     }
-    let player=storage.tokens.indexOf(req.query.token)
     switch(req.query.type){
         case "getState":
             res.status(200).json([score,storage.tiles,storage.current,storage.next])
