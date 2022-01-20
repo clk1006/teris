@@ -11,9 +11,6 @@ let storage={
     },
     next:0
 }
-Array(200).forEach((_)=>{
-    storage.tiles.push(0)
-})
 const getColumns=(curr)=>{
     switch(curr.type){
         case 0:
@@ -69,6 +66,9 @@ module.exports=async(req,res)=>{
     const client=await dbClient;
     const data=client.db().collection("data");
     if((await data.find({id:"stoTet"}).toArray()).length==0){
+        Array(200).forEach((_)=>{
+            storage.tiles.push(0)
+        })
         data.insertOne(storage);
     }
     else{
