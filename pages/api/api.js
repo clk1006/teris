@@ -3,7 +3,7 @@ let storage={
     id:"stoTet",
     state:0,
     score:0,
-    tiles:[],
+    tiles:Array(200).fill(0),
     current:{
         type:0,
         pos:0,
@@ -46,7 +46,7 @@ const dropBlock=(block,tiles)=>{
     let columns=getColumns(block)
     let row=19
     let column=pos
-    Array(1).forEach((_)=>{
+    Array(1).fill(0).forEach((_)=>{
         for(;row>=0;row++){
             for(;column<pos+columns;column++){
                 if(tiles[10*row+column]!=0){
@@ -58,7 +58,7 @@ const dropBlock=(block,tiles)=>{
     if(!(row==0&&column==columns+pos-1&&tiles[10*row+column]==0)){
         row++
     }
-    Array(columns).forEach((_,col)=>{
+    Array(columns).fill(0).forEach((_,col)=>{
         tiles[10*row+col+pos]=id
     })
 }
@@ -66,9 +66,6 @@ module.exports=async(req,res)=>{
     const client=await dbClient;
     const data=client.db().collection("data");
     if((await data.find({id:"stoTet"}).toArray()).length==0){
-        Array(200).forEach((_)=>{
-            storage.tiles.push(0)
-        })
         data.insertOne(storage);
     }
     else{
