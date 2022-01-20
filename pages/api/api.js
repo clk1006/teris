@@ -1,6 +1,6 @@
 const dbClient=require("./db.js")
 let storage={
-    id:"sto",
+    id:"stoTet",
     state:0,
     score:0,
     tiles:[],
@@ -68,11 +68,11 @@ const dropBlock=(block,tiles)=>{
 module.exports=async(req,res)=>{
     const client=await dbClient;
     const data=client.db().collection("data");
-    if((await data.find({id:"sto"}).toArray()).length==0){
+    if((await data.find({id:"stoTet"}).toArray()).length==0){
         data.insertOne(storage);
     }
     else{
-        storage=await data.findOne({id:"sto"});
+        storage=await data.findOne({id:"stoTet"});
     }
     let player=storage.tokens.indexOf(req.query.token)
     switch(req.query.type){
@@ -81,5 +81,5 @@ module.exports=async(req,res)=>{
         default:
             res.status(404).send()
     }
-    data.updateOne({id:"sto"},{$set:storage});
+    data.updateOne({id:"stoTet"},{$set:storage});
 }
