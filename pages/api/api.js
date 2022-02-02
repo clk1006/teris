@@ -34,7 +34,7 @@ const rotateArray = (arr, rot) => {
 
 const getShape = (block) => {
     let arr = []
-    
+
     switch (block.type) {
         case 0: arr = [
             [1, 1, 1, 1]
@@ -153,6 +153,7 @@ const updateState = (score, tiles) => {
             score += SCORE_CLEAR
         }
     }
+    
     return [score, tiles]
 }
 
