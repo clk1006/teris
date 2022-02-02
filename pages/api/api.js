@@ -1,6 +1,6 @@
 const dbClient = require("./db.js")
-const SCORE_BLOCK=5
-const SCORE_CLEAR=100
+const SCORE_BLOCK = 5
+const SCORE_CLEAR = 100
 let storage = {
     id: "stoTet",
     state: 0,
@@ -139,28 +139,28 @@ const dropBlock = (block, tiles) => {
     }
     return [false]
 }
-const updateState = (score,tiles) => {
-    for(let row=0;row<20;row++){
-        let full=true
-        for(let col=0;col<10;col++){
-            if(tiles[10*row+col]==0){
-                full=false
+const updateState = (score, tiles) => {
+    for (let row = 0; row < 20; row++) {
+        let full = true
+        for (let col = 0; col < 10; col++) {
+            if (tiles[10 * row + col] == 0) {
+                full = false
                 break
             }
         }
-        if(full){
-            for(let clearRow=row;clearRow<19;clearRow++){
-                for(let clearCol=0;clearCol<10;clearCol++){
-                    tiles[10*clearRow+clearCol]=tiles[10*(clearRow+1)+clearCol]
+        if (full) {
+            for (let clearRow = row; clearRow < 19; clearRow++) {
+                for (let clearCol = 0; clearCol < 10; clearCol++) {
+                    tiles[10 * clearRow + clearCol] = tiles[10 * (clearRow + 1) + clearCol]
                 }
             }
-            for(let clearCol=0;clearCol<10;clearCol++){
-                tiles[190+clearCol]=0
+            for (let clearCol = 0; clearCol < 10; clearCol++) {
+                tiles[190 + clearCol] = 0
             }
-            score+=SCORE_CLEAR
+            score += SCORE_CLEAR
         }
     }
-    return [score,tiles]
+    return [score, tiles]
 }
 module.exports = async (req, res) => {
     const client = await dbClient;
@@ -174,17 +174,16 @@ module.exports = async (req, res) => {
         case "getState":
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
         case "endTurn":
-            let dropRes=dropBlock(storage.current,storage.tiles)
-            if(!dropRes[0]){
+            let dropRes = dropBlock(storage.current, storage.tiles)
+            if (! dropRes[0]) {
                 res.status(404).send()
-            }
-            else{
-                storage.score+=SCORE_BLOCK
-                [storage.score,storage.tiles]=updateState(storage.score,dropRes[1])
-                storage.current.type=storage.next
-                storage.current.pos=4
-                storage.current.rot=0
-                storage.next=Math.floor(Math.random()*7)
+            } else {
+                storage.score += SCORE_BLOCK
+                [storage.score, storage.tiles] = updateState(storage.score, dropRes[1])
+                storage.current.type = storage.next
+                storage.current.pos = 4
+                storage.current.rot = 0
+                storage.next = Math.floor(Math.random() * 7)
                 res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
             }
         default:
