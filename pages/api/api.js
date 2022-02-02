@@ -34,6 +34,7 @@ const rotateArray = (arr, rot) => {
 
 const getShape = (block) => {
     let arr = []
+    
     switch (block.type) {
         case 0: arr = [
             [1, 1, 1, 1]
@@ -82,6 +83,7 @@ const getShape = (block) => {
 
 const getOccupiedTiles = (pos, shape) => {
     let tiles = []
+
     shape.forEach((x, row) => x.forEach((val, col) => {
         if (val == 1) {
             tiles.push(10 * (pos.y - row) + 10 * (pos.x + col))
@@ -104,9 +106,11 @@ const dropBlock = (block, tiles) => {
             x: block.pos,
             y: i
         }
+
         let tilesOcc = getOccupiedTiles(pos, shape)
         let fits = true
         let tilesNew = copy(tiles)
+
         tilesOcc.forEach((x) => {
             if (tiles[x] != 0) {
                 fits = false
@@ -114,6 +118,7 @@ const dropBlock = (block, tiles) => {
                 tilesNew[x] = id
             }
         })
+
         if (fits) {
             return [true, tilesNew]
         }
@@ -129,7 +134,7 @@ const updateState = (score, tiles) => {
         for (let col = 0; col < 10; col++) {
             if (tiles[10 * row + col] == 0) {
                 full = false
-                
+
                 break
             }
         }
