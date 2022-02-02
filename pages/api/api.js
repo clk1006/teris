@@ -173,19 +173,54 @@ module.exports = async (req, res) => {
     switch (req.query.type) {
         case "getState":
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
+            break
         case "endTurn":
             let dropRes = dropBlock(storage.current, storage.tiles)
             if (! dropRes[0]) {
                 res.status(404).send()
-            } else {
-                storage.score += SCORE_BLOCK
-                [storage.score, storage.tiles] = updateState(storage.score, dropRes[1])
-                storage.current.type = storage.next
-                storage.current.pos = 4
-                storage.current.rot = 0
-                storage.next = Math.floor(Math.random() * 7)
-                res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
+                break
             }
+            storage.score += SCORE_BLOCK
+            [storage.score, storage.tiles] = updateState(storage.score, dropRes[1])
+            storage.current.type = storage.next
+            storage.current.pos = 4
+            storage.current.rot = 0
+            storage.next = Math.floor(Math.random() * 7)
+            res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
+            break
+        case "moveLeft":
+            if (storage.current.pos > 0) {
+                storage.pos --
+                res.status(200).json(storage.current)
+            } else {
+                res.status(404).send()
+            }
+            break
+        case "moveRight":
+            let shape = getShape(storage.current)
+            if (storage.current.pos + shape[0].length() < 10) {
+                storage.pos ++
+                res.status(200).json(storage.current)
+            } else {
+                res.status(404).send()
+            }
+            break
+        case "rotLeft": 
+            storage.current.rot = (storage.current.rot - 1) % 4
+            let shape = getShape(storage.current)
+            while (storage.current.pos + shape[0].length() > 10) {
+                storage.current.pos --
+            }
+            res.status(200).json(storage.current)
+            break
+        case "rotRight": 
+            storage.current.rot = (storage.current.rot + 1) % 4
+            let shape = getShape(storage.current)
+            while (storage.current.pos + shape[0].length() > 10) {
+                storage.current.pos --
+            }
+            res.status(200).json(storage.current)
+            break
         default:
             res.status(404).send()
     }
