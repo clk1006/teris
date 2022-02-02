@@ -129,6 +129,7 @@ const updateState = (score, tiles) => {
         for (let col = 0; col < 10; col++) {
             if (tiles[10 * row + col] == 0) {
                 full = false
+                
                 break
             }
         }
