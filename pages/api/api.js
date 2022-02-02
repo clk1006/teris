@@ -29,38 +29,89 @@ const getColumns = (curr) => {
             return (rot % 2 == 0 ? 2:2)
     }
 }
-const getScore = (map, player) => {
-    let troops = 3
-    map.continents.forEach((x) => {
-        for(let i = 0; i<x.tiles.length; i++) {
-            if(map.tiles[x.tiles[i]].controller != player) {
-                return
-            }
+const rotateArray = (arr,rot) => {
+    let [cols,rows] = rot%2==0 ? [arr.length(),arr[0].length()] : [arr[0].length(),arr.length()]
+    return Array(rows).fill(0).map((_,row)=>Array(cols).fill(0).map((_,col)=>{
+        switch(rot%4){
+            case 0:
+                return arr[row,col]
+            case 1:
+                return arr[col,arr[0].length()-row]
+            case 2:
+                return arr[arr[0].length()-row,arr.length()-col]
+            case 3:
+                return arr[arr.length()-col,row]
         }
-        troops += x.reward
-    })
-    return troops
+    }))
+}
+const getShape = (block) => {
+    let arr=[]
+    switch(block.type){
+        case 0:
+            arr=[[1,1,1,1]]
+            break
+        case 1:
+            arr=[[0,1,0],
+                 [1,1,1]]
+            break
+        case 2:
+            arr=[[1,1,0],
+                 [0,1,1]]
+            break
+        case 3:
+            arr=[[0,1,1],
+                 [1,1,0]]
+            break
+        case 4:
+            arr=[[1,0,0],
+                 [1,1,1]]
+            break
+        case 5:
+            arr=[[0,0,1],
+                 [1,1,1]]
+            break
+        case 6:
+            arr=[[1,1],
+                 [1,1]]
+            break
+    }
+    return rotateArray(arr,block.rot)
+}
+const getOccupiedTiles = (pos,shape)=>{
+    let tiles=[]
+    shape.forEach((x,row)=>x.forEach((val,col)=>{
+        if(val==1){
+            tiles.push(10*(pos.y-row)+10*(pos.x+col))
+        }
+    }))
+    return tiles
+}
+const copy = (a) => {
+    return JSON.parse(JSON.stringify(a))
 }
 const dropBlock = (block,tiles) => {
-    let id = tiles.reduce((a,b) => Math.max(a, b), 0) + 1
-    let columns = getColumns(block)
-    let row = 19
-    let column = pos
-    Array(1).fill(0).forEach((_) => {
-        for(;row>=0; row++) {
-            for(;column < pos+columns; column++) {
-                if(tiles[10*row+column] != 0) {
-                    return
-                }
-            }
-        }
-    })
-    if(!(row == 0 && column == columns + pos - 1 && tiles[10*row+column] == 0)) {
-        row++
+    let id=tiles.reduce((a,b)=>Math.max(a,b))+1
+    let shape=getShape(block)
+    if(block.pos+shape[0].length()>10){
+        return [false]
     }
-    Array(columns).fill(0).forEach((_, col) => {
-        tiles[10*row+col+pos]=id
-    })
+    for(let i=0;i<20;i++){
+        let pos={x:block.pos,y:i}
+        let tilesOcc=getOccupiedTiles(pos,shape)
+        let fits=true
+        let tilesNew=copy(tiles)
+        tilesOcc.forEach((x)=>{
+            if(tiles[x]!=0){
+                fits=false
+            }else{
+                tilesNew[x]=id
+            }
+        })
+        if(fits){
+            return [true,tilesNew]
+        }
+    }
+    return [false]
 }
 module.exports=async(req,res)=>{
     const client=await dbClient;
