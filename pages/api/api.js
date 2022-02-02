@@ -16,30 +16,18 @@ let storage = {
 }
 
 const rotateArray = (arr, rot) => {
-    let [cols, rows] = rot % 2 == 0 ? [
-        arr.length(), arr[0].length()
-    ] : [
-        arr[0].length(),
-        arr.length()
-    ]
+    let [cols, rows] = rot % 2 == 0 ? [arr.length(), arr[0].length()] : [arr[0].length(), arr.length()]
+
     return Array(rows).fill(0).map((_, row) => Array(cols).fill(0).map((_, col) => {
         switch (rot % 4) {
             case 0:
                 return arr[row, col]
             case 1:
-                return arr[
-                    col, arr[0].length() - row
-                ]
+                return arr[col, arr[0].length() - row]
             case 2:
-                return arr[
-                    arr[0].length() - row,
-                    arr.length() - col
-                ]
+                return arr[arr[0].length() - row, arr.length() - col]
             case 3:
-                return arr[
-                    arr.length() - col,
-                    row
-                ]
+                return arr[arr.length() - col, row]
         }
     }))
 }
@@ -47,53 +35,44 @@ const rotateArray = (arr, rot) => {
 const getShape = (block) => {
     let arr = []
     switch (block.type) {
-        case 0: arr = [[1, 1, 1, 1]]
+        case 0: arr = [
+            [1, 1, 1, 1]
+        ]
+
             break
         case 1: arr = [
-                [
-                    0, 1, 0
-                ],
-                [
-                    1, 1, 1
-                ]
-            ]
+            [0, 1, 0],
+            [1, 1, 1]
+        ]
             break
         case 2: arr = [
-                [
-                    1, 1, 0
-                ],
-                [
-                    0, 1, 1
-                ]
-            ]
+            [1, 1, 0],
+            [0, 1, 1]
+        ]
 
             break
         case 3: arr = [
-                [
-                    0, 1, 1
-                ],
-                [
-                    1, 1, 0
-                ]
-            ]
+            [0, 1, 1],
+            [1, 1, 0]
+        ]
 
             break
         case 4: arr = [
-                [1, 0, 0],
-                [1, 1, 1]
-            ]
+            [1, 0, 0],
+            [1, 1, 1]
+        ]
 
             break
         case 5: arr = [
-                [0, 0, 1],
-                [1, 1, 1]
-            ]
+            [0, 0, 1],
+            [1, 1, 1]
+        ]
 
             break
         case 6: arr = [
-                [1, 1],
-                [1, 1]
-            ]
+            [1, 1],
+            [1, 1]
+        ]
 
             break
     }
