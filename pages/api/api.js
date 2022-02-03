@@ -16,18 +16,18 @@ let storage = {
 }
 
 const rotateArray = (arr, rot) => {
-    let [cols, rows] = rot % 2 == 0 ? [arr.length(), arr[0].length()] : [arr[0].length(), arr.length()]
+    let [cols, rows] = rot % 2 == 0 ? [arr.length, arr[0].length] : [arr[0].length, arr.length]
 
     return Array(rows).fill(0).map((_, row) => Array(cols).fill(0).map((_, col) => {
         switch (rot % 4) {
             case 0:
                 return arr[row, col]
             case 1:
-                return arr[col, arr[0].length() - row]
+                return arr[col, arr[0].length - row]
             case 2:
-                return arr[arr[0].length() - row, arr.length() - col]
+                return arr[arr[0].length - row, arr.length - col]
             case 3:
-                return arr[arr.length() - col, row]
+                return arr[arr.length - col, row]
         }
     }))
 }
@@ -195,7 +195,7 @@ module.exports = async (req, res) => {
             break
         case "moveRight":
             let shape = getShape(storage.current)
-            if (storage.current.pos + shape[0].length() < 10) {
+            if (storage.current.pos + shape[0].length < 10) {
                 storage.pos ++
                 res.status(200).json(storage.current)
             } else {
@@ -205,7 +205,7 @@ module.exports = async (req, res) => {
         case "rotLeft": 
             storage.current.rot = (storage.current.rot - 1) % 4
             shape = getShape(storage.current)
-            while (storage.current.pos + shape[0].length() > 10) {
+            while (storage.current.pos + shape[0].length > 10) {
                 storage.current.pos --
             }
             res.status(200).json(storage.current)
@@ -213,7 +213,7 @@ module.exports = async (req, res) => {
         case "rotRight": 
             storage.current.rot = (storage.current.rot + 1) % 4
             shape = getShape(storage.current)
-            while (storage.current.pos + shape[0].length() > 10) {
+            while (storage.current.pos + shape[0].length > 10) {
                 storage.current.pos --
             }
             res.status(200).json(storage.current)
