@@ -83,7 +83,6 @@ const getShape = (block) => {
 
 const getOccupiedTiles = (pos, shape) => {
     let tiles = []
-    console.log(pos,shape)
     shape.forEach((x, row) => x.forEach((val, col) => {
         if (val == 1) {
             tiles.push(10 * (pos.y - row) + 10 * (pos.x + col))
@@ -100,7 +99,7 @@ const copy = (a) => {
 const dropBlock = (block, tiles) => {
     let id = tiles.reduce((a, b) => Math.max(a, b)) + 1
     let shape = getShape(block)
-
+    console.log(shape)
     for (let i = 0; i < 20; i++) {
         let pos = {
             x: block.pos,
