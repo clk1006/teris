@@ -83,7 +83,7 @@ const getShape = (block) => {
 
 const getOccupiedTiles = (pos, shape) => {
     let tiles = []
-
+    console.log(pos,shape)
     shape.forEach((x, row) => x.forEach((val, col) => {
         if (val == 1) {
             tiles.push(10 * (pos.y - row) + 10 * (pos.x + col))
@@ -110,7 +110,6 @@ const dropBlock = (block, tiles) => {
         let tilesOcc = getOccupiedTiles(pos, shape)
         let fits = true
         let tilesNew = copy(tiles)
-        console.log(tilesOcc)
         tilesOcc.forEach((x) => {
             if (tiles[x] != 0) {
                 fits = false
