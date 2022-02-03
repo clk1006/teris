@@ -1,4 +1,4 @@
-const dbClient = require("./db.js")
+//const dbClient = require("./db.js")
 const SCORE_BLOCK = 5
 const SCORE_CLEAR = 100
 
@@ -85,7 +85,7 @@ const getOccupiedTiles = (pos, shape) => {
     let tiles = []
     shape.forEach((x, row) => x.forEach((val, col) => {
         if (val == 1) {
-            tiles.push(10 * (pos.y - row) + 10 * (pos.x + col))
+            tiles.push(10 * (pos.y - row) + pos.x + col)
         }
     }))
 
@@ -99,14 +99,13 @@ const copy = (a) => {
 const dropBlock = (block, tiles) => {
     let id = tiles.reduce((a, b) => Math.max(a, b)) + 1
     let shape = getShape(block)
-    console.log(shape)
     for (let i = 0; i < 20; i++) {
         let pos = {
             x: block.pos,
             y: i
         }
-
         let tilesOcc = getOccupiedTiles(pos, shape)
+        console.log(tilesOcc)
         let fits = true
         let tilesNew = copy(tiles)
         tilesOcc.forEach((x) => {
@@ -175,8 +174,9 @@ module.exports = async (req, res) => {
                 res.status(404).send()
                 break
             }
-            storage.score += SCORE_BLOCK
-            [storage.score, storage.tiles] = updateState(storage.score, dropRes[1])
+            let state = updateState(storage.score, dropRes[1])
+            storage.score=state[0]+SCORE_BLOCK
+            storage.tiles=state[1]
             storage.current.type = storage.next
             storage.current.pos = 4
             storage.current.rot = 0
