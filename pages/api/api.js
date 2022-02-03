@@ -16,84 +16,64 @@ let storage = {
 }
 
 const rotateArray = (arr, rot) => {
-    let [cols, rows] = rot % 2 == 0 ? [
-        arr.length(), arr[0].length()
-    ] : [
-        arr[0].length(),
-        arr.length()
-    ]
+    let [cols, rows] = rot % 2 == 0 ? [arr.length(), arr[0].length()] : [arr[0].length(), arr.length()]
+
     return Array(rows).fill(0).map((_, row) => Array(cols).fill(0).map((_, col) => {
         switch (rot % 4) {
             case 0:
                 return arr[row, col]
             case 1:
-                return arr[
-                    col, arr[0].length() - row
-                ]
+                return arr[col, arr[0].length() - row]
             case 2:
-                return arr[
-                    arr[0].length() - row,
-                    arr.length() - col
-                ]
+                return arr[arr[0].length() - row, arr.length() - col]
             case 3:
-                return arr[
-                    arr.length() - col,
-                    row
-                ]
+                return arr[arr.length() - col, row]
         }
     }))
 }
 
 const getShape = (block) => {
     let arr = []
+
     switch (block.type) {
-        case 0: arr = [[1, 1, 1, 1]]
+        case 0: arr = [
+            [1, 1, 1, 1]
+        ]
+
             break
         case 1: arr = [
-                [
-                    0, 1, 0
-                ],
-                [
-                    1, 1, 1
-                ]
-            ]
+            [0, 1, 0],
+            [1, 1, 1]
+        ]
             break
         case 2: arr = [
-                [
-                    1, 1, 0
-                ],
-                [
-                    0, 1, 1
-                ]
-            ]
+            [1, 1, 0],
+            [0, 1, 1]
+        ]
 
             break
         case 3: arr = [
-                [
-                    0, 1, 1
-                ],
-                [
-                    1, 1, 0
-                ]
-            ]
+            [0, 1, 1],
+            [1, 1, 0]
+        ]
 
             break
         case 4: arr = [
-                [1, 0, 0],
-                [1, 1, 1]
-            ]
+            [1, 0, 0],
+            [1, 1, 1]
+        ]
 
             break
         case 5: arr = [
-                [0, 0, 1],
-                [1, 1, 1]
-            ]
+            [0, 0, 1],
+            [1, 1, 1]
+        ]
 
             break
         case 6: arr = [
-                [1, 1],
-                [1, 1]
-            ]
+            [1, 1],
+            [1, 1]
+        ]
 
             break
     }
@@ -103,6 +83,7 @@ const getShape = (block) => {
 
 const getOccupiedTiles = (pos, shape) => {
     let tiles = []
+
     shape.forEach((x, row) => x.forEach((val, col) => {
         if (val == 1) {
             tiles.push(10 * (pos.y - row) + 10 * (pos.x + col))
@@ -125,9 +106,11 @@ const dropBlock = (block, tiles) => {
             x: block.pos,
             y: i
         }
+
         let tilesOcc = getOccupiedTiles(pos, shape)
         let fits = true
         let tilesNew = copy(tiles)
+
         tilesOcc.forEach((x) => {
             if (tiles[x] != 0) {
                 fits = false
@@ -135,6 +118,7 @@ const dropBlock = (block, tiles) => {
                 tilesNew[x] = id
             }
         })
+
         if (fits) {
             return [true, tilesNew]
         }
@@ -150,6 +134,7 @@ const updateState = (score, tiles) => {
         for (let col = 0; col < 10; col++) {
             if (tiles[10 * row + col] == 0) {
                 full = false
+
                 break
             }
         }
@@ -168,6 +153,7 @@ const updateState = (score, tiles) => {
             score += SCORE_CLEAR
         }
     }
+    
     return [score, tiles]
 }
 
