@@ -1,4 +1,4 @@
-//const dbClient = require("./db.js")
+const dbClient = require("./db.js")
 const SCORE_BLOCK = 5
 const SCORE_CLEAR = 100
 
