@@ -187,7 +187,7 @@ module.exports = async (req, res) => {
             break
         case "moveLeft":
             if (storage.current.pos > 0) {
-                storage.pos--
+                storage.current.pos--
                 res.status(200).json(storage.current)
             } else {
                 res.status(404).send()
@@ -196,7 +196,7 @@ module.exports = async (req, res) => {
         case "moveRight":
             let shape = getShape(storage.current)
             if (storage.current.pos + shape[0].length < 10) {
-                storage.pos++
+                storage.current.pos++
                 res.status(200).json(storage.current)
             } else {
                 res.status(404).send()
