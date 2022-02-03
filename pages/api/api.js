@@ -110,7 +110,7 @@ const dropBlock = (block, tiles) => {
         let tilesOcc = getOccupiedTiles(pos, shape)
         let fits = true
         let tilesNew = copy(tiles)
-
+        console.log(tilesOcc)
         tilesOcc.forEach((x) => {
             if (tiles[x] != 0) {
                 fits = false
