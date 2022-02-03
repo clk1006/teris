@@ -21,13 +21,13 @@ const rotateArray = (arr, rot) => {
     return Array(rows).fill(0).map((_, row) => Array(cols).fill(0).map((_, col) => {
         switch (rot % 4) {
             case 0:
-                return arr[row, col]
+                return arr[row][col]
             case 1:
-                return arr[col, arr[0].length - row]
+                return arr[col][arr[0].length - row]
             case 2:
-                return arr[arr[0].length - row, arr.length - col]
+                return arr[arr[0].length - row][arr.length - col]
             case 3:
-                return arr[arr.length - col, row]
+                return arr[arr.length - col][row]
         }
     }))
 }
