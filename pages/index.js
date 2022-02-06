@@ -5,7 +5,8 @@ import styles from '../styles/Home.module.css'
 
 const HEIGHT = 720
 const WIDTH = 300
-const baseColors=[];
+const BLOCK_COLORS=["#327AB8","#3AD9A7","#FFC247","#9951B3","#CD4C4C"];
+const BACKGROUND="#4F5165"
 let context;
 const getNeighbours = (tiles) => {
   return Array(tiles.reduce((a,b)=>Math.max(a,b),0)).fill(0).map((_,id)=>{
@@ -37,7 +38,7 @@ export default function Home() {
     getNeighbours(tiles).forEach((neighbours,id)=>{
       id++;
       neighbours=neighbours.filter(x=>x<id)
-      colors.push(baseColors.filter((x)=>neighbours.reduce((a,b)=>a==colors[b]?0:a,x)!=0)[0])
+      colors.push(BLOCK_COLORS.filter((x)=>neighbours.reduce((a,b)=>a==colors[b]?0:a,x)!=0)[0])
     })
     tiles.forEach((id,i) => {
       context.fillStyle=colors[id];
@@ -59,7 +60,7 @@ export default function Home() {
             <canvas height={HEIGHT} width={WIDTH} ref={ref}/>
           </div>
           <div className="information-block">
-            <div className="nextElement-block">
+            <div className="nextElement-block" >
 
             </div>
             <div className="info-block">
