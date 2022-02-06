@@ -224,6 +224,7 @@ module.exports = async (req, res) => {
     }
 
     data.updateOne({
-        id: "stoTet"
+        id: "stoTet",
+        gameId:gameId
     }, {$set: storage});
 }
