@@ -157,13 +157,13 @@ const updateState = (score, tiles) => {
 module.exports = async (req, res) => {
     const client = await dbClient;
     const data = client.db().collection("data");
-
-    if ((await data.find({id: "stoTet"}).toArray()).length == 0) {
+    let gameId=req.query.gameId
+    if ((await data.find({id: "stoTet",gameId:gameId}).toArray()).length == 0) {
+        storage.gameId=gameId;
         data.insertOne(storage);
     } else {
-        storage = await data.findOne({id: "stoTet"});
+        storage = await data.findOne({id: "stoTet",gameId:gameId});
     }
-
     switch (req.query.type) {
         case "getState":
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
@@ -216,6 +216,9 @@ module.exports = async (req, res) => {
             }
             res.status(200).json(storage.current)
             break
+        case "getId":
+            let games=await data.find({id:"stoTet"}).toArray()
+            res.status(200).send(games.reduce((a,b)=>Math.max(a.gameId,b.gameId),0)+1)
         default:
             res.status(404).send()
     }
