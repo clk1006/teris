@@ -3,8 +3,8 @@ import Image from 'next/image'
 import { useRef,useState,useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 
-const HEIGHT = 720
-const WIDTH = 300
+const HEIGHT = 743
+const WIDTH = 309
 const BLOCK_COLORS=["#327AB8","#3AD9A7","#FFC247","#9951B3","#CD4C4C"];
 const BACKGROUND="#4F5165"
 let context;
@@ -42,7 +42,7 @@ export default function Home() {
     })
     tiles.forEach((id,i) => {
       context.fillStyle=colors[id];
-      context.fillRect(30*i%10,30*Math.floor(i/10),30,30)  
+      context.fillRect(30*i%10+i,30*Math.floor(i/10)+i,30,30)  
     });
   },[state]);
 
