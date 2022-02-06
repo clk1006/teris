@@ -223,8 +223,7 @@ module.exports = async (req, res) => {
             res.status(200).json(storage.current)
             break
         case "getId":
-            let games=await data.find({id:"stoTet"}).toArray()
-            res.status(200).send(games.reduce((a,b)=>Math.max(a.gameId,b.gameId),0)+1)
+            res.status(200).send(data.reduce((a,b)=>Math.max(a.gameId,b.gameId),0)+1)
         default:
             res.status(404).send()
     }

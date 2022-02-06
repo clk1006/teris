@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRef,useState,useEffect } from 'react'
 import styles from '../styles/Home.module.css'
+import { fetch, Request, Response } from 'undici'
 
 const HEIGHT = 743
 const WIDTH = 309
@@ -29,13 +30,22 @@ const getNeighbours = (tiles) => {
 export default function Home() {
   const ref = useRef();
   const [state,setState] = useState(0);
+  const [gameId,setGameId] = useState(0);
+  const [reload,setReload] = useState(0);
   useEffect(()=>{
-    
     context=ref.current.getContext("2d");
+    setReload(reload+1)
   },[])
+  useEffect(async()=>{
+    const idRes=await fetch("http://localhost:3000/api/api?type=getId")
+    setGameId(await idRes.json())
+    const stateRes=await fetch(`http://localhost:3000/api/api?type=getState&gameId=${gameId}`)
+    setState(await stateRes.json())
+  },[reload])
   useEffect(()=>{
-    let tiles=state[1];
-    let colors=["#fff"];
+    let tiles=state[1]
+    console.log(tiles)
+    let colors=["#000"];
     getNeighbours(tiles).forEach((neighbours,id)=>{
       id++;
       neighbours=neighbours.filter(x=>x<id)
