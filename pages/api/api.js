@@ -1,4 +1,5 @@
 const dbClient = require("./db.js")
+const seedrandom=require("seedrandom")
 const SCORE_BLOCK = 5
 const SCORE_CLEAR = 100
 
@@ -157,6 +158,12 @@ const updateState = (score, tiles) => {
 module.exports = async (req, res) => {
     const client = await dbClient;
     const data = client.db().collection("data");
+    if(req.query.seed.length>0){
+        storage.rng=seedrandom(req.query.seed)
+    }
+    else{
+        storage.rng=seedrandom(Math.random().toString())
+    }
     let gameId=req.query.gameId
     if ((await data.find({id: "stoTet",gameId:gameId}).toArray()).length == 0) {
         storage.gameId=gameId;
@@ -180,7 +187,7 @@ module.exports = async (req, res) => {
             storage.current.type = storage.next
             storage.current.pos = 4
             storage.current.rot = 0
-            storage.next = Math.floor(Math.random() * 7)
+            storage.next = Math.floor(storage.rng() * 7)
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
             break
         case "moveLeft":
