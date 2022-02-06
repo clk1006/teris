@@ -1,15 +1,20 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useRef } from 'react'
+import { useRef,useState,useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 
 const HEIGHT = 720
 const WIDTH = 300
-
+let context;
 export default function Home() {
   let ref = useRef();
-
-
+  let [state,setState] = useState(0);
+  useEffect(()=>{
+    context=ref.current.getContext("2d");
+  },[])
+  useEffect(()=>{
+    
+  },[state]);
 
   return (
     <div className={styles.container}>
