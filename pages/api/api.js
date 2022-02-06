@@ -1,9 +1,9 @@
-const dbClient = require("./db.js")
+const fs=require('fs')
+let data=require('../../data/storage.json')
 const SCORE_BLOCK = 5
 const SCORE_CLEAR = 100
 
 let storage = {
-    id: "stoTet",
     state: 0,
     score: 0,
     tiles: Array(200).fill(0),
@@ -155,14 +155,20 @@ const updateState = (score, tiles) => {
 }
 
 module.exports = async (req, res) => {
-    const client = await dbClient;
-    const data = client.db().collection("data");
     let gameId=req.query.gameId
-    if ((await data.find({id: "stoTet",gameId:gameId}).toArray()).length == 0) {
-        storage.gameId=gameId;
-        data.insertOne(storage);
-    } else {
-        storage = await data.findOne({id: "stoTet",gameId:gameId});
+    let index=0
+    if(data.filter(x=>x.gameId==gameId).length==1){
+        storage=data.filter(x=>x.gameId==gameId)[0]
+        data.forEach((x,i)=>{
+            if(x.gameId==gameId){
+                index=i
+            }
+        })
+    }
+    else{
+        storage.gameId=gameId
+        data.push({})
+        index=data.length-1
     }
     switch (req.query.type) {
         case "getState":
@@ -222,9 +228,6 @@ module.exports = async (req, res) => {
         default:
             res.status(404).send()
     }
-
-    data.updateOne({
-        id: "stoTet",
-        gameId:gameId
-    }, {$set: storage});
+    data[index]=storage
+    fs.writeFile("data/storage.json",JSON.stringify(data))
 }

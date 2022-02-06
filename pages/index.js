@@ -30,6 +30,7 @@ export default function Home() {
   const ref = useRef();
   const [state,setState] = useState(0);
   useEffect(()=>{
+    
     context=ref.current.getContext("2d");
   },[])
   useEffect(()=>{
