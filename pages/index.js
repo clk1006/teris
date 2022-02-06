@@ -5,15 +5,44 @@ import styles from '../styles/Home.module.css'
 
 const HEIGHT = 720
 const WIDTH = 300
+const baseColors=[];
 let context;
+const getNeighbours = (tiles) => {
+  return Array(tiles.reduce((a,b)=>Math.max(a,b),0)).fill(0).map((_,id)=>{
+    id++
+    let neighbours=[]
+    tiles.forEach((tileID,index)=>{
+      if(tileID==id){
+        for(let i = -1;i<2;i++){
+          for(let j =-1;j<2;j++){
+            if(0<=index%10+i<10&&0<=Math.floor(index/10)+j<20&&tiles[index+i+10*j]!=tileID){
+              neighbours.push(tiles[index+i+10*j])
+            }
+          }
+        }
+      }
+    })
+    return neighbours
+  })
+}
 export default function Home() {
-  let ref = useRef();
-  let [state,setState] = useState(0);
+  const ref = useRef();
+  const [state,setState] = useState(0);
   useEffect(()=>{
     context=ref.current.getContext("2d");
   },[])
   useEffect(()=>{
-    
+    let tiles=state[1];
+    let colors=["#fff"];
+    getNeighbours(tiles).forEach((neighbours,id)=>{
+      id++;
+      neighbours=neighbours.filter(x=>x<id)
+      colors.push(baseColors.filter((x)=>neighbours.reduce((a,b)=>a==colors[b]?0:a,x)!=0)[0])
+    })
+    tiles.forEach((id,i) => {
+      context.fillStyle=colors[id];
+      context.fillRect(30*i%10,30*Math.floor(i/10),30,30)  
+    });
   },[state]);
 
   return (
