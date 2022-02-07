@@ -1,3 +1,85 @@
 :root {
-    
+    --tile-color-000: rgba(50, 122, 184);
+    --tile-color-001: rgba(58, 217, 167);
+    --tile-color-002: rgba(255, 194, 71);
+    --tile-color-003: rgba(153, 81, 179);
+    --tile-color-004: rgba(205, 76, 76);
+    --inactive-tile-color: rgba(79, 81, 101);
+
+    --primary-color: rgba(248, 112, 96);
+    --secondary-color: rgba(24, 67, 90);
+    --tertiary-color: rgba(108, 70, 79);
+
+    --text-color-050: rgba(29, 28, 38);
+    --text-color-100: rgba(60, 59, 74);
+    --text-color-200: rgba(104, 103, 121);
+    --text-color-300: rgba(212, 209, 206);
+    --text-color-500: rgba(246, 245, 244);
+
+    --background-color: rgba(242, 239, 239);
+    --shadow-color: rgba(39, 38, 49);
+
+    --alpha-1: 0.18;
+    --alpha-2: 0.26;
+}
+
+* {
+    font-family: 'Lato', sans-serif;
+    line-height: 2em;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 32px;
+
+    color: var(--text-color-050);
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 24px;
+
+    color: var(--text-color-100);
+}
+
+p {
+    font-weight: 300;
+    font-size: 18px;
+
+    color: var(--text-color-200);
+}
+
+p.input {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    border-radius: 3px;
+
+    color: var(--text-color-100);
+    background-color: var(--text-color-100), var(--alpha-1);
+}
+
+p.input:hover {
+    cursor: pointer;
+
+    background-color: var(--text-color-100), var(--alpha-2);
+}
+
+.start-btn, .restart-btn {
+    padding: 10px 20px;
+    font-weight: 300;
+    border-radius: 3px;
+
+    color: var(--text-color-300);
+    background-color: var(--primary-color);
+
+    transition: 0.4s;
+}
+
+.start-btn:hover, .restart-btn:hover {
+    color: var(--text-color-500);
+    background-color: var(--tertiary-color);
+}
+
+.start-btn.inactive, .restart-btn.inactive {
+    display: none;
 }

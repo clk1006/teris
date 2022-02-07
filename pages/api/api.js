@@ -84,6 +84,7 @@ const getShape = (block) => {
 
 const getOccupiedTiles = (pos, shape) => {
     let tiles = []
+
     shape.forEach((x, row) => x.forEach((val, col) => {
         if (val == 1) {
             tiles.push(10 * (pos.y - row) + pos.x + col)
@@ -100,15 +101,17 @@ const copy = (a) => {
 const dropBlock = (block, tiles) => {
     let id = tiles.reduce((a, b) => Math.max(a, b)) + 1
     let shape = getShape(block)
+
     for (let i = 0; i < 20; i++) {
         let pos = {
             x: block.pos,
             y: i
         }
+
         let tilesOcc = getOccupiedTiles(pos, shape)
-        console.log(tilesOcc)
         let fits = true
         let tilesNew = copy(tiles)
+
         tilesOcc.forEach((x) => {
             if (tiles[x] != 0) {
                 fits = false
@@ -158,30 +161,38 @@ const updateState = (score, tiles) => {
 module.exports = async (req, res) => {
     const client = await dbClient;
     const data = client.db().collection("data");
+
     if(req.query.seed.length>0){
         storage.rng=seedrandom(req.query.seed)
-    }
-    else{
+    } else {
         storage.rng=seedrandom(Math.random().toString())
     }
+
     let gameId=req.query.gameId
+
     if ((await data.find({id: "stoTet",gameId:gameId}).toArray()).length == 0) {
         storage.gameId=gameId;
         data.insertOne(storage);
     } else {
         storage = await data.findOne({id: "stoTet",gameId:gameId});
     }
+
     switch (req.query.type) {
         case "getState":
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
+
             break
         case "endTurn":
             let dropRes = dropBlock(storage.current, storage.tiles)
+
             if (!dropRes[0]) {
                 res.status(404).send()
+
                 break
             }
+
             let state = updateState(storage.score, dropRes[1])
+            
             storage.score=state[0]+SCORE_BLOCK
             storage.tiles=state[1]
             storage.current.type = storage.next
@@ -189,6 +200,7 @@ module.exports = async (req, res) => {
             storage.current.rot = 0
             storage.next = Math.floor(storage.rng() * 7)
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
+
             break
         case "moveLeft":
             if (storage.current.pos > 0) {
@@ -197,34 +209,44 @@ module.exports = async (req, res) => {
             } else {
                 res.status(404).send()
             }
+
             break
         case "moveRight":
             let shape = getShape(storage.current)
+
             if (storage.current.pos + shape[0].length < 10) {
                 storage.current.pos++
                 res.status(200).json(storage.current)
             } else {
                 res.status(404).send()
             }
+
             break
         case "rotLeft": 
             storage.current.rot = (storage.current.rot - 1) % 4
             shape = getShape(storage.current)
+
             while (storage.current.pos + shape[0].length > 10) {
                 storage.current.pos--
             }
+
             res.status(200).json(storage.current)
+
             break
         case "rotRight": 
             storage.current.rot = (storage.current.rot + 1) % 4
             shape = getShape(storage.current)
+
             while (storage.current.pos + shape[0].length > 10) {
                 storage.current.pos--
             }
+
             res.status(200).json(storage.current)
+
             break
         case "getId":
             let games=await data.find({id:"stoTet"}).toArray()
+
             res.status(200).send(games.reduce((a,b)=>Math.max(a.gameId,b.gameId),0)+1)
         default:
             res.status(404).send()
