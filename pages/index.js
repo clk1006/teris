@@ -81,12 +81,22 @@ export default function Home() {
       contextTiles.fillStyle = colors[id];
       contextTiles.roundRect(
         31*(i%10) ,
-        20*BLOCK_SIZE-(31 * (Math.floor(i / 10)+1))+39,
+        20*BLOCK_SIZE-(31 * (Math.floor(i / 10)+1))+41,
         BLOCK_SIZE,
         BLOCK_SIZE,
         2
       ).fill();
     });
+    Array(40).fill(0).forEach((_,i)=>{
+      contextCurr.fillStyle = BLOCK_BASE;
+      contextCurr.roundRect(
+        31*(i%10) ,
+        4*BLOCK_SIZE-(31 * (Math.floor(i / 10)+1))+8,
+        BLOCK_SIZE,
+        BLOCK_SIZE,
+        2
+      ).fill();
+    })
   }, [state]);
 
   return (
@@ -103,10 +113,10 @@ export default function Home() {
       <main className={styles.main}>
         <div className="container">
           <div className="screen-container">
-            <canvas height={20*BLOCK_SIZE+38} width={10*BLOCK_SIZE+18} ref={refCurr} />
+            <canvas height={4*BLOCK_SIZE+6} width={10*BLOCK_SIZE+18} ref={refCurr} />
           </div>
           <div className="screen-container">
-            <canvas height={20*BLOCK_SIZE+38} width={10*BLOCK_SIZE+18} ref={refTiles} />
+            <canvas height={20*BLOCK_SIZE+39} width={10*BLOCK_SIZE+18} ref={refTiles} />
           </div>
           <div className="screen-container">
             <div className="nextElement-block"></div>
