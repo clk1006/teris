@@ -27,7 +27,7 @@
 * {
     user-select: none;
     font-family: 'Lato', sans-serif;
-    line-height: 1.8em;
+    line-height: 1.1em;
 }
 
 body {
@@ -35,7 +35,7 @@ body {
 }
 
 h1 {
-    margin: 0;
+    margin: 12px 0;
 
     font-weight: 900;
     font-size: 32px;
@@ -44,7 +44,7 @@ h1 {
 }
 
 h2 {
-    margin: 0;
+    margin: 12px 0;
 
     font-weight: 700;
     font-size: 24px;
@@ -63,11 +63,23 @@ p, span {
     margin-right: 4px;
 }
 
+.binding-container {
+    margin: 6px 0;
+}
+
 .stats-container .output {
     margin-left: 4px;
 }
 
+.stat-container {
+    margin: 6px 0;
+}
+
+
 p, span.output {
+    user-select: contain;
+
+    margin: 24px 0;
     padding: 0 6px;
     width: fit-content;
 
