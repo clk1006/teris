@@ -3,19 +3,6 @@ const seedrandom=require("seedrandom")
 const SCORE_BLOCK = 5
 const SCORE_CLEAR = 100
 
-let storage = {
-    id: "stoTet",
-    state: 0,
-    score: 0,
-    tiles: Array(200).fill(0),
-    current: {
-        type: 0,
-        pos: 0,
-        rot: 0
-    },
-    next: 0
-}
-
 const rotateArray = (arr, rot) => {
     let [rows, cols] = rot % 2 == 0 ? [arr.length, arr[0].length] : [arr[0].length, arr.length]
 
@@ -159,9 +146,21 @@ const updateState = (score, tiles) => {
 }
 
 module.exports = async (req, res) => {
+    let storage = {
+        id: "stoTet",
+        state: 0,
+        score: 0,
+        tiles: Array(200).fill(0),
+        current: {
+            type: 0,
+            pos: 0,
+            rot: 0
+        },
+        next: 0
+    }
     const client = await dbClient;
     const data = client.db().collection("data");
-    
+
     let seed = req.query.seed || Math.random().toString();
     storage.rng=seedrandom(seed);
 

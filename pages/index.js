@@ -59,12 +59,13 @@ export default function Home() {
         )[0]
       );
     });
-
+    context.fillStyle="#aaaaaa"
+    context.fillRect(0,0,WIDTH,HEIGHT)
     tiles.forEach((id, i) => {
       context.fillStyle = colors[id];
       context.fillRect(
-        ((30 * i) % 10) + i,
-        30 * Math.floor(i / 10) + i,
+        31*(i%10) ,
+        HEIGHT-(31 * Math.floor(i / 10)),
         30,
         30
       );
