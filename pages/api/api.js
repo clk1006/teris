@@ -170,11 +170,11 @@ module.exports = async (req, res) => {
 
     let gameId=req.query.gameId
 
-    if ((await data.find({id: "stoTet",gameId:gameId}).toArray()).length == 0) {
+    if ((await data.find({gameId:gameId}).toArray()).length == 0) {
         storage.gameId=gameId;
         data.insertOne(storage);
     } else {
-        storage = await data.findOne({id: "stoTet",gameId:gameId});
+        storage = await data.findOne({gameId:gameId});
     }
 
     switch (req.query.type) {
@@ -253,7 +253,6 @@ module.exports = async (req, res) => {
     }
 
     data.updateOne({
-        id: "stoTet",
         gameId:gameId
     }, {$set: storage});
 }
