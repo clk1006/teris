@@ -168,9 +168,9 @@ module.exports = async (req, res) => {
         storage.rng=seedrandom(Math.random().toString())
     }
 
-    let gameId=req.query.gameId
+    let gameId=req.query.gameId||=0
 
-    if ((await data.find({gameId:gameId}).toArray()).length == 0) {
+    if ((await data.find({gameId:`${gameId}`}).toArray()).length == 0) {
         storage.gameId=gameId;
         data.insertOne(storage);
     } else {
