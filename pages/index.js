@@ -7,7 +7,7 @@ let state_temp = [0, Array(200).fill(0), { type: 0, pos: 0, rot: 0 }, 0]
 const HEIGHT = 743
 const WIDTH = 309
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C"];
-const BLOCK_BASE = 'rgb(79, 81, 101)'
+const BLOCK_BASE = "rgba(214, 215, 224)"
 const BACKGROUND = "rgb(252, 249, 249)"
 let context;
 
@@ -100,6 +100,9 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className="container">
+          <div className="screen-container">
+            <canvas height={HEIGHT} width={WIDTH} ref={} />
+          </div>
           <div className="screen-container">
             <canvas height={HEIGHT} width={WIDTH} ref={ref} />
           </div>
