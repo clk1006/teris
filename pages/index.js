@@ -9,7 +9,7 @@ const WIDTH = 309
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C"];
 const BLOCK_BASE = "rgba(214, 215, 224)"
 const BACKGROUND = "rgb(252, 249, 249)"
-let context;
+let contextTiles,contextCurr;
 
 const getNeighbours = (tiles) => {
   return Array(tiles.reduce((a, b) => Math.max(a, b), 0))
@@ -40,11 +40,13 @@ const getNeighbours = (tiles) => {
 };
 
 export default function Home() {
-  const ref = useRef();
+  const refTiles = useRef();
+  const refCurr = useRef();
   const [state, setState] = useState(state_temp);
 
   useEffect(() => {
-    context = ref.current.getContext('2d');
+    contextTiles = refTiles.current.getContext('2d');
+    contextCurr = refCurr.current.getContext('2d');
   }, []);
 
   useEffect(() => {
@@ -73,11 +75,11 @@ export default function Home() {
       );
     });
     
-    context.fillStyle=BACKGROUND
-    context.fillRect(0,0,WIDTH,HEIGHT)
+    contextTiles.fillStyle=BACKGROUND
+    contextTiles.fillRect(0,0,WIDTH,HEIGHT)
     tiles.forEach((id, i) => {
-      context.fillStyle = colors[id];
-      context.roundRect(
+      contextTiles.fillStyle = colors[id];
+      contextTiles.roundRect(
         31*(i%10) ,
         HEIGHT-(31 * (Math.floor(i / 10)+1))+1,
         29,
@@ -101,10 +103,10 @@ export default function Home() {
       <main className={styles.main}>
         <div className="container">
           <div className="screen-container">
-            <canvas height={HEIGHT} width={WIDTH} ref={} />
+            <canvas height={HEIGHT} width={WIDTH} ref={refCurr} />
           </div>
           <div className="screen-container">
-            <canvas height={HEIGHT} width={WIDTH} ref={ref} />
+            <canvas height={HEIGHT} width={WIDTH} ref={refTiles} />
           </div>
           <div className="screen-container">
             <div className="nextElement-block"></div>
