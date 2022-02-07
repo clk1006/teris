@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useRef,useState,useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 
+let state_temp=[0,Array(200).fill(0),{type:0,pos:0,rot:0},0]
 const HEIGHT = 743
 const WIDTH = 309
 const BLOCK_COLORS=["#327AB8","#3AD9A7","#FFC247","#9951B3","#CD4C4C"];
@@ -28,7 +29,7 @@ const getNeighbours = (tiles) => {
 }
 export default function Home() {
   const ref = useRef();
-  const [state,setState] = useState(0);
+  const [state,setState] = useState(state_temp);
   useEffect(()=>{
     context=ref.current.getContext("2d");
   },[])
@@ -40,6 +41,7 @@ export default function Home() {
       neighbours=neighbours.filter(x=>x<id)
       colors.push(BLOCK_COLORS.filter((x)=>neighbours.reduce((a,b)=>a==colors[b]?0:a,x)!=0)[0])
     })
+    
     tiles.forEach((id,i) => {
       context.fillStyle=colors[id];
       context.fillRect(30*i%10+i,30*Math.floor(i/10)+i,30,30)  
@@ -70,19 +72,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   )
 }
