@@ -4,7 +4,7 @@
     --tile-color-002: 255, 194, 71;
     --tile-color-003: 153, 81, 179;
     --tile-color-004: 205, 76, 76;
-    --inactive-tile-color: 79, 81, 101;
+    --inactive-tile-color: rgb(214, 215, 224);
 
     --primary-color: 248, 112, 96;
     --secondary-color: 24, 67, 90;
@@ -99,7 +99,7 @@ p, span.output:hover {
     -moz-box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color), var(--alpha-1));
 
     border: hidden;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 .stats-container, .bindings-container {
@@ -114,7 +114,7 @@ p, span.output:hover {
     font-weight: 300;
     font-size: 18px;
     border: 0 hidden;
-    border-radius: 3px;
+    border-radius: 2px;
 
     color: rgb(var(--text-color-500));
     background-color: rgb(var(--primary-color));
