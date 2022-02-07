@@ -90,7 +90,7 @@ p, span {
 }
 
 .bindings-container .output {
-    margin-right: 4px;
+    margin-right: 3px;
 }
 
 .binding-container {
@@ -98,7 +98,7 @@ p, span {
 }
 
 .stats-container .output {
-    margin-left: 4px;
+    margin-left: 3px;
 }
 
 .stat-container {
