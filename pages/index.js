@@ -168,10 +168,10 @@ export default function Home() {
                   </div>
                 </div>
                 {
-                  started || <button className="start-btn">Start</button>
+                  started || <button className="start-btn">&#9654; Start</button>
                 }
                 {
-                  started && <button className="restart-btn">Restart</button>
+                  started && <button className="restart-btn">&#8635; Restart</button>
                 }
               </div>
             </div>
