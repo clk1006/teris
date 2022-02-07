@@ -146,11 +146,11 @@ export default function Home() {
 
                   <div className="bindings-container">
                     <div className="binding-container">
-                      <span className="output output-binding-mleft">A, LEFT</span>
+                      <span className="output output-binding-mleft">A, Left</span>
                       <span> — Move left</span>
                     </div>
                     <div className="binding-container">
-                      <span className="output output-binding-mright">D, RIGHT</span>
+                      <span className="output output-binding-mright">D, Right</span>
                       <span> — Move right</span>
                     </div>
                     <div className="binding-container">
@@ -162,7 +162,7 @@ export default function Home() {
                       <span> — Rotate right</span>
                     </div>
                     <div className="binding-container">
-                      <span className="output binding-drop">S, ENTER</span>
+                      <span className="output binding-drop">S, Enter</span>
                       <span> — Drop block</span>
                     </div>
                   </div>
