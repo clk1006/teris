@@ -4,8 +4,7 @@ import { useRef, useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 
 let state_temp = [0, Array(200).fill(0), { type: 0, pos: 0, rot: 0 }, 0]
-const HEIGHT = 621
-const WIDTH = 309
+const BLOCK_SIZE = 29
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C"];
 const BLOCK_BASE = "rgba(214, 215, 224)"
 const BACKGROUND = "rgb(252, 249, 249)"
@@ -77,14 +76,14 @@ export default function Home() {
     });
     
     contextTiles.fillStyle=BACKGROUND
-    contextTiles.fillRect(0,0,WIDTH,HEIGHT)
+    contextTiles.fillRect(0,0,10*BLOCK_SIZE+18,20*BLOCK_SIZE+38)
     tiles.forEach((id, i) => {
       contextTiles.fillStyle = colors[id];
       contextTiles.roundRect(
         31*(i%10) ,
-        HEIGHT-(31 * (Math.floor(i / 10)+1))+1,
-        29,
-        29,
+        20*BLOCK_SIZE-(31 * (Math.floor(i / 10)+1))+39,
+        BLOCK_SIZE,
+        BLOCK_SIZE,
         2
       ).fill();
     });
@@ -104,10 +103,10 @@ export default function Home() {
       <main className={styles.main}>
         <div className="container">
           <div className="screen-container">
-            <canvas height={HEIGHT} width={WIDTH} ref={refCurr} />
+            <canvas height={20*BLOCK_SIZE+38} width={10*BLOCK_SIZE+18} ref={refCurr} />
           </div>
           <div className="screen-container">
-            <canvas height={HEIGHT} width={WIDTH} ref={refTiles} />
+            <canvas height={20*BLOCK_SIZE+38} width={10*BLOCK_SIZE+18} ref={refTiles} />
           </div>
           <div className="screen-container">
             <div className="nextElement-block"></div>
