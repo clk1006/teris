@@ -65,7 +65,7 @@ export default function Home() {
       context.fillStyle = colors[id];
       context.fillRect(
         31*(i%10) ,
-        HEIGHT-(31 * Math.floor(i / 10)),
+        HEIGHT-(31 * (Math.floor(i / 10)+1))+1,
         30,
         30
       );
