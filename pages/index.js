@@ -47,6 +47,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+      if (w < 2 * r) r = w / 2;
+      if (h < 2 * r) r = h / 2;
+      this.beginPath();
+      this.moveTo(x+r, y);
+      this.arcTo(x+w, y,   x+w, y+h, r);
+      this.arcTo(x+w, y+h, x,   y+h, r);
+      this.arcTo(x,   y+h, x,   y,   r);
+      this.arcTo(x,   y,   x+w, y,   r);
+      this.closePath();
+      return this;
+    }
     let tiles = state[1];
     let colors = ['rgb(79, 81, 101)'];
 
@@ -64,12 +76,13 @@ export default function Home() {
     context.fillRect(0,0,WIDTH,HEIGHT)
     tiles.forEach((id, i) => {
       context.fillStyle = colors[id];
-      context.fillRect(
+      context.roundRect(
         31*(i%10) ,
         HEIGHT-(31 * (Math.floor(i / 10)+1))+1,
-        30,
-        30
-      );
+        29,
+        29,
+        2
+      ).fill();
     });
   }, [state]);
 
