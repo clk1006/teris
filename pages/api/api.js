@@ -161,14 +161,11 @@ const updateState = (score, tiles) => {
 module.exports = async (req, res) => {
     const client = await dbClient;
     const data = client.db().collection("data");
+    
+    let seed = req.query.seed || Math.random().toString();
+    storage.rng=seedrandom(seed);
 
-    if(req.query.seed.length>0){
-        storage.rng=seedrandom(req.query.seed)
-    } else {
-        storage.rng=seedrandom(Math.random().toString())
-    }
-
-    let gameId=req.query.gameId||=0
+    let gameId = req.query.gameId || 0
 
     if ((await data.find({gameId:`${gameId}`}).toArray()).length == 0) {
         storage.gameId=gameId;
