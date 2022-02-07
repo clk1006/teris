@@ -30,6 +30,8 @@
 }
 
 h1 {
+    margin: 4px 0;
+
     font-weight: 900;
     font-size: 32px;
 
@@ -37,6 +39,8 @@ h1 {
 }
 
 h2 {
+    margin: 0 0 22px 0;
+
     font-weight: 700;
     font-size: 24px;
 
@@ -44,6 +48,8 @@ h2 {
 }
 
 p {
+    margin: 7px 0;
+
     font-weight: 300;
     font-size: 18px;
 
@@ -72,9 +78,10 @@ p.input:hover {
 }
 
 .input-container {
+    margin: 0 0 18px 0;
     display: grid;
     grid-template-columns: fit-content(100%) auto;
-    grid-column-gap: 9px;
+    grid-column-gap: 7px;
 }
 
 .start-btn, .restart-btn {

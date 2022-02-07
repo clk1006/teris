@@ -92,21 +92,15 @@ export default function Home() {
             <div className="nextElement-block"></div>
             <div className="info-block">
               <h1>GAME</h1>
-              <h2>Statistics</h2>
-              <div className="stat-container">
-                <div className="input-container c-score">
-                  <p>Current score: </p>
-                  <p className="input">INPUT</p>
-                </div>
-
-                <div className="input- h-score">
+              <div className="info-container">
+                <h2>Statistics</h2>
+                <div className="input-container stats">
+                  <label>Current score: </label>
+                  <p className="input input-score">INPUT</p>
                   <p>Current high-score: </p>
-                  <p className="input">INPUT</p>
-                </div>
-
-                <div className="input-container seed">
+                  <p className="input input-high-score">INPUT</p>
                   <p>Current seed: </p>
-                  <p className="input">INPUT</p>
+                  <p className="input input-seed">INPUT</p>
                 </div>
 
                 <h2>Bindings</h2>
@@ -128,7 +122,7 @@ export default function Home() {
                   <p> — Drop block</p>
                 </div>
               </div>
-
+              
               <button className="start-btn">Start</button>
               <button className="restart-btn">Restart</button>
             </div>
