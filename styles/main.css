@@ -54,14 +54,14 @@ p.input {
     font-size: 18px;
     border-radius: 3px;
 
-    color: var(--text-color-100);
-    background-color: var(--text-color-100), var(--alpha-1);
+    color: var(--primary-color);
+    background-color: var(--primary-color), var(--alpha-1);
 }
 
 p.input:hover {
     cursor: pointer;
 
-    background-color: var(--text-color-100), var(--alpha-2);
+    background-color: var(--primary-color), var(--alpha-2);
 }
 
 .start-btn, .restart-btn {
