@@ -78,7 +78,7 @@ p.input:hover {
 }
 
 .start-btn, .restart-btn {
-    padding: 7px 22px;
+    padding: 11px 22px;
 
     font-weight: 300;
     font-size: 18px;
@@ -89,7 +89,7 @@ p.input:hover {
     background-color: rgb(var(--primary-color));
 
     cursor: pointer;
-    transition: 0.4s;
+    transition: 0.2s;
 }
 
 .start-btn:hover, .restart-btn:hover {
