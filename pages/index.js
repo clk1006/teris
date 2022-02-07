@@ -48,7 +48,7 @@ export default function Home() {
 
   useEffect(() => {
     let tiles = state[1];
-    let colors = ['#fff'];
+    let colors = ['rgb(79, 81, 101)'];
 
     getNeighbours(tiles).forEach((neighbours, id) => {
       id++;
@@ -59,7 +59,8 @@ export default function Home() {
         )[0]
       );
     });
-    context.fillStyle="#aaaaaa"
+    
+    context.fillStyle="rgb(252, 249, 249)"
     context.fillRect(0,0,WIDTH,HEIGHT)
     tiles.forEach((id, i) => {
       context.fillStyle = colors[id];
@@ -85,46 +86,58 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className="container">
-          <div className="playground-container">
+          <div className="screen-container">
             <canvas height={HEIGHT} width={WIDTH} ref={ref} />
           </div>
-          <div className="information-block">
+          <div className="screen-container">
             <div className="nextElement-block"></div>
             <div className="info-block">
-              <h1>GAME</h1>
               <div className="info-container">
                 <h2>Statistics</h2>
-                <div className="input-container stats">
-                  <label>Current score: </label>
-                  <p className="input input-score">INPUT</p>
-                  <p>Current high-score: </p>
-                  <p className="input input-high-score">INPUT</p>
-                  <p>Current seed: </p>
-                  <p className="input input-seed">INPUT</p>
+
+                <div className="stats-container">
+                  <div className="stat-container">
+                    <span>Current score: </span>
+                    <span className="output output-score">OUTPUT</span>
+                  </div>
+                  <div className="stat-container">
+                    <span>Current high-score: </span>
+                    <span className="output output-high-score">OUTPUT</span>
+                  </div>
+                  <div className="stat-container">
+                    <span>Current seed: </span>
+                    <span className="output output-seed">OUTPUT</span>
+                  </div>
                 </div>
 
                 <h2>Bindings</h2>
 
-                <div className="input-container bindings">
-                  <p className="input">INPUT</p>
-                  <p> — Move left</p>
-
-                  <p className="input">INPUT</p>
-                  <p> — Move right</p>
-
-                  <p className="input">INPUT</p>
-                  <p> — Rotate left</p>
-
-                  <p className="input">INPUT</p>
-                  <p> — Rotate right</p>
-
-                  <p className="input">INPUT</p>
-                  <p> — Drop block</p>
+                <div className="bindings-container">
+                  <div className="binding-container">
+                    <span className="output output-binding-mleft">OUTPUT</span>
+                    <span> — Move left</span>
+                  </div>
+                  <div className="binding-container">
+                    <span className="output output-binding-mright">OUTPUT</span>
+                    <span> — Move right</span>
+                  </div>
+                  <div className="binding-container">
+                    <span className="output output-binding-rleft">OUTPUT</span>
+                    <span> — Rotate left</span>
+                  </div>
+                  <div className="binding-container">
+                    <span className="output output-binding-rright">OUTPUT</span>
+                    <span> — Rotate right</span>
+                  </div>
+                  <div className="binding-container">
+                    <span className="output binding-drop">OUTPUT</span>
+                    <span> — Drop block</span>
+                  </div>
                 </div>
               </div>
               
               <button className="start-btn">Start</button>
-              <button className="restart-btn">Restart</button>
+              <button className="restart-btn inactive">Restart</button>
             </div>
           </div>
         </div>

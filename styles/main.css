@@ -16,7 +16,8 @@
     --text-color-300: 212, 209, 206;
     --text-color-500: 246, 245, 244;
 
-    --background-color: 242, 239, 239;
+    --background-color: 243, 241, 241;
+    --box-background-color: 252, 249, 249;
     --shadow-color: 39, 38, 49;
 
     --alpha-1: 0.28;
@@ -26,11 +27,15 @@
 * {
     user-select: none;
     font-family: 'Lato', sans-serif;
-    line-height: 1.65em;
+    line-height: 1.8em;
+}
+
+body {
+    background-color: rgb(var(--background-color));
 }
 
 h1 {
-    margin: 4px 0;
+    margin: 0;
 
     font-weight: 900;
     font-size: 32px;
@@ -39,7 +44,7 @@ h1 {
 }
 
 h2 {
-    margin: 0 0 22px 0;
+    margin: 0;
 
     font-weight: 700;
     font-size: 24px;
@@ -47,17 +52,23 @@ h2 {
     color: rgb(var(--text-color-100));
 }
 
-p {
-    margin: 7px 0;
-
+p, span {
     font-weight: 300;
     font-size: 18px;
 
     color: rgb(var(--text-color-200));
 }
 
-p.input {
-    padding: 0 9px;
+.bindings-container .output {
+    margin-right: 4px;
+}
+
+.stats-container .output {
+    margin-left: 4px;
+}
+
+p, span.output {
+    padding: 0 6px;
     width: fit-content;
 
     font-family: 'Roboto Mono', monospace;
@@ -69,7 +80,7 @@ p.input {
     background-color: rgba(var(--primary-color), var(--alpha-1));
 }
 
-p.input:hover {
+p, span.output:hover {
     background-color: rgba(var(--primary-color), var(--alpha-2));
 }
 
@@ -77,11 +88,24 @@ p.input:hover {
     display: flex;
 }
 
-.input-container {
-    margin: 0 0 18px 0;
-    display: grid;
-    grid-template-columns: fit-content(100%) auto;
-    grid-column-gap: 7px;
+.screen-container {
+    margin-right: 32px;
+    padding: 24px;
+
+    background-color: rgb(var(--box-background-color));
+
+    box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color), var(--alpha-1));
+    -webkit-box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color), var(--alpha-1));
+    -moz-box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color), var(--alpha-1));
+
+    border: hidden;
+    border-radius: 5px;
+}
+
+.stats-container, .bindings-container {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
 }
 
 .start-btn, .restart-btn {
