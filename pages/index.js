@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 
 let state_temp = [0, Array(200).fill(0), { type: 0, pos: 0, rot: 0 }, 0]
-const HEIGHT = 743
+const HEIGHT = 621
 const WIDTH = 309
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C"];
 const BLOCK_BASE = "rgba(214, 215, 224)"
@@ -43,6 +43,7 @@ export default function Home() {
   const refTiles = useRef();
   const refCurr = useRef();
   const [state, setState] = useState(state_temp);
+  const [started,setStarted] = useState(false);
 
   useEffect(() => {
     contextTiles = refTiles.current.getContext('2d');
@@ -154,9 +155,12 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              
-              <button className="start-btn">Start</button>
-              <button className="restart-btn inactive">Restart</button>
+              {
+                started || <button className="start-btn">Start</button>
+              }
+              {
+                started && <button className="restart-btn">Restart</button>
+              }
             </div>
           </div>
         </div>
