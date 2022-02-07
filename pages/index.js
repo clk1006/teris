@@ -111,19 +111,19 @@ export default function Home() {
                 <h2>Bindings</h2>
 
                 <div className="input-container bindings">
-                  <p className="input"></p>
+                  <p className="input">INPUT</p>
                   <p> - Move left</p>
 
-                  <p className="input"></p>
+                  <p className="input">INPUT</p>
                   <p> - Move right</p>
 
-                  <p className="input"></p>
+                  <p className="input">INPUT</p>
                   <p> - Rotate left</p>
 
-                  <p className="input"></p>
+                  <p className="input">INPUT</p>
                   <p> - Rotate right</p>
 
-                  <p className="input"></p>
+                  <p className="input">INPUT</p>
                   <p> - Drop block</p>
                 </div>
               </div>
