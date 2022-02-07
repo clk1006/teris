@@ -112,66 +112,70 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className="container">
-          <div className="screen-container">
-            <canvas height={4*BLOCK_SIZE+6} width={10*BLOCK_SIZE+18} ref={refCurr} />
-          </div>
-          <div className="screen-container">
-            <canvas height={20*BLOCK_SIZE+39} width={10*BLOCK_SIZE+18} ref={refTiles} />
-          </div>
-          <div className="screen-container">
-            <div className="nextElement-block"></div>
-            <div className="info-block">
-              <div className="info-container">
-                <h2>Statistics</h2>
-
-                <div className="stats-container">
-                  <div className="stat-container">
-                    <span>Current score: </span>
-                    <span className="output output-score">OUTPUT</span>
-                  </div>
-                  <div className="stat-container">
-                    <span>Current high-score: </span>
-                    <span className="output output-high-score">OUTPUT</span>
-                  </div>
-                  <div className="stat-container">
-                    <span>Current seed: </span>
-                    <span className="output output-seed">OUTPUT</span>
-                  </div>
-                </div>
-
-                <h2>Bindings</h2>
-
-                <div className="bindings-container">
-                  <div className="binding-container">
-                    <span className="output output-binding-mleft">OUTPUT</span>
-                    <span> — Move left</span>
-                  </div>
-                  <div className="binding-container">
-                    <span className="output output-binding-mright">OUTPUT</span>
-                    <span> — Move right</span>
-                  </div>
-                  <div className="binding-container">
-                    <span className="output output-binding-rleft">OUTPUT</span>
-                    <span> — Rotate left</span>
-                  </div>
-                  <div className="binding-container">
-                    <span className="output output-binding-rright">OUTPUT</span>
-                    <span> — Rotate right</span>
-                  </div>
-                  <div className="binding-container">
-                    <span className="output binding-drop">OUTPUT</span>
-                    <span> — Drop block</span>
-                  </div>
-                </div>
-              </div>
-              {
-                started || <button className="start-btn">Start</button>
-              }
-              {
-                started && <button className="restart-btn">Restart</button>
-              }
+          <div className="block">
+            <div className="screen-container">
+              <canvas height={4*BLOCK_SIZE+6} width={10*BLOCK_SIZE+18} ref={refCurr} />
+            </div>
+            <div className="screen-container">
+              <canvas height={20*BLOCK_SIZE+39} width={10*BLOCK_SIZE+18} ref={refTiles} />
             </div>
           </div>
+          <div className="block">
+            <div className="screen-container">
+              <div className="nextElement-block"></div>
+              <div className="info-block">
+                <div className="info-container">
+                  <h2>Statistics</h2>
+
+                  <div className="stats-container">
+                    <div className="stat-container">
+                      <span>Current score: </span>
+                      <span className="output output-score">OUTPUT</span>
+                    </div>
+                    <div className="stat-container">
+                      <span>Current high-score: </span>
+                      <span className="output output-high-score">OUTPUT</span>
+                    </div>
+                    <div className="stat-container">
+                      <span>Current seed: </span>
+                      <span className="output output-seed">OUTPUT</span>
+                    </div>
+                  </div>
+
+                  <h2>Bindings</h2>
+
+                  <div className="bindings-container">
+                    <div className="binding-container">
+                      <span className="output output-binding-mleft">A, LEFT</span>
+                      <span> — Move left</span>
+                    </div>
+                    <div className="binding-container">
+                      <span className="output output-binding-mright">D, RIGHT</span>
+                      <span> — Move right</span>
+                    </div>
+                    <div className="binding-container">
+                      <span className="output output-binding-rleft">Q</span>
+                      <span> — Rotate left</span>
+                    </div>
+                    <div className="binding-container">
+                      <span className="output output-binding-rright">E</span>
+                      <span> — Rotate right</span>
+                    </div>
+                    <div className="binding-container">
+                      <span className="output binding-drop">S, ENTER</span>
+                      <span> — Drop block</span>
+                    </div>
+                  </div>
+                </div>
+                {
+                  started || <button className="start-btn">Start</button>
+                }
+                {
+                  started && <button className="restart-btn">Restart</button>
+                }
+              </div>
+            </div>
+          </div>   
         </div>
       </main>
     </div>
