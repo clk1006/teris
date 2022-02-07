@@ -7,7 +7,8 @@ let state_temp = [0, Array(200).fill(0), { type: 0, pos: 0, rot: 0 }, 0]
 const HEIGHT = 743
 const WIDTH = 309
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C"];
-const BACKGROUND = "#4F5165"
+const BLOCK_BASE = 'rgb(79, 81, 101)'
+const BACKGROUND = "rgb(252, 249, 249)"
 let context;
 
 const getNeighbours = (tiles) => {
@@ -60,7 +61,7 @@ export default function Home() {
       return this;
     }
     let tiles = state[1];
-    let colors = ['rgb(79, 81, 101)'];
+    let colors = [BLOCK_BASE];
 
     getNeighbours(tiles).forEach((neighbours, id) => {
       id++;
@@ -72,7 +73,7 @@ export default function Home() {
       );
     });
     
-    context.fillStyle="rgb(252, 249, 249)"
+    context.fillStyle=BACKGROUND
     context.fillRect(0,0,WIDTH,HEIGHT)
     tiles.forEach((id, i) => {
       context.fillStyle = colors[id];
