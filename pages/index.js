@@ -2,6 +2,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useRef, useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
+import pic0 from '../public/tetris0.png'
+import pic1 from '../public/tetris1.png'
+import pic2 from '../public/tetris2.png'
+import pic3 from '../public/tetris3.png'
+import pic4 from '../public/tetris4.png'
+import pic5 from '../public/tetris5.png'
+import pic6 from '../public/tetris6.png'
 
 let state_temp = [0, Array(200).fill(0), { type: 0, pos: 0, rot: 0 }, 0]
 const BLOCK_SIZE = 29
@@ -120,6 +127,11 @@ export default function Home() {
             </div>
           </div>
           <div className="block">
+            <div className="screen-container">
+              <Image width="122" height="122" src={
+                state[3]==0?pic0:state[3]==1?pic1:state[3]==2?pic2:state[3]==3?pic3:state[3]==4?pic4:state[3]==5?pic5:pic6
+              }/>
+            </div>
             <div className="screen-container">
               <div className="nextElement-block"></div>
               <div className="info-block">
