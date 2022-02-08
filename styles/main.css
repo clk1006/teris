@@ -4,7 +4,7 @@
     --tile-color-002: 255, 194, 71;
     --tile-color-003: 153, 81, 179;
     --tile-color-004: 205, 76, 76;
-    --inactive-tile-color: rgb(214, 215, 224);
+    --inactive-tile-color: 214, 215, 224;
 
     --primary-color: 248, 112, 96;
     --secondary-color: 24, 67, 90;
@@ -72,6 +72,7 @@ p, span {
 .screen-container {
     margin: 0 32px 16px 0;
     padding: 24px;
+    max-width: max-content;
 
     background-color: rgb(var(--box-background-color));
 
@@ -81,6 +82,11 @@ p, span {
 
     border: hidden;
     border-radius: 4px;
+}
+
+.image-box {
+    display: flex;
+    flex: auto;
 }
 
 .stats-container, .bindings-container {
@@ -105,8 +111,7 @@ p, span {
     margin: 6px 0;
 }
 
-
-p, span.output {
+span.output {
     user-select: all;
 
     margin: 24px 0;
@@ -122,11 +127,11 @@ p, span.output {
     background-color: rgba(var(--primary-color), var(--alpha-1));
 }
 
-p, span.output:hover {
+span.output:hover {
     background-color: rgba(var(--primary-color), var(--alpha-2));
 }
 
-p, span.output::selection {
+span.output::selection {
     background-color: rgba(var(--primary-color), var(--alpha-3));
 }
 

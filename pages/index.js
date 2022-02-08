@@ -140,7 +140,7 @@ export default function Home() {
             {
               started&&
               <div className="screen-container">
-                <Image width="122" height="122" src={
+                <Image className="image-box" width="122" height="122" src={
                   state[3]==0?pic0:state[3]==1?pic1:state[3]==2?pic2:state[3]==3?pic3:state[3]==4?pic4:state[3]==5?pic5:pic6
                 }/>
               </div>
