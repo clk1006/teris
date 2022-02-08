@@ -51,59 +51,66 @@ export default function Home() {
   const [state, setState] = useState(state_temp);
   const [started,setStarted] = useState(false);
   useEffect(() => {
-    contextTiles = refTiles.current.getContext('2d');
-    contextCurr = refCurr.current.getContext('2d');
-  }, []);
+    if(started){
+      contextTiles = refTiles.current.getContext('2d');
+      contextCurr = refCurr.current.getContext('2d');
+    }
+  }, [started]);
 
   useEffect(() => {
-    CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
-      if (w < 2 * r) r = w / 2;
-      if (h < 2 * r) r = h / 2;
-      this.beginPath();
-      this.moveTo(x+r, y);
-      this.arcTo(x+w, y,   x+w, y+h, r);
-      this.arcTo(x+w, y+h, x,   y+h, r);
-      this.arcTo(x,   y+h, x,   y,   r);
-      this.arcTo(x,   y,   x+w, y,   r);
-      this.closePath();
-      return this;
+    if(started){
+      CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+        if (w < 2 * r) r = w / 2;
+        if (h < 2 * r) r = h / 2;
+        this.beginPath();
+        this.moveTo(x+r, y);
+        this.arcTo(x+w, y,   x+w, y+h, r);
+        this.arcTo(x+w, y+h, x,   y+h, r);
+        this.arcTo(x,   y+h, x,   y,   r);
+        this.arcTo(x,   y,   x+w, y,   r);
+        this.closePath();
+        return this;
+      }
+      let tiles = state[1];
+      let colors = [BLOCK_BASE];
+  
+      getNeighbours(tiles).forEach((neighbours, id) => {
+        id++;
+        neighbours = neighbours.filter((x) => x < id);
+        colors.push(
+          BLOCK_COLORS.filter(
+            (x) => neighbours.reduce((a, b) => (a == colors[b] ? 0 : a), x) != 0
+          )[0]
+        );
+      });
+      
+      contextTiles.fillStyle=BACKGROUND
+      contextTiles.fillRect(0,0,10*BLOCK_SIZE+18,20*BLOCK_SIZE+38)
+      console.log(started)
+      tiles.forEach((id, i) => {
+        contextTiles.fillStyle = colors[id];
+        contextTiles.roundRect(
+          31*(i%10) ,
+          20*BLOCK_SIZE-(31 * (Math.floor(i / 10)+1))+41,
+          BLOCK_SIZE,
+          BLOCK_SIZE,
+          2
+        ).fill();
+      });
+      Array(40).fill(0).forEach((_,i)=>{
+        contextCurr.fillStyle = BLOCK_BASE;
+        contextCurr.roundRect(
+          31*(i%10) ,
+          4*BLOCK_SIZE-(31 * (Math.floor(i / 10)+1))+8,
+          BLOCK_SIZE,
+          BLOCK_SIZE,
+          2
+        ).fill();
+      })
     }
-    let tiles = state[1];
-    let colors = [BLOCK_BASE];
-
-    getNeighbours(tiles).forEach((neighbours, id) => {
-      id++;
-      neighbours = neighbours.filter((x) => x < id);
-      colors.push(
-        BLOCK_COLORS.filter(
-          (x) => neighbours.reduce((a, b) => (a == colors[b] ? 0 : a), x) != 0
-        )[0]
-      );
-    });
     
-    contextTiles.fillStyle=BACKGROUND
-    contextTiles.fillRect(0,0,10*BLOCK_SIZE+18,20*BLOCK_SIZE+38)
-    tiles.forEach((id, i) => {
-      contextTiles.fillStyle = colors[id];
-      contextTiles.roundRect(
-        31*(i%10) ,
-        20*BLOCK_SIZE-(31 * (Math.floor(i / 10)+1))+41,
-        BLOCK_SIZE,
-        BLOCK_SIZE,
-        2
-      ).fill();
-    });
-    Array(40).fill(0).forEach((_,i)=>{
-      contextCurr.fillStyle = BLOCK_BASE;
-      contextCurr.roundRect(
-        31*(i%10) ,
-        4*BLOCK_SIZE-(31 * (Math.floor(i / 10)+1))+8,
-        BLOCK_SIZE,
-        BLOCK_SIZE,
-        2
-      ).fill();
-    })
-  }, [state]);
+    
+  }, [state,started]);
 
   return (
     <div className={styles.container}>
@@ -118,20 +125,27 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className="container">
+          {
+            started&&
+            <div className="block">
+              <div className="screen-container">
+                <canvas height={4*BLOCK_SIZE+6} width={10*BLOCK_SIZE+18} ref={refCurr} />
+              </div>
+              <div className="screen-container">
+                <canvas height={20*BLOCK_SIZE+39} width={10*BLOCK_SIZE+18} ref={refTiles} />
+              </div>
+            </div>
+          }
           <div className="block">
-            <div className="screen-container">
-              <canvas height={4*BLOCK_SIZE+6} width={10*BLOCK_SIZE+18} ref={refCurr} />
-            </div>
-            <div className="screen-container">
-              <canvas height={20*BLOCK_SIZE+39} width={10*BLOCK_SIZE+18} ref={refTiles} />
-            </div>
-          </div>
-          <div className="block">
-            <div className="screen-container">
-              <Image width="122" height="122" src={
-                state[3]==0?pic0:state[3]==1?pic1:state[3]==2?pic2:state[3]==3?pic3:state[3]==4?pic4:state[3]==5?pic5:pic6
-              }/>
-            </div>
+            {
+              started&&
+              <div className="screen-container">
+                <Image width="122" height="122" src={
+                  state[3]==0?pic0:state[3]==1?pic1:state[3]==2?pic2:state[3]==3?pic3:state[3]==4?pic4:state[3]==5?pic5:pic6
+                }/>
+              </div>
+            }
+            
             <div className="screen-container">
               <div className="nextElement-block"></div>
               <div className="info-block">
@@ -179,7 +193,9 @@ export default function Home() {
                   </div>
                 </div>
                 {
-                  started || <button className="start-btn">&#9654; Start</button>
+                  started || <button className="start-btn" onClick={(event)=>{
+                    setStarted(true);
+                  }}>&#9654; Start</button>
                 }
                 {
                   started && <button className="restart-btn">&#8635; Restart</button>
