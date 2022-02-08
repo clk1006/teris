@@ -43,7 +43,6 @@ export default function Home() {
   const refCurr = useRef();
   const [state, setState] = useState(state_temp);
   const [started,setStarted] = useState(false);
-
   useEffect(() => {
     contextTiles = refTiles.current.getContext('2d');
     contextCurr = refCurr.current.getContext('2d');
