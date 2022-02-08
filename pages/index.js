@@ -117,6 +117,24 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <div className="pop-up-frame inactive">
+          {/* Exception for clients running out of tiles */}
+          <div className="game-fail-popup screen-container">
+            <h2>Game over</h2>
+            <p className="error">You've reached the end of the game field, but you can surely perform better next time.</p>
+            <div className="stat-container">
+              <span>Your score: </span>
+              <span className="output output-score">OUTPUT</span>
+            </div>
+            <div className="stat-container">
+              <span>Your high-score: </span>
+              <span className="output output-high-score">OUTPUT</span>
+            </div>
+            <p>You may try again via the button below.</p>
+            <button className="restart-btn">&#8635; Restart</button>
+          </div>
+        </div>
+        
         <div className="container">
           <div className="block">
             <div className="screen-container">
@@ -151,6 +169,10 @@ export default function Home() {
                     <div className="stat-container">
                       <span>Current seed: </span>
                       <span className="output output-seed">OUTPUT</span>
+                    </div>
+                    <div className="stat-container">
+                      <span>Moves left: </span>
+                      <span className="output moves-left">OUTPUT</span>
                     </div>
                   </div>
 
