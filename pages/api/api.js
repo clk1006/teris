@@ -19,7 +19,18 @@ const rotateArray = (arr, rot) => {
         }
     }))
 }
-
+const STORAGE_BASE={
+    id: "stoTet",
+    state: 0,
+    score: 0,
+    tiles: Array(200).fill(0),
+    current: {
+        type: 0,
+        pos: 0,
+        rot: 0
+    },
+    seq:[0,1,2,3,4,5,6]
+}
 const getShape = (block) => {
     let arr = []
 
@@ -164,18 +175,7 @@ const updateState = (score, tiles) => {
 }
 
 module.exports = async (req, res) => {
-    let storage = {
-        id: "stoTet",
-        state: 0,
-        score: 0,
-        tiles: Array(200).fill(0),
-        current: {
-            type: 0,
-            pos: 0,
-            rot: 0
-        },
-        seq:[0,1,2,3,4,5,6]
-    }
+    let storage = STORAGE_BASE
     const client = await dbClient;
     const data = client.db().collection("data");
 
@@ -218,8 +218,8 @@ module.exports = async (req, res) => {
             if(storage.seq.length==0){
                 [storage.seq,storage.rng]=shuffle([0,1,2,3,4,5,6],storage.rng)
             }
-            res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
-
+            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0],storage.state])
+            
             break
         case "moveLeft":
             if (storage.current.pos > 0) {
