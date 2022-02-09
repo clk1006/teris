@@ -69,6 +69,24 @@ const getShape = (block) => {
     return rotateArray(arr, block.rot)
 }
 
+const shuffle=(arr,rng)=>{
+    let currentIndex = arr.length,  randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(rng() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [arr[currentIndex], arr[randomIndex]] = [
+        arr[randomIndex], arr[currentIndex]];
+    }
+  
+    return [arr,rng];
+  }
+
 const getOccupiedTiles = (pos, shape) => {
     let tiles = []
 
@@ -141,7 +159,7 @@ const updateState = (score, tiles) => {
             score += SCORE_CLEAR
         }
     }
-    
+    let state=tiles.filter((_,i)=>i>189).filter((x)=>x!=0).length==0 ? 0 : 1
     return [score, tiles]
 }
 
@@ -156,7 +174,7 @@ module.exports = async (req, res) => {
             pos: 0,
             rot: 0
         },
-        next: 0
+        seq=[0,1,2,3,4,5,6]
     }
     const client = await dbClient;
     const data = client.db().collection("data");
@@ -175,7 +193,7 @@ module.exports = async (req, res) => {
 
     switch (req.query.type) {
         case "getState":
-            res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
+            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0]])
 
             break
         case "endTurn":
@@ -188,13 +206,17 @@ module.exports = async (req, res) => {
             }
 
             let state = updateState(storage.score, dropRes[1])
-            
+
             storage.score=state[0]+SCORE_BLOCK
             storage.tiles=state[1]
-            storage.current.type = storage.next
+            storage.current.type = storage.seq[0]
             storage.current.pos = 4
             storage.current.rot = 0
-            storage.next = Math.floor(storage.rng() * 7)
+            storage.seq.shift();
+
+            if(storage.seq.length==0){
+                [storage.seq,storage.rng]=shuffle([0,1,2,3,4,5,6],storage.rng)
+            }
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
 
             break
