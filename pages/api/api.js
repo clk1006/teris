@@ -174,7 +174,7 @@ module.exports = async (req, res) => {
             pos: 0,
             rot: 0
         },
-        seq=[0,1,2,3,4,5,6]
+        seq:[0,1,2,3,4,5,6]
     }
     const client = await dbClient;
     const data = client.db().collection("data");
