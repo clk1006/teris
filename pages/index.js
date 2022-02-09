@@ -44,21 +44,20 @@ const getNeighbours = (tiles) => {
       return neighbours;
     });
 };
-
 export default function Home() {
   const refTiles = useRef();
   const refCurr = useRef();
   const [state, setState] = useState(state_temp);
-  const [started,setStarted] = useState(false);
+  const [gameState,setGameState] = useState(false);
   useEffect(() => {
-    if(started){
+    if(gameState==1){
       contextTiles = refTiles.current.getContext('2d');
       contextCurr = refCurr.current.getContext('2d');
     }
-  }, [started]);
+  }, [gameState]);
 
   useEffect(() => {
-    if(started){
+    if(gameState==1){
       CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
         if (w < 2 * r) r = w / 2;
         if (h < 2 * r) r = h / 2;
@@ -86,7 +85,6 @@ export default function Home() {
       
       contextTiles.fillStyle=BACKGROUND
       contextTiles.fillRect(0,0,10*BLOCK_SIZE+18,20*BLOCK_SIZE+38)
-      console.log(started)
       tiles.forEach((id, i) => {
         contextTiles.fillStyle = colors[id];
         contextTiles.roundRect(
@@ -110,7 +108,7 @@ export default function Home() {
     }
     
     
-  }, [state,started]);
+  }, [state,gameState]);
 
   return (
     <div className={styles.container}>
@@ -124,27 +122,32 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div className="pop-up-frame inactive">
-          {/* Exception for clients running out of tiles */}
-          <div className="game-fail-popup screen-container">
-            <h2>Game over</h2>
-            <p className="error">You&#39ve reached the end of the game field, but you can surely perform better next time.</p>
-            <div className="stat-container">
-              <span>Your score: </span>
-              <span className="output output-score">OUTPUT</span>
+        {
+          gameState==2 &&
+          <div className="pop-up-frame">
+            {/* Exception for clients running out of tiles */}
+            <div className="game-fail-popup screen-container">
+              <h2>Game over</h2>
+              <p className="error">You&#39ve reached the end of the game field, but you can surely perform better next time.</p>
+              <div className="stat-container">
+                <span>Your score: </span>
+                <span className="output output-score">OUTPUT</span>
+              </div>
+              <div className="stat-container">
+                <span>Your high-score: </span>
+                <span className="output output-high-score">OUTPUT</span>
+              </div>
+              <p>You may try again via the button below.</p>
+              <button className="restart-btn" onClick={
+                setGameState(1)
+              }>&#8635; Restart</button>
             </div>
-            <div className="stat-container">
-              <span>Your high-score: </span>
-              <span className="output output-high-score">OUTPUT</span>
-            </div>
-            <p>You may try again via the button below.</p>
-            <button className="restart-btn">&#8635; Restart</button>
           </div>
-        </div>
-        
+        }
+
         <div className="container">
           {
-            started&&
+            gameState>0&&
             <div className="block">
               <div className="screen-container">
                 <canvas height={4*BLOCK_SIZE+6} width={10*BLOCK_SIZE+18} ref={refCurr} />
@@ -156,7 +159,7 @@ export default function Home() {
           }
           <div className="block">
             {
-              started&&
+              gameState>0&&
               <div className="screen-container">
                 <Image className="image-box" width="122" height="122" src={
                   state[3]==0?pic0:state[3]==1?pic1:state[3]==2?pic2:state[3]==3?pic3:state[3]==4?pic4:state[3]==5?pic5:pic6
@@ -215,12 +218,12 @@ export default function Home() {
                   </div>
                 </div>
                 {
-                  started || <button className="start-btn" onClick={(event)=>{
-                    setStarted(true);
+                  gameState==0 && <button className="start-btn" onClick={(event)=>{
+                    setGameState(1);
                   }}>&#9654; Start</button>
                 }
                 {
-                  started && <button className="restart-btn">&#8635; Restart</button>
+                  gameState==1 && <button className="restart-btn">&#8635; Restart</button>
                 }
               </div>
             </div>
