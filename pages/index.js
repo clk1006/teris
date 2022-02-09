@@ -13,6 +13,7 @@ import getShape from "../lib/getShape"
 import rotateArray from "../lib/rotateArray"
 
 let state_temp = [0, Array(200).fill(0), { type: 0, pos: 0, rot: 0 }, 0]
+const DIMENSIONS=[10,20]
 const BLOCK_SIZE = 29
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C"];
 const BLOCK_BASE = "rgba(214, 215, 224)"
@@ -152,10 +153,10 @@ export default function Home() {
             gameState>0&&
             <div className="block">
               <div className="screen-container">
-                <canvas height={4*BLOCK_SIZE+6} width={10*BLOCK_SIZE+18} ref={refCurr} />
+                <canvas height={4*BLOCK_SIZE+6} width={DIMENSIONS[0]*BLOCK_SIZE+2*(DIMENSIONS[0]-1)} ref={refCurr} />
               </div>
               <div className="screen-container">
-                <canvas height={20*BLOCK_SIZE+39} width={10*BLOCK_SIZE+18} ref={refTiles} />
+                <canvas height={DIMENSIONS[1]*BLOCK_SIZE+2*[DIMENSIONS[1]-1]} width={DIMENSIONS[0]*BLOCK_SIZE+2*(DIMENSIONS[0]-1)} ref={refTiles} />
               </div>
             </div>
           }
