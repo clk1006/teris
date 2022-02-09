@@ -60,6 +60,28 @@ p, span {
     color: rgb(var(--text-color-200));
 }
 
+.pop-up-frame {
+    top: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    height: 100%;
+    width: 100%;
+
+    backdrop-filter: blur(6px);
+    background-color: rgba(var(--shadow-color), var(--alpha-1));
+
+    transition: 0.4s;
+}
+
+.game-fail-popup {
+    height: auto;
+    width: auto;
+}
+
 .container {
     display: flex;
 }
@@ -72,7 +94,7 @@ p, span {
 .screen-container {
     margin: 0 32px 16px 0;
     padding: 24px;
-    max-width: max-content;
+    max-width: auto;
 
     background-color: rgb(var(--box-background-color));
 
@@ -135,6 +157,10 @@ span.output::selection {
     background-color: rgba(var(--primary-color), var(--alpha-3));
 }
 
+.error {
+    color: rgb(var(--primary-color));
+}
+
 .start-btn, .restart-btn {
     padding: 11px 22px;
 
@@ -154,6 +180,6 @@ span.output::selection {
     background-color: rgb(var(--tertiary-color));
 }
 
-.start-btn.inactive, .restart-btn.inactive {
+.inactive {
     display: none;
 }
