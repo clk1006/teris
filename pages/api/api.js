@@ -160,7 +160,7 @@ const updateState = (score, tiles) => {
         }
     }
     let state=tiles.filter((_,i)=>i>189).filter((x)=>x!=0).length==0 ? 0 : 1
-    return [score, tiles]
+    return [score, tiles, state]
 }
 
 module.exports = async (req, res) => {
@@ -193,7 +193,7 @@ module.exports = async (req, res) => {
 
     switch (req.query.type) {
         case "getState":
-            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0]])
+            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0]], storage.state)
 
             break
         case "endTurn":
@@ -213,6 +213,7 @@ module.exports = async (req, res) => {
             storage.current.pos = 4
             storage.current.rot = 0
             storage.seq.shift();
+            storage.state=state[2]
 
             if(storage.seq.length==0){
                 [storage.seq,storage.rng]=shuffle([0,1,2,3,4,5,6],storage.rng)
