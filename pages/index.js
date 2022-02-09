@@ -9,6 +9,8 @@ import pic3 from '../public/tetris3.png'
 import pic4 from '../public/tetris4.png'
 import pic5 from '../public/tetris5.png'
 import pic6 from '../public/tetris6.png'
+import getShape from "../lib/getShape.js"
+import rotateArray from "../lib/rotateArray.js"
 
 let state_temp = [0, Array(200).fill(0), { type: 0, pos: 0, rot: 0 }, 0]
 const BLOCK_SIZE = 29

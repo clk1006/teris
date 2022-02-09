@@ -2,23 +2,8 @@ const dbClient = require("./db.js")
 const seedrandom=require("seedrandom")
 const SCORE_BLOCK = 5
 const SCORE_CLEAR = 100
-
-const rotateArray = (arr, rot) => {
-    let [rows, cols] = rot % 2 == 0 ? [arr.length, arr[0].length] : [arr[0].length, arr.length]
-
-    return Array(rows).fill(0).map((_, row) => Array(cols).fill(0).map((_, col) => {
-        switch (rot % 4) {
-            case 0:
-                return arr[row][col]
-            case 1:
-                return arr[arr.length - col - 1][row]
-            case 2:
-                return arr[arr.length - row - 1][arr[0].length - col - 1]
-            case 3:
-                return arr[col][arr[0].length - row - 1]
-        }
-    }))
-}
+const getShape=require("../../lib/getShape.js")
+const rotateArray=require("../../lib/rotateArray.js")
 const STORAGE_BASE={
     id: "stoTet",
     state: 0,
@@ -30,54 +15,6 @@ const STORAGE_BASE={
         rot: 0
     },
     seq:[0,1,2,3,4,5,6]
-}
-const getShape = (block) => {
-    let arr = []
-
-    switch (block.type) {
-        case 0: arr = [
-            [1, 1, 1, 1]
-        ]
-
-            break
-        case 1: arr = [
-            [0, 1, 0],
-            [1, 1, 1]
-        ]
-            break
-        case 2: arr = [
-            [1, 1, 0],
-            [0, 1, 1]
-        ]
-
-            break
-        case 3: arr = [
-            [0, 1, 1],
-            [1, 1, 0]
-        ]
-
-            break
-        case 4: arr = [
-            [1, 0, 0],
-            [1, 1, 1]
-        ]
-
-            break
-        case 5: arr = [
-            [0, 0, 1],
-            [1, 1, 1]
-        ]
-
-            break
-        case 6: arr = [
-            [1, 1],
-            [1, 1]
-        ]
-
-            break
-    }
-
-    return rotateArray(arr, block.rot)
 }
 
 const shuffle=(arr,rng)=>{
