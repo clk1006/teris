@@ -128,7 +128,7 @@ export default function Home() {
           {/* Exception for clients running out of tiles */}
           <div className="game-fail-popup screen-container">
             <h2>Game over</h2>
-            <p className="error">You\'ve reached the end of the game field, but you can surely perform better next time.</p>
+            <p className="error">You&#39ve reached the end of the game field, but you can surely perform better next time.</p>
             <div className="stat-container">
               <span>Your score: </span>
               <span className="output output-score">OUTPUT</span>
