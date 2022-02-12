@@ -60,6 +60,10 @@ p, span {
     color: rgb(var(--text-color-200));
 }
 
+p {
+    max-width: auto;
+}
+
 .pop-up-frame {
     top: 0;
     position: fixed;
