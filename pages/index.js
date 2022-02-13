@@ -11,9 +11,12 @@ import pic5 from '../public/tetris5.png'
 import pic6 from '../public/tetris6.png'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { 
-  faCoffee,
-  faMailBulk,
+import {
+  faBook,
+  faCirclePlay,
+  faCodeBranch,
+  faEllipsis,
+  faRedo
 } from '@fortawesome/free-solid-svg-icons'
 
 import getShape from "../lib/getShape"
@@ -116,9 +119,13 @@ export default function Home() {
         ).fill();
       })
     }
-    
-    
   }, [state,gameState]);
+
+  const [isActive, setActive] = useState("false");
+
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
 
   return (
     <div className={styles.container}>
@@ -132,28 +139,39 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        {
-          gameState==2 &&
-          <div className="pop-up-frame">
-            {/* Exception for clients running out of tiles */}
-            <div className="game-fail-popup screen-container">
-              <h2>Game over</h2>
-              <p className="error">You&#39ve reached the end of the game field, but you can surely perform better next time.</p>
-              <div className="stat-container">
-                <span>Your score: </span>
-                <span className="output output-score">OUTPUT</span>
-              </div>
-              <div className="stat-container">
-                <span>Your high-score: </span>
-                <span className="output output-high-score">OUTPUT</span>
-              </div>
-              <p>You may try again via the button below.</p>
-              <button className="restart-btn" onClick={
-                setGameState(1)
-              }>&#8635; Restart</button>
+        <div className={`nav-bar ${isActive ? "" : "active"}`}>
+          <div className="menu-icon" onClick={handleToggle}>
+            <div className="icon">
+              <FontAwesomeIcon icon={faEllipsis} />
             </div>
           </div>
-        }
+          <div className="menu-opts">
+            <a className="opt-link" href="https://github.com/clk1006/tetris" target="_blank" rel="noreferrer">
+              <div className="menu-opt">
+                <div className="icon">
+                  <FontAwesomeIcon icon={faCodeBranch} />
+                </div>
+                <span>GitHub</span>
+              </div>
+            </a>
+            <a className="opt-link" href="#">
+              <div className="menu-opt">
+                <div className="icon">
+                  <FontAwesomeIcon icon={faBook} />
+                </div>
+                <span>Docs</span>
+              </div>
+            </a>
+            <a className="opt-link play-btn" href="./">
+              <div className="menu-opt">
+                <div className="icon">
+                  <FontAwesomeIcon icon={faCirclePlay} />
+                </div>
+                <span>Play Tetris</span>
+              </div>
+            </a>
+          </div>
+        </div>
 
         <div className="container">
           {
@@ -229,7 +247,11 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <button className="restart-btn">&#8635; Restart</button>
+                  <button className="restart-btn btn">
+                    <div className="btn-emblem">
+                      <FontAwesomeIcon icon={faRedo} />
+                    </div>
+                  Restart</button>
                 </div>
               </div>
             }
@@ -268,14 +290,46 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <button className="start-btn" onClick={(event)=>{
+
+                  <button className="start-btn btn" onClick={(event)=>{
                     setGameState(1);
-                  }}>&#9654; Start</button>
+                  }}>
+                    <div className="btn-emblem">
+                      <FontAwesomeIcon icon={faCirclePlay} />
+                    </div>
+                  Start</button>
                 </div>
               </div>
             }
           </div>  
         </div>
+
+        {
+          gameState==2 &&
+          <div className="pop-up-frame">
+            {/* Exception for clients running out of tiles */}
+            <div className="game-fail-popup screen-container">
+              <h2>Game over</h2>
+              <p className="error">You&#39ve reached the end of the game field, but you can surely perform better next time.</p>
+              <div className="stat-container">
+                <span>Your score: </span>
+                <span className="output output-score">OUTPUT</span>
+              </div>
+              <div className="stat-container">
+                <span>Your high-score: </span>
+                <span className="output output-high-score">OUTPUT</span>
+              </div>
+              <p>You may try again via the button below.</p>
+              <button className="restart-btn btn" onClick={
+                setGameState(1)
+              }>
+                <div className="btn-emblem">
+                  <FontAwesomeIcon icon={faRedo} />
+                </div>
+              Restart</button>
+            </div>
+          </div>
+        }
       </main>
     </div>
   );
