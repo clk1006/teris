@@ -121,10 +121,10 @@ export default function Home() {
     }
   }, [state,gameState]);
 
-  const [isActive, setActive] = useState("false");
+  const [isActive, toggleActive] = useState(true);
 
   const handleToggle = () => {
-    setActive(!isActive);
+    toggleActive(!isActive);
   };
 
   return (
