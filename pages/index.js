@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import ReactDOM from 'react-dom'
 import { useRef, useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import pic0 from '../public/tetris0.png'

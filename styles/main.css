@@ -183,8 +183,6 @@ p {
     margin-right: 6px;
     height: 1em;
     width: 1em;
-
-    color: rgb(var(--text-color-050));
 }
 
 .pop-up-frame {
