@@ -154,7 +154,7 @@ export default function Home() {
                 <span>GitHub</span>
               </div>
             </a>
-            <a className="opt-link" href="#">
+            <a className="opt-link" href="./docs.js">
               <div className="menu-opt">
                 <div className="icon">
                   <FontAwesomeIcon icon={faBook} />
