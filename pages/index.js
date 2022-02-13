@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import ReactDOM from 'react-dom'
 import { useRef, useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import pic0 from '../public/tetris0.png'
@@ -121,10 +122,10 @@ export default function Home() {
     }
   }, [state,gameState]);
 
-  const [isActive, setActive] = useState("false");
+  const [isActive, toggleActive] = useState(true);
 
   const handleToggle = () => {
-    setActive(!isActive);
+    toggleActive(!isActive);
   };
 
   return (
@@ -141,32 +142,24 @@ export default function Home() {
       <main className={styles.main}>
         <div className={`nav-bar ${isActive ? "" : "active"}`}>
           <div className="menu-icon" onClick={handleToggle}>
-            <div className="icon">
-              <FontAwesomeIcon icon={faEllipsis} />
-            </div>
+            <FontAwesomeIcon className="icon" icon={faEllipsis} fixedWidth />
           </div>
           <div className="menu-opts">
             <a className="opt-link" href="https://github.com/clk1006/tetris" target="_blank" rel="noreferrer">
               <div className="menu-opt">
-                <div className="icon">
-                  <FontAwesomeIcon icon={faCodeBranch} />
-                </div>
+                <FontAwesomeIcon className="icon" icon={faCodeBranch} fixedWidth />
                 <span>GitHub</span>
               </div>
             </a>
             <a className="opt-link" href="./docs">
               <div className="menu-opt">
-                <div className="icon">
-                  <FontAwesomeIcon icon={faBook} />
-                </div>
+                <FontAwesomeIcon className="icon" icon={faBook} fixedWidth />
                 <span>Docs</span>
               </div>
             </a>
             <a className="opt-link play-btn" href="./">
               <div className="menu-opt">
-                <div className="icon">
-                  <FontAwesomeIcon icon={faCirclePlay} />
-                </div>
+                <FontAwesomeIcon className="icon" icon={faCirclePlay} fixedWidth />
                 <span>Play Tetris</span>
               </div>
             </a>
@@ -249,7 +242,7 @@ export default function Home() {
                   </div>
                   <button className="restart-btn btn">
                     <div className="btn-emblem">
-                      <FontAwesomeIcon icon={faRedo} />
+                      <FontAwesomeIcon className="icon" icon={faRedo} fixedWidth />
                     </div>
                   Restart</button>
                 </div>

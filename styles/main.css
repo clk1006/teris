@@ -29,7 +29,6 @@
 * {
     user-select: none;
     font-family: 'Lato', sans-serif;
-    line-height: 1.1em;
 }
 
 body {
@@ -103,6 +102,8 @@ p {
 
 .menu-icon {
     cursor: pointer;
+    display: flex;
+    align-items: center;
 
     padding: 12px;
 
@@ -151,6 +152,9 @@ p {
 }
 
 .play-btn {
+    padding: 8px 12px;
+    border-radius: 2px;
+
     background-color: rgb(var(--primary-color));
 
     color: rgb(var(--text-color-500));
@@ -167,9 +171,6 @@ p {
 }
 
 .play-btn:hover {
-    padding: 8px 12px;
-    border-radius: 3px;
-
     color: rgb(--text-color-500);
     background-color: rgba(var(--tertiary-color));
 
@@ -180,8 +181,8 @@ p {
 
 .icon {
     margin-right: 6px;
-    width: 18px;
-    height: 18px;
+    height: 1em;
+    width: 1em;
 
     color: rgb(var(--text-color-050));
 }
