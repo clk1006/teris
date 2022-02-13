@@ -25,33 +25,25 @@ export default function Docs() {
                 <main className={styles.main}>
                     <div className={`nav-bar ${isActive ? "" : "active"}`}>
                     <div className="menu-icon" onClick={handleToggle}>
-                    <div className="icon">
-                        <FontAwesomeIcon icon={faEllipsis} fixedWidth />
-                    </div>
+                        <FontAwesomeIcon className="icon" icon={faEllipsis} fixedWidth />
                     </div>
                     <div className="menu-opts">
                     <a className="opt-link" href="https://github.com/clk1006/tetris" target="_blank" rel="noreferrer">
                         <div className="menu-opt">
-                        <div className="icon">
-                            <FontAwesomeIcon icon={faCodeBranch} fixedWidth />
-                        </div>
-                        <span>GitHub</span>
+                            <FontAwesomeIcon className="icon" icon={faCodeBranch} fixedWidth />
+                            <span>GitHub</span>
                         </div>
                     </a>
                     <a className="opt-link" href="./docs">
                         <div className="menu-opt">
-                        <div className="icon">
-                            <FontAwesomeIcon icon={faBook} fixedWidth />
-                        </div>
-                        <span>Docs</span>
+                            <FontAwesomeIcon className="icon" icon={faBook} fixedWidth />  
+                            <span>Docs</span>
                         </div>
                     </a>
                     <a className="opt-link play-btn" href="./">
                         <div className="menu-opt">
-                        <div className="icon">
-                            <FontAwesomeIcon icon={faCirclePlay} fixedWidth />
-                        </div>
-                        <span>Play Tetris</span>
+                            <FontAwesomeIcon className="icon" icon={faCirclePlay} fixedWidth />
+                            <span>Play Tetris</span>
                         </div>
                     </a>
                     </div>
