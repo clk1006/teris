@@ -73,7 +73,7 @@ p {
 
     margin: 24px;
 
-    padding: 13px 18px;
+    padding: 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -219,7 +219,6 @@ p {
 .screen-container {
     margin: 0 32px 16px 0;
     padding: 24px;
-    max-width: auto;
 
     background-color: rgb(var(--box-background-color));
 
