@@ -26,31 +26,34 @@ export default function Docs() {
             <main className={styles.main}>
                 <div className={`nav-bar ${isActive ? "" : "active"}`}>
                     <div className="menu-icon" onClick={handleToggle}>
-                        <FontAwesomeIcon className="icon" icon={faEllipsis} fixedWidth />
+                        <FontAwesomeIcon className="icon" icon={faEllipsis} />
                     </div>
                     <div className="menu-opts">
                         <a className="opt-link" href="https://github.com/clk1006/tetris" target="_blank" rel="noreferrer">
                         <div className="menu-opt">
-                            <FontAwesomeIcon className="icon" icon={faCodeBranch} fixedWidth />
+                            <FontAwesomeIcon className="icon" icon={faCodeBranch} />
                             <span>GitHub</span>
                         </div>
                         </a>
                         <a className="opt-link" href="./docs">
                         <div className="menu-opt">
-                            <FontAwesomeIcon className="icon" icon={faBook} fixedWidth />
+                            <FontAwesomeIcon className="icon" icon={faBook} />
                             <span>Docs</span>
                         </div>
                         </a>
                         <a className="opt-link play-btn" href="./">
                         <div className="menu-opt">
-                            <FontAwesomeIcon className="icon" icon={faCirclePlay} fixedWidth />
+                            <FontAwesomeIcon className="icon" icon={faCirclePlay} />
                             <span>Play Tetris</span>
                         </div>
                         </a>
                     </div>
                 </div>
 
-                <p>Guten Morgen</p>
+                
+                <div className="block">
+                    
+                </div>
             </main>
         </div>      
     );
