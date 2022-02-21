@@ -1,0 +1,96 @@
+:root {
+    --tile-color-000: 50, 122, 184;
+    --tile-color-001: 58, 217, 167;
+    --tile-color-002: 255, 194, 71;
+    --tile-color-003: 153, 81, 179;
+    --tile-color-004: 205, 76, 76;
+    --inactive-tile-color: 214, 215, 224;
+
+    --primary-color: 248, 112, 96;
+    --secondary-color: 24, 67, 90;
+    --tertiary-color: 108, 70, 79;
+
+    --text-color-050: 29, 28, 38;
+    --text-color-100: 60, 59, 74;
+    --text-color-200: 104, 103, 121;
+    --text-color-300: 212, 209, 206;
+    --text-color-500: 246, 245, 244;
+
+    --background-color: 243, 241, 241;
+    --box-background-color: 252, 249, 249;
+    --shadow-color-1: 39, 38, 49;
+    --shadow-color-2: 192, 87, 76;
+
+    --alpha-1: 0.28;
+    --alpha-2: 0.36;
+    --alpha-3: 0.42;
+    --alpha-4: 0.64;
+}
+
+.content-block {
+    width: 40%;
+
+    padding: 32px;
+
+    background-color: rgb(var(--box-background-color));
+
+    box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color-1), var(--alpha-1));
+    -webkit-box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color-1), var(--alpha-1));
+    -moz-box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color-1), var(--alpha-1));
+
+    border: hidden;
+    border-radius: 4px;
+}
+
+.tag {
+    margin: 4px 6px 12px 0;
+    padding: 4px;
+
+    cursor: pointer;
+
+    width: fit-content;
+
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 3px;
+
+    color: rgba(var(--text-color-050));
+    background-color: rgba(var(--text-color-300), var(--alpha-4));
+
+}
+
+.tag:hover {
+    background-color: rgb(var(--text-color-300));
+}
+
+.code-field {
+    user-select: all;
+    padding: 12px;
+
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    font-size: 18px;
+    
+    color: rgba(var(--text-color-050));
+    background-color: rgba(var(--text-color-300), var(--alpha-1));
+
+    border-left: 5px solid rgba(var(--text-color-300), var(--alpha-2));
+}
+
+.license {
+    text-align: center;
+}
+
+.license a {
+    color: rgb(var(--primary-color));
+    text-decoration: underline;
+}
+
+hr {
+    height: 1px;
+    margin: 32px 0 16px 0;
+
+    border: none;
+    background-color: rgba(var(--text-color-200), var(--alpha-2));
+}
