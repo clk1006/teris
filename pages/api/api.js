@@ -2,7 +2,18 @@ const dbClient = require("./db.js")
 const seedrandom=require("seedrandom")
 const SCORE_BLOCK = 5
 const SCORE_CLEAR = 100
-
+const STORAGE_BASE={
+    id: "stoTet",
+    state: 0,
+    score: 0,
+    tiles: Array(200).fill(0),
+    current: {
+        type: 0,
+        pos: 0,
+        rot: 0
+    },
+    seq:[0,1,2,3,4,5,6]
+}
 const rotateArray = (arr, rot) => {
     let [rows, cols] = rot % 2 == 0 ? [arr.length, arr[0].length] : [arr[0].length, arr.length]
 
@@ -19,7 +30,6 @@ const rotateArray = (arr, rot) => {
         }
     }))
 }
-
 const getShape = (block) => {
     let arr = []
 
@@ -68,6 +78,24 @@ const getShape = (block) => {
 
     return rotateArray(arr, block.rot)
 }
+
+const shuffle=(arr,rng)=>{
+    let currentIndex = arr.length,  randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(rng() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [arr[currentIndex], arr[randomIndex]] = [
+        arr[randomIndex], arr[currentIndex]];
+    }
+  
+    return [arr,rng];
+  }
 
 const getOccupiedTiles = (pos, shape) => {
     let tiles = []
@@ -141,30 +169,19 @@ const updateState = (score, tiles) => {
             score += SCORE_CLEAR
         }
     }
-    
-    return [score, tiles]
+    let state=tiles.filter((_,i)=>i>189).filter((x)=>x!=0).length==0 ? 0 : 1
+    return [score, tiles, state]
 }
 
 module.exports = async (req, res) => {
-    let storage = {
-        id: "stoTet",
-        state: 0,
-        score: 0,
-        tiles: Array(200).fill(0),
-        current: {
-            type: 0,
-            pos: 0,
-            rot: 0
-        },
-        next: 0
-    }
+    let storage = STORAGE_BASE
     const client = await dbClient;
     const data = client.db().collection("data");
 
     let seed = req.query.seed || Math.random().toString();
     storage.rng=seedrandom(seed);
 
-    let gameId = req.query.gameId || 0
+    let gameId = req.query.gameId || "0"
 
     if ((await data.find({gameId:`${gameId}`}).toArray()).length == 0) {
         storage.gameId=gameId;
@@ -175,7 +192,7 @@ module.exports = async (req, res) => {
 
     switch (req.query.type) {
         case "getState":
-            res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
+            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0], storage.state])
 
             break
         case "endTurn":
@@ -188,15 +205,20 @@ module.exports = async (req, res) => {
             }
 
             let state = updateState(storage.score, dropRes[1])
-            
+
             storage.score=state[0]+SCORE_BLOCK
             storage.tiles=state[1]
-            storage.current.type = storage.next
+            storage.current.type = storage.seq[0]
             storage.current.pos = 4
             storage.current.rot = 0
-            storage.next = Math.floor(storage.rng() * 7)
-            res.status(200).json([storage.score, storage.tiles, storage.current, storage.next])
+            storage.seq.shift();
+            storage.state=state[2]
 
+            if(storage.seq.length==0){
+                [storage.seq,storage.rng]=shuffle([0,1,2,3,4,5,6],storage.rng)
+            }
+            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0],storage.state])
+            
             break
         case "moveLeft":
             if (storage.current.pos > 0) {
