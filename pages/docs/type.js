@@ -41,18 +41,18 @@ export default function Docs() {
                                 <span>Docs</span>
                             </div>
                         </a>
-                        <a className="opt-link" href="../docs/gameId">
-                            <div className="menu-opt secondary">
+                        <a className="opt-link secondary" href="../docs/gameId">
+                            <div className="menu-opt">
                                 <span>gameId</span>
                             </div>
                         </a>
-                        <a className="opt-link" href="../docs/seed">
-                            <div className="menu-opt secondary">
+                        <a className="opt-link secondary" href="../docs/seed">
+                            <div className="menu-opt">
                                 <span>seed</span>
                             </div>
                         </a>
-                        <a className="opt-link" href="../docs/type">
-                            <div className="menu-opt secondary">
+                        <a className="opt-link secondary" href="../docs/type">
+                            <div className="menu-opt">
                                 <span>type</span>
                             </div>
                         </a>
