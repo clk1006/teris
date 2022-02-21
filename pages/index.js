@@ -135,7 +135,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
       </Head>
 
       <main className={styles.main}>
@@ -150,7 +150,7 @@ export default function Home() {
                 <span>GitHub</span>
               </div>
             </a>
-            <a className="opt-link" href="./docs">
+            <a className="opt-link" href="docs">
               <div className="menu-opt">
                 <FontAwesomeIcon className="icon" icon={faBook} />
                 <span>Docs</span>
@@ -181,6 +181,7 @@ export default function Home() {
             {
               gameState > 0 &&
               <div className="screen-container">
+                <h2>Next block</h2>
                 <Image className="image-box" width="122" height="122" src={
                   state[3]==0?pic0:state[3]==1?pic1:state[3]==2?pic2:state[3]==3?pic3:state[3]==4?pic4:state[3]==5?pic5:pic6
                 }/>
@@ -234,7 +235,7 @@ export default function Home() {
                         <span> — Rotate right</span>
                       </div>
                       <div className="binding-container">
-                        <span className="output binding-drop">S, Enter</span>
+                        <span className="output binding-drop">S</span>
                         <span> — Drop block</span>
                       </div>
                     </div>
@@ -277,7 +278,7 @@ export default function Home() {
                         <span> — Rotate right</span>
                       </div>
                       <div className="binding-container">
-                        <span className="output binding-drop">S, Enter</span>
+                        <span className="output binding-drop">S</span>
                         <span> — Drop block</span>
                       </div>
                     </div>

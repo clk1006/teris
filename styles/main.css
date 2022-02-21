@@ -24,6 +24,7 @@
     --alpha-1: 0.28;
     --alpha-2: 0.36;
     --alpha-3: 0.42;
+    --alpha-4: 0.64;
 }
 
 * {
@@ -36,7 +37,7 @@ body {
 }
 
 h1 {
-    margin: 12px 0;
+    margin: 4px 0 24px 0;
 
     font-weight: 900;
     font-size: 32px;
@@ -45,7 +46,7 @@ h1 {
 }
 
 h2 {
-    margin: 12px 0;
+    margin: 4px 0 12px 0;
 
     font-weight: 700;
     font-size: 24px;
@@ -61,7 +62,10 @@ p, span {
 }
 
 p {
+    margin: 0.6em 0;
+
     max-width: auto;
+    line-height: 1.8em;
 }
 
 .nav-bar {
@@ -120,6 +124,10 @@ p {
     background-color: rgba(var(--text-color-200), var(--alpha-2));
 }
 
+.secondary {
+
+}
+
 .nav-bar .menu-opts {
     display: none;
 }
@@ -149,6 +157,14 @@ p {
 
 .opt-link:hover {
     background-color: rgba(var(--text-color-200), var(--alpha-1));
+}
+
+.opt-link.current {
+    background-color: rgba(var(--text-color-200), var(--alpha-1));
+}
+
+.opt-link.current:hover {
+    background-color: rgba(var(--text-color-200), var(--alpha-4));
 }
 
 .play-btn {
@@ -208,7 +224,12 @@ p {
 }
 
 .container {
+    width: 100%;
+
     display: flex;
+
+    align-items: center;
+    justify-content: center;
 }
 
 .block {
@@ -241,28 +262,18 @@ p {
     flex-direction: column;
 }
 
-.bindings-container .output {
+.bindings-container .output, .stats-container .output {
     margin-right: 3px;
 }
 
-.binding-container {
-    margin: 6px 0;
-}
-
-.stats-container .output {
-    margin-left: 3px;
-}
-
-.stat-container {
-    margin: 6px 0;
+.binding-container, .stat-container {
+    margin: 4px 0;
 }
 
 span.output {
     user-select: all;
 
-    margin: 24px 0;
     padding: 0 6px;
-    width: fit-content;
 
     font-family: 'Roboto Mono', monospace;
     font-weight: 400;
