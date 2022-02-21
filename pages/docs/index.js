@@ -6,7 +6,9 @@ import {
   faBook,
   faCirclePlay,
   faCodeBranch,
-  faEllipsis
+  faEllipsis,
+  faExternalLink,
+  faExternalLinkSquare
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Docs() {
@@ -79,8 +81,8 @@ export default function Docs() {
                             </ul>
                         <hr></hr>
                         <h2>License</h2>
-                            <p className="license"><a href="https://github.com/clk1006/tetris/blob/main/LICENSE" target="_blank" rel="noreferrer">GNU GPL Version 3</a>, 29 June 2007</p>
-                            <p className="license">Copyright (C) 2007 Free Software Foundation, Inc. <a href="https://fsf.org/" target="_blank" rel="noreferrer">https://fsf.org/</a></p>
+                            <p className="license"><a href="https://github.com/clk1006/tetris/blob/main/LICENSE" target="_blank" rel="noreferrer">GNU GPL Version 3 <FontAwesomeIcon size="xs" icon={faExternalLink} /></a>, 29 June 2007</p>
+                            <p className="license">Copyright (C) 2007 Free Software Foundation, Inc. <a href="https://fsf.org/" target="_blank" rel="noreferrer">https://fsf.org/ <FontAwesomeIcon size="xs" icon={faExternalLink} /></a></p>
                     </div>
                 </div>
             </main>
