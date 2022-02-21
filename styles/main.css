@@ -124,10 +124,6 @@ p {
     background-color: rgba(var(--text-color-200), var(--alpha-2));
 }
 
-.secondary {
-
-}
-
 .nav-bar .menu-opts {
     display: none;
 }
@@ -155,7 +151,7 @@ p {
     transition: 0.2s;
 }
 
-.opt-link:hover {
+.opt-link:hover:not(.opt-link.secondary:hover) {
     background-color: rgba(var(--text-color-200), var(--alpha-1));
 }
 
