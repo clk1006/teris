@@ -63,13 +63,17 @@ export default function Home() {
   const refCurr = useRef();
   const [state, setState] = useState(state_temp);
   const [gameState,setGameState] = useState(false);
+  const [reload,setReload] = useState(0);
   useEffect(() => {
     if(gameState==1){
       contextTiles = refTiles.current.getContext('2d');
       contextCurr = refCurr.current.getContext('2d');
     }
   }, [gameState]);
-
+  useEffect(async()=>{
+    setState((await axios.get(`${location.origin}/api/api?type=getState`)).data)
+    console.log(state)
+  }, [reload])
   useEffect(() => {
     if(gameState==1){
       CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
