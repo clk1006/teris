@@ -140,6 +140,40 @@ export default function Home() {
     toggleActive(!isActive);
   };
 
+  const handleKeyDown=(event)=>{
+    let kc=event.keyCode
+    let type
+    if(kc==65||kc==37){
+      type="moveLeft"
+    }
+    else if(kc==68||kc==39){
+      type="moveRight"
+    }
+    else if(kc==81){
+      type="rotLeft"
+    }
+    else if(kc==69){
+      type="rotRight"
+    }
+    else if(kc==83||kc==40){
+      type="endTurn"
+    }
+    axios.get(`${location.origin}/api/api?type=${type}`)
+    setReload(reload+1)
+  }
+
+  const handleKeyUp=(event)=>{
+
+  }
+
+  useEffect(() => {
+		window.addEventListener('keydown', handleKeyDown);
+		window.addEventListener('keyup', handleKeyUp);
+		return () => {
+			window.removeEventListener('keydown', handleKeyDown);
+			window.removeEventListener('keyup', handleKeyUp);
+		};
+	});
   return (
     <div className={styles.container}>
       <Head>
@@ -150,7 +184,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
       </Head>
-
+      
       <main className={styles.main}>
         <div className={`nav-bar ${isActive ? "" : "active"}`}>
           <div className="menu-icon" onClick={handleToggle}>
@@ -248,7 +282,7 @@ export default function Home() {
                         <span> — Rotate right</span>
                       </div>
                       <div className="binding-container">
-                        <span className="output binding-drop">S</span>
+                        <span className="output binding-drop">S, Down</span>
                         <span> — Drop block</span>
                       </div>
                     </div>
@@ -291,7 +325,7 @@ export default function Home() {
                         <span> — Rotate right</span>
                       </div>
                       <div className="binding-container">
-                        <span className="output binding-drop">S</span>
+                        <span className="output binding-drop">S, Down</span>
                         <span> — Drop block</span>
                       </div>
                     </div>
