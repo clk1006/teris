@@ -51,7 +51,7 @@ export default function Docs() {
                                 <span>seed</span>
                             </div>
                         </a>
-                        <a className="opt-link secondary" href="../docs/type">
+                        <a className="opt-link secondary current" href="../docs/type">
                             <div className="menu-opt">
                                 <span>type</span>
                             </div>

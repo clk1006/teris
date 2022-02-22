@@ -41,7 +41,7 @@ export default function Docs() {
                                 <span>Docs</span>
                             </div>
                         </a>
-                        <a className="opt-link secondary" href="../docs/gameId">
+                        <a className="opt-link secondary current" href="../docs/gameId">
                             <div className="menu-opt">
                                 <span>gameId</span>
                             </div>

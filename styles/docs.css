@@ -1,7 +1,7 @@
 .opt-link.secondary {
     background-color: transparent;
 
-    border-bottom: 3px solid rgba(var(--text-color-200), 0);
+    border-bottom: 2px solid rgba(var(--text-color-200), 0);
     border-radius: 0;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .content-block {
-    width: 40%;
+    width: 90%;
 
     padding: 32px;
 
@@ -24,6 +24,18 @@
 
     border: hidden;
     border-radius: 4px;
+}
+
+@media only screen and (min-width: 600px) {
+    .content-block {
+        width: 65%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .content-block {
+        width: 40%;
+    }
 }
 
 .tag {
