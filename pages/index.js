@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, useCallback } from 'react'
 import styles from '../styles/Home.module.css'
 import pic0 from '../public/tetris0.png'
 import pic1 from '../public/tetris1.png'
@@ -29,6 +29,7 @@ const BLOCK_SIZE = 29
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C"];
 const BLOCK_BASE = "rgba(214, 215, 224)"
 const BACKGROUND = "rgb(252, 249, 249)"
+let id = 0
 let contextTiles,contextCurr;
 
 const getNeighbours = (tiles) => {
@@ -64,6 +65,7 @@ export default function Home() {
   const [state, setState] = useState(state_temp);
   const [gameState,setGameState] = useState(false);
   const [reload,setReload] = useState(0);
+  const [ reRender, setReRender ] = useState(1);
   useEffect(() => {
     if(gameState==1){
       contextTiles = refTiles.current.getContext('2d');
@@ -132,7 +134,7 @@ export default function Home() {
         ).fill();
       })
     }
-  }, [state,gameState]);
+  }, [state,gameState,reload,reRender]);
 
   const [isActive, toggleActive] = useState(true);
 
@@ -174,6 +176,19 @@ export default function Home() {
 			window.removeEventListener('keyup', handleKeyUp);
 		};
 	});
+
+  const handleUpdate = useCallback(() => {
+		setReRender(reRender + 1);
+	});
+	useEffect(
+		() => {
+			id = setInterval(handleUpdate, 10);
+			return () => {
+				clearInterval(id);
+			};
+		},
+		[ handleUpdate ]
+	);
   return (
     <div className={styles.container}>
       <Head>
