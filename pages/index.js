@@ -108,8 +108,16 @@ export default function Home() {
           2
         ).fill();
       });
-      Array(40).fill(0).forEach((_,i)=>{
-        contextCurr.fillStyle = BLOCK_BASE;
+      let tilesCurr=Array(40).fill(0)
+      let shape=getShape(state[2])
+      let posY=shape.length-1
+      shape.forEach((row,y)=>row.forEach((v,x)=>{
+        if(v==1){
+          tilesCurr[(state[2].pos+x)+10*(posY-y)]=state[2].type+1
+        }
+      }))
+      tilesCurr.forEach((v,i)=>{
+        contextCurr.fillStyle = v==0 ? BLOCK_BASE : BLOCK_COLORS[v-1];
         contextCurr.roundRect(
           31*(i%10) ,
           4*BLOCK_SIZE-(31 * (Math.floor(i / 10)+1))+8,
