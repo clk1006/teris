@@ -9,7 +9,6 @@ import pic3 from '../public/tetris3.png'
 import pic4 from '../public/tetris4.png'
 import pic5 from '../public/tetris5.png'
 import pic6 from '../public/tetris6.png'
-import axios from 'axios'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -23,15 +22,109 @@ import {
 import getShape from "../lib/getShape"
 import rotateArray from "../lib/rotateArray"
 
-let state_temp = [0, Array(200).fill(0), { type: 0, pos: 0, rot: 0 }, 0]
+
 const DIMENSIONS=[10,20]
 const BLOCK_SIZE = 29
-const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C"];
+const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C", "#6610F2", "#32DE8A"];
 const BLOCK_BASE = "rgba(214, 215, 224)"
 const BACKGROUND = "rgb(252, 249, 249)"
-let id = 0
 let contextTiles,contextCurr;
 
+const SCORE_BLOCK = 5
+const SCORE_CLEAR = 100
+const shuffle=(arr)=>{
+  let currentIndex = arr.length,  randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [arr[currentIndex], arr[randomIndex]] = [
+      arr[randomIndex], arr[currentIndex]];
+  }
+
+  return arr;
+}
+
+const getOccupiedTiles = (pos, shape) => {
+  let tiles = []
+
+  shape.forEach((x, row) => x.forEach((val, col) => {
+      if (val == 1) {
+          tiles.push(10 * (pos.y - row) + pos.x + col)
+      }
+  }))
+
+  return tiles
+}
+
+const copy = (a) => {
+  return JSON.parse(JSON.stringify(a))
+}
+
+const dropBlock = (block, tiles) => {
+  let id = tiles.reduce((a, b) => Math.max(a, b)) + 1
+  let shape = getShape(block)
+
+  for (let i = 0; i < 20; i++) {
+      let pos = {
+          x: block.pos,
+          y: i
+      }
+
+      let tilesOcc = getOccupiedTiles(pos, shape)
+      let fits = true
+      let tilesNew = copy(tiles)
+
+      tilesOcc.forEach((x) => {
+          if (tiles[x] != 0) {
+              fits = false
+          } else {
+              tilesNew[x] = id
+          }
+      })
+
+      if (fits) {
+          return [true, tilesNew]
+      }
+  }
+
+  return [false]
+}
+
+const updateState = (score, tiles) => {
+  for (let row = 0; row < 20; row++) {
+      let full = true
+
+      for (let col = 0; col < 10; col++) {
+          if (tiles[10 * row + col] == 0) {
+              full = false
+
+              break
+          }
+      }
+
+      if (full) {
+          for (let clearRow = row; clearRow < 19; clearRow++) {
+              for (let clearCol = 0; clearCol < 10; clearCol++) {
+                  tiles[10 * clearRow + clearCol] = tiles[10 * (clearRow + 1) + clearCol]
+              }
+          }
+
+          for (let clearCol = 0; clearCol < 10; clearCol++) {
+              tiles[190 + clearCol] = 0
+          }
+
+          score += SCORE_CLEAR
+      }
+  }
+  let state=tiles.filter((_,i)=>i>189).filter((x)=>x!=0).length==0 ? 0 : 1
+  return [score, tiles, state]
+}
 const getNeighbours = (tiles) => {
   return Array(tiles.reduce((a, b) => Math.max(a, b), 0))
     .fill(0)
@@ -59,23 +152,34 @@ const getNeighbours = (tiles) => {
       return neighbours;
     });
 };
+
+const DATA_BASE={
+  state: 0,
+  score: 0,
+  tiles: Array(200).fill(0),
+  current: {
+      type: 0,
+      pos: 5,
+      rot: 0
+  },
+  seq:[0,1,2,3,4,5,6]
+}
+let data=copy(DATA_BASE)
 export default function Home() {
   const refTiles = useRef();
   const refCurr = useRef();
-  const [state, setState] = useState(state_temp);
   const [gameState,setGameState] = useState(false);
-  const [reload,setReload] = useState(0);
-  const [ reRender, setReRender ] = useState(1);
+  const [restart,setRestart] = useState(1);
+  const [reRender,setReRender] = useState(1);
   useEffect(() => {
     if(gameState==1){
       contextTiles = refTiles.current.getContext('2d');
       contextCurr = refCurr.current.getContext('2d');
+      data=copy(DATA_BASE)
+      data.seq=shuffle([0,1,2,3,4,5,6],data.rng)
+      data.current.type=Math.floor(Math.random()*7)
     }
-  }, [gameState]);
-  useEffect(async()=>{
-    setState((await axios.get(`${location.origin}/api/api?type=getState`)).data)
-    console.log(state)
-  }, [reload])
+  }, [gameState,restart]);
   useEffect(() => {
     if(gameState==1){
       CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
@@ -90,7 +194,7 @@ export default function Home() {
         this.closePath();
         return this;
       }
-      let tiles = state[1];
+      let tiles = data.tiles;
       let colors = [BLOCK_BASE];
   
       getNeighbours(tiles).forEach((neighbours, id) => {
@@ -116,11 +220,11 @@ export default function Home() {
         ).fill();
       });
       let tilesCurr=Array(40).fill(0)
-      let shape=getShape(state[2])
+      let shape=getShape(data.current)
       let posY=shape.length-1
       shape.forEach((row,y)=>row.forEach((v,x)=>{
         if(v==1){
-          tilesCurr[(state[2].pos+x)+10*(posY-y)]=state[2].type+1
+          tilesCurr[(data.current.pos+x)+10*(posY-y)]=data.current.type+1
         }
       }))
       tilesCurr.forEach((v,i)=>{
@@ -134,7 +238,7 @@ export default function Home() {
         ).fill();
       })
     }
-  }, [state,gameState,reload,reRender]);
+  }, [gameState,reRender,restart]);
 
   const [isActive, toggleActive] = useState(true);
 
@@ -144,51 +248,63 @@ export default function Home() {
 
   const handleKeyDown=(event)=>{
     let kc=event.keyCode
-    let type
     if(kc==65||kc==37){
-      type="moveLeft"
+      if (data.current.pos > 0) {
+        data.current.pos--
+      }
     }
     else if(kc==68||kc==39){
-      type="moveRight"
+      let shape = getShape(data.current)
+      if (data.current.pos + shape[0].length < 10) {
+        data.current.pos++
+      }
     }
     else if(kc==81){
-      type="rotLeft"
+      data.current.rot = (data.current.rot - 1) % 4
+      shape = getShape(data.current)
+
+      while (data.current.pos + shape[0].length > 10) {
+        data.current.pos--
+      }
     }
     else if(kc==69){
-      type="rotRight"
+      data.current.rot = (data.current.rot + 1) % 4
+      shape = getShape(data.current)
+
+      while (data.current.pos + shape[0].length > 10) {
+        data.current.pos--
+      }
     }
     else if(kc==83||kc==40){
-      type="endTurn"
+      let dropRes = dropBlock(data.current, data.tiles)
+      if (dropRes[0]) {
+        let state = updateState(data.score, dropRes[1])
+        data.score=state[0]+SCORE_BLOCK
+        data.tiles=state[1]
+        data.current.type = data.seq[0]
+        data.current.pos = 4
+        data.current.rot = 0
+        data.seq.shift();
+        data.state=state[2];
+        if(data.state==1){
+          setGameState(2);
+        }
+        if(data.seq.length==0){
+          data.seq=shuffle([0,1,2,3,4,5,6])
+        }
+        
+      }
     }
-    axios.get(`${location.origin}/api/api?type=${type}`)
-    setReload(reload+1)
-  }
-
-  const handleKeyUp=(event)=>{
-
+    setReRender(reRender+1)
   }
 
   useEffect(() => {
 		window.addEventListener('keydown', handleKeyDown);
-		window.addEventListener('keyup', handleKeyUp);
 		return () => {
 			window.removeEventListener('keydown', handleKeyDown);
-			window.removeEventListener('keyup', handleKeyUp);
 		};
 	});
-
-  const handleUpdate = useCallback(() => {
-		setReRender(reRender + 1);
-	});
-	useEffect(
-		() => {
-			id = setInterval(handleUpdate, 10);
-			return () => {
-				clearInterval(id);
-			};
-		},
-		[ handleUpdate ]
-	);
+	
   return (
     <div className={styles.container}>
       <Head>
@@ -245,7 +361,7 @@ export default function Home() {
               <div className="screen-container">
                 <h2>Next block</h2>
                 <Image className="image-box" width="122" height="122" src={
-                  state[3]==0?pic0:state[3]==1?pic1:state[3]==2?pic2:state[3]==3?pic3:state[3]==4?pic4:state[3]==5?pic5:pic6
+                  data.seq[0]==0?pic0:data.seq[0]==1?pic1:data.seq[0]==2?pic2:data.seq[0]==3?pic3:data.seq[0]==4?pic4:data.seq[0]==5?pic5:pic6
                 }/>
               </div>
             }
@@ -302,7 +418,9 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <button className="restart-btn btn">
+                  <button className="restart-btn btn" onClick={(event)=>{
+                    setRestart(restart+1);
+                  }}>
                     <div className="btn-emblem">
                       <FontAwesomeIcon className="icon" icon={faRedo} />
                     </div>
@@ -365,7 +483,7 @@ export default function Home() {
             {/* Exception for clients running out of tiles */}
             <div className="game-fail-popup screen-container">
               <h2>Game over</h2>
-              <p className="error">You&#39ve reached the end of the game field, but you can surely perform better next time.</p>
+              <p className="error">You&#39;ve reached the end of the game field, but you can surely perform better next time.</p>
               <div className="stat-container">
                 <span>Your score: </span>
                 <span className="output output-score">OUTPUT</span>
@@ -375,9 +493,9 @@ export default function Home() {
                 <span className="output output-high-score">OUTPUT</span>
               </div>
               <p>You may try again via the button below.</p>
-              <button className="restart-btn btn" onClick={
-                setGameState(1)
-              }>
+              <button className="restart-btn btn" onClick={(event)=>{
+                    setGameState(1);
+                  }}>
                 <div className="btn-emblem">
                   <FontAwesomeIcon icon={faRedo} />
                 </div>
