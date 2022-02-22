@@ -133,6 +133,7 @@ p {
     flex-direction: row;
 }
 
+
 .menu-opt {
     display: flex;
     flex-direction: row;
@@ -142,6 +143,37 @@ p {
 
 .opt-link {
     margin: 0 16px;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column;
+
+        justify-content: space-between;
+    }
+
+    .nav-bar.active {
+        width: calc(100% - 64px);
+        height: calc(100% - 64px);
+        border-radius: 4px;
+    
+        background-color: rgba(var(--box-background-color), var(--alpha-1));
+        backdrop-filter: blur(10px);
+    }
+
+    .nav-bar.active .menu-opts {
+        margin-bottom: 50%;
+
+        flex-direction: column;
+    }
+
+    .menu-icon {
+        align-self: flex-start;
+    }
+
+    .opt-link {
+        margin: 16px 0;
+    }
 }
 
 .opt-link, .play-btn {
@@ -161,6 +193,12 @@ p {
 
 .opt-link.current:hover {
     background-color: rgba(var(--text-color-200), var(--alpha-4));
+}
+
+.opt-link.secondary.current {
+    background-color: transparent;
+
+    border-bottom: 2px solid rgba(var(--text-color-200), var(--alpha-1));
 }
 
 .play-btn {
