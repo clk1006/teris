@@ -151,7 +151,7 @@ p {
     transition: 0.2s;
 }
 
-.opt-link:hover:not(.opt-link.secondary:hover) {
+.opt-link:hover {
     background-color: rgba(var(--text-color-200), var(--alpha-1));
 }
 
