@@ -9,7 +9,7 @@ const STORAGE_BASE={
     tiles: Array(200).fill(0),
     current: {
         type: 0,
-        pos: 0,
+        pos: 4,
         rot: 0
     },
     seq:[0,1,2,3,4,5,6]
@@ -186,6 +186,8 @@ module.exports = async (req, res) => {
 
     if ((await data.find({gameId:`${gameId}`}).toArray()).length == 0) {
         storage.gameId=gameId;
+        storage.current.type=Math.floor(storage.rng()*7)
+        [storage.seq,storage.rng]=shuffle(storage.seq,storage.rng)
         data.insertOne(storage);
     } else {
         storage = await data.findOne({gameId:gameId});
