@@ -77,6 +77,7 @@ const dropBlock = (block, tiles) => {
       }
       let fits = true
       let tilesOcc = getOccupiedTiles(pos, shape)
+
       tilesOcc.forEach((x) => {
           if (tiles[x] != 0) {
               fits = false
@@ -175,7 +176,6 @@ export default function Home() {
   const refTiles = useRef();
   const refCurr = useRef();
   const [gameState,setGameState] = useState(false);
-  const [restart,setRestart] = useState(1);
   const [reRender,setReRender] = useState(1);
   useEffect(() => {
     if(gameState==1){
@@ -185,7 +185,7 @@ export default function Home() {
       data.seq=shuffle([0,1,2,3,4,5,6],data.rng)
       data.current.type=Math.floor(Math.random()*7)
     }
-  }, [gameState,restart]);
+  }, [gameState]);
   useEffect(() => {
     if(gameState==1){
       CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
@@ -244,7 +244,7 @@ export default function Home() {
         ).fill();
       })
     }
-  }, [gameState,reRender,restart]);
+  }, [gameState,reRender]);
 
   const [isActive, toggleActive] = useState(true);
 
@@ -383,19 +383,11 @@ export default function Home() {
                     <div className="stats-container">
                       <div className="stat-container">
                         <span>Current score: </span>
-                        <span className="output output-score">OUTPUT</span>
+                        <span className="output output-score">{data.score}</span>
                       </div>
                       <div className="stat-container">
                         <span>Current high-score: </span>
-                        <span className="output output-high-score">OUTPUT</span>
-                      </div>
-                      <div className="stat-container">
-                        <span>Current seed: </span>
-                        <span className="output output-seed">OUTPUT</span>
-                      </div>
-                      <div className="stat-container">
-                        <span>Moves left: </span>
-                        <span className="output moves-left">OUTPUT</span>
+                        <span className="output output-high-score">{data.score}</span>
                       </div>
                     </div>
 
@@ -425,7 +417,7 @@ export default function Home() {
                     </div>
                   </div>
                   <button className="restart-btn btn" onClick={(event)=>{
-                    setRestart(restart+1);
+                    setGameState(0);
                   }}>
                     <div className="btn-emblem">
                       <FontAwesomeIcon className="icon" icon={faRedo} />
@@ -500,7 +492,7 @@ export default function Home() {
               </div>
               <p>You may try again via the button below.</p>
               <button className="restart-btn btn" onClick={(event)=>{
-                    setGameState(1);
+                    setGameState(0);
                   }}>
                 <div className="btn-emblem">
                   <FontAwesomeIcon icon={faRedo} />
