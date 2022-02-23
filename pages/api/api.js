@@ -146,6 +146,7 @@ const dropBlock = (block, tiles) => {
 }
 
 const updateState = (score, tiles) => {
+
     for (let row = 0; row < 20; row++) {
         let full = true
 
@@ -170,6 +171,7 @@ const updateState = (score, tiles) => {
 
             score += SCORE_CLEAR
         }
+        console.log(row)
     }
     let state=tiles.filter((_,i)=>i>189).filter((x)=>x!=0).length==0 ? 0 : 1
     return [score, tiles, state]
@@ -199,14 +201,12 @@ module.exports = async (req, res) => {
             break
         case "endTurn":
             let dropRes = dropBlock(storage.current, storage.tiles)
-            console.log("test1")
             if (!dropRes[0]) {
                 res.status(404).send()
 
                 break
             }
             let state = updateState(storage.score, dropRes[1])
-            console.log("test2")
             storage.score=state[0]+SCORE_BLOCK
             storage.tiles=state[1]
             storage.current.type = storage.seq[0]
