@@ -183,7 +183,7 @@ module.exports = async (req, res) => {
     let seed = req.query.seed || Math.random().toString();
     storage.rng=seedrandom(seed);
 
-    let gameId = req.query.gameId || "0"
+    let gameId = parseInt(req.query.gameId)>-1 ? req.query.gameId : "0"
 
     if ((await data.find({gameId:`${gameId}`}).toArray()).length == 0) {
         storage.gameId=gameId;
