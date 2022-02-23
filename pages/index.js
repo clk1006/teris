@@ -183,6 +183,7 @@ export default function Home() {
       data=copy(DATA_BASE)
       data.seq=shuffle([0,1,2,3,4,5,6],data.rng)
       data.current.type=Math.floor(Math.random()*7)
+      setReRender(reRender+1)
     }
   }, [gameState]);
   useEffect(() => {
