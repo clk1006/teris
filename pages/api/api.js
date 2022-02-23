@@ -9,7 +9,7 @@ const STORAGE_BASE={
     tiles: Array(200).fill(0),
     current: {
         type: 0,
-        pos: 0,
+        pos: 4,
         rot: 0
     },
     seq:[0,1,2,3,4,5,6]
@@ -109,10 +109,6 @@ const getOccupiedTiles = (pos, shape) => {
     return tiles
 }
 
-const copy = (a) => {
-    return JSON.parse(JSON.stringify(a))
-}
-
 const dropBlock = (block, tiles) => {
     let id = tiles.reduce((a, b) => Math.max(a, b)) + 1
     let shape = getShape(block)
@@ -122,30 +118,33 @@ const dropBlock = (block, tiles) => {
             x: block.pos,
             y: i
         }
-
-        let tilesOcc = getOccupiedTiles(pos, shape)
         let fits = true
-
+        let tilesOcc = getOccupiedTiles(pos, shape)
         tilesOcc.forEach((x) => {
             if (tiles[x] != 0) {
                 fits = false
             }
         })
-
-        if (!fits && i!=19){
-            pos.y++;
-            tilesOcc = getOccupiedTiles(pos, shape)
-            tilesOcc.forEach((x)=>{
-                tiles[x]=id;
-            })
-            return [true,tiles]
+        if(fits && i-shape.length>-1){
+            continue
         }
+        if(!fits && i==19){
+            return [false]
+        }
+        if (!fits){
+            pos.y++
+            tilesOcc = getOccupiedTiles(pos, shape)
+        }
+        
+        tilesOcc.forEach((x)=>{
+            tiles[x]=id;
+        })
+        return [true,tiles]
     }
-
-    return [false]
 }
 
 const updateState = (score, tiles) => {
+
     for (let row = 0; row < 20; row++) {
         let full = true
 
@@ -169,6 +168,7 @@ const updateState = (score, tiles) => {
             }
 
             score += SCORE_CLEAR
+            row--
         }
     }
     let state=tiles.filter((_,i)=>i>189).filter((x)=>x!=0).length==0 ? 0 : 1
@@ -183,10 +183,12 @@ module.exports = async (req, res) => {
     let seed = req.query.seed || Math.random().toString();
     storage.rng=seedrandom(seed);
 
-    let gameId = req.query.gameId || "0"
+    let gameId = parseInt(req.query.gameId)>-1 ? req.query.gameId : "0"
 
     if ((await data.find({gameId:`${gameId}`}).toArray()).length == 0) {
         storage.gameId=gameId;
+        storage.current.type=Math.floor(storage.rng()*7)
+        [storage.seq,storage.rng]=shuffle(storage.seq,storage.rng)
         data.insertOne(storage);
     } else {
         storage = await data.findOne({gameId:gameId});
@@ -199,21 +201,17 @@ module.exports = async (req, res) => {
             break
         case "endTurn":
             let dropRes = dropBlock(storage.current, storage.tiles)
-
             if (!dropRes[0]) {
                 res.status(404).send()
 
                 break
             }
-
             let state = updateState(storage.score, dropRes[1])
-
             storage.score=state[0]+SCORE_BLOCK
             storage.tiles=state[1]
-            storage.current.type = storage.seq[0]
+            storage.current.type = storage.seq.shift()
             storage.current.pos = 4
             storage.current.rot = 0
-            storage.seq.shift();
             storage.state=state[2]
 
             if(storage.seq.length==0){
@@ -273,14 +271,16 @@ module.exports = async (req, res) => {
                 res.status(200).send(parseInt(games[0].gameId)+1)
             }
             else{
-                res.status(200).send(games.reduce((a,b)=>Math.max(parseInt(a.gameId),parseInt(b.gameId)))+1)
+                games=games.map((x)=>parseInt(x.gameId))
+                res.status(200).send(games.reduce((a,b)=>Math.max(a,b))+1)
             }
-            
+        case "reset":
+            storage=STORAGE_BASE
+            storage.gameId=gameId
+            res.status(200).send()
         default:
             res.status(404).send()
     }
-
-    data.updateOne({
-        gameId:gameId
-    }, {$set: storage});
+    data.deleteMany({gameId:gameId})
+    data.insertOne(storage)
 }
