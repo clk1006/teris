@@ -171,7 +171,6 @@ export default function Home() {
   const refTiles = useRef();
   const refCurr = useRef();
   const [gameState,setGameState] = useState(false);
-  const [restart,setRestart] = useState(1);
   const [reRender,setReRender] = useState(1);
   useEffect(() => {
     if(gameState==1){
@@ -240,7 +239,7 @@ export default function Home() {
         ).fill();
       })
     }
-  }, [gameState,reRender,restart]);
+  }, [gameState,reRender]);
 
   const [isActive, toggleActive] = useState(true);
 
@@ -413,7 +412,7 @@ export default function Home() {
                     </div>
                   </div>
                   <button className="restart-btn btn" onClick={(event)=>{
-                    setRestart(restart+1);
+                    setGameState(0);
                   }}>
                     <div className="btn-emblem">
                       <FontAwesomeIcon className="icon" icon={faRedo} />
@@ -488,7 +487,7 @@ export default function Home() {
               </div>
               <p>You may try again via the button below.</p>
               <button className="restart-btn btn" onClick={(event)=>{
-                    setGameState(1);
+                    setGameState(0);
                   }}>
                 <div className="btn-emblem">
                   <FontAwesomeIcon icon={faRedo} />
