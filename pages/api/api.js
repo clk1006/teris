@@ -266,8 +266,16 @@ module.exports = async (req, res) => {
             break
         case "getId":
             let games=await data.find({id:"stoTet"}).toArray()
-
-            res.status(200).send(games.reduce((a,b)=>Math.max(parseInt(a.gameId),parseInt(b.gameId)),0)+1)
+            if(games.length==0){
+                res.status(200).send(1)
+            }
+            else if(games.length==1){
+                res.status(200).send(parseInt(games[0].gameId)+1)
+            }
+            else{
+                res.status(200).send(games.reduce((a,b)=>Math.max(parseInt(a.gameId),parseInt(b.gameId)))+1)
+            }
+            
         default:
             res.status(404).send()
     }
