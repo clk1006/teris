@@ -180,7 +180,7 @@ export default function Home() {
       data.seq=shuffle([0,1,2,3,4,5,6],data.rng)
       data.current.type=Math.floor(Math.random()*7)
     }
-  }, [gameState,restart]);
+  }, [gameState]);
   useEffect(() => {
     if(gameState==1){
       CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
