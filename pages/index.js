@@ -379,19 +379,11 @@ export default function Home() {
                     <div className="stats-container">
                       <div className="stat-container">
                         <span>Current score: </span>
-                        <span className="output output-score">OUTPUT</span>
+                        <span className="output output-score">{data.score}</span>
                       </div>
                       <div className="stat-container">
                         <span>Current high-score: </span>
-                        <span className="output output-high-score">OUTPUT</span>
-                      </div>
-                      <div className="stat-container">
-                        <span>Current seed: </span>
-                        <span className="output output-seed">OUTPUT</span>
-                      </div>
-                      <div className="stat-container">
-                        <span>Moves left: </span>
-                        <span className="output moves-left">OUTPUT</span>
+                        <span className="output output-high-score">{data.score}</span>
                       </div>
                     </div>
 
