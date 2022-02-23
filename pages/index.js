@@ -20,7 +20,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 import getShape from "../lib/getShape"
-import rotateArray from "../lib/rotateArray"
 
 
 const DIMENSIONS=[10,20]
