@@ -70,33 +70,38 @@ const dropBlock = (block, tiles) => {
   let id = tiles.reduce((a, b) => Math.max(a, b)) + 1
   let shape = getShape(block)
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 19; i >= 0; i--) {
       let pos = {
           x: block.pos,
           y: i
       }
-
-      let tilesOcc = getOccupiedTiles(pos, shape)
       let fits = true
-      let tilesNew = copy(tiles)
-
+      let tilesOcc = getOccupiedTiles(pos, shape)
       tilesOcc.forEach((x) => {
           if (tiles[x] != 0) {
               fits = false
-          } else {
-              tilesNew[x] = id
           }
       })
-
-      if (fits) {
-          return [true, tilesNew]
+      if(fits && i-shape.length>-1){
+          continue
       }
+      if(!fits && i==19){
+          return [false]
+      }
+      if (!fits){
+          pos.y++
+          tilesOcc = getOccupiedTiles(pos, shape)
+      }
+      
+      tilesOcc.forEach((x)=>{
+          tiles[x]=id;
+      })
+      return [true,tiles]
   }
-
-  return [false]
 }
 
 const updateState = (score, tiles) => {
+
   for (let row = 0; row < 20; row++) {
       let full = true
 
@@ -120,6 +125,7 @@ const updateState = (score, tiles) => {
           }
 
           score += SCORE_CLEAR
+          row--
       }
   }
   let state=tiles.filter((_,i)=>i>189).filter((x)=>x!=0).length==0 ? 0 : 1
