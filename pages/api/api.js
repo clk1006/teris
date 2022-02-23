@@ -273,7 +273,7 @@ module.exports = async (req, res) => {
                 res.status(200).send(parseInt(games[0].gameId)+1)
             }
             else{
-                console.log(games)
+                console.log(games.map((x)=>parseInt(x.gameId)))
                 res.status(200).send(games.reduce((a,b)=>Math.max(parseInt(a.gameId),parseInt(b.gameId)))+1)
             }
             
