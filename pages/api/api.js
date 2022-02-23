@@ -168,6 +168,7 @@ const updateState = (score, tiles) => {
             }
 
             score += SCORE_CLEAR
+            row--
         }
     }
     let state=tiles.filter((_,i)=>i>189).filter((x)=>x!=0).length==0 ? 0 : 1
@@ -208,10 +209,9 @@ module.exports = async (req, res) => {
             let state = updateState(storage.score, dropRes[1])
             storage.score=state[0]+SCORE_BLOCK
             storage.tiles=state[1]
-            storage.current.type = storage.seq[0]
+            storage.current.type = storage.seq.shift()
             storage.current.pos = 4
             storage.current.rot = 0
-            storage.seq.shift();
             storage.state=state[2]
 
             if(storage.seq.length==0){
