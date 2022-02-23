@@ -25,6 +25,7 @@ import getShape from "../lib/getShape"
 const DIMENSIONS=[10,20]
 const BLOCK_SIZE = 29
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C", "#6610F2", "#32DE8A"];
+const COLOR_NEXT="#BCBECD"
 const BLOCK_BASE = "rgba(214, 215, 224)"
 const BACKGROUND = "rgb(252, 249, 249)"
 let contextTiles,contextCurr;
@@ -225,6 +226,24 @@ export default function Home() {
           2
         ).fill();
       });
+
+      let tilesWithNext=dropBlock(data.current,copy(data.tiles))
+      if(tilesWithNext[0]){
+        tilesWithNext=tilesWithNext[1]
+        let idNew=tilesWithNext.reduce((a, b) => Math.max(a, b))
+        tilesWithNext.forEach((x,i)=>{
+          if(x==idNew){
+            contextTiles.fillStyle=COLOR_NEXT
+            contextTiles.roundRect(
+              31*(i%10) ,
+              20*BLOCK_SIZE-(31 * (Math.floor(i / 10)+1))+41,
+              BLOCK_SIZE,
+              BLOCK_SIZE,
+              2
+            ).fill();
+          }
+        });
+      }
       let tilesCurr=Array(40).fill(0)
       let shape=getShape(data.current)
       let posY=shape.length-1
@@ -484,11 +503,11 @@ export default function Home() {
               <p className="error">You&#39;ve reached the end of the game field, but you can surely perform better next time.</p>
               <div className="stat-container">
                 <span>Your score: </span>
-                <span className="output output-score">OUTPUT</span>
+                <span className="output output-score">{data.score}</span>
               </div>
               <div className="stat-container">
                 <span>Your high-score: </span>
-                <span className="output output-high-score">OUTPUT</span>
+                <span className="output output-high-score">{data.score}</span>
               </div>
               <p>You may try again via the button below.</p>
               <button className="restart-btn btn" onClick={(event)=>{
