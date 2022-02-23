@@ -109,10 +109,6 @@ const getOccupiedTiles = (pos, shape) => {
     return tiles
 }
 
-const copy = (a) => {
-    return JSON.parse(JSON.stringify(a))
-}
-
 const dropBlock = (block, tiles) => {
     let id = tiles.reduce((a, b) => Math.max(a, b)) + 1
     let shape = getShape(block)
@@ -122,27 +118,29 @@ const dropBlock = (block, tiles) => {
             x: block.pos,
             y: i
         }
-
-        let tilesOcc = getOccupiedTiles(pos, shape)
         let fits = true
-
+        let tilesOcc = getOccupiedTiles(pos, shape)
         tilesOcc.forEach((x) => {
             if (tiles[x] != 0) {
                 fits = false
             }
         })
-
-        if (!fits && i!=19){
-            pos.y++;
-            tilesOcc = getOccupiedTiles(pos, shape)
-            tilesOcc.forEach((x)=>{
-                tiles[x]=id;
-            })
-            return [true,tiles]
+        if(fits && i-shape.length>-1){
+            continue
         }
+        if(!fits && i==19){
+            return [false]
+        }
+        if (!fits){
+            pos.y++
+            tilesOcc = getOccupiedTiles(pos, shape)
+        }
+        
+        tilesOcc.forEach((x)=>{
+            tiles[x]=id;
+        })
+        return [true,tiles]
     }
-
-    return [false]
 }
 
 const updateState = (score, tiles) => {
@@ -171,7 +169,6 @@ const updateState = (score, tiles) => {
 
             score += SCORE_CLEAR
         }
-        console.log(row)
     }
     let state=tiles.filter((_,i)=>i>189).filter((x)=>x!=0).length==0 ? 0 : 1
     return [score, tiles, state]
@@ -282,8 +279,6 @@ module.exports = async (req, res) => {
         default:
             res.status(404).send()
     }
-
-    data.updateOne({
-        gameId:gameId
-    }, {$set: storage});
+    data.deleteMany({gameId:gameId})
+    data.insertOne(storage)
 }
