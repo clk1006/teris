@@ -276,7 +276,10 @@ module.exports = async (req, res) => {
                 games=games.map((x)=>parseInt(x.gameId))
                 res.status(200).send(games.reduce((a,b)=>Math.max(a,b))+1)
             }
-            
+        case "reset":
+            storage=STORAGE_BASE
+            storage.gameId=gameId
+            res.status(200).send()
         default:
             res.status(404).send()
     }
