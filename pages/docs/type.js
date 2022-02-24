@@ -69,6 +69,63 @@ export default function Docs() {
                     <div className="content-block">
                         <h1>type</h1>
                         <hr></hr>
+                        <h2>Format</h2>
+                            <p>The parameter type must be passed in by appending them to the originated adress accordingly:</p>
+                            <p className="code-field">api/api?type</p>
+                        <hr></hr>
+                        <h2>Requests</h2>
+                            <p></p>
+                            <p>Without passing a request, the parameter type returns the default case, which issues status code <span className="tag">400</span>.</p>
+                            <ul>
+                                <li>
+                                    <p><span className="tag">getState</span>
+                                        Description here
+                                    </p>
+                                </li>
+                                <li>
+                                    <p><span className="tag">endTurn</span>
+                                        Description here
+                                    </p>
+                                </li>
+                                <li>
+                                    <p><span className="tag">moveLeft</span>
+                                        Description here
+                                    </p>
+                                </li>
+                                <li>
+                                    <p><span className="tag">moveRight</span>
+                                        Description here
+                                    </p>
+                                </li>
+                                <li>
+                                    <p><span className="tag">rotLeft</span>
+                                        Description here
+                                    </p>
+                                </li>
+                                <li>
+                                    <p><span className="tag">rotRight</span>
+                                        Description here
+                                    </p>
+                                </li>
+                                <li>
+                                    <p><span className="tag">getId</span>
+                                        Description here
+                                    </p>
+                                </li>
+                                <li>
+                                    <p><span className="tag">reset</span>
+                                        Description here
+                                    </p>
+                                </li>
+                            </ul>
+                        <hr></hr>
+                        <h2>Usage</h2>
+                            <p>To send a certain request, it must be appended to the origin format.</p>
+                            <p>The example format shown below is to be used for every request:</p>
+                            <p className="code-field">
+                                api/api?type=getState<br/>
+                                //Returns: [0,[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],&#123;type&#34;:0,&#34;pos&#34;:4,&#34;rot&#34;:0,&#34;movesLeft&#34;:10&#125;,0,false] 
+                            </p>
                     </div>
                 </div>
                 
