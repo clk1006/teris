@@ -193,7 +193,7 @@ module.exports = async (req, res) => {
 
     switch (req.query.type) {
         case "getState":
-            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0], storage.state])
+            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0], Boolean(storage.state)])
 
             break
         case "endTurn":
