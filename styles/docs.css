@@ -50,6 +50,7 @@
 
 .code-field {
     user-select: all;
+    max-width: 100%;
     padding: 12px;
 
     font-family: 'Roboto Mono', monospace;
