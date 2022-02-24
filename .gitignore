@@ -35,3 +35,5 @@ yarn-error.log*
 
 #local data
 /data/storage.json
+
+Dockerfile
