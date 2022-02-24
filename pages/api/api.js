@@ -94,7 +94,7 @@ const shuffle=(arr)=>{
         arr[randomIndex], arr[currentIndex]];
     }
   
-    return [arr,rng];
+    return arr;
   }
 
 const getOccupiedTiles = (pos, shape) => {
