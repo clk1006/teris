@@ -319,6 +319,10 @@ export default function Home() {
         }
         
       }
+      else{
+        setGameState(2)
+        data.state=1
+      }
     }
     setReRender(reRender+1)
   }
