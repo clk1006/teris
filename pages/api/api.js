@@ -1,5 +1,5 @@
 const dbClient = require("./db.js")
-const seedrandom=require("seedrandom")
+//const seedrandom=require("seedrandom")
 const SCORE_BLOCK = 5
 const SCORE_CLEAR = 100
 const STORAGE_BASE={
@@ -10,7 +10,8 @@ const STORAGE_BASE={
     current: {
         type: 0,
         pos: 4,
-        rot: 0
+        rot: 0,
+        movesLeft:10
     },
     seq:[0,1,2,3,4,5,6]
 }
@@ -79,14 +80,14 @@ const getShape = (block) => {
     return rotateArray(arr, block.rot)
 }
 
-const shuffle=(arr,rng)=>{
+const shuffle=(arr)=>{
     let currentIndex = arr.length,  randomIndex;
   
     // While there remain elements to shuffle...
     while (currentIndex != 0) {
   
       // Pick a remaining element...
-      randomIndex = Math.floor(rng() * currentIndex);
+      randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
   
       // And swap it with the current element.
@@ -94,7 +95,7 @@ const shuffle=(arr,rng)=>{
         arr[randomIndex], arr[currentIndex]];
     }
   
-    return [arr,rng];
+    return arr;
   }
 
 const getOccupiedTiles = (pos, shape) => {
@@ -180,24 +181,24 @@ module.exports = async (req, res) => {
     const client = await dbClient;
     const data = client.db().collection("data");
 
-    let seed = req.query.seed || Math.random().toString();
-    storage.rng=seedrandom(seed);
-
     let gameId = parseInt(req.query.gameId)>-1 ? req.query.gameId : "0"
 
     if ((await data.find({gameId:`${gameId}`}).toArray()).length == 0) {
         storage.gameId=gameId;
-        storage.current.type=Math.floor(storage.rng()*7)
-        [storage.seq,storage.rng]=shuffle(storage.seq,storage.rng)
+        storage.current.type=Math.floor(Math.random()*7)
+        storage.seq=shuffle(storage.seq)
         data.insertOne(storage);
     } else {
         storage = await data.findOne({gameId:gameId});
     }
-
+    storage.current.movesLeft--
+    if(storage.current.movesLeft==0){
+        req.query.type="endTurn"
+    }
     switch (req.query.type) {
         case "getState":
-            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0], storage.state])
-
+            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0], Boolean(storage.state)])
+            storage.current.movesLeft++
             break
         case "endTurn":
             let dropRes = dropBlock(storage.current, storage.tiles)
@@ -212,10 +213,11 @@ module.exports = async (req, res) => {
             storage.current.type = storage.seq.shift()
             storage.current.pos = 4
             storage.current.rot = 0
+            storage.current.movesLeft = 10
             storage.state=state[2]
 
             if(storage.seq.length==0){
-                [storage.seq,storage.rng]=shuffle([0,1,2,3,4,5,6],storage.rng)
+                storage.seq=shuffle([0,1,2,3,4,5,6])
             }
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0],storage.state])
             
@@ -227,7 +229,7 @@ module.exports = async (req, res) => {
             } else {
                 res.status(404).send()
             }
-
+            
             break
         case "moveRight":
             let shape = getShape(storage.current)
@@ -274,13 +276,14 @@ module.exports = async (req, res) => {
                 games=games.map((x)=>parseInt(x.gameId))
                 res.status(200).send(games.reduce((a,b)=>Math.max(a,b))+1)
             }
+            storage.current.movesLeft++
         case "reset":
             storage=STORAGE_BASE
             storage.gameId=gameId
             res.status(200).send()
         default:
             res.status(404).send()
+            storage.current.movesLeft++
     }
-    data.deleteMany({gameId:gameId})
-    data.insertOne(storage)
+    data.updateOne({gameId:gameId},{$set:storage})
 }
