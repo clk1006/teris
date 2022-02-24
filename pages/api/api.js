@@ -1,5 +1,5 @@
 const dbClient = require("./db.js")
-const seedrandom=require("seedrandom")
+//const seedrandom=require("seedrandom")
 const SCORE_BLOCK = 5
 const SCORE_CLEAR = 100
 const STORAGE_BASE={
@@ -79,14 +79,14 @@ const getShape = (block) => {
     return rotateArray(arr, block.rot)
 }
 
-const shuffle=(arr,rng)=>{
+const shuffle=(arr)=>{
     let currentIndex = arr.length,  randomIndex;
   
     // While there remain elements to shuffle...
     while (currentIndex != 0) {
   
       // Pick a remaining element...
-      randomIndex = Math.floor(rng() * currentIndex);
+      randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
   
       // And swap it with the current element.
@@ -180,15 +180,12 @@ module.exports = async (req, res) => {
     const client = await dbClient;
     const data = client.db().collection("data");
 
-    let seed = req.query.seed || Math.random().toString();
-    storage.rng=seedrandom(seed);
-
     let gameId = parseInt(req.query.gameId)>-1 ? req.query.gameId : "0"
 
     if ((await data.find({gameId:`${gameId}`}).toArray()).length == 0) {
         storage.gameId=gameId;
         storage.current.type=Math.floor(storage.rng()*7)
-        [storage.seq,storage.rng]=shuffle(storage.seq,storage.rng)
+        storage.seq=shuffle(storage.seq)
         data.insertOne(storage);
     } else {
         storage = await data.findOne({gameId:gameId});
@@ -215,7 +212,7 @@ module.exports = async (req, res) => {
             storage.state=state[2]
 
             if(storage.seq.length==0){
-                [storage.seq,storage.rng]=shuffle([0,1,2,3,4,5,6],storage.rng)
+                storage.seq=shuffle([0,1,2,3,4,5,6])
             }
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0],storage.state])
             
