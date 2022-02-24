@@ -184,7 +184,7 @@ module.exports = async (req, res) => {
 
     if ((await data.find({gameId:`${gameId}`}).toArray()).length == 0) {
         storage.gameId=gameId;
-        storage.current.type=Math.floor(storage.rng()*7)
+        storage.current.type=Math.floor(Math.random()*7)
         storage.seq=shuffle(storage.seq)
         data.insertOne(storage);
     } else {
