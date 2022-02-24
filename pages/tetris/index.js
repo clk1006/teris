@@ -1,7 +1,7 @@
-export default function tetris(){
+export default function tetris() {
     return (
         <div>
-            
+
         </div>
     )
 }

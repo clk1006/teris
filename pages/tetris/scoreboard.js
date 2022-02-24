@@ -1,7 +1,7 @@
-export default function Scoreboard(){
+export default function Scoreboard() {
     return (
         <div>
-            
+
         </div>
     )
 }
