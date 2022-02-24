@@ -285,7 +285,7 @@ export default function Home() {
       }
     }
     else if(kc==81){
-      data.current.rot = (data.current.rot - 1) % 4
+      data.current.rot = (data.current.rot + 3) % 4
       shape = getShape(data.current)
 
       while (data.current.pos + shape[0].length > 10) {
