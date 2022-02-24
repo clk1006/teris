@@ -129,7 +129,7 @@ const updateState = (score, tiles) => {
           row--
       }
   }
-  let state=tiles.filter((_,i)=>i>189).filter((x)=>x!=0).length==0 ? 0 : 1
+  let state=tiles.filter((x,i)=>i>189&&x!=0).length==0 ? 0 : 1
   return [score, tiles, state]
 }
 const getNeighbours = (tiles) => {
