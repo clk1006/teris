@@ -285,6 +285,5 @@ module.exports = async (req, res) => {
             res.status(404).send()
             storage.current.movesLeft++
     }
-    data.deleteMany({gameId:gameId})
-    data.insertOne(storage)
+    data.updateOne({gameId:gameId},{$set:storage})
 }
