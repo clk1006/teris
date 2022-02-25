@@ -334,6 +334,8 @@ export default function Home() {
         };
     });
 
+    let displayScore = data.score.toLocaleString().replace(".", " ");
+
     return (
         <div className={styles.container}>
             <Head>
@@ -411,11 +413,11 @@ export default function Home() {
                                         <div className="stats-container">
                                             <div className="stat-container">
                                                 <span>Current score: </span>
-                                                <span className="output output-score">{data.score.toLocaleString('zh-Hans-CN-u-nu-hanidec')}</span>
+                                                <span className="output output-score">{displayScore}</span>
                                             </div>
                                             <div className="stat-container">
                                                 <span>Current high-score: </span>
-                                                <span className="output output-high-score">{data.score.toLocaleString('zh-Hans-CN-u-nu-hanidec')}</span>
+                                                <span className="output output-high-score">{displayScore}</span>
                                             </div>
                                         </div>
 
@@ -515,11 +517,11 @@ export default function Home() {
                                 perform better next time.</p>
                             <div className="stat-container">
                                 <span>Your score: </span>
-                                <span className="output output-score">{data.score.toLocaleString('zh-Hans-CN-u-nu-hanidec')}</span>
+                                <span className="output output-score">{displayScore}</span>
                             </div>
                             <div className="stat-container">
                                 <span>Your high-score: </span>
-                                <span className="output output-high-score">{data.score.toLocaleString('zh-Hans-CN-u-nu-hanidec')}</span>
+                                <span className="output output-high-score">{displayScore}</span>
                             </div>
                             <p>You may try again via the button below.</p>
                             <button className="restart-btn btn" onClick={(event) => {

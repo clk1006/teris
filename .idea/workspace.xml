@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="">
+    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="testing number formats">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/index.js" afterPath="$PROJECT_DIR$/pages/index.js" />
     </list>
@@ -18,8 +18,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="413" column="139" lean-forward="false" selection-start-line="413" selection-start-column="139" selection-end-line="413" selection-end-column="139" />
+            <state relative-caret-position="-456">
+              <caret line="306" column="51" lean-forward="false" selection-start-line="306" selection-start-column="51" selection-end-line="306" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -722,7 +722,7 @@
       <workItem from="1644709940707" duration="3000" />
       <workItem from="1645738203681" duration="1924000" />
       <workItem from="1645816846591" duration="1012000" />
-      <workItem from="1645827764293" duration="46000" />
+      <workItem from="1645827764293" duration="901000" />
     </task>
     <task id="LOCAL-00001" summary="added .idea to .gitignore">
       <created>1645738289275</created>
@@ -738,11 +738,18 @@
       <option name="project" value="LOCAL" />
       <updated>1645742837380</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="testing number formats">
+      <created>1645827833627</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1645827833627</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3314000" />
+    <option name="totallyTimeSpent" value="4169000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -845,7 +852,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added .idea to .gitignore" />
     <MESSAGE value="cleaned up code" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned up code" />
+    <MESSAGE value="testing number formats" />
+    <option name="LAST_COMMIT_MESSAGE" value="testing number formats" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1270,8 +1278,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="413" column="139" lean-forward="false" selection-start-line="413" selection-start-column="139" selection-end-line="413" selection-end-column="139" />
+        <state relative-caret-position="-456">
+          <caret line="306" column="51" lean-forward="false" selection-start-line="306" selection-start-column="51" selection-end-line="306" selection-end-column="51" />
           <folding />
         </state>
       </provider>
