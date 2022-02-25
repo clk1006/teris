@@ -111,6 +111,10 @@ const getOccupiedTiles = (pos, shape) => {
     return tiles
 }
 
+const copy=(x)=>{
+    return JSON.parse(JSON.stringify(x))
+}
+
 const dropBlock = (block, tiles) => {
     let id = tiles.reduce((a, b) => Math.max(a, b)) + 1
     let shape = getShape(block)
