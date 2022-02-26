@@ -334,7 +334,7 @@ export default function Home() {
         };
     });
 
-    let displayScore = data.score.toLocaleString().replace(".", " ");
+    let displayScore = data.score.toLocaleString();
 
     return (
         <div className={styles.container}>
