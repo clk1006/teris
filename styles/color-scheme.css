@@ -1,0 +1,76 @@
+:root {
+    --tile-color-000: 50, 122, 184;
+    --tile-color-001: 58, 217, 167;
+    --tile-color-002: 255, 194, 71;
+    --tile-color-003: 153, 81, 179;
+    --tile-color-004: 205, 76, 76;
+    --inactive-tile-color: 214, 215, 224;
+
+    --primary-color: 248, 112, 96;
+    --secondary-color: 24, 67, 90;
+    --tertiary-color: 108, 70, 79;
+
+    --text-color-050: 29, 28, 38;
+    --text-color-100: 60, 59, 74;
+    --text-color-200: 104, 103, 121;
+    --text-color-300: 212, 209, 206;
+    --text-color-500: 246, 245, 244;
+
+    --background-color: 243, 241, 241;
+    --box-background-color: 252, 249, 249;
+    --shadow-color-1: 39, 38, 49;
+    --shadow-color-2: 192, 87, 76;
+
+    --text-color-050-light: 29, 28, 38;
+    --text-color-100-light: 60, 59, 74;
+    --text-color-200-light: 104, 103, 121;
+    --text-color-300-light: 212, 209, 206;
+    --text-color-500-light: 246, 245, 244;
+
+    --background-color-light: 243, 241, 241;
+    --box-background-color-light: 252, 249, 249;
+    --shadow-color-1-light: 39, 38, 49;
+
+    --text-color-050-dark: 243, 241, 241;
+    --text-color-100-dark: 227, 222, 222;
+    --text-color-200-dark: 210, 208, 208;
+    --text-color-300-dark: 193, 190, 190;
+    --text-color-500-dark: 175, 172, 172;
+
+    --background-color-dark: 30, 23, 54;
+    --box-background-color-dark: 46, 40, 67;
+    --shadow-color-1-dark: 15, 14, 17;
+
+    --alpha-1: 0.28;
+    --alpha-2: 0.36;
+    --alpha-3: 0.42;
+    --alpha-4: 0.64;
+}
+
+@media(prefers-color-scheme: dark) {
+    :root {
+        --text-color-050: var(--text-color-050-dark);
+        --text-color-100: var(--text-color-100-dark);
+        --text-color-200: var(--text-color-200-dark);
+        --text-color-300: var(--text-color-300-dark);
+        --text-color-500: var(--text-color-500-dark);
+
+        --background-color-light: var(--background-color-dark);
+        --box-background-color-light: var(--box-background-color-dark);
+        --shadow-color-1-light: var(--shadow-color-1-dark);
+    }
+}
+
+@media(prefers-color-scheme: light) {
+    :root {
+        --text-color-050: var(--text-color-050-light);
+        --text-color-100: var(--text-color-100-light);
+        --text-color-200: var(--text-color-200-light);
+        --text-color-300: var(--text-color-300-light);
+        --text-color-500: var(--text-color-500-light);
+
+        --background-color-light: var(--background-color-light);
+        --box-background-color-light: var(--box-background-color-light);
+        --shadow-color-1-light: var(--shadow-color-1-light);
+    }
+}
