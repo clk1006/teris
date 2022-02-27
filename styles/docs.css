@@ -49,7 +49,7 @@
 }
 
 .code-field {
-    user-select: all;
+    user-select: initial;
     max-width: 100%;
     padding: 12px;
 
