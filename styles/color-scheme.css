@@ -55,9 +55,9 @@
         --text-color-300: var(--text-color-300-dark);
         --text-color-500: var(--text-color-500-dark);
 
-        --background-color-light: var(--background-color-dark);
-        --box-background-color-light: var(--box-background-color-dark);
-        --shadow-color-1-light: var(--shadow-color-1-dark);
+        --background-color: var(--background-color-dark);
+        --box-background-color: var(--box-background-color-dark);
+        --shadow-color-1: var(--shadow-color-1-dark);
     }
 }
 
@@ -69,8 +69,8 @@
         --text-color-300: var(--text-color-300-light);
         --text-color-500: var(--text-color-500-light);
 
-        --background-color-light: var(--background-color-light);
-        --box-background-color-light: var(--box-background-color-light);
-        --shadow-color-1-light: var(--shadow-color-1-light);
+        --background-color: var(--background-color-light);
+        --box-background-color: var(--box-background-color-light);
+        --shadow-color-1: var(--shadow-color-1-light);
     }
 }
