@@ -289,9 +289,9 @@ span.output::selection {
 .start-btn:hover, .restart-btn:hover {
     background-color: rgb(var(--tertiary-color));
 
-    box-shadow: 0 3px 0 0 rgb(var(--shadow-color-1));
-    -webkit-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-1));
-    -moz-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-1));
+    box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
+    -webkit-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
+    -moz-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
 }
 
 .btn {
