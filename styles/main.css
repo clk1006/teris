@@ -160,14 +160,14 @@ p {
 .icon {
     margin-right: 6px;
 
-    color: rgb(var(--text-color-050));
+    color: rgb(var(--text-color-500));
 
     height: 1em;
     width: 1em;
 }
 
 .start-btn .icon, .restart-btn.icon {
-    color: rgb(var(--text-color-500));
+    color: rgb(var(--text-color-050));
 }
 
 .pop-up-frame {
