@@ -27,7 +27,6 @@ const BLOCK_SIZE = 29;
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C", "#6610F2", "#32DE8A"];
 const COLOR_NEXT = "#BCBECD";
 const BLOCK_BASE = "rgba(214, 215, 224)";
-const BACKGROUND = "rgb(252, 249, 249)";
 let contextTiles, contextCurr;
 
 const SCORE_BLOCK = 5;
@@ -213,9 +212,6 @@ export default function Home() {
                     )[0]
                 );
             });
-
-            contextTiles.fillStyle = BACKGROUND;
-            contextTiles.fillRect(0, 0, 10 * BLOCK_SIZE + 18, 20 * BLOCK_SIZE + 38);
             tiles.forEach((id, i) => {
                 contextTiles.fillStyle = colors[id];
                 contextTiles.roundRect(
