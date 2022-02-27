@@ -164,6 +164,8 @@ p {
 .icon {
     margin-right: 6px;
 
+    color: rgb(var(--text-color-050));
+
     height: 1em;
     width: 1em;
 }
