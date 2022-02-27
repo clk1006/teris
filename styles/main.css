@@ -280,9 +280,9 @@ span.output::selection {
     color: rgb(var(--text-color-500));
     background-color: rgb(var(--primary-color));
 
-    box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
-    -webkit-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
-    -moz-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
+    box-shadow: 0 3px 0 0 rgb(var(--shadow-color-3));
+    -webkit-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-3));
+    -moz-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-3));
 
     cursor: pointer;
     transition: 0.2s;
