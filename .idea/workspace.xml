@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="score formatting: language sensitive representation of numbers">
+    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/docs.css" afterPath="$PROJECT_DIR$/styles/docs.css" />
     </list>
@@ -39,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/styles/docs.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
-              <caret line="51" column="24" lean-forward="false" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+              <caret line="51" column="21" lean-forward="false" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -777,7 +777,7 @@
       <workItem from="1645832318824" duration="5000" />
       <workItem from="1645906018157" duration="746000" />
       <workItem from="1645927157928" duration="274000" />
-      <workItem from="1645927488493" duration="54000" />
+      <workItem from="1645927488493" duration="237000" />
     </task>
     <task id="LOCAL-00001" summary="added .idea to .gitignore">
       <created>1645738289275</created>
@@ -828,11 +828,18 @@
       <option name="project" value="LOCAL" />
       <updated>1645927358498</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="normal user-select in docs code field">
+      <created>1645927564665</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1645927564665</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5953000" />
+    <option name="totallyTimeSpent" value="6136000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -940,7 +947,8 @@
     <MESSAGE value="added dots to score formatting" />
     <MESSAGE value="edited .gitignore and word-wrap" />
     <MESSAGE value="edited .gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="edited .gitignore" />
+    <MESSAGE value="normal user-select in docs code field" />
+    <option name="LAST_COMMIT_MESSAGE" value="normal user-select in docs code field" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1360,7 +1368,7 @@
     <entry file="file://$PROJECT_DIR$/styles/docs.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="51" column="24" lean-forward="false" selection-start-line="51" selection-start-column="24" selection-end-line="51" selection-end-column="24" />
+          <caret line="51" column="21" lean-forward="false" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
           <folding />
         </state>
       </provider>
