@@ -155,10 +155,6 @@ p {
 .play-btn:hover {
     color: rgb(--text-color-500);
     background-color: rgba(var(--tertiary-color));
-
-    box-shadow: 0 3px 0 0 rgb(var(--shadow-color-1));
-    -webkit-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-1));
-    -moz-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-1));
 }
 
 .icon {
