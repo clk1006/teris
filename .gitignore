@@ -33,7 +33,4 @@ yarn-error.log*
 # vercel
 .vercel
 
-#local data
-/data/storage.json
-
 Dockerfile
