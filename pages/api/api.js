@@ -182,7 +182,7 @@ const updateState = (score, tiles) => {
 }
 
 module.exports = async (req, res) => {
-    let storage=STORAGE_BASE
+    let storage=copy(STORAGE_BASE)
     let gameId=req.query.gameId || 0
     let index=0
     let rng
@@ -301,7 +301,6 @@ module.exports = async (req, res) => {
             res.status(404).send()
     }
     data[index]=storage
-    fs.writeFile("data/storage.json",JSON.stringify(data),(err)=>{
-        console.log(err)
+    fs.writeFile("data/storage.json",JSON.stringify(data),()=>{
     })
 }
