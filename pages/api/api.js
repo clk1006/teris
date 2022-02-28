@@ -1,7 +1,6 @@
 const fs=require('fs')
 let data=require('../../data/storage.json')
 const seedrandom=require("seedrandom")
-const { ConnectionPoolClosedEvent } = require('mongodb')
 const SCORE_BLOCK = 5
 const SCORE_CLEAR = 100
 const STORAGE_BASE={
