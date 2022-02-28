@@ -79,6 +79,8 @@ p {
     display: flex;
     align-items: center;
 
+    color: rgb(var(--text-color-200));
+
     padding: 12px;
 
     border-radius: 30px;
@@ -114,7 +116,7 @@ p {
     margin: 0 16px;
 }
 
-.opt-link, .play-btn {
+.opt-link, .opt-link.action-btn {
     padding: 8px 12px;
     border-radius: 2px;
 
@@ -133,41 +135,65 @@ p {
     background-color: rgba(var(--text-color-200), var(--alpha-4));
 }
 
-.play-btn {
-    padding: 8px 12px;
+.action-btn {
+    padding: 11px 14px;
     border-radius: 2px;
 
-    background-color: rgb(var(--primary-color));
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     color: rgb(var(--text-color-500));
+    background-color: rgb(var(--primary-color));
+
+    font-weight: 300;
+    font-size: 18px;
+    border: 0 hidden;
+    border-radius: 2px;
+
+    box-shadow: 0 3px 0 0 rgb(var(--shadow-color-3));
+    -webkit-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-3));
+    -moz-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-3));
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.action-btn span, .action-btn .icon {
+    color: rgb(var(--text-color-500));
+}
+
+.action-btn:hover {
+    color: rgb(--text-color-500);
+    background-color: rgba(var(--tertiary-color));
+}
+
+.action-btn .icon {
+    color: rgb(var(--text-color-500));
+}
+
+.action-btn:hover {
+    background-color: rgb(var(--tertiary-color));
 
     box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
     -webkit-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
     -moz-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
-
-    transition: 0.2s;
 }
 
-.play-btn span, .play-btn .icon {
-    color: rgb(var(--text-color-500));
-}
+.btn-emblem {
+    height: 18px;
+    width: 18px;
 
-.play-btn:hover {
-    color: rgb(--text-color-500);
-    background-color: rgba(var(--tertiary-color));
+    margin-right: 6px;
 }
 
 .icon {
     margin-right: 6px;
 
-    color: rgb(var(--text-color-500));
+    color: rgb(var(--text-color-050));
 
     height: 1em;
     width: 1em;
-}
-
-.start-btn .icon, .restart-btn.icon {
-    color: rgb(var(--text-color-050));
 }
 
 .pop-up-frame {
@@ -263,44 +289,4 @@ span.output::selection {
 
 .error {
     color: rgb(var(--primary-color));
-}
-
-.start-btn, .restart-btn {
-    padding: 11px 22px;
-
-    font-weight: 300;
-    font-size: 18px;
-    border: 0 hidden;
-    border-radius: 2px;
-
-    color: rgb(var(--text-color-500));
-    background-color: rgb(var(--primary-color));
-
-    box-shadow: 0 3px 0 0 rgb(var(--shadow-color-3));
-    -webkit-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-3));
-    -moz-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-3));
-
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.start-btn:hover, .restart-btn:hover {
-    background-color: rgb(var(--tertiary-color));
-
-    box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
-    -webkit-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
-    -moz-box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
-}
-
-.btn {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.btn-emblem {
-    height: 18px;
-    width: 18px;
-
-    margin-right: 6px;
 }

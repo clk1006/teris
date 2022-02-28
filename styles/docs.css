@@ -40,12 +40,12 @@
     border-radius: 3px;
 
     color: rgba(var(--text-color-050));
-    background-color: rgba(var(--text-color-300), var(--alpha-4));
+    background-color: rgba(var(--text-color-300), var(--alpha-3));
 
 }
 
 .tag:hover {
-    background-color: rgb(var(--text-color-300));
+    background-color: rgba(var(--text-color-300), var(--alpha-4));
 }
 
 .code-field {

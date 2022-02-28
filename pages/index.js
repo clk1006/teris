@@ -364,7 +364,7 @@ export default function Home() {
                                 <span>Docs</span>
                             </div>
                         </a>
-                        <a className="opt-link play-btn" href="./">
+                        <a className="opt-link action-btn" href="./">
                             <div className="menu-opt">
                                 <FontAwesomeIcon className="icon" icon={faCirclePlay}/>
                                 <span>Play Tetris</span>
@@ -442,7 +442,7 @@ export default function Home() {
                                             </div>
                                         </div>
                                     </div>
-                                    <button className="restart-btn btn" onClick={(event) => {
+                                    <button className="action-btn" onClick={(event) => {
                                         setGameState(0);
                                     }}>
                                         <div className="btn-emblem">
@@ -489,7 +489,7 @@ export default function Home() {
                                         </div>
                                     </div>
 
-                                    <button className="start-btn btn" onClick={(event) => {
+                                    <button className="action-btn" onClick={(event) => {
                                         setGameState(1);
                                     }}>
                                         <div className="btn-emblem">
@@ -520,7 +520,7 @@ export default function Home() {
                                 <span className="output output-high-score">{displayScore}</span>
                             </div>
                             <p>You may try again via the button below.</p>
-                            <button className="restart-btn btn" onClick={(event) => {
+                            <button className="action-btn" onClick={(event) => {
                                 setGameState(0);
                             }}>
                                 <div className="btn-emblem">

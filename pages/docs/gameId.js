@@ -57,7 +57,7 @@ export default function Docs() {
                                 <span>type</span>
                             </div>
                         </a>
-                        <a className="opt-link play-btn" href="../">
+                        <a className="opt-link action-btn" href="../">
                             <div className="menu-opt">
                                 <FontAwesomeIcon className="icon" icon={faCirclePlay}/>
                                 <span>Play Tetris</span>
