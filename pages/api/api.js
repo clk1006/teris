@@ -11,7 +11,8 @@ const STORAGE_BASE={
     current: {
         type: 0,
         pos: 4,
-        rot: 0
+        rot: 0,
+        movesLeft: 10
     },
     seq:[0,1,2,3,4,5,6]
 }
@@ -209,10 +210,14 @@ module.exports = async (req, res) => {
         data.push({})
         index=data.length-1
     }
-
+    storage.current.movesLeft--
+    if(storage.current.movesLeft==0){
+        req.query.type="endTurn"
+    }
     switch (req.query.type) {
         case "getState":
-            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0], storage.state])
+            res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0], Boolean(storage.state)])
+            storage.current.movesLeft++
             break
         case "endTurn":
             let dropRes = dropBlock(storage.current, storage.tiles)
@@ -227,13 +232,11 @@ module.exports = async (req, res) => {
             storage.current.type = storage.seq.shift()
             storage.current.pos = 4
             storage.current.rot = 0
+            storage.current.movesLeft = 10
             storage.state=state[2]
 
             if(storage.seq.length==0){
-                let shuffled=shuffle(storage.seq,rng)
-                storage.seq=shuffled[0]
-                rng=shuffled[1]
-                storage.seedUsed++
+                storage.seq=shuffle([0,1,2,3,4,5,6])
             }
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0],storage.state])
             
@@ -245,7 +248,7 @@ module.exports = async (req, res) => {
             } else {
                 res.status(404).send()
             }
-
+            
             break
         case "moveRight":
             let shape = getShape(storage.current)
@@ -292,12 +295,14 @@ module.exports = async (req, res) => {
                 games=games.map((x)=>parseInt(x.gameId))
                 res.status(200).send(games.reduce((a,b)=>Math.max(a,b))+1)
             }
+            storage.current.movesLeft++
         case "reset":
             storage=STORAGE_BASE
             storage.gameId=gameId
             res.status(200).send()
         default:
             res.status(404).send()
+            storage.current.movesLeft++
     }
     data[index]=storage
     fs.writeFile("data/storage.json",JSON.stringify(data),()=>{
