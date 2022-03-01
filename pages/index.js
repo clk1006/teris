@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import {useRef, useState, useEffect, useCallback} from 'react'
+import {useRef, useState, useEffect, Platform} from 'react'
 import styles from '../styles/Home.module.css'
 import pic0 from '../public/tetris0.png'
 import pic1 from '../public/tetris1.png'
@@ -16,11 +16,12 @@ import {
     faCirclePlay,
     faCodeBranch,
     faEllipsis,
-    faRedo
+    faRedo,
+    faSun,
+    faMoon
 } from '@fortawesome/free-solid-svg-icons'
 
 import getShape from "../lib/getShape"
-
 
 const DIMENSIONS = [10, 20];
 const BLOCK_SIZE = 29;
@@ -332,6 +333,36 @@ export default function Home() {
 
     let displayScore = data.score.toLocaleString();
 
+    const getCurrentTheme = () => {
+        useEffect(() => {
+            let theme = window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark';
+            localStorage.getItem('site.theme') ? theme =
+                localStorage.getItem('site.theme') : null;
+
+            return theme;
+        }, []);
+    }
+
+    function loadTheme(theme) {
+        const root = document.querySelector(':root');
+
+        root.setAttribute('color-scheme', `${theme}`);
+    }
+
+    useEffect(() => {
+        window.addEventListener('DOMContentLoaded', () => {
+            loadTheme(getCurrentTheme());
+        });
+
+        return () => {
+            window.removeEventListener('DOMContentLoaded', () => {
+                loadTheme(getCurrentTheme());
+            });
+        };
+    }, []);
+
     return (
         <div className={styles.container}>
             <Head>
@@ -370,6 +401,23 @@ export default function Home() {
                                 <span>Play Tetris</span>
                             </div>
                         </a>
+                    </div>
+                </div>
+
+                <div className="color-scheme-box">
+                    <div className="light-color-scheme-icon" onClick={
+                        function () {
+                            loadTheme(getCurrentTheme())
+                        }
+                    }>
+                        <FontAwesomeIcon className="icon" icon={faSun}></FontAwesomeIcon>
+                    </div>
+                    <div className="dark-color-scheme-icon" onClick={
+                        function () {
+                            loadTheme(getCurrentTheme())
+                        }
+                    }>
+                        <FontAwesomeIcon className="icon" icon={faMoon}></FontAwesomeIcon>
                     </div>
                 </div>
 

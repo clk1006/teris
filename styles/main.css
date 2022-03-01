@@ -38,7 +38,7 @@ p {
     line-height: 1.8em;
 }
 
-.nav-bar {
+.nav-bar, .color-scheme-box {
     top: 0;
     left: 0;
     position: fixed;
@@ -74,7 +74,14 @@ p {
     backdrop-filter: blur(10px);
 }
 
-.menu-icon {
+.color-scheme-box {
+    top: initial;
+    left: initial;
+    bottom: 0;
+    right: 0;
+}
+
+.menu-icon, .light-color-scheme-icon, .dark-color-scheme-icon {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -88,11 +95,11 @@ p {
     transition: 0.2s;
 }
 
-.menu-icon .icon {
+.menu-icon .icon, .light-color-scheme-icon, .dark-color-scheme-icon {
     margin: 0;
 }
 
-.menu-icon:hover {
+.menu-icon:hover, .light-color-scheme-icon:hover, .dark-color-scheme-icon:hover {
     background-color: rgba(var(--text-color-200), var(--alpha-2));
 }
 
@@ -194,6 +201,15 @@ p {
 
     height: 1em;
     width: 1em;
+}
+
+.color-scheme-box .icon {
+    margin: 0;
+
+    color: rgb(var(--text-color-050));
+
+    height: 22px;
+    width: 22px;
 }
 
 .pop-up-frame {
