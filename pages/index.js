@@ -43,79 +43,84 @@ export default function Home() {
     const [reRender, setReRender] = useState(1);
     const [state,setState] = useState(0);
     useEffect(async () => {
-        setState((await axios.get(`${location.origin}/api/api?type=getState`)).data)
+        let data = (await axios.get(`${location.origin}/api/api?type=getState`)).data
+        console.log(data)
+        setState(data)
     }, [reRender]);
     useEffect(() => {
-        CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
-            if (w < 2 * r) r = w / 2;
-            if (h < 2 * r) r = h / 2;
-            this.beginPath();
-            this.moveTo(x + r, y);
-            this.arcTo(x + w, y, x + w, y + h, r);
-            this.arcTo(x + w, y + h, x, y + h, r);
-            this.arcTo(x, y + h, x, y, r);
-            this.arcTo(x, y, x + w, y, r);
-            this.closePath();
-            return this;
-        };
-        let tiles = data.tiles;
-        let colors = [BLOCK_BASE];
-
-        getNeighbours(tiles).forEach((neighbours, id) => {
-            id++;
-            neighbours = neighbours.filter((x) => x < id);
-            colors.push(
-                BLOCK_COLORS.filter(
-                    (x) => neighbours.reduce((a, b) => (a == colors[b] ? 0 : a), x) != 0
-                )[0]
-            );
-        });
-        tiles.forEach((id, i) => {
-            contextTiles.fillStyle = colors[id];
-            contextTiles.roundRect(
-                31 * (i % 10),
-                20 * BLOCK_SIZE - (31 * (Math.floor(i / 10) + 1)) + 41,
-                BLOCK_SIZE,
-                BLOCK_SIZE,
-                2
-            ).fill();
-        });
-
-        let tilesWithNext = dropBlock(data.current, copy(data.tiles));
-        if (tilesWithNext[0]) {
-            tilesWithNext = tilesWithNext[1];
-            let idNew = tilesWithNext.reduce((a, b) => Math.max(a, b));
-            tilesWithNext.forEach((x, i) => {
-                if (x == idNew) {
-                    contextTiles.fillStyle = COLOR_NEXT;
-                    contextTiles.roundRect(
-                        31 * (i % 10),
-                        20 * BLOCK_SIZE - (31 * (Math.floor(i / 10) + 1)) + 41,
-                        BLOCK_SIZE,
-                        BLOCK_SIZE,
-                        2
-                    ).fill();
-                }
+        if(state!=0){
+            CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+                if (w < 2 * r) r = w / 2;
+                if (h < 2 * r) r = h / 2;
+                this.beginPath();
+                this.moveTo(x + r, y);
+                this.arcTo(x + w, y, x + w, y + h, r);
+                this.arcTo(x + w, y + h, x, y + h, r);
+                this.arcTo(x, y + h, x, y, r);
+                this.arcTo(x, y, x + w, y, r);
+                this.closePath();
+                return this;
+            };
+            console.log(state)
+            let tiles = state[1];
+            let colors = [BLOCK_BASE];
+    
+            getNeighbours(tiles).forEach((neighbours, id) => {
+                id++;
+                neighbours = neighbours.filter((x) => x < id);
+                colors.push(
+                    BLOCK_COLORS.filter(
+                        (x) => neighbours.reduce((a, b) => (a == colors[b] ? 0 : a), x) != 0
+                    )[0]
+                );
             });
-        }
-        let tilesCurr = Array(40).fill(0);
-        let shape = getShape(data.current);
-        let posY = shape.length - 1;
-        shape.forEach((row, y) => row.forEach((v, x) => {
-            if (v == 1) {
-                tilesCurr[(data.current.pos + x) + 10 * (posY - y)] = data.current.type + 1
+            tiles.forEach((id, i) => {
+                contextTiles.fillStyle = colors[id];
+                contextTiles.roundRect(
+                    31 * (i % 10),
+                    20 * BLOCK_SIZE - (31 * (Math.floor(i / 10) + 1)) + 41,
+                    BLOCK_SIZE,
+                    BLOCK_SIZE,
+                    2
+                ).fill();
+            });
+    
+            let tilesWithNext = dropBlock(state[2], copy(state[1]));
+            if (tilesWithNext[0]) {
+                tilesWithNext = tilesWithNext[1];
+                let idNew = tilesWithNext.reduce((a, b) => Math.max(a, b));
+                tilesWithNext.forEach((x, i) => {
+                    if (x == idNew) {
+                        contextTiles.fillStyle = COLOR_NEXT;
+                        contextTiles.roundRect(
+                            31 * (i % 10),
+                            20 * BLOCK_SIZE - (31 * (Math.floor(i / 10) + 1)) + 41,
+                            BLOCK_SIZE,
+                            BLOCK_SIZE,
+                            2
+                        ).fill();
+                    }
+                });
             }
-        }));
-        tilesCurr.forEach((v, i) => {
-            contextCurr.fillStyle = v == 0 ? BLOCK_BASE : BLOCK_COLORS[v - 1];
-            contextCurr.roundRect(
-                31 * (i % 10),
-                4 * BLOCK_SIZE - (31 * (Math.floor(i / 10) + 1)) + 8,
-                BLOCK_SIZE,
-                BLOCK_SIZE,
-                2
-            ).fill();
-        })
+            let tilesCurr = Array(40).fill(0);
+            let shape = getShape(state[2]);
+            let posY = shape.length - 1;
+            shape.forEach((row, y) => row.forEach((v, x) => {
+                if (v == 1) {
+                    tilesCurr[(state[2].pos + x) + 10 * (posY - y)] = state[2].type + 1
+                }
+            }));
+            tilesCurr.forEach((v, i) => {
+                contextCurr.fillStyle = v == 0 ? BLOCK_BASE : BLOCK_COLORS[v - 1];
+                contextCurr.roundRect(
+                    31 * (i % 10),
+                    4 * BLOCK_SIZE - (31 * (Math.floor(i / 10) + 1)) + 8,
+                    BLOCK_SIZE,
+                    BLOCK_SIZE,
+                    2
+                ).fill();
+            })
+        }
     }, [state]);
     const handleUpdate = useCallback(() => {
 		setReRender(reRender + 1);
