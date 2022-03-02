@@ -6,7 +6,6 @@ import axios from 'axios'
 const DIMENSIONS = [10, 20];
 const BLOCK_SIZE = 29;
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C", "#6610F2", "#32DE8A"];
-const COLOR_NEXT = "#BCBECD";
 const BLOCK_BASE = "rgba(214, 215, 224)";
 let contextTiles, contextCurr;
 let id;
@@ -42,6 +41,10 @@ export default function Home() {
     const refCurr = useRef();
     const [reRender, setReRender] = useState(1);
     const [state,setState] = useState(0);
+    useEffect(() => {
+        contextTiles = refTiles.current.getContext('2d');
+        contextCurr = refCurr.current.getContext('2d');
+    }, []);
     useEffect(async () => {
         let data = (await axios.get(`${location.origin}/api/api?type=getState`)).data
         console.log(data)
@@ -84,24 +87,6 @@ export default function Home() {
                     2
                 ).fill();
             });
-    
-            let tilesWithNext = dropBlock(state[2], copy(state[1]));
-            if (tilesWithNext[0]) {
-                tilesWithNext = tilesWithNext[1];
-                let idNew = tilesWithNext.reduce((a, b) => Math.max(a, b));
-                tilesWithNext.forEach((x, i) => {
-                    if (x == idNew) {
-                        contextTiles.fillStyle = COLOR_NEXT;
-                        contextTiles.roundRect(
-                            31 * (i % 10),
-                            20 * BLOCK_SIZE - (31 * (Math.floor(i / 10) + 1)) + 41,
-                            BLOCK_SIZE,
-                            BLOCK_SIZE,
-                            2
-                        ).fill();
-                    }
-                });
-            }
             let tilesCurr = Array(40).fill(0);
             let shape = getShape(state[2]);
             let posY = shape.length - 1;
