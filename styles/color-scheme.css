@@ -50,6 +50,14 @@
     --alpha-4: 0.64;
 }
 
+.light-color-scheme-icon {
+    display: none;
+}
+
+.dark-color-scheme-icon {
+    display: none;
+}
+
 @media(prefers-color-scheme: dark) {
     :root {
         --text-color-050: var(--text-color-050-dark);
