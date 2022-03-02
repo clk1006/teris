@@ -48,6 +48,10 @@
     background-color: rgba(var(--text-color-300), var(--alpha-4));
 }
 
+.hl {
+    font-weight: 500;
+}
+
 .code-field {
     user-select: text;
     max-width: 100%;

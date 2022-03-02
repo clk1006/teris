@@ -84,11 +84,11 @@ export default function Docs() {
                                 <p><span className="tag">getState</span>
                                     Returns a list containing 5 relevant objects concatenated, including:
                                     <br></br>
-                                    <span className='tag'>score</span>, which returns a value as an <span className='tag'>int</span>.
+                                    <span className='hl'>score</span>, which returns a value as an <span className='tag'>int</span>.
                                     <br></br>
-                                    <span className='tag'>tiles</span>, which returns an <span className='tag'>Array</span> containing all tiles in order from bottom left to top right, regarding wrapped tile order.
+                                    <span className='hl'>tiles</span>, which returns an <span className='tag'>Array</span> containing all tiles in order from bottom left to top right, regarding wrapped tile order.
                                     <br></br>
-                                    <span className='tag'>current block</span>, which returns an <span className='tag'>Array</span> containing the <span className='tag'>block type id (int)</span> including
+                                    <span className='hl'>current block</span>, which returns an <span className='tag'>Array</span> containing the <span className='hl'>block type id (int)</span> including
                                     <ul>
                                         <li>
                                             id: <span className='tag'>0</span>

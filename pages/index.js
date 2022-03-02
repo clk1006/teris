@@ -368,7 +368,7 @@ export default function Home() {
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
                 <link
-                    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&family=Roboto+Mono:wght@300;400;500&display=swap"
+                    href="https://fonts.googleapis.com/css2?family=Lato:wght@300;500;700;900&family=Roboto+Mono:wght@300;400;500&display=swap"
                     rel="stylesheet"/>
             </Head>
 
