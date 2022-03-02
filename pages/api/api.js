@@ -214,6 +214,7 @@ module.exports = async (req, res) => {
     if(storage.current.movesLeft==0){
         req.query.type="endTurn"
     }
+    let shape;
     switch (req.query.type) {
         case "getState":
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0], Boolean(storage.state)])
@@ -251,7 +252,7 @@ module.exports = async (req, res) => {
             
             break
         case "moveRight":
-            let shape = getShape(storage.current)
+            shape = getShape(storage.current)
 
             if (storage.current.pos + shape[0].length < 10) {
                 storage.current.pos++
@@ -263,7 +264,7 @@ module.exports = async (req, res) => {
             break
         case "rotLeft": 
             storage.current.rot = (storage.current.rot + 3) % 4
-            let shape = getShape(storage.current)
+            shape = getShape(storage.current)
 
             while (storage.current.pos + shape[0].length > 10) {
                 storage.current.pos--
@@ -274,7 +275,7 @@ module.exports = async (req, res) => {
             break
         case "rotRight": 
             storage.current.rot = (storage.current.rot + 1) % 4
-            let shape = getShape(storage.current)
+            shape = getShape(storage.current)
 
             while (storage.current.pos + shape[0].length > 10) {
                 storage.current.pos--
