@@ -47,8 +47,7 @@ export default function Home() {
         contextCurr = refCurr.current.getContext('2d');
     }, []);
     useEffect(async () => {
-        let data = (await axios.get(`${location.origin}/api/api?type=getState`)).data
-        console.log(data)
+        let data = (await axios.get(`${location.origin}/api/api?type=getState&${location.search.substring(1)}`)).data
         setState(data)
     }, [reRender]);
     useEffect(() => {
@@ -65,7 +64,6 @@ export default function Home() {
                 this.closePath();
                 return this;
             };
-            console.log(state)
             let tiles = state[1];
             let colors = [BLOCK_BASE];
     
