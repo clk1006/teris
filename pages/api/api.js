@@ -262,7 +262,7 @@ module.exports = async (req, res) => {
 
             break
         case "rotLeft": 
-            storage.current.rot = (storage.current.rot - 1) % 4
+            storage.current.rot = (storage.current.rot + 3) % 4
             shape = getShape(storage.current)
 
             while (storage.current.pos + shape[0].length > 10) {
