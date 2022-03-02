@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import {useRef, useState, useEffect, Platform} from 'react'
+import {useRef, useState, useEffect} from 'react'
 import styles from '../styles/Home.module.css'
 import pic0 from '../public/tetris0.png'
 import pic1 from '../public/tetris1.png'
@@ -338,11 +338,12 @@ export default function Home() {
             let theme = window.matchMedia('(prefers-color-scheme: light)').matches
                 ? 'light'
                 : 'dark';
-            localStorage.getItem('site.theme') ? theme =
-                localStorage.getItem('site.theme') : null;
-
-            return theme;
         }, []);
+
+        localStorage.getItem('site.theme') ? theme =
+            localStorage.getItem('site.theme') : null;
+
+        return theme;
     }
 
     function loadTheme(theme) {
@@ -355,12 +356,6 @@ export default function Home() {
         window.addEventListener('DOMContentLoaded', () => {
             loadTheme(getCurrentTheme());
         });
-
-        return () => {
-            window.removeEventListener('DOMContentLoaded', () => {
-                loadTheme(getCurrentTheme());
-            });
-        };
     }, []);
 
     return (
