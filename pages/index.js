@@ -117,7 +117,7 @@ export default function Home() {
             ).fill();
         })
     }, [state]);
-    const handleUpdate = React.useCallback(() => {
+    const handleUpdate = useCallback(() => {
 		setReRender(reRender + 1);
 	});
 	useEffect(
