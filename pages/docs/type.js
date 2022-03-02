@@ -91,65 +91,65 @@ export default function Docs() {
                                     <span className='tag'>current block</span>, which returns an <span className='tag'>Array</span> containing the <span className='tag'>block type id (int)</span> including
                                     <ul>
                                         <li>
-                                            <span className='tag'>0</span>
+                                            id: <span className='tag'>0</span>
                                             <br></br>
-                                            <span className='code-field'>
+                                            <p className='code-field'>
                                                 [1, 1, 1, 1]
-                                            </span>
+                                            </p>
                                         </li>
                                         <li>
-                                            <span className='tag'>1</span>
+                                            id: <span className='tag'>1</span>
                                             <br></br>
-                                            <span className='code-field'>
+                                            <p className='code-field'>
                                                 [0, 1, 0],
                                                 <br></br>
                                                 [1, 1, 1]
-                                            </span>
+                                            </p>
                                         </li>
                                         <li>
-                                            <span className='tag'>2</span>
+                                            id: <span className='tag'>2</span>
                                             <br></br>
-                                            <span className='code-field'>
+                                            <p className='code-field'>
                                                 [1, 1, 0],
                                                 <br></br>
                                                 [0, 1, 1]
-                                            </span>
+                                            </p>
                                         </li>
                                         <li>
-                                            <span className='tag'>3</span>
+                                            id: <span className='tag'>3</span>
                                             <br></br>
-                                            <span className='code-field'>
+                                            <p className='code-field'>
                                                 [0, 1, 1],
                                                 <br></br>
                                                 [1, 1, 0]
-                                            </span>
+                                            </p>
                                         </li>
                                         <li>
-                                            <span className='tag'>4</span>
+                                            id: <span className='tag'>4</span>
                                             <br></br>
-                                            <span className='code-field'>
+                                            <p className='code-field'>
                                                 [1, 0, 0],
                                                 <br></br>
                                                 [1, 1, 1]
-                                            </span>
+                                            </p>
                                         </li>
                                         <li>
-                                            <span className='tag'>5</span>
+                                            id: <span className='tag'>5</span>
                                             <br></br>
-                                            <span className='code-field'>
+                                            <p className='code-field'>
                                                 [0, 0, 1],
                                                 <br></br>
                                                 [1, 1, 1]
-                                            </span>
+                                            </p>
                                         </li>
                                         <li>
-                                            <span className='tag'>6</span>
+                                            id: <span className='tag'>6</span>
                                             <br></br>
-                                            <span className='code-field'>
+                                            <p className='code-field'>
                                                 [1, 1],
                                                 <br></br>
                                                 [1, 1]
-                                            </span>
+                                            </p>
                                         </li>
                                     </ul>
                                     , <span className='tag'>block type id (int)</span>.
