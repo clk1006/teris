@@ -42,7 +42,7 @@ export default function Home() {
     const refCurr = useRef();
     const [reRender, setReRender] = useState(1);
     const [state,setState] = useState(0);
-    useEffect(() => {
+    useEffect(async () => {
         setState((await axios.get(`${location.origin}/api/api?type=getState`)).data)
     }, [reRender]);
     useEffect(() => {
