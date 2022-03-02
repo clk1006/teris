@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="partially fixed dark and light mode">
+    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="implemented not yet working hooks to update color scheme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/docs/type.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/docs/type.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/color-scheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/color-scheme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -498,7 +499,9 @@
       <workItem from="1645965022695" duration="6075000" />
       <workItem from="1645972364294" duration="863000" />
       <workItem from="1646065838908" duration="7832000" />
-      <workItem from="1646175267375" duration="3135000" />
+      <workItem from="1646175267375" duration="3908000" />
+      <workItem from="1646180862696" duration="1000" />
+      <workItem from="1646223141977" duration="6961000" />
     </task>
     <task id="LOCAL-00001" summary="added .idea to .gitignore">
       <created>1645738289275</created>
@@ -668,7 +671,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646072548337</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="implemented not yet working hooks to update color scheme">
+      <created>1646178577827</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1646178577827</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -755,7 +765,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cleaned up code" />
     <MESSAGE value="testing number formats" />
     <MESSAGE value="score formatting: language sensitive representation of numbers" />
     <MESSAGE value="added dots to score formatting" />
@@ -780,7 +789,8 @@
     <MESSAGE value="flipped dark mode text hierarchy" />
     <MESSAGE value="adjusted icon colors again" />
     <MESSAGE value="partially fixed dark and light mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="partially fixed dark and light mode" />
+    <MESSAGE value="implemented not yet working hooks to update color scheme" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented not yet working hooks to update color scheme" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

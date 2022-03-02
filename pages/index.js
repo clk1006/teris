@@ -264,7 +264,7 @@ export default function Home() {
 
     const [isActive, toggleActive] = useState(true);
 
-    const [theme,setTheme] = useState('')
+    let [theme,setTheme] = useState('')
     const handleToggle = () => {
         toggleActive(!isActive);
     };
@@ -340,24 +340,11 @@ export default function Home() {
             : 'dark')
     }, []);
 
-    const getCurrentTheme = () => {
-        localStorage.getItem('site.theme') ? theme =
-            localStorage.getItem('site.theme') : null;
-
-        return theme;
-    }
-
-    function loadTheme(theme) {
+    function loadTheme() {
         const root = document.querySelector(':root');
 
         root.setAttribute('color-scheme', `${theme}`);
     }
-
-    useEffect(() => {
-        window.addEventListener('DOMContentLoaded', () => {
-            loadTheme(getCurrentTheme());
-        });
-    }, []);
 
     return (
         <div className={styles.container}>

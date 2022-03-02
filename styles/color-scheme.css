@@ -20,7 +20,7 @@
     --box-background-color: 252, 249, 249;
     --shadow-color-1: 39, 38, 49;
     --shadow-color-2: 86, 56, 63;
-    --shadow-color-3: 111, 68, 68;
+    --shadow-color-3: 155, 86, 80;
 
     --text-color-050-light: 29, 28, 38;
     --text-color-100-light: 60, 59, 74;
@@ -50,35 +50,16 @@
     --alpha-4: 0.64;
 }
 
+.color-scheme-box {
+    display: none;
+}
+
 .light-color-scheme-icon {
     display: none;
 }
 
 .dark-color-scheme-icon {
     display: none;
-}
-
-@media(prefers-color-scheme: dark) {
-    :root {
-        --text-color-050: var(--text-color-050-dark);
-        --text-color-100: var(--text-color-100-dark);
-        --text-color-200: var(--text-color-200-dark);
-        --text-color-300: var(--text-color-300-dark);
-        --text-color-500: var(--text-color-500-dark);
-
-        --background-color: var(--background-color-dark);
-        --box-background-color: var(--box-background-color-dark);
-        --shadow-color-1: var(--shadow-color-1-dark);
-        --shadow-color-3: var(--shadow-color-3-dark);
-    }
-
-    .light-color-scheme-icon {
-        display: initial;
-    }
-
-    .dark-color-scheme-icon {
-        display: none;
-    }
 }
 
 [color-scheme = "dark"] {
@@ -102,28 +83,29 @@
     display: none;
 }
 
-@media(prefers-color-scheme: light) {
+/*@media(prefers-color-scheme: dark) {
     :root {
-        --text-color-050: var(--text-color-050-light);
-        --text-color-100: var(--text-color-100-light);
-        --text-color-200: var(--text-color-200-light);
-        --text-color-300: var(--text-color-300-light);
-        --text-color-500: var(--text-color-500-light);
+        --text-color-050: var(--text-color-050-dark);
+        --text-color-100: var(--text-color-100-dark);
+        --text-color-200: var(--text-color-200-dark);
+        --text-color-300: var(--text-color-300-dark);
+        --text-color-500: var(--text-color-500-dark);
 
-        --background-color: var(--background-color-light);
-        --box-background-color: var(--box-background-color-light);
-        --shadow-color-1: var(--shadow-color-1-light);
-        --shadow-color-3: var(--shadow-color-3-light);
+        --background-color: var(--background-color-dark);
+        --box-background-color: var(--box-background-color-dark);
+        --shadow-color-1: var(--shadow-color-1-dark);
+        --shadow-color-3: var(--shadow-color-3-dark);
     }
 
     .light-color-scheme-icon {
-        display: none;
+        display: initial;
     }
 
     .dark-color-scheme-icon {
-        display: initial;
+        display: none;
     }
 }
+ */
 
 [color-scheme = "light"] {
     --text-color-050: var(--text-color-050-light);
@@ -145,3 +127,27 @@
 [color-scheme = "light"] .dark-color-scheme-icon {
     display: initial;
 }
+
+/*@media(prefers-color-scheme: light) {
+    :root {
+        --text-color-050: var(--text-color-050-light);
+        --text-color-100: var(--text-color-100-light);
+        --text-color-200: var(--text-color-200-light);
+        --text-color-300: var(--text-color-300-light);
+        --text-color-500: var(--text-color-500-light);
+
+        --background-color: var(--background-color-light);
+        --box-background-color: var(--box-background-color-light);
+        --shadow-color-1: var(--shadow-color-1-light);
+        --shadow-color-3: var(--shadow-color-3-light);
+    }
+
+    .light-color-scheme-icon {
+        display: none;
+    }
+
+    .dark-color-scheme-icon {
+        display: initial;
+    }
+}
+ */
