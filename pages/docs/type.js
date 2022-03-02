@@ -82,7 +82,79 @@ export default function Docs() {
                         <ul>
                             <li>
                                 <p><span className="tag">getState</span>
-                                    Description here
+                                    Returns a list containing 5 relevant objects concatenated, including:
+                                    <br></br>
+                                    <span className='tag'>score</span>, which returns a value as an <span className='tag'>int</span>.
+                                    <br></br>
+                                    <span className='tag'>tiles</span>, which returns an <span className='tag'>Array</span> containing all tiles in order from bottom left to top right, regarding wrapped tile order.
+                                    <br></br>
+                                    <span className='tag'>current block</span>, which returns an <span className='tag'>Array</span> containing the <span className='tag'>block type id (int)</span> including
+                                    <ul>
+                                        <li>
+                                            <span className='tag'>0</span>
+                                            <br></br>
+                                            <span className='code-field'>
+                                                [1, 1, 1, 1]
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span className='tag'>1</span>
+                                            <br></br>
+                                            <span className='code-field'>
+                                                [0, 1, 0],
+                                                <br></br>
+                                                [1, 1, 1]
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span className='tag'>2</span>
+                                            <br></br>
+                                            <span className='code-field'>
+                                                [1, 1, 0],
+                                                <br></br>
+                                                [0, 1, 1]
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span className='tag'>3</span>
+                                            <br></br>
+                                            <span className='code-field'>
+                                                [0, 1, 1],
+                                                <br></br>
+                                                [1, 1, 0]
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span className='tag'>4</span>
+                                            <br></br>
+                                            <span className='code-field'>
+                                                [1, 0, 0],
+                                                <br></br>
+                                                [1, 1, 1]
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span className='tag'>5</span>
+                                            <br></br>
+                                            <span className='code-field'>
+                                                [0, 0, 1],
+                                                <br></br>
+                                                [1, 1, 1]
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span className='tag'>6</span>
+                                            <br></br>
+                                            <span className='code-field'>
+                                                [1, 1],
+                                                <br></br>
+                                                [1, 1]
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    , <span className='tag'>block type id (int)</span>.
+                                    <br></br>
+                                    <span className='tag'>game state</span>, which returns an <span className='tag'>Array</span> containing all tiles in order from bottom left to top right, regarding wrapped tile order.
                                 </p>
                             </li>
                             <li>

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import {useRef, useState, useEffect} from 'react'
+import { useRef, useState, useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import pic0 from '../public/tetris0.png'
 import pic1 from '../public/tetris1.png'
@@ -10,7 +10,7 @@ import pic4 from '../public/tetris4.png'
 import pic5 from '../public/tetris5.png'
 import pic6 from '../public/tetris6.png'
 
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faBook,
     faCirclePlay,
@@ -102,7 +102,6 @@ const dropBlock = (block, tiles) => {
 };
 
 const updateState = (score, tiles) => {
-
     for (let row = 0; row < 20; row++) {
         let full = true;
 
@@ -177,6 +176,7 @@ export default function Home() {
     const refCurr = useRef();
     const [gameState, setGameState] = useState(false);
     const [reRender, setReRender] = useState(1);
+    const [currentTheme, setCurrentTheme] = useState(0);
     useEffect(() => {
         if (gameState == 1) {
             contextTiles = refTiles.current.getContext('2d');
@@ -264,6 +264,7 @@ export default function Home() {
 
     const [isActive, toggleActive] = useState(true);
 
+    const [theme,setTheme] = useState('')
     const handleToggle = () => {
         toggleActive(!isActive);
     };
@@ -333,13 +334,13 @@ export default function Home() {
 
     let displayScore = data.score.toLocaleString();
 
-    const getCurrentTheme = () => {
-        useEffect(() => {
-            let theme = window.matchMedia('(prefers-color-scheme: light)').matches
-                ? 'light'
-                : 'dark';
-        }, []);
+    useEffect(() => {
+        setTheme(window.matchMedia('(prefers-color-scheme: light)').matches
+            ? 'light'
+            : 'dark')
+    }, []);
 
+    const getCurrentTheme = () => {
         localStorage.getItem('site.theme') ? theme =
             localStorage.getItem('site.theme') : null;
 
