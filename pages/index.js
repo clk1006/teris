@@ -2,6 +2,7 @@ import Head from 'next/head'
 import {useRef, useState, useEffect, useCallback} from 'react'
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
+import getShape from '../lib/getShape'
 
 const DIMENSIONS = [10, 20];
 const BLOCK_SIZE = 29;
