@@ -264,7 +264,7 @@ export default function Home() {
 
     const [isActive, toggleActive] = useState(true);
 
-    let [theme,setTheme] = useState('')
+    const [theme,setTheme] = useState('')
     const handleToggle = () => {
         toggleActive(!isActive);
     };
@@ -323,13 +323,16 @@ export default function Home() {
             }
         }
         setReRender(reRender + 1)
+        
     };
 
     useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown);
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
+        if(gameState == 1) {
+            window.addEventListener('keydown', handleKeyDown);
+            return () => {
+                window.removeEventListener('keydown', handleKeyDown);
+            };
+        }
     });
 
     let displayScore = data.score.toLocaleString();
@@ -340,11 +343,24 @@ export default function Home() {
             : 'dark')
     }, []);
 
-    function loadTheme() {
+    const getCurrentTheme = () => {
+        localStorage.getItem('site.theme') ? theme =
+            localStorage.getItem('site.theme') : null;
+
+        return theme;
+    }
+
+    function loadTheme(theme) {
         const root = document.querySelector(':root');
 
         root.setAttribute('color-scheme', `${theme}`);
     }
+
+    useEffect(() => {
+        window.addEventListener('DOMContentLoaded', () => {
+            loadTheme(getCurrentTheme());
+        });
+    }, []);
 
     return (
         <div className={styles.container}>
