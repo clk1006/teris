@@ -237,7 +237,9 @@ module.exports = async (req, res) => {
             storage.state=state[2]
 
             if(storage.seq.length==0){
-                storage.seq=shuffle([0,1,2,3,4,5,6])
+                let shuffled=shuffle(storage.seq,rng)
+                storage.seq=shuffled[0]
+                rng=shuffled[1]
             }
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0],storage.state])
             
@@ -298,8 +300,13 @@ module.exports = async (req, res) => {
             }
             storage.current.movesLeft++
         case "reset":
-            storage=STORAGE_BASE
+            storage=copy(STORAGE_BASE)
             storage.gameId=gameId
+            storage.seed=req.query.seed || Math.random().toString()
+            rng=seedrandom(storage.seed)
+            storage.seedUsed=2
+            storage.current.type=Math.floor(rng()*7)
+            storage.seq=shuffle(storage.seq,rng)[0]
             res.status(200).send()
         default:
             res.status(404).send()
