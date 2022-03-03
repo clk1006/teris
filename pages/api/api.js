@@ -223,8 +223,8 @@ module.exports = async (req, res) => {
         case "endTurn":
             let dropRes = dropBlock(storage.current, storage.tiles)
             if (!dropRes[0]) {
-                res.status(404).send()
-
+                storage.state=1
+                res.status(404).json([storage.score, storage.tiles, storage.current, storage.seq[0], Boolean(storage.state)])
                 break
             }
             let state = updateState(storage.score, dropRes[1])
