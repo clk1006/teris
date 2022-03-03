@@ -71,120 +71,93 @@ export default function Docs() {
                         <h1>type</h1>
                         <hr></hr>
                         <h2>Format</h2>
-                        <p>The parameter type must be passed in by appending them to the originated address
+                        <p>The parameter type must be passed in by appending them to the originated adress
                             accordingly:</p>
                         <p className="code-field">api/api?type</p>
                         <hr></hr>
                         <h2>Requests</h2>
                         <p></p>
-                        <p>Without passing a request, the parameter type returns the default case, which issues status
-                            code <span className="tag">400</span>.</p>
+                        <p>Without passing a request, the parameter type returns the default case, which issues status code <span className="tag">400</span>.</p>
                         <ul>
                             <li>
                                 <p><span className="tag">getState</span>
-                                    Returns a list in JSON format containing the 5 relevant objects concatenated in the following order:
+                                    Returns a list containing all 5 relevant objects concatenated, including:
+                                    <br></br>
+                                    <span className='hl'>score</span>, which returns a value as an <span className='tag'>int</span>.
+                                    <br></br>
+                                    <span className='hl'>tiles</span>, which returns an <span className='tag'>Array</span>containing all tiles in order from bottom left to top right, regarding wrapped tile order.
+                                    <br></br>
+                                    <span className='hl'>current block</span>, which returns an <span className='tag'>Array</span>containing the <span className='hl'>block type id (int)</span>including
                                     <ul>
                                         <li>
-                                            <span className='hl'>[score]</span>, contains the current score value as an <span className='tag'>int</span>.
+                                            id: <span className='tag'>0</span>
+                                            <br></br>
+                                            <p className='code-field'>
+                                                [1, 1, 1, 1]
+                                            </p>
                                         </li>
-
                                         <li>
-                                            <span className='hl'>[tiles]</span>, contains an <span className='tag'>Array</span>including all tiles in order from <span className='hl'>bottom left to top right</span>.
-                                            On the screen of the tetris app, the list will be depicted according to this sequence, wrapping each row of 10 elements ascending vertically <span className='hl'>(bottom-top)</span>.
-                                            There are <span className="hl">2 cases</span>, which are to be considered:
-                                            <ul>
-                                                <li>
-                                                    output: <span className="tag">0</span>, which indicates a not-occupied tile.
-                                                </li>
-                                                <li>
-                                                    output: <span className="tag">[id]</span>, which indicates an occupied tile with a custom id that stands for a group of tiles forming a block.
-                                                </li>
-                                            </ul>
+                                            id: <span className='tag'>1</span>
+                                            <br></br>
+                                            <p className='code-field'>
+                                                [0, 1, 0],
+                                                <br></br>
+                                                [1, 1, 1]
+                                            </p>
                                         </li>
-
                                         <li>
-                                            <span className='hl'>[current]</span>, returns an <span className='tag'>object</span>with the following properties:
-                                            <br/>
-                                            <span className='hl'>[type]</span> that includes either one:
-                                            <ul>
-                                                <li>
-                                                    id: <span className='tag'>0</span>
-                                                    <br/>
-                                                    <p className='code-field'>
-                                                        [1, 1, 1, 1]
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    id: <span className='tag'>1</span>
-                                                    <br/>
-                                                    <p className='code-field'>
-                                                        [0, 1, 0],
-                                                        <br/>
-                                                        [1, 1, 1]
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    id: <span className='tag'>2</span>
-                                                    <br/>
-                                                    <p className='code-field'>
-                                                        [1, 1, 0],
-                                                        <br/>
-                                                        [0, 1, 1]
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    id: <span className='tag'>3</span>
-                                                    <br/>
-                                                    <p className='code-field'>
-                                                        [0, 1, 1],
-                                                        <br/>
-                                                        [1, 1, 0]
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    id: <span className='tag'>4</span>
-                                                    <br/>
-                                                    <p className='code-field'>
-                                                        [1, 0, 0],
-                                                        <br/>
-                                                        [1, 1, 1]
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    id: <span className='tag'>5</span>
-                                                    <br/>
-                                                    <p className='code-field'>
-                                                        [0, 0, 1],
-                                                        <br/>
-                                                        [1, 1, 1]
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    id: <span className='tag'>6</span>
-                                                    <br/>
-                                                    <p className='code-field'>
-                                                        [1, 1],
-                                                        <br/>
-                                                        [1, 1]
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                            <span className='hl'>[pos]</span> that includes either one:
+                                            id: <span className='tag'>2</span>
+                                            <br></br>
+                                            <p className='code-field'>
+                                                [1, 1, 0],
+                                                <br></br>
+                                                [0, 1, 1]
+                                            </p>
                                         </li>
-
                                         <li>
-                                            <span className='hl'>[seq[i]]</span>, contains the current block id.
+                                            id: <span className='tag'>3</span>
+                                            <br></br>
+                                            <p className='code-field'>
+                                                [0, 1, 1],
+                                                <br></br>
+                                                [1, 1, 0]
+                                            </p>
                                         </li>
-
                                         <li>
-                                            <span className='hl'>[state]</span>, contains a <span className='tag'>Boolean</span>to display the current game status. In this case, <span className="tag">true</span>indicates a failed/finished game and <span className="tag">false</span>a game that is still ongoing.
+                                            id: <span className='tag'>4</span>
+                                            <br></br>
+                                            <p className='code-field'>
+                                                [1, 0, 0],
+                                                <br></br>
+                                                [1, 1, 1]
+                                            </p>
+                                        </li>
+                                        <li>
+                                            id: <span className='tag'>5</span>
+                                            <br></br>
+                                            <p className='code-field'>
+                                                [0, 0, 1],
+                                                <br></br>
+                                                [1, 1, 1]
+                                            </p>
+                                        </li>
+                                        <li>
+                                            id: <span className='tag'>6</span>
+                                            <br></br>
+                                            <p className='code-field'>
+                                                [1, 1],
+                                                <br></br>
+                                                [1, 1]
+                                            </p>
                                         </li>
                                     </ul>
+                                    <br></br>
+                                    <span className='hl'>game state</span>, which returns a <span className='tag'>bool</span>displaying whether the game has ended <span className='tag'>(true)</span> or is ongoing <span className='tag'>false</span>.
                                 </p>
                             </li>
                             <li>
                                 <p><span className="tag">endTurn</span>
-                                    Provided that the turn aimed at is legal, (meaning that the last 10s row is not to be covered by latter) the block will be dropped, thus added to the array of tiles accordingly. If the turn made results in a block placed that covers the last row of 10, <span className="hl">[state]</span> will be set to <span className="tag">true</span>.
+                                    Description here
                                 </p>
                             </li>
                             <li>
@@ -230,6 +203,7 @@ export default function Docs() {
                         </p>
                     </div>
                 </div>
+
             </main>
         </div>
     );
