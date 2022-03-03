@@ -237,7 +237,7 @@ module.exports = async (req, res) => {
             storage.state=state[2]
 
             if(storage.seq.length==0){
-                let shuffled=shuffle(storage.seq,rng)
+                let shuffled=shuffle([0,1,2,3,4,5,6],rng)
                 storage.seq=shuffled[0]
                 rng=shuffled[1]
             }
