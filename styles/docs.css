@@ -1,3 +1,7 @@
+b {
+    font-weight: 700;
+}
+
 .opt-link.secondary {
     background-color: transparent;
 
@@ -12,7 +16,7 @@
 }
 
 .content-block {
-    width: 40%;
+    width: 50%;
 
     padding: 32px;
 
@@ -49,7 +53,19 @@
 }
 
 .hl {
-    font-weight: 700;
+    margin: 4px 6px 12px 0;
+    padding: 4px;
+
+    user-select: text;
+
+    color: rgb(var(--primary-color));
+    background-color: rgba(var(--primary-color), var(--alpha-1));
+
+    border-radius: 3px;
+}
+
+.hl::selection {
+    background-color: rgba(var(--primary-color), var(--alpha-3));
 }
 
 .code-field {
@@ -73,7 +89,7 @@
     text-align: center;
 }
 
-.license a {
+.license a,.reference-box a {
     color: rgb(var(--primary-color));
     text-decoration: underline;
 }
@@ -84,4 +100,69 @@ hr {
 
     border: none;
     background-color: rgba(var(--text-color-200), var(--alpha-2));
+}
+
+.ref-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.reference-box {
+    max-width: 20vw;
+
+    margin: 24px 18px;
+    padding: 24px;
+
+    border-radius: 3px;
+    border-left: 5px solid rgba(var(--primary-color), 0);
+
+    background-color: rgba(var(--background-color));
+
+    box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color-1), var(--alpha-1));
+    -webkit-box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color-1), var(--alpha-1));
+    -moz-box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color-1), var(--alpha-1));
+
+    transition: 0.5s;
+}
+
+.reference-box:hover {
+    transform: scale(1.1);
+    border-left: 5px solid rgba(var(--primary-color), 1);
+}
+
+.ref-box-icon {
+    height: 24px;
+    width: 24px;
+
+    margin-bottom: 12px;
+
+    color: rgb(var(--text-color-100));
+
+    transition: 0.5s;
+}
+
+.reference-box:hover .ref-box-icon {
+    color: rgb(var(--primary-color));
+}
+
+.syntax {
+    user-select: text;
+}
+
+.syntax.parameter {
+    color: rgb(223, 115, 115);
+}
+
+.syntax.request {
+    color: rgb(151, 146, 227);
+}
+
+.syntax.parameter::selection {
+    background-color: rgba(223, 115, 115, var(--alpha-3));
+}
+
+.syntax.request::selection {
+    background-color: rgba(151, 146, 227, var(--alpha-3));
 }

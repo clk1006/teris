@@ -36,4 +36,5 @@ yarn-error.log*
 .vercel
 
 Dockerfile
+/pages/docs2/
 /.idea/

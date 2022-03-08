@@ -4,16 +4,15 @@ import {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     faBook,
-    faCirclePlay,
+    faCirclePlay, faCode,
     faCodeBranch,
     faEllipsis,
     faExternalLink,
-    faExternalLinkSquare
+    faExternalLinkSquare, faQuestion
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Docs() {
     const [isActive, toggleActive] = useState(true);
-
     const handleToggle = () => {
         toggleActive(!isActive);
     };
@@ -55,34 +54,43 @@ export default function Docs() {
 
                 <div className="container">
                     <div className="content-block">
-                        <h1>Documentation</h1>
-                        <hr></hr>
+                        <h1>Docs</h1>
+
+                        <hr/>
+
                         <h2>Description</h2>
                         <p>This project was created in the course of the teaching unit &#34;AI&#34; in the 4th semester
                             by the computer science class 20/21/22 of the Eimsbütteler Modell.</p>
                         <p>The project is based on a modified version of the puzzle-like computer game Tetris without a
                             real-time factor, which can be used by both human and artificial agents. </p>
-                        <hr></hr>
-                        <h2>Parameters</h2>
-                        <p>Parameter information</p>
-                        <ul>
-                            <li>
-                                <p><a className="tag" href="docs/gameId">gameId</a>
-                                    Description here
-                                </p>
-                            </li>
-                            <li>
-                                <p><a className="tag" href="docs/seed">seed</a>
-                                    Description here
-                                </p>
-                            </li>
-                            <li>
-                                <p><a className="tag" href="docs/type">type</a>
-                                    Description here
-                                </p>
-                            </li>
-                        </ul>
-                        <hr></hr>
+
+                        <hr/>
+
+                        <h2>Links</h2>
+
+                        <div className="ref-container">
+                            <a href="./docs/docs">
+                                <div className="reference-box">
+                                    <FontAwesomeIcon className="ref-box-icon" icon={faQuestion}></FontAwesomeIcon>
+                                    <h2>What does this project provide?</h2>
+                                    <p>Here you will be redirected to the documentation, where all available parameters of the API are listed and explained.</p>
+                                </div>
+                            </a>
+
+                            <a href="https://colab.research.google.com/drive/1IkQt0nKpuxtva8Mg8FE_icRb2A2MyrL3?usp=sharing"
+                               target="_blank" rel="noreferrer">
+                                <div className="reference-box">
+                                    <FontAwesomeIcon className="ref-box-icon" icon={faCode}></FontAwesomeIcon>
+                                    <h2>How can I use the given API to create my own AI?</h2>
+                                    <p>We found it appropriate to use Python (i.e. in <a
+                                        href="https://colab.research.google.com/" target="_blank" rel="noreferrer">Google Colab <FontAwesomeIcon
+                                        size="xs" icon={faExternalLink}/></a>) for such a project. For this, we have prepared a template to help you get started.</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <hr/>
+
                         <h2>License</h2>
                         <p className="license"><a href="https://github.com/clk1006/tetris/blob/main/LICENSE"
                                                   target="_blank" rel="noreferrer">GNU GPL Version 3 <FontAwesomeIcon
