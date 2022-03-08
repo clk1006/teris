@@ -81,7 +81,7 @@ export default function Docs() {
                                target="_blank" rel="noreferrer">
                                 <div className="reference-box">
                                     <FontAwesomeIcon className="ref-box-icon" icon={faCode}></FontAwesomeIcon>
-                                    <h2>How can I use the given API to create my own AI?</h2>
+                                    <h2>How can I use the given API to create my own AI/Algorithm?</h2>
                                     <p>We found it appropriate to use Python (i.e. in <a
                                         href="https://colab.research.google.com/" target="_blank" rel="noreferrer">Google Colab <FontAwesomeIcon
                                         size="xs" icon={faExternalLink}/></a>) for such a project. For this, we have prepared a template to help you get started.</p>

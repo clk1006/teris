@@ -59,7 +59,7 @@ export default function Docs() {
 
                         <h2>Usage structure</h2>
                         <p>The general URL-format is important for us, because the API is accessed via the server. Hence, the idea behind this as a foundation for the creation of an AI/algorithm should first be briefly brought in the foreground.</p>
-                        <p>General URL-structure</p>
+                        <p>General URL-structure:</p>
                         <p className="code-field">
                             https://www.domain.com/url?<span className="syntax parameter">parameter</span>=<span className="syntax request">value</span>&<span className="syntax parameter">parameter2</span>=<span className="syntax request">value2</span>&<span className="syntax parameter">...</span>=<span className="syntax request">...</span>
                         </p>
