@@ -264,7 +264,7 @@ export default function Home() {
 
     const [isActive, toggleActive] = useState(true);
 
-    const [theme,setTheme] = useState('')
+    const [theme, setTheme] = useState('')
     const handleToggle = () => {
         toggleActive(!isActive);
     };

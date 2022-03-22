@@ -1,16 +1,18 @@
 import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
-import {useState} from 'react';
+import { useState } from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
-    faBook,
+    faBook, faCheck,
     faCirclePlay,
+    faClose,
     faCodeBranch,
-    faEllipsis
+    faEllipsis, faExternalLink, faLink
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Docs() {
     const [isActive, toggleActive] = useState(true);
+    const [infoState, setInfoState] = useState("");
 
     const handleToggle = () => {
         toggleActive(!isActive);
@@ -70,70 +72,102 @@ export default function Docs() {
                         <p className="code-field">
                             https://tetris-em.vercel.app/api/api?<span className="syntax parameter">type</span>=<span className="syntax request">moveLeft</span>&<span className="syntax parameter">type</span>=<span className="syntax request">endTurn</span>
                         </p>
+                        <p>Current main server:</p>
+                        <p>To access the API, you will need to use this current link as your origin.</p>
+                        <p className="code-field">
+                            https://tetris-em.vercel.app/api/
+                        </p>
 
                         <hr/>
 
                         <h2>Parameters</h2>
-                        <p>Parameter information</p>
+                        <p>The parameters are called via the given URL-origin and provide extensive control over the gameplay and the necessary information for querying.</p>
                         <ul>
                             <li>
-                                <p><span className="hl">gameId</span></p>
-                                <p>
+                                <p><span className="hl">gameId</span>
                                     Description here
                                 </p>
                             </li>
                             <li>
-                                <p><span className="hl">seed</span></p>
-                                <p>
+                                <p><span className="hl">seed</span>
                                     Description here
                                 </p>
                             </li>
                             <li>
-                                <p><a className="hl">type</a></p>
-                                <p>
-                                    Furthermore, this parameter accepts the following requests:
+                                <p><a className="hl">type</a>
+                                    This parameter accepts the following parameters listed:
                                 </p>
 
                                 <ul>
                                     <li>
                                         <p>
-                                            <span className="tag">getState</span>
-                                        </p>
-
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <span className="tag">endTurn</span>
+                                            <span className="tag" onClick = {_ => {
+                                                    setInfoState("getState")
+                                                }
+                                            }>getState<FontAwesomeIcon size="xs" icon={faLink}/></span>returns a list in JSON format containing the objects that provide the properties of the game.
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag">moveLeft</span>
+                                            <span className="tag" onClick = {
+                                                _ => {
+                                                    setInfoState("endTurn")
+                                                }
+                                            }>endTurn</span>drops the current block with given properties at the last position and draws the new block with the default properties.
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag">moveRight</span>
+                                            <span className="tag" onClick = {
+                                                _ => {
+                                                    setInfoState("moveLeft")
+                                                }
+                                            }>moveLeft</span>moves the current block by one unit to the left.
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag">rotLeft</span>
+                                            <span className="tag" onClick = {
+                                                _ => {
+                                                    setInfoState("moveRight")
+                                                }
+                                            }>moveRight</span>moves the current block by one unit to the right.
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag">rotRight</span>
+                                            <span className="tag" onClick = {
+                                                _ => {
+                                                    setInfoState("rotLeft")
+                                                }
+                                            }>rotLeft</span>rotates the current block by one negative unit (to the left).
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag">getId</span>
+                                            <span className="tag" onClick = {
+                                                _ => {
+                                                    setInfoState("rotRight")
+                                                }
+                                            }>rotRight</span>rotates the current block by one positive unit (to the right).
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag">reset</span>
+                                            <span className="tag" onClick = {
+                                                _ => {
+                                                    setInfoState("getId")
+                                                }
+                                            }>getId</span>returns the current gameId or initiates a new game by a new ID.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <span className="tag" onClick = {
+                                                _ => {
+                                                    setInfoState("reset")
+                                                }
+                                            }>reset</span>resets all previously modified properties to the storage basis.
                                         </p>
                                     </li>
                                 </ul>
@@ -141,6 +175,166 @@ export default function Docs() {
                         </ul>
                     </div>
                 </div>
+
+                {
+                    infoState == "getState" &&
+                    <div className="info-content-retainer">
+                        <div className="pop-up-info">
+                            <div className="info-content-block">
+                                <div className="pop-up-header">
+                                    <h2>getState</h2>
+                                    <button className="close-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="close-icon" icon={faClose}></FontAwesomeIcon>
+                                    </button>
+                                </div>
+
+                                <hr/>
+
+                                <div className="info-content">
+                                    <p>
+                                        <b>getState</b> returns a list in JSON format containing the 5 relevant objects concatenated by following order:
+                                        <ul>
+                                            <li>
+                                                <span className='tag'>score</span>contains the current score value as an <b>int</b>.
+                                            </li>
+
+                                            <li>
+                                                <span className='tag'>tiles</span>contains an <b>Array</b> including all tiles in order from bottom left to top right.
+                                                On the screen of the tetris app, the list will be depicted according to this sequence, wrapping each row of 10 elements ascending vertically (bottom-top).
+                                                There are <b>2 cases</b>, which are to be considered:
+                                                <ul>
+                                                    <li>
+                                                        value: <span className="tag">0</span>, which indicates a non-occupied tile.
+                                                    </li>
+                                                    <li>
+                                                        value: <span className="tag">id</span>, which indicates an occupied tile with a custom id that stands for a group of tiles forming a block.
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li>
+                                                <span className='tag'>current</span>returns the currently moved block as an <b>object</b> with the following properties:
+                                                <br/>
+                                                <ul>
+                                                    <li>
+                                                        <span className='tag'>type</span>that includes either one of the following block-types:
+                                                        <ul>
+                                                            <li>
+                                                                id: <span className='tag'>0</span>
+                                                                <br/>
+                                                                <p className='code-field'>
+                                                                    [1, 1, 1, 1]
+                                                                </p>
+                                                            </li>
+                                                            <li>
+                                                                id: <span className='tag'>1</span>
+                                                                <br/>
+                                                                <p className='code-field'>
+                                                                    [0, 1, 0],
+                                                                    <br/>
+                                                                    [1, 1, 1]
+                                                                </p>
+                                                            </li>
+                                                            <li>
+                                                                id: <span className='tag'>2</span>
+                                                                <br/>
+                                                                <p className='code-field'>
+                                                                    [1, 1, 0],
+                                                                    <br/>
+                                                                    [0, 1, 1]
+                                                                </p>
+                                                            </li>
+                                                            <li>
+                                                                id: <span className='tag'>3</span>
+                                                                <br/>
+                                                                <p className='code-field'>
+                                                                    [0, 1, 1],
+                                                                    <br/>
+                                                                    [1, 1, 0]
+                                                                </p>
+                                                            </li>
+                                                            <li>
+                                                                id: <span className='tag'>4</span>
+                                                                <br/>
+                                                                <p className='code-field'>
+                                                                    [1, 0, 0],
+                                                                    <br/>
+                                                                    [1, 1, 1]
+                                                                </p>
+                                                            </li>
+                                                            <li>
+                                                                id: <span className='tag'>5</span>
+                                                                <br/>
+                                                                <p className='code-field'>
+                                                                    [0, 0, 1],
+                                                                    <br/>
+                                                                    [1, 1, 1]
+                                                                </p>
+                                                            </li>
+                                                            <li>
+                                                                id: <span className='tag'>6</span>
+                                                                <br/>
+                                                                <p className='code-field'>
+                                                                    [1, 1],
+                                                                    <br/>
+                                                                    [1, 1]
+                                                                </p>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <span className='tag'>pos</span>indicates the position of the current block by reference of the left edge.
+                                                    </li>
+                                                    <li>
+                                                        <span className='tag'>rot</span>indicates the rotation value, which is 0 in its initial position. There are 4 rotation states <b>[0, 1, 2, 3]</b>.
+                                                    </li>
+                                                    <li>
+                                                        <span className='tag'>movesLeft</span>indicates how often single operations can still be performed with the current block (that includes changes in position and rotation).
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li>
+                                                <span className='tag'>seq[i]</span>, contains the current block id.
+                                            </li>
+
+                                            <li>
+                                                <span className='tag'>state</span>, contains a <b>Boolean</b> to display the current game status. In this case, <b>true</b> indicates a failed/finished game and <b>false</b> a game that is still ongoing.
+                                            </li>
+                                        </ul>
+                                    </p>
+
+                                    <hr/>
+
+                                    <h2>Example usage</h2>
+                                    <p>With regard to <a href="./">the template provided</a>, the use of the parameter would look something like this:</p>
+                                    <p className="code-field">
+                                        ...<br/>
+                                        tetrisServer = TetrisServer(urlOrigin)<br/>
+                                        <br/>
+                                        print(tetrisServer.getState())<br/>
+                                    </p>
+                                    <p>The getState request would print a list looking like the following:</p>
+                                    <p className="code-field">
+                                        &#47;&#47;Returns:
+                                        [0,[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],&#123;&#34;type&#34;:0,&#34;pos&#34;:4,&#34;rot&#34;:0,&#34;movesLeft&#34;:10&#125;,0,false]
+                                    </p>
+
+                                    <hr/>
+
+                                    <button className="action-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="btn-emblem" icon={faCheck}></FontAwesomeIcon>
+                                        Okay, got it
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
             </main>
         </div>
     );
