@@ -297,7 +297,7 @@ export default function Docs() {
                                             </li>
 
                                             <li>
-                                                <span className='tag'>seq[i]</span>, contains the current block id.
+                                                <span className='tag'>seq[i]</span>, contains the next block id.
                                             </li>
 
                                             <li>
