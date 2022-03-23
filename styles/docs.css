@@ -198,6 +198,10 @@ hr {
 
 .syntax {
     user-select: text;
+
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    font-size: 18px;
 }
 
 .syntax.parameter {
