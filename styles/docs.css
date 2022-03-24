@@ -81,29 +81,6 @@ b {
     border-radius: 4px;
 }
 
-.tag {
-    margin: 4px 4px 12px 0;
-    padding: 3px;
-
-    cursor: pointer;
-
-    width: fit-content;
-
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 500;
-    font-size: 18px;
-    border-radius: 3px;
-
-    color: rgba(var(--text-color-050));
-    background-color: rgba(var(--text-color-300), var(--alpha-3));
-
-    text-decoration: none;
-}
-
-.tag:hover {
-    background-color: rgba(var(--text-color-300), var(--alpha-4));
-}
-
 .hl {
     margin: 4px 4px 12px 0;
     padding: 4px;
@@ -144,6 +121,31 @@ b {
 .license a,.reference-box a, .info-content a, .visualization-guide a {
     color: rgb(var(--primary-color));
     text-decoration: underline;
+}
+
+
+
+.tag {
+    margin: 4px 4px 12px 0;
+    padding: 3px;
+
+    cursor: pointer;
+
+    width: fit-content;
+
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 3px;
+
+    color: rgba(var(--text-color-050));
+    background-color: rgba(var(--text-color-300), var(--alpha-3));
+
+    text-decoration: none;
+}
+
+.tag:hover {
+    background-color: rgba(var(--text-color-300), var(--alpha-4));
 }
 
 hr {
