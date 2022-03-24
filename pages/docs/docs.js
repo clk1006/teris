@@ -309,7 +309,7 @@ export default function Docs() {
                                     <hr/>
 
                                     <h2>Example usage</h2>
-                                    <p>With regard to <a href="./">the template provided</a>, the use of the parameter would look something like this:</p>
+                                    <p>With regard to <a href="./" className="text-link">the template provided</a>, the use of the parameter would look something like this:</p>
                                     <p className="code-field">
                                         ...<br/>
                                         tetrisServer = TetrisServer(urlOrigin)<br/>
