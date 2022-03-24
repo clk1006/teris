@@ -216,10 +216,12 @@ hr {
 }
 
 .ms-marker {
+    margin-left: 5px;
+
     color: rgb(var(--text-color-050));
 
     font-family: 'Roboto Mono', monospace;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 18px;
 }
 
