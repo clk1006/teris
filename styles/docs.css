@@ -31,10 +31,7 @@ b {
 .info-content-retainer {
     top: 0;
 
-    padding: 24px;
     position: fixed;
-    display: flex;
-    align-items: center;
 
     height: 100%;
     width: 100%;
@@ -54,8 +51,6 @@ b {
 
     height: 94%;
     width: 100%;
-
-    transition: 0.4s;
 
     z-index: 1;
 
@@ -77,7 +72,6 @@ b {
 
     box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color-1), var(--alpha-1));
 
-    border: hidden;
     border-radius: 4px;
 }
 
@@ -216,8 +210,6 @@ hr {
 }
 
 .ms-marker {
-    margin-left: 5px;
-
     color: rgb(var(--text-color-050));
 
     font-family: 'Roboto Mono', monospace;
@@ -227,7 +219,6 @@ hr {
 
 .pop-up-header {
     display: flex;
-    flex-direction: row;
 
     align-items: center;
     justify-content: space-between;

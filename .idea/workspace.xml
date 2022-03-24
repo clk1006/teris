@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="">
+    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="removed (redundant) styling and fixed margin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/docs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/docs/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/docs/docs.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/docs/docs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/docs.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/docs.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -519,7 +520,7 @@
       <workItem from="1647026027495" duration="8000" />
       <workItem from="1647969297418" duration="18034000" />
       <workItem from="1648058091999" duration="1408000" />
-      <workItem from="1648137408075" duration="3723000" />
+      <workItem from="1648137408075" duration="7057000" />
     </task>
     <task id="LOCAL-00001" summary="added .idea to .gitignore">
       <created>1645738289275</created>
@@ -787,7 +788,35 @@
       <option name="project" value="LOCAL" />
       <updated>1648147425380</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="corrected language accuracy and styling class">
+      <created>1648147730630</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1648147730630</updated>
+    </task>
+    <task id="LOCAL-00040" summary="extended documentation">
+      <created>1648148712330</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1648148712330</updated>
+    </task>
+    <task id="LOCAL-00041" summary="extended documentation, made styling more intuitive">
+      <created>1648162788798</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1648162788798</updated>
+    </task>
+    <task id="LOCAL-00042" summary="made styling even more intuitive">
+      <created>1648163002112</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1648163002112</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -874,11 +903,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adjusted colors again" />
-    <MESSAGE value="fixed button colors" />
-    <MESSAGE value="adjusted button shadow colors" />
-    <MESSAGE value="adjusted button shadow color" />
-    <MESSAGE value="fixed icon colors" />
     <MESSAGE value="adjusted text color scheme" />
     <MESSAGE value="button coloring adjustments" />
     <MESSAGE value="fixed styling redundancy" />
@@ -899,7 +923,12 @@
     <MESSAGE value="hopefully fixed link" />
     <MESSAGE value="should have fixed a bunch of links" />
     <MESSAGE value="fixed link that is not meant to be a link" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed link that is not meant to be a link" />
+    <MESSAGE value="corrected language accuracy and styling class" />
+    <MESSAGE value="extended documentation" />
+    <MESSAGE value="extended documentation, made styling more intuitive" />
+    <MESSAGE value="made styling even more intuitive" />
+    <MESSAGE value="removed redundant styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed redundant styling" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

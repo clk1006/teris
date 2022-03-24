@@ -197,11 +197,11 @@ export default function Docs() {
                                         <b>getState</b> returns a list in JSON format containing the 5 relevant objects concatenated by following order:
                                         <ul>
                                             <li>
-                                                <span className="ms-marker">score</span>contains the current score value as an <b>int</b>.
+                                                <span className="ms-marker">score</span> contains the current score value as an <b>int</b>.
                                             </li>
 
                                             <li>
-                                                <span className="ms-marker">tiles</span>contains an <b>Array</b> including all tiles in order from bottom left to top right.
+                                                <span className="ms-marker">tiles</span> contains an <b>Array</b> including all tiles in order from bottom left to top right.
                                                 On the screen of the tetris app, the list will be depicted according to this sequence, wrapping each row of 10 elements ascending vertically (bottom-top).
                                                 There are <b>2 cases</b>, which are to be considered:
                                                 <ul>
@@ -215,11 +215,11 @@ export default function Docs() {
                                             </li>
 
                                             <li>
-                                                <span className="ms-marker">current</span>returns the currently moved block as an <b>object</b> with the following properties:
+                                                <span className="ms-marker">current</span> returns the currently moved block as an <b>object</b> with the following properties:
                                                 <br/>
                                                 <ul>
                                                     <li>
-                                                        <span className="ms-marker">type</span>that includes either one of the following block-types:
+                                                        <span className="ms-marker">type</span> that includes either one of the following block-types:
                                                         <ul>
                                                             <li>
                                                                 id: <span className="ms-marker">0</span>
@@ -285,13 +285,13 @@ export default function Docs() {
                                                         </ul>
                                                     </li>
                                                     <li>
-                                                        <span className="ms-marker">pos</span>indicates the position of the current block by reference of the left edge.
+                                                        <span className="ms-marker">pos</span> indicates the position of the current block by reference of the left edge.
                                                     </li>
                                                     <li>
-                                                        <span className="ms-marker">rot</span>indicates the rotation value, which is 0 in its initial position. There are 4 rotation states <b>[0, 1, 2, 3]</b>.
+                                                        <span className="ms-marker">rot</span> indicates the rotation value, which is 0 in its initial position. There are 4 rotation states <b>[0, 1, 2, 3]</b>.
                                                     </li>
                                                     <li>
-                                                        <span className="ms-marker">movesLeft</span>indicates how often single operations can still be performed with the current block (that includes changes in position and rotation).
+                                                        <span className="ms-marker">movesLeft</span> indicates how often single operations can still be performed with the current block (that includes changes in position and rotation).
                                                     </li>
                                                 </ul>
                                             </li>
