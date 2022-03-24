@@ -251,7 +251,7 @@ hr {
     width: 14px;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1080px) {
     .content-block {
         width: 80%;
     }
@@ -261,7 +261,7 @@ hr {
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
     .content-block {
         width: 95%;
     }

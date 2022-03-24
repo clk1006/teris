@@ -194,7 +194,7 @@ export default function Docs() {
 
                                 <div className="info-content">
                                     <p>
-                                        <b>getState</b> returns a list in JSON format containing the 5 relevant objects concatenated by following order:
+                                        <span className="ms-marker">getState</span> returns a list in JSON format containing the 5 relevant objects concatenated by following order:
                                         <ul>
                                             <li>
                                                 <span className="ms-marker">score</span> contains the current score value as an <b>int</b>.
