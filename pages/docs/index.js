@@ -100,8 +100,8 @@ export default function Docs() {
                             <a href="">
                                 <div className="reference-box">
                                     <FontAwesomeIcon className="ref-box-icon" icon={faAnchor}></FontAwesomeIcon>
-                                    <h2>How can I 'hook up' my own Algorithm/AI with the server to observe it playing?</h2>
-                                    <p>Here you will find a small comprehensive guide to 'hook up' your Algorithm/AI and watch it playing.</p>
+                                    <h2>How can I &#39;hook up&#39; my own Algorithm/AI with the server to observe it playing?</h2>
+                                    <p>Here you will find a small comprehensive guide to &#39;hook up&#39; your Algorithm/AI and watch it playing.</p>
                                 </div>
                             </a>
                         </div>
