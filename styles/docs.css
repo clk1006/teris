@@ -140,7 +140,7 @@ b {
     text-align: center;
 }
 
-.license a,.reference-box a, .info-content a, .content-block a {
+.license a,.reference-box a, .info-content a, .visualization-guide a {
     color: rgb(var(--primary-color));
     text-decoration: underline;
 }

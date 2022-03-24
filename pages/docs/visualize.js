@@ -54,7 +54,7 @@ export default function Docs() {
                 </div>
 
                 <div className="container">
-                    <div className="content-block">
+                    <div className="content-block visualization-guide">
                         <h1>How to visualize your project</h1>
 
                         <hr/>
