@@ -109,7 +109,8 @@ export default function Docs() {
                         <hr/>
 
                         <h2>License</h2>
-                        <p className="license text-link"><a href="https://github.com/clk1006/tetris/blob/main/LICENSE"
+                        <p className="license"><a href="https://github.com/clk1006/tetris/blob/main/LICENSE"
+                                                  className="text-link"
                                                   target="_blank" rel="noreferrer">GNU GPL Version 3 <FontAwesomeIcon
                             size="xs" icon={faExternalLink}/></a>, 29 June 2007</p>
                     </div>
