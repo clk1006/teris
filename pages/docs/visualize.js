@@ -72,11 +72,15 @@ export default function Docs() {
                         <p className='code-field'>https://tetris-em.vercel.app?<span className='syntax parameter'>gameID</span>=<span className='syntax request'>id</span></p>
                     
                         <h2>2. Host your own server to reduce latency</h2>
-                        <p>In order to create your own instance of the server you have to have Docker installed on your local machine. As soon as 
-                            that is the case, you may pull the latest image of the server via the following command:
+                        <p>In order to create your own instance of the server you have to have <a href="https://www.docker.com/"
+                               target="_blank" rel="noreferrer">Docker <FontAwesomeIcon
+                               size="xs"
+                               icon={faExternalLink}/>
+                               </a> installed on your local machine.
+                         As soon as that is the case, you may pull the latest image of the server via the following command:
                         </p>
                         <p className="code-field">sudo docker pull clk1006/tetris:latest</p>
-                        <p>The you can start the server with</p>
+                        <p>Then you can start the server with</p>
                         <p className="code-field">sudo docker run -p [PORT]:3000 clk1006/tetris:lastest</p>
                         <p>where [PORT] is the port on which you want your server to listen.</p>
                     </div>
