@@ -97,6 +97,7 @@ b {
     color: rgba(var(--text-color-050));
     background-color: rgba(var(--text-color-300), var(--alpha-3));
 
+    text-decoration: none;
 }
 
 .tag:hover {
