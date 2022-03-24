@@ -70,6 +70,15 @@ export default function Docs() {
                         <p>Further important is that you use a custom gameID that is unique. It is recommended that you follow the logics of the template, so that each started game of yours is assigned a unique ID. The assigned ID will need to be printed in order to access the gameID manually.</p>
                         <p>As soon as you are able to get an insight in your gameID, you will be able to observe the requests visually, that are send to the server. For that, you will need to append the gameID to the originated server in your browser manually as following:</p>
                         <p className='code-field'>https://tetris-em.vercel.app?<span className='syntax parameter'>gameID</span>=<span className='syntax request'>id</span></p>
+                    
+                        <h2>2. Host your own server to reduce latency</h2>
+                        <p>In order to create your own instance of the server you have to have Docker installed on your local machine. As soon as 
+                            that is the case, you may pull the latest image of the server via the following command:
+                        </p>
+                        <p className="code-field">sudo docker pull clk1006/tetris:latest</p>
+                        <p>The you can start the server with</p>
+                        <p className="code-field">sudo docker run -p [PORT]:3000 clk1006/tetris:lastest</p>
+                        <p>where [PORT] is the port on which you want your server to listen.</p>
                     </div>
                 </div>
             </main>
