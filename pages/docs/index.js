@@ -97,7 +97,7 @@ export default function Docs() {
                                 </div>
                             </a>
 
-                            <a href="visualize">
+                            <a href="./docs/visualize">
                                 <div className="reference-box">
                                     <FontAwesomeIcon className="ref-box-icon" icon={faAnchor}></FontAwesomeIcon>
                                     <h2>How can I &#39;hook up&#39; my own Algorithm/AI with the server to observe it playing?</h2>
