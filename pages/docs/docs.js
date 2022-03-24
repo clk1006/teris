@@ -85,12 +85,12 @@ export default function Docs() {
                         <ul>
                             <li>
                                 <p><span className="hl">gameId</span>
-                                    Description here
+
                                 </p>
                             </li>
                             <li>
                                 <p><span className="hl">seed</span>
-                                    Description here
+
                                 </p>
                             </li>
                             <li>
@@ -104,7 +104,7 @@ export default function Docs() {
                                             <span className="tag" onClick = {_ => {
                                                     setInfoState("getState")
                                                 }
-                                            }>getState<FontAwesomeIcon size="xs" icon={faLink}/></span>returns a list in JSON format containing the objects that provide the properties of the game.
+                                            }>getState</span>returns a list in JSON format containing the objects that provide the properties of the game.
                                         </p>
                                     </li>
                                     <li>
@@ -197,86 +197,86 @@ export default function Docs() {
                                         <b>getState</b> returns a list in JSON format containing the 5 relevant objects concatenated by following order:
                                         <ul>
                                             <li>
-                                                <span className='tag'>score</span>contains the current score value as an <b>int</b>.
+                                                <span className="ms-marker">score</span>contains the current score value as an <b>int</b>.
                                             </li>
 
                                             <li>
-                                                <span className='tag'>tiles</span>contains an <b>Array</b> including all tiles in order from bottom left to top right.
+                                                <span className="ms-marker">tiles</span>contains an <b>Array</b> including all tiles in order from bottom left to top right.
                                                 On the screen of the tetris app, the list will be depicted according to this sequence, wrapping each row of 10 elements ascending vertically (bottom-top).
                                                 There are <b>2 cases</b>, which are to be considered:
                                                 <ul>
                                                     <li>
-                                                        value: <span className="tag">0</span>, which indicates a non-occupied tile.
+                                                        value: <span className="ms-marker">0</span>, which indicates a non-occupied tile.
                                                     </li>
                                                     <li>
-                                                        value: <span className="tag">id</span>, which indicates an occupied tile with a custom id that stands for a group of tiles forming a block.
+                                                        value: <span className="ms-marker">id</span>, which indicates an occupied tile with a custom id that stands for a group of tiles forming a block.
                                                     </li>
                                                 </ul>
                                             </li>
 
                                             <li>
-                                                <span className='tag'>current</span>returns the currently moved block as an <b>object</b> with the following properties:
+                                                <span className="ms-marker">current</span>returns the currently moved block as an <b>object</b> with the following properties:
                                                 <br/>
                                                 <ul>
                                                     <li>
-                                                        <span className='tag'>type</span>that includes either one of the following block-types:
+                                                        <span className="ms-marker">type</span>that includes either one of the following block-types:
                                                         <ul>
                                                             <li>
-                                                                id: <span className='tag'>0</span>
+                                                                id: <span className="ms-marker">0</span>
                                                                 <br/>
                                                                 <p className='code-field'>
                                                                     [1, 1, 1, 1]
                                                                 </p>
                                                             </li>
                                                             <li>
-                                                                id: <span className='tag'>1</span>
+                                                                id: <span className="ms-marker">1</span>
                                                                 <br/>
-                                                                <p className='code-field'>
+                                                                <p className="code-field">
                                                                     [0, 1, 0],
                                                                     <br/>
                                                                     [1, 1, 1]
                                                                 </p>
                                                             </li>
                                                             <li>
-                                                                id: <span className='tag'>2</span>
+                                                                id: <span className="ms-marker">2</span>
                                                                 <br/>
-                                                                <p className='code-field'>
+                                                                <p className="code-field">
                                                                     [1, 1, 0],
                                                                     <br/>
                                                                     [0, 1, 1]
                                                                 </p>
                                                             </li>
                                                             <li>
-                                                                id: <span className='tag'>3</span>
+                                                                id: <span className="ms-marker">3</span>
                                                                 <br/>
-                                                                <p className='code-field'>
+                                                                <p className="code-field">
                                                                     [0, 1, 1],
                                                                     <br/>
                                                                     [1, 1, 0]
                                                                 </p>
                                                             </li>
                                                             <li>
-                                                                id: <span className='tag'>4</span>
+                                                                id: <span className="ms-marker">4</span>
                                                                 <br/>
-                                                                <p className='code-field'>
+                                                                <p className="code-field">
                                                                     [1, 0, 0],
                                                                     <br/>
                                                                     [1, 1, 1]
                                                                 </p>
                                                             </li>
                                                             <li>
-                                                                id: <span className='tag'>5</span>
+                                                                id: <span className="ms-marker">5</span>
                                                                 <br/>
-                                                                <p className='code-field'>
+                                                                <p className="code-field">
                                                                     [0, 0, 1],
                                                                     <br/>
                                                                     [1, 1, 1]
                                                                 </p>
                                                             </li>
                                                             <li>
-                                                                id: <span className='tag'>6</span>
+                                                                id: <span className="ms-marker">6</span>
                                                                 <br/>
-                                                                <p className='code-field'>
+                                                                <p className="code-field">
                                                                     [1, 1],
                                                                     <br/>
                                                                     [1, 1]
@@ -285,23 +285,23 @@ export default function Docs() {
                                                         </ul>
                                                     </li>
                                                     <li>
-                                                        <span className='tag'>pos</span>indicates the position of the current block by reference of the left edge.
+                                                        <span className="ms-marker">pos</span>indicates the position of the current block by reference of the left edge.
                                                     </li>
                                                     <li>
-                                                        <span className='tag'>rot</span>indicates the rotation value, which is 0 in its initial position. There are 4 rotation states <b>[0, 1, 2, 3]</b>.
+                                                        <span className="ms-marker">rot</span>indicates the rotation value, which is 0 in its initial position. There are 4 rotation states <b>[0, 1, 2, 3]</b>.
                                                     </li>
                                                     <li>
-                                                        <span className='tag'>movesLeft</span>indicates how often single operations can still be performed with the current block (that includes changes in position and rotation).
+                                                        <span className="ms-marker">movesLeft</span>indicates how often single operations can still be performed with the current block (that includes changes in position and rotation).
                                                     </li>
                                                 </ul>
                                             </li>
 
                                             <li>
-                                                <span className='tag'>seq[i]</span>, contains the next block id.
+                                                <span className="ms-marker">seq[i]</span>, contains the next block id.
                                             </li>
 
                                             <li>
-                                                <span className='tag'>state</span>, contains a <b>Boolean</b> to display the current game status. In this case, <b>true</b> indicates a failed/finished game and <b>false</b> a game that is still ongoing.
+                                                <span className="ms-marker">state</span>, contains a <b>Boolean</b> to display the current game status. In this case, <b>true</b> indicates a failed/finished game and <b>false</b> a game that is still ongoing.
                                             </li>
                                         </ul>
                                     </p>
@@ -320,6 +320,300 @@ export default function Docs() {
                                     <p className="code-field">
                                         &#47;&#47;Returns:
                                         [0,[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],&#123;&#34;type&#34;:0,&#34;pos&#34;:4,&#34;rot&#34;:0,&#34;movesLeft&#34;:10&#125;,0,false]
+                                    </p>
+
+                                    <hr/>
+
+                                    <button className="action-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="btn-emblem" icon={faCheck}></FontAwesomeIcon>
+                                        Okay, got it
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                {
+                    infoState == "endTurn" &&
+                    <div className="info-content-retainer">
+                        <div className="pop-up-info">
+                            <div className="info-content-block">
+                                <div className="pop-up-header">
+                                    <h2>endTurn</h2>
+                                    <button className="close-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="close-icon" icon={faClose}></FontAwesomeIcon>
+                                    </button>
+                                </div>
+
+                                <hr/>
+
+                                <div className="info-content">
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <h2>Nothing to see here yet</h2>
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <button className="action-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="btn-emblem" icon={faCheck}></FontAwesomeIcon>
+                                        Okay, got it
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                {
+                    infoState == "moveLeft" &&
+                    <div className="info-content-retainer">
+                        <div className="pop-up-info">
+                            <div className="info-content-block">
+                                <div className="pop-up-header">
+                                    <h2>moveLeft</h2>
+                                    <button className="close-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="close-icon" icon={faClose}></FontAwesomeIcon>
+                                    </button>
+                                </div>
+
+                                <hr/>
+
+                                <div className="info-content">
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <h2>Nothing to see here yet</h2>
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <button className="action-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="btn-emblem" icon={faCheck}></FontAwesomeIcon>
+                                        Okay, got it
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                {
+                    infoState == "moveRight" &&
+                    <div className="info-content-retainer">
+                        <div className="pop-up-info">
+                            <div className="info-content-block">
+                                <div className="pop-up-header">
+                                    <h2>moveRight</h2>
+                                    <button className="close-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="close-icon" icon={faClose}></FontAwesomeIcon>
+                                    </button>
+                                </div>
+
+                                <hr/>
+
+                                <div className="info-content">
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <h2>Nothing to see here yet</h2>
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <button className="action-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="btn-emblem" icon={faCheck}></FontAwesomeIcon>
+                                        Okay, got it
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                {
+                    infoState == "rotLeft" &&
+                    <div className="info-content-retainer">
+                        <div className="pop-up-info">
+                            <div className="info-content-block">
+                                <div className="pop-up-header">
+                                    <h2>rotLeft</h2>
+                                    <button className="close-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="close-icon" icon={faClose}></FontAwesomeIcon>
+                                    </button>
+                                </div>
+
+                                <hr/>
+
+                                <div className="info-content">
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <h2>Nothing to see here yet</h2>
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <button className="action-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="btn-emblem" icon={faCheck}></FontAwesomeIcon>
+                                        Okay, got it
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                {
+                    infoState == "rotRight" &&
+                    <div className="info-content-retainer">
+                        <div className="pop-up-info">
+                            <div className="info-content-block">
+                                <div className="pop-up-header">
+                                    <h2>rotRight</h2>
+                                    <button className="close-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="close-icon" icon={faClose}></FontAwesomeIcon>
+                                    </button>
+                                </div>
+
+                                <hr/>
+
+                                <div className="info-content">
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <h2>Nothing to see here yet</h2>
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <button className="action-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="btn-emblem" icon={faCheck}></FontAwesomeIcon>
+                                        Okay, got it
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                {
+                    infoState == "getId" &&
+                    <div className="info-content-retainer">
+                        <div className="pop-up-info">
+                            <div className="info-content-block">
+                                <div className="pop-up-header">
+                                    <h2>getId</h2>
+                                    <button className="close-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="close-icon" icon={faClose}></FontAwesomeIcon>
+                                    </button>
+                                </div>
+
+                                <hr/>
+
+                                <div className="info-content">
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <h2>Nothing to see here yet</h2>
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <button className="action-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="btn-emblem" icon={faCheck}></FontAwesomeIcon>
+                                        Okay, got it
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                {
+                    infoState == "reset" &&
+                    <div className="info-content-retainer">
+                        <div className="pop-up-info">
+                            <div className="info-content-block">
+                                <div className="pop-up-header">
+                                    <h2>reset</h2>
+                                    <button className="close-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="close-icon" icon={faClose}></FontAwesomeIcon>
+                                    </button>
+                                </div>
+
+                                <hr/>
+
+                                <div className="info-content">
+                                    <p>
+
+                                    </p>
+
+                                    <hr/>
+
+                                    <h2>Nothing to see here yet</h2>
+                                    <p>
+
                                     </p>
 
                                     <hr/>

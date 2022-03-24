@@ -70,7 +70,7 @@ export default function Docs() {
                         <p>Further important is the usage of a unique (custom) gameID. It is recommended following the logics of the <a href="./docs">provided template</a>, which assigns each started game of yours to an unique ID.</p>
                         <p>As soon as you are able to get an insight in your gameID, you will be able to observe the requests visually, that are send to the server. For that, you will need to append the gameID to the originated server in your browser manually as following:</p>
                         <p className='code-field'>https://tetris-em.vercel.app?<span className='syntax parameter'>gameID</span>=<span className='syntax request'>id</span></p>
-                        <p>If you fetched an ID from the server via parameter <a className="tag" href="./docs">gameID</a>, you can i.e. print your ID to further manual usage.</p>
+                        <p>If you have fetched an ID from the server via the parameter <a className="tag" href="./docs">gameID</a>, you can i.e. print your ID to further manual usage.</p>
                         <p>This method is usually accompanied by a very high latency if the server is accessed by several clients at the same time. Accordingly, it is not suitable for training an AI.</p>
 
                         <br/>

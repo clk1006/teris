@@ -108,10 +108,12 @@ b {
     margin: 4px 4px 12px 0;
     padding: 4px;
 
-    user-select: text;
-
     color: rgb(var(--primary-color));
     background-color: rgba(var(--primary-color), var(--alpha-1));
+
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    font-size: 18px;
 
     border-radius: 3px;
 }
@@ -211,6 +213,14 @@ hr {
 
 .syntax.request {
     color: rgb(128, 161, 193);
+}
+
+.ms-marker {
+    color: rgb(var(--text-color-050));
+
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+    font-size: 18px;
 }
 
 .pop-up-header {

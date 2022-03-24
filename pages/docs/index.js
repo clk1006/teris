@@ -73,7 +73,7 @@ export default function Docs() {
                             <a href="./docs/docs">
                                 <div className="reference-box">
                                     <FontAwesomeIcon className="ref-box-icon" icon={faQuestion}></FontAwesomeIcon>
-                                    <h2>What does this project provide?</h2>
+                                    <h2>What does our tetris-API provide?</h2>
                                     <p>Here you will be redirected to the documentation, where all available parameters of the API are listed and explained.</p>
                                 </div>
                             </a>
@@ -104,7 +104,7 @@ export default function Docs() {
                                 <div className="reference-box">
                                     <FontAwesomeIcon className="ref-box-icon" icon={faAnchor}></FontAwesomeIcon>
                                     <h2>How can I &#39;hook up&#39; my own Algorithm/AI with the server to remotely control a custom game?</h2>
-                                    <p>Here you will find a small comprehensive guide to &#39;hook up&#39; your Algorithm/AI and watch it playing.</p>
+                                    <p>Here you will find a guide to &#39;hook up&#39; your Algorithm/AI and watch it playing.</p>
                                 </div>
                             </a>
                         </div>
