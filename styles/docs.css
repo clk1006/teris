@@ -16,7 +16,7 @@ b {
 }
 
 .content-block {
-    width: 50%;
+    width: 55%;
 
     padding: 32px;
 
@@ -69,7 +69,7 @@ b {
 .info-content-block {
     position: absolute;
 
-    width: 50%;
+    width: 55%;
 
     padding: 32px;
 
@@ -161,7 +161,7 @@ hr {
 }
 
 .reference-box {
-    max-width: 20vw;
+    max-width: 22vw;
 
     margin: 24px 18px;
     padding: 24px;
@@ -249,20 +249,16 @@ hr {
 
 @media only screen and (max-width: 992px) {
     .content-block {
-        width: 75%;
+        width: 80%;
     }
 
     .reference-box {
-        max-width: 25vw;
+        max-width: initial;
     }
 }
 
 @media only screen and (max-width: 768px) {
     .content-block {
-        width: 90%;
-    }
-
-    .reference-box {
-        max-width: initial;
+        width: 95%;
     }
 }

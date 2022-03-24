@@ -65,11 +65,12 @@ export default function Docs() {
                         <hr/>
 
                         <h2>1. Let your program play via the server that provides the API</h2>
-                        <p>If you want to hook up your project with the server that provides the API, you will need to send the requests to the originated server. The current URL to that server is:</p>
+                        <p>If you want to hook up your project with the server providing the API, you will need to send the requests to the originated server. The current URL to our server is:</p>
                         <p className='code-field'>https://tetris-em.vercel.app</p>
-                        <p>Further important is that you use a custom gameID that is unique. It is recommended that you follow the logics of the template, so that each started game of yours is assigned a unique ID. The assigned ID will need to be printed in order to access the gameID manually.</p>
+                        <p>Further important is the usage of a unique (custom) gameID. It is recommended following the logics of the <a href="./docs">provided template</a>, which assigns each started game of yours to an unique ID.</p>
                         <p>As soon as you are able to get an insight in your gameID, you will be able to observe the requests visually, that are send to the server. For that, you will need to append the gameID to the originated server in your browser manually as following:</p>
                         <p className='code-field'>https://tetris-em.vercel.app?<span className='syntax parameter'>gameID</span>=<span className='syntax request'>id</span></p>
+                        <p>If you fetched an ID from the server via parameter <span className="tag" href="./docs/docs">gameID</span>, you can i.e. print your ID to further manual usage.</p>
                     
                         <br/>
                         <h2>2. Host your own server to reduce latency</h2>
