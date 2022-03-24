@@ -69,7 +69,7 @@ export default function Docs() {
                         <p className='code-field'>https://tetris-em.vercel.app</p>
                         <p>Further important is that you use a custom gameID that is unique. It is recommended that you follow the logics of the template, so that each started game of yours is assigned a unique ID. The assigned ID will need to be printed in order to access the gameID manually.</p>
                         <p>As soon as you are able to get an insight in your gameID, you will be able to observe the requests visually, that are send to the server. For that, you will need to append the gameID to the originated server in your browser manually as following:</p>
-                        <p className='code-field'>https://tetris-em.vercel.app?<span className='syntax parameter'>gameID=</span><span className='syntax request'>id</span></p>
+                        <p className='code-field'>https://tetris-em.vercel.app?<span className='syntax parameter'>gameID</span>=<span className='syntax request'>id</span></p>
                     </div>
                 </div>
             </main>
