@@ -8,7 +8,8 @@ import {
     faCodeBranch,
     faEllipsis,
     faExternalLink,
-    faExternalLinkSquare, faQuestion
+    faExternalLinkSquare, faQuestion,
+    faAnchor
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Docs() {
@@ -85,6 +86,22 @@ export default function Docs() {
                                     <p>We found it appropriate to use Python (i.e. in <a
                                         href="https://colab.research.google.com/" target="_blank" rel="noreferrer">Google Colab <FontAwesomeIcon
                                         size="xs" icon={faExternalLink}/></a>) for such a project. For this, we have prepared a template to help you get started.</p>
+                                </div>
+                            </a>
+
+                            <a href="../">
+                                <div className="reference-box">
+                                    <FontAwesomeIcon className="ref-box-icon" icon={faCirclePlay}></FontAwesomeIcon>
+                                    <h2>How can I play the front-end version via client?</h2>
+                                    <p>Click here to get redirected to the index page, on which you can play the front-end version of our game.</p>
+                                </div>
+                            </a>
+
+                            <a href="">
+                                <div className="reference-box">
+                                    <FontAwesomeIcon className="ref-box-icon" icon={faAnchor}></FontAwesomeIcon>
+                                    <h2>How can I 'hook up' my own Algorithm/AI with the server to observe it playing?</h2>
+                                    <p>Here you will find a small comprehensive guide to 'hook up' your Algorithm/AI and watch it playing.</p>
                                 </div>
                             </a>
                         </div>
