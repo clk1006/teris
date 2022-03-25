@@ -3,6 +3,7 @@ import styles from '../../styles/Home.module.css';
 import { useState } from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
+    faAngleLeft,
     faBook, faCheck,
     faCirclePlay,
     faClose,
@@ -27,6 +28,9 @@ export default function Docs() {
 
             <main className={styles.main}>
                 <div className={`nav-bar ${isActive ? "" : "active"}`}>
+                    <a href=".." className="menu-icon">
+                        <FontAwesomeIcon className="icon" icon={faAngleLeft}/>
+                    </a>
                     <div className="menu-icon" onClick={handleToggle}>
                         <FontAwesomeIcon className="icon" icon={faEllipsis}/>
                     </div>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="removed (redundant) styling and fixed margin">
+    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/docs/docs.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/docs/docs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/docs.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/docs.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/docs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/docs/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +13,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -520,7 +528,8 @@
       <workItem from="1647026027495" duration="8000" />
       <workItem from="1647969297418" duration="18034000" />
       <workItem from="1648058091999" duration="1408000" />
-      <workItem from="1648137408075" duration="7057000" />
+      <workItem from="1648137408075" duration="8251000" />
+      <workItem from="1648167144347" duration="164000" />
     </task>
     <task id="LOCAL-00001" summary="added .idea to .gitignore">
       <created>1645738289275</created>
@@ -816,7 +825,21 @@
       <option name="project" value="LOCAL" />
       <updated>1648163002112</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="removed (redundant) styling">
+      <created>1648163847016</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1648163847016</updated>
+    </task>
+    <task id="LOCAL-00044" summary="enhanced responsiveness...">
+      <created>1648164165988</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1648164165988</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -903,8 +926,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adjusted text color scheme" />
-    <MESSAGE value="button coloring adjustments" />
     <MESSAGE value="fixed styling redundancy" />
     <MESSAGE value="flipped dark mode text hierarchy" />
     <MESSAGE value="adjusted icon colors again" />
@@ -928,7 +949,9 @@
     <MESSAGE value="extended documentation, made styling more intuitive" />
     <MESSAGE value="made styling even more intuitive" />
     <MESSAGE value="removed redundant styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed redundant styling" />
+    <MESSAGE value="removed (redundant) styling" />
+    <MESSAGE value="enhanced responsiveness..." />
+    <option name="LAST_COMMIT_MESSAGE" value="enhanced responsiveness..." />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

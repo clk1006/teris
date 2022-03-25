@@ -9,7 +9,7 @@ import {
     faEllipsis,
     faExternalLink,
     faExternalLinkSquare, faQuestion,
-    faAnchor, faPlay
+    faAnchor, faPlay, faAngleLeft
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Docs() {
@@ -27,6 +27,9 @@ export default function Docs() {
 
             <main className={styles.main}>
                 <div className={`nav-bar ${isActive ? "" : "active"}`}>
+                    <a href=".." className="menu-icon">
+                        <FontAwesomeIcon className="icon" icon={faAngleLeft}/>
+                    </a>
                     <div className="menu-icon" onClick={handleToggle}>
                         <FontAwesomeIcon className="icon" icon={faEllipsis}/>
                     </div>
