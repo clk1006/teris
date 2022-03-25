@@ -27,7 +27,7 @@ export default function Docs() {
 
             <main className={styles.main}>
                 <div className={`nav-bar ${isActive ? "" : "active"}`}>
-                    <a href=".." className="menu-icon">
+                    <a href="." className="menu-icon">
                         <FontAwesomeIcon className="icon" icon={faAngleLeft}/>
                     </a>
                     <div className="menu-icon" onClick={handleToggle}>
