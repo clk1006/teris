@@ -28,12 +28,15 @@ export default function Docs() {
 
             <main className={styles.main}>
                 <div className={`nav-bar ${isActive ? "" : "active"}`}>
-                    <a href="." className="menu-icon">
-                        <FontAwesomeIcon className="icon" icon={faAngleLeft}/>
-                    </a>
-                    <div className="menu-icon" onClick={handleToggle}>
-                        <FontAwesomeIcon className="icon" icon={faEllipsis}/>
+                    <div className="menu-icons">
+                        <a href="." className="menu-icon nav-back">
+                            <FontAwesomeIcon className="icon" icon={faAngleLeft}/>
+                        </a>
+                        <div className="menu-icon" onClick={handleToggle}>
+                            <FontAwesomeIcon className="icon" icon={faEllipsis}/>
+                        </div>
                     </div>
+
                     <div className="menu-opts">
                         <a className="opt-link" href="https://github.com/clk1006/tetris" target="_blank"
                            rel="noreferrer">

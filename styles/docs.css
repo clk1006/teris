@@ -266,3 +266,12 @@ hr {
         width: 95%;
     }
 }
+
+.menu-icons {
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-back {
+    margin-right: 6px;
+}
