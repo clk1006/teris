@@ -81,7 +81,7 @@ export default function Docs() {
 
                         <br/>
                         <h2>2. Host your own server to reduce latency</h2>
-                        <p>In order to create your own instance of the server you'll need to have <a href="https://www.docker.com/"
+                        <p>In order to create your own instance of the server you&#39;ll need to have <a href="https://www.docker.com/"
                                target="_blank" className="text-link" rel="noreferrer">Docker <FontAwesomeIcon
                                size="xs"
                                icon={faExternalLink}/>

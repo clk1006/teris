@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="">
+    <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="fixed unicode">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/docs/docs.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/docs/docs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/docs/visualize.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/docs/visualize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/docs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/docs/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -531,28 +530,7 @@
       <workItem from="1648137408075" duration="8251000" />
       <workItem from="1648167144347" duration="946000" />
       <workItem from="1648224503545" duration="596000" />
-      <workItem from="1648479770894" duration="10319000" />
-    </task>
-    <task id="LOCAL-00007" summary="edited .gitignore">
-      <created>1645927358498</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1645927358498</updated>
-    </task>
-    <task id="LOCAL-00008" summary="normal user-select in docs code field">
-      <created>1645927564665</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1645927564665</updated>
-    </task>
-    <task id="LOCAL-00009" summary="text user-select in docs code field">
-      <created>1645927745655</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1645927745655</updated>
+      <workItem from="1648479770894" duration="11371000" />
     </task>
     <task id="LOCAL-00010" summary=".gitignore">
       <created>1645963910105</created>
@@ -876,7 +854,28 @@
       <option name="project" value="LOCAL" />
       <updated>1648489571529</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="fixed unicode">
+      <created>1648490214246</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1648490214246</updated>
+    </task>
+    <task id="LOCAL-00057" summary="added link and changed highlighting">
+      <created>1648490712820</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1648490712820</updated>
+    </task>
+    <task id="LOCAL-00058" summary="media width change">
+      <created>1648490891569</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1648490891569</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -963,9 +962,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed font mistake" />
-    <MESSAGE value="corrected texts and style" />
-    <MESSAGE value="fixed link" />
     <MESSAGE value="fixed link styling" />
     <MESSAGE value="hopefully fixed link" />
     <MESSAGE value="should have fixed a bunch of links" />
@@ -988,7 +984,10 @@
     <MESSAGE value="changed chars" />
     <MESSAGE value="should have finished the documentation" />
     <MESSAGE value="typo fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="typo fix" />
+    <MESSAGE value="fixed unicode" />
+    <MESSAGE value="added link and changed highlighting" />
+    <MESSAGE value="media width change" />
+    <option name="LAST_COMMIT_MESSAGE" value="media width change" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
