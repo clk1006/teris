@@ -108,7 +108,7 @@ export default function Docs() {
                             </li>
                             <li>
                                 <p><a className="hl">type</a>
-                                    The parameter "type" fundamentally refers to the game field and its elements, namely
+                                    The parameter <span className="ms-marker">type</span> fundamentally refers to the game field and its elements, namely
                                     <ul>
                                         <li>
                                             <p><b>the current block</b> to be moved and rotated</p>
@@ -666,7 +666,7 @@ export default function Docs() {
                                     <h2>Example</h2>
                                     <p className="code-field">
                                         def getGameID(url):<br/>
-                                        &#12288;gameID = requests.get(url + "type=getId").text<br/>
+                                        &#12288;gameID = requests.get(url + &#34;type=getId&#34;).text<br/>
                                         &#12288;return gameID
                                     </p>
 

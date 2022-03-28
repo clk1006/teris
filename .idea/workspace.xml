@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/docs/docs.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/docs/docs.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -530,14 +529,7 @@
       <workItem from="1648137408075" duration="8251000" />
       <workItem from="1648167144347" duration="946000" />
       <workItem from="1648224503545" duration="596000" />
-      <workItem from="1648479770894" duration="5287000" />
-    </task>
-    <task id="LOCAL-00002" summary="cleaned up code">
-      <created>1645742837380</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1645742837380</updated>
+      <workItem from="1648479770894" duration="5580000" />
     </task>
     <task id="LOCAL-00003" summary="testing number formats">
       <created>1645827833627</created>
@@ -875,7 +867,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648484772447</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="changed char to unicode">
+      <created>1648485141989</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1648485141989</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -962,7 +961,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="restructured docs and added python template" />
     <MESSAGE value="typos" />
     <MESSAGE value="another typo adjustment" />
     <MESSAGE value="bug fixes, probably hardcoded a few more in and extended the documentation" />
@@ -987,7 +985,8 @@
     <MESSAGE value="adjusted styling and extended docs" />
     <MESSAGE value="reverted theme attempts" />
     <MESSAGE value="changed reference container alignments" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed reference container alignments" />
+    <MESSAGE value="changed char to unicode" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed char to unicode" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
