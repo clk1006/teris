@@ -61,7 +61,7 @@ export default function Docs() {
 
                 <div className="container">
                     <div className="content-block visualization-guide">
-                        <h1>How can I 'hook up' my own Algorithm/AI with the server to remotely control a custom game?</h1>
+                        <h1>How can I &#39;hook up&#39; my own Algorithm/AI with the server to remotely control a custom game?</h1>
 
                         <hr/>
 

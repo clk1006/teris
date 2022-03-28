@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1219354d-dbed-4ba4-a2ac-5c0b632f83b9" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/docs/docs.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/docs/docs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/docs/visualize.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/docs/visualize.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -529,35 +531,7 @@
       <workItem from="1648137408075" duration="8251000" />
       <workItem from="1648167144347" duration="946000" />
       <workItem from="1648224503545" duration="596000" />
-      <workItem from="1648479770894" duration="5580000" />
-    </task>
-    <task id="LOCAL-00003" summary="testing number formats">
-      <created>1645827833627</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1645827833627</updated>
-    </task>
-    <task id="LOCAL-00004" summary="score formatting: language sensitive representation of numbers">
-      <created>1645828724028</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1645828724028</updated>
-    </task>
-    <task id="LOCAL-00005" summary="added dots to score formatting">
-      <created>1645906152518</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1645906152518</updated>
-    </task>
-    <task id="LOCAL-00006" summary="edited .gitignore and word-wrap">
-      <created>1645927277896</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1645927277896</updated>
+      <workItem from="1648479770894" duration="10319000" />
     </task>
     <task id="LOCAL-00007" summary="edited .gitignore">
       <created>1645927358498</created>
@@ -874,7 +848,35 @@
       <option name="project" value="LOCAL" />
       <updated>1648485141989</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="changed more chars to unicode">
+      <created>1648485427466</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1648485427466</updated>
+    </task>
+    <task id="LOCAL-00053" summary="changed chars">
+      <created>1648485751338</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1648485751338</updated>
+    </task>
+    <task id="LOCAL-00054" summary="should have finished the documentation">
+      <created>1648489512374</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1648489512374</updated>
+    </task>
+    <task id="LOCAL-00055" summary="typo fix">
+      <created>1648489571528</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1648489571529</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -961,10 +963,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="typos" />
-    <MESSAGE value="another typo adjustment" />
-    <MESSAGE value="bug fixes, probably hardcoded a few more in and extended the documentation" />
-    <MESSAGE value="fixed mistake" />
     <MESSAGE value="fixed font mistake" />
     <MESSAGE value="corrected texts and style" />
     <MESSAGE value="fixed link" />
@@ -986,7 +984,11 @@
     <MESSAGE value="reverted theme attempts" />
     <MESSAGE value="changed reference container alignments" />
     <MESSAGE value="changed char to unicode" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed char to unicode" />
+    <MESSAGE value="changed more chars to unicode" />
+    <MESSAGE value="changed chars" />
+    <MESSAGE value="should have finished the documentation" />
+    <MESSAGE value="typo fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="typo fix" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
