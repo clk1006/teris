@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useRef, useState, useEffect } from 'react'
+import {useEffect, useRef, useState} from 'react'
 import styles from '../styles/Home.module.css'
 import pic0 from '../public/tetris0.png'
 import pic1 from '../public/tetris1.png'
@@ -10,16 +10,8 @@ import pic4 from '../public/tetris4.png'
 import pic5 from '../public/tetris5.png'
 import pic6 from '../public/tetris6.png'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faBook,
-    faCirclePlay,
-    faCodeBranch,
-    faEllipsis,
-    faRedo,
-    faSun,
-    faMoon
-} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faBook, faCirclePlay, faCodeBranch, faEllipsis, faMoon, faRedo, faSun} from '@fortawesome/free-solid-svg-icons'
 
 import getShape from "../lib/getShape"
 
@@ -275,30 +267,26 @@ export default function Home() {
             if (data.current.pos > 0) {
                 data.current.pos--
             }
-        }
-        else if (kc == 68 || kc == 39) {
+        } else if (kc == 68 || kc == 39) {
             let shape = getShape(data.current);
             if (data.current.pos + shape[0].length < 10) {
                 data.current.pos++
             }
-        }
-        else if (kc == 81) {
+        } else if (kc == 81) {
             data.current.rot = (data.current.rot + 3) % 4;
             shape = getShape(data.current);
 
             while (data.current.pos + shape[0].length > 10) {
                 data.current.pos--
             }
-        }
-        else if (kc == 69) {
+        } else if (kc == 69) {
             data.current.rot = (data.current.rot + 1) % 4;
             shape = getShape(data.current);
 
             while (data.current.pos + shape[0].length > 10) {
                 data.current.pos--
             }
-        }
-        else if (kc == 83 || kc == 40) {
+        } else if (kc == 83 || kc == 40) {
             let dropRes = dropBlock(data.current, data.tiles);
             if (dropRes[0]) {
                 let state = updateState(data.score, dropRes[1]);
@@ -316,18 +304,17 @@ export default function Home() {
                     data.seq = shuffle([0, 1, 2, 3, 4, 5, 6])
                 }
 
-            }
-            else {
+            } else {
                 setGameState(2);
                 data.state = 1
             }
         }
         setReRender(reRender + 1)
-        
+
     };
 
     useEffect(() => {
-        if(gameState == 1) {
+        if (gameState == 1) {
             window.addEventListener('keydown', handleKeyDown);
             return () => {
                 window.removeEventListener('keydown', handleKeyDown);

@@ -3,13 +3,16 @@ import styles from '../../styles/Home.module.css';
 import {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
+    faAnchor,
+    faAngleLeft,
     faBook,
-    faCirclePlay, faCode,
+    faCirclePlay,
+    faCode,
     faCodeBranch,
     faEllipsis,
     faExternalLink,
-    faExternalLinkSquare, faQuestion,
-    faAnchor, faPlay, faAngleLeft
+    faPlay,
+    faQuestion
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Docs() {
@@ -79,8 +82,9 @@ export default function Docs() {
                             <a href="./docs/docs">
                                 <div className="reference-box">
                                     <FontAwesomeIcon className="ref-box-icon" icon={faQuestion}></FontAwesomeIcon>
-                                    <h2>What does our tetris-API provide?</h2>
-                                    <p>Here you will be redirected to the documentation, where all available parameters of the API are listed and explained.</p>
+                                    <h2>What does this API provide?</h2>
+                                    <p>Get redirected to the documentation, in which all available parameters of the API
+                                        are listed and explained.</p>
                                 </div>
                             </a>
 
@@ -88,29 +92,35 @@ export default function Docs() {
                                target="_blank" rel="noreferrer">
                                 <div className="reference-box">
                                     <FontAwesomeIcon className="ref-box-icon" icon={faCode}></FontAwesomeIcon>
-                                    <h2>How can I use the given API to create my own AI/algorithm?</h2>
+                                    <h2>How can I use the API to create my own AI/algorithm? <FontAwesomeIcon
+                                        size="xs"
+                                        icon={faExternalLink}/></h2>
                                     <p>We found it appropriate to use Python (i.e. in <a
                                         href="https://colab.research.google.com/"
                                         target="_blank"
                                         rel="noreferrer"
                                         className="text-link">Google Colab <FontAwesomeIcon
-                                        size="xs" icon={faExternalLink}/></a>) for such a project. For this, we have prepared a template to help you get started.</p>
+                                        size="xs" icon={faExternalLink}/></a>) for such a project. For this, click to
+                                        get redirected to a prepared template to help you get started.</p>
                                 </div>
                             </a>
 
                             <a href="../">
                                 <div className="reference-box">
                                     <FontAwesomeIcon className="ref-box-icon" icon={faPlay}></FontAwesomeIcon>
-                                    <h2>How can I play the front-end version via client?</h2>
-                                    <p>Click here to get redirected to the index page, on which you can play the front-end version of our game.</p>
+                                    <h2>How can I play the front-end version via client in browser?</h2>
+                                    <p>Click here to get redirected to the index page, on which you can play the
+                                        front-end version of our game.</p>
                                 </div>
                             </a>
 
                             <a href="./docs/visualize">
                                 <div className="reference-box">
                                     <FontAwesomeIcon className="ref-box-icon" icon={faAnchor}></FontAwesomeIcon>
-                                    <h2>How can I &#39;hook up&#39; my own Algorithm/AI with the server to remotely control a custom game?</h2>
-                                    <p>Here you will find a guide to &#39;hook up&#39; your Algorithm/AI and watch it playing.</p>
+                                    <h2>How can I &#39;hook up&#39; my own Algorithm/AI with the server to remotely
+                                        control a custom game?</h2>
+                                    <p>Here you will find a guide to access a (or the main) server instance for your
+                                        Algorithm/AI.</p>
                                 </div>
                             </a>
                         </div>

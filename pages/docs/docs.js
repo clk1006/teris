@@ -1,14 +1,15 @@
 import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
-import { useState } from 'react';
+import {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     faAngleLeft,
-    faBook, faCheck,
+    faBook,
+    faCheck,
     faCirclePlay,
     faClose,
     faCodeBranch,
-    faEllipsis, faExternalLink, faLink
+    faEllipsis
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Docs() {
@@ -67,17 +68,23 @@ export default function Docs() {
                         <hr/>
 
                         <h2>Usage structure</h2>
-                        <p>The general URL-format is important for us, because the API is accessed via the server. Hence, the idea behind this as a foundation for the creation of an AI/algorithm should first be briefly brought in the foreground.</p>
+                        <p>The general URL-format is important, because the API is accessed via the server.</p>
                         <p>General URL-structure:</p>
                         <p className="code-field">
-                            https://www.domain.com/url?<span className="syntax parameter">parameter</span>=<span className="syntax request">value</span>&<span className="syntax parameter">parameter2</span>=<span className="syntax request">value2</span>&<span className="syntax parameter">...</span>=<span className="syntax request">...</span>
+                            https://www.domain.com/url?<span className="syntax parameter">parameter</span>=<span
+                            className="syntax request">value</span>&<span className="syntax parameter">parameter2</span>=<span
+                            className="syntax request">value2</span>&<span className="syntax parameter">...</span>=<span
+                            className="syntax request">...</span>
                         </p>
-                        <p>Example usage:</p>
+                        <p>Example</p>
                         <p className="code-field">
-                            https://tetris-em.vercel.app/api/api?<span className="syntax parameter">type</span>=<span className="syntax request">getState</span>
+                            https://tetris-em.vercel.app/api/api?<span className="syntax parameter">type</span>=<span
+                            className="syntax request">getState</span>
                         </p>
                         <p className="code-field">
-                            https://tetris-em.vercel.app/api/api?<span className="syntax parameter">type</span>=<span className="syntax request">moveLeft</span>&<span className="syntax parameter">type</span>=<span className="syntax request">endTurn</span>
+                            https://tetris-em.vercel.app/api/api?<span className="syntax parameter">type</span>=<span
+                            className="syntax request">moveLeft</span>&<span
+                            className="syntax parameter">type</span>=<span className="syntax request">endTurn</span>
                         </p>
                         <p>Current main server:</p>
                         <p>To access the API, you will need to use this current link as your origin.</p>
@@ -88,44 +95,67 @@ export default function Docs() {
                         <hr/>
 
                         <h2>Parameters</h2>
-                        <p>The parameters are called via the given URL-origin and provide extensive control over the gameplay and the necessary information for querying.</p>
+                        <p>The parameters are called via the given URL-origin. Following are the given ones that you can
+                            work with.</p>
                         <ul>
                             <li>
                                 <p><span className="hl">gameId</span>
-
-                                </p>
-                            </li>
-                            <li>
-                                <p><span className="hl">seed</span>
-
+                                    outputs the game field corresponding to the id entered as value, if a corresponding
+                                    one is available.
+                                    If an entered ID is not available, a game with the same id is created. If the
+                                    request is passed without a (valid) value, the status code 404 is returned.
                                 </p>
                             </li>
                             <li>
                                 <p><a className="hl">type</a>
+                                    The parameter "type" fundamentally refers to the game field and its elements, namely
+                                    <ul>
+                                        <li>
+                                            <p><b>the current block</b> to be moved and rotated</p>
+                                        </li>
+                                        <li>
+                                            <p><b>the next block</b> the game continues with after ending the current
+                                                turn with <span className="tag" onClick={
+                                                    _ => {
+                                                        setInfoState("endTurn")
+                                                    }
+                                                }>endTurn</span></p>
+                                        </li>
+                                        <li>
+                                            <p><b>the game field</b> containing all tiles in order from bottom left to
+                                                top right. (See <span className="tag" onClick={_ => {
+                                                    setInfoState("getState")
+                                                }
+                                                }>getState</span><span className="ms-marker">'s tiles</span> to get more
+                                                information)</p>
+                                        </li>
+                                    </ul>
                                     This parameter accepts the following parameters listed:
                                 </p>
 
                                 <ul>
                                     <li>
                                         <p>
-                                            <span className="tag" onClick = {_ => {
-                                                    setInfoState("getState")
-                                                }
-                                            }>getState</span>returns a list in JSON format containing the objects that provide the properties of the game.
+                                            <span className="tag" onClick={_ => {
+                                                setInfoState("getState")
+                                            }
+                                            }>getState</span>returns a list in JSON format containing the objects that
+                                            provide the properties of the game.
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag" onClick = {
+                                            <span className="tag" onClick={
                                                 _ => {
                                                     setInfoState("endTurn")
                                                 }
-                                            }>endTurn</span>drops the current block with given properties at the last position and draws the new block with the default properties.
+                                            }>endTurn</span>drops the current block with given properties at the last
+                                            position and draws the new block with the default properties.
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag" onClick = {
+                                            <span className="tag" onClick={
                                                 _ => {
                                                     setInfoState("moveLeft")
                                                 }
@@ -134,7 +164,7 @@ export default function Docs() {
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag" onClick = {
+                                            <span className="tag" onClick={
                                                 _ => {
                                                     setInfoState("moveRight")
                                                 }
@@ -143,38 +173,42 @@ export default function Docs() {
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag" onClick = {
+                                            <span className="tag" onClick={
                                                 _ => {
                                                     setInfoState("rotLeft")
                                                 }
-                                            }>rotLeft</span>rotates the current block by one negative unit (to the left).
+                                            }>rotLeft</span>rotates the current block by one negative unit (to the
+                                            left).
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag" onClick = {
+                                            <span className="tag" onClick={
                                                 _ => {
                                                     setInfoState("rotRight")
                                                 }
-                                            }>rotRight</span>rotates the current block by one positive unit (to the right).
+                                            }>rotRight</span>rotates the current block by one positive unit (to the
+                                            right).
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag" onClick = {
+                                            <span className="tag" onClick={
                                                 _ => {
                                                     setInfoState("getId")
                                                 }
-                                            }>getId</span>returns the current gameId or initiates a new game by a new ID.
+                                            }>getId</span>returns the current gameId or initiates a new game by a new
+                                            ID.
                                         </p>
                                     </li>
                                     <li>
                                         <p>
-                                            <span className="tag" onClick = {
+                                            <span className="tag" onClick={
                                                 _ => {
                                                     setInfoState("reset")
                                                 }
-                                            }>reset</span>resets all previously modified properties to the storage basis.
+                                            }>reset</span>resets all previously modified properties to the storage
+                                            basis.
                                         </p>
                                     </li>
                                 </ul>
@@ -201,32 +235,43 @@ export default function Docs() {
 
                                 <div className="info-content">
                                     <p>
-                                        <span className="ms-marker">getState</span> returns a list in JSON format containing the 5 relevant objects concatenated by following order:
+                                        <span className="ms-marker">getState</span> returns a list in JSON format
+                                        containing the 5 relevant objects concatenated by following order:
                                         <ul>
                                             <li>
-                                                <span className="ms-marker">score</span> contains the current score value as an <b>int</b>.
+                                                <span className="ms-marker">score</span> contains the current score
+                                                value as an <b>int</b>.
                                             </li>
 
                                             <li>
-                                                <span className="ms-marker">tiles</span> contains an <b>Array</b> including all tiles in order from bottom left to top right.
-                                                On the screen of the tetris app, the list will be depicted according to this sequence, wrapping each row of 10 elements ascending vertically (bottom-top).
+                                                <span className="ms-marker">tiles</span> contains
+                                                an <b>Array</b> including all tiles in order from bottom left to top
+                                                right.
+                                                On the screen of the tetris app, the list will be depicted according to
+                                                this sequence, wrapping each row of 10 elements ascending vertically
+                                                (bottom-top).
                                                 There are <b>2 cases</b>, which are to be considered:
                                                 <ul>
                                                     <li>
-                                                        value: <span className="ms-marker">0</span>, which indicates a non-occupied tile.
+                                                        value: <span className="ms-marker">0</span>, which indicates a
+                                                        non-occupied tile.
                                                     </li>
                                                     <li>
-                                                        value: <span className="ms-marker">id</span>, which indicates an occupied tile with a custom id that stands for a group of tiles forming a block.
+                                                        value: <span className="ms-marker">id</span>, which indicates an
+                                                        occupied tile with a custom id that stands for a group of tiles
+                                                        forming a block.
                                                     </li>
                                                 </ul>
                                             </li>
 
                                             <li>
-                                                <span className="ms-marker">current</span> returns the currently moved block as an <b>object</b> with the following properties:
+                                                <span className="ms-marker">current</span> returns the currently moved
+                                                block as an <b>object</b> with the following properties:
                                                 <br/>
                                                 <ul>
                                                     <li>
-                                                        <span className="ms-marker">type</span> that includes either one of the following block-types:
+                                                        <span className="ms-marker">type</span> that includes either one
+                                                        of the following block-types:
                                                         <ul>
                                                             <li>
                                                                 id: <span className="ms-marker">0</span>
@@ -292,13 +337,18 @@ export default function Docs() {
                                                         </ul>
                                                     </li>
                                                     <li>
-                                                        <span className="ms-marker">pos</span> indicates the position of the current block by reference of the left edge.
+                                                        <span className="ms-marker">pos</span> indicates the position of
+                                                        the current block by reference of the left edge.
                                                     </li>
                                                     <li>
-                                                        <span className="ms-marker">rot</span> indicates the rotation value, which is 0 in its initial position. There are 4 rotation states <b>[0, 1, 2, 3]</b>.
+                                                        <span className="ms-marker">rot</span> indicates the rotation
+                                                        value, which is 0 in its initial position. There are 4 rotation
+                                                        states <b>[0, 1, 2, 3]</b>.
                                                     </li>
                                                     <li>
-                                                        <span className="ms-marker">movesLeft</span> indicates how often single operations can still be performed with the current block (that includes changes in position and rotation).
+                                                        <span className="ms-marker">movesLeft</span> indicates how often
+                                                        single operations can still be performed with the current block
+                                                        (that includes changes in position and rotation).
                                                     </li>
                                                 </ul>
                                             </li>
@@ -308,25 +358,43 @@ export default function Docs() {
                                             </li>
 
                                             <li>
-                                                <span className="ms-marker">state</span>, contains a <b>Boolean</b> to display the current game status. In this case, <b>true</b> indicates a failed/finished game and <b>false</b> a game that is still ongoing.
+                                                <span className="ms-marker">state</span>, contains a <b>Boolean</b> to
+                                                display the current game status. In this case, <b>true</b> indicates a
+                                                failed/finished game and <b>false</b> a game that is still ongoing.
                                             </li>
                                         </ul>
                                     </p>
 
                                     <hr/>
 
-                                    <h2>Example usage</h2>
-                                    <p>With regard to <a href="./" className="text-link">the template provided</a>, the use of the parameter would look something like this:</p>
+                                    <h2>Usage and output</h2>
+                                    <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
+                                        of the parameter would look something like this:</p>
                                     <p className="code-field">
                                         ...<br/>
                                         tetrisServer = TetrisServer(urlOrigin)<br/>
                                         <br/>
-                                        print(tetrisServer.getState())<br/>
+                                        print(tetrisServer.getState())
                                     </p>
+
                                     <p>The getState request would print a list looking like the following:</p>
                                     <p className="code-field">
                                         &#47;&#47;Returns:
-                                        [0,[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],&#123;&#34;type&#34;:0,&#34;pos&#34;:4,&#34;rot&#34;:0,&#34;movesLeft&#34;:10&#125;,0,false]
+                                        [0,[0,0,0,...,0],&#123;&#34;type&#34;:0,&#34;pos&#34;:4,&#34;rot&#34;:0,&#34;movesLeft&#34;:10&#125;,0,false]
+                                    </p>
+
+                                    <p>The elements from the list can of course also be accesed individually like
+                                        this:</p>
+                                    <p className="code-field">
+                                        [score, tiles, current, next, gameStatus] = tetrisServer.getState()<br/>
+                                        ...<br/>
+                                        print(score)<br/>
+                                        <br/>
+                                        or<br/>
+                                        <br/>
+                                        state = tetrisServer.getState()<br/>
+                                        ...<br/>
+                                        print(state[i])
                                     </p>
 
                                     <hr/>
@@ -366,9 +434,16 @@ export default function Docs() {
 
                                     <hr/>
 
-                                    <h2>Nothing to see here yet</h2>
-                                    <p>
 
+                                    <h2>Example</h2>
+                                    <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
+                                        of the parameter would look something like this:</p>
+                                    <p className="code-field">
+                                        program logics...<br/>
+                                        tetrisServer.rotateLeft()<br/>
+                                        tetrisServer.moveRight()<br/>
+                                        <br/>
+                                        tetrisServer.endTurn()
                                     </p>
 
                                     <hr/>
@@ -408,9 +483,12 @@ export default function Docs() {
 
                                     <hr/>
 
-                                    <h2>Nothing to see here yet</h2>
-                                    <p>
-
+                                    <h2>Example</h2>
+                                    <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
+                                        of the parameter would look something like this:</p>
+                                    <p className="code-field">
+                                        program logics...<br/>
+                                        tetrisServer.moveLeft()
                                     </p>
 
                                     <hr/>
@@ -450,9 +528,12 @@ export default function Docs() {
 
                                     <hr/>
 
-                                    <h2>Nothing to see here yet</h2>
-                                    <p>
-
+                                    <h2>Example</h2>
+                                    <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
+                                        of the parameter would look something like this:</p>
+                                    <p className="code-field">
+                                        program logics...<br/>
+                                        tetrisServer.moveRight()
                                     </p>
 
                                     <hr/>
@@ -492,9 +573,13 @@ export default function Docs() {
 
                                     <hr/>
 
-                                    <h2>Nothing to see here yet</h2>
-                                    <p>
 
+                                    <h2>Example</h2>
+                                    <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
+                                        of the parameter would look something like this:</p>
+                                    <p className="code-field">
+                                        program logics...<br/>
+                                        tetrisServer.rotateLeft()
                                     </p>
 
                                     <hr/>
@@ -534,9 +619,13 @@ export default function Docs() {
 
                                     <hr/>
 
-                                    <h2>Nothing to see here yet</h2>
-                                    <p>
 
+                                    <h2>Example</h2>
+                                    <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
+                                        of the parameter would look something like this:</p>
+                                    <p className="code-field">
+                                        program logics...<br/>
+                                        tetrisServer.rotateRight()
                                     </p>
 
                                     <hr/>
@@ -570,22 +659,24 @@ export default function Docs() {
                                 <hr/>
 
                                 <div className="info-content">
-                                    <p>
+                                    <p></p>
 
+                                    <hr/>
+
+                                    <h2>Example</h2>
+                                    <p className="code-field">
+                                        def getGameID(url):<br/>
+                                        &#12288;gameID = requests.get(url + "type=getId").text<br/>
+                                        &#12288;return gameID
                                     </p>
 
                                     <hr/>
 
-                                    <h2>Nothing to see here yet</h2>
-                                    <p>
-
-                                    </p>
-
-                                    <hr/>
-
-                                    <button className="action-btn" onClick={(event) => {
-                                        setInfoState("");
-                                    }}>
+                                    <button className="action-btn"
+                                            onClick={(event) => {
+                                                setInfoState("");
+                                            }
+                                            }>
                                         <FontAwesomeIcon className="btn-emblem" icon={faCheck}></FontAwesomeIcon>
                                         Okay, got it
                                     </button>
@@ -613,14 +704,24 @@ export default function Docs() {
 
                                 <div className="info-content">
                                     <p>
-
+                                        <span className="ms-marker">reset</span> sets the game field corresponding to
+                                        the gameId back to default.
+                                        This includes all properties that can be queried via <span className="tag"
+                                                                                                   onClick={_ => {
+                                                                                                       setInfoState("getState")
+                                                                                                   }}
+                                    >getState</span>.
                                     </p>
 
                                     <hr/>
 
-                                    <h2>Nothing to see here yet</h2>
-                                    <p>
-
+                                    <h2>Example</h2>
+                                    <p className="code-field">
+                                        program logics...<br/>
+                                        <br/>
+                                        if (gameState == true):<br/>
+                                        &#12288;tetrisServer.reset()<br/>
+                                        &#12288;return value
                                     </p>
 
                                     <hr/>
