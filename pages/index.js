@@ -324,31 +324,6 @@ export default function Home() {
 
     let displayScore = data.score.toLocaleString();
 
-    useEffect(() => {
-        setTheme(window.matchMedia('(prefers-color-scheme: light)').matches
-            ? 'light'
-            : 'dark')
-    }, []);
-
-    const getCurrentTheme = () => {
-        localStorage.getItem('site.theme') ? theme =
-            localStorage.getItem('site.theme') : null;
-
-        return theme;
-    }
-
-    function loadTheme(theme) {
-        const root = document.querySelector(':root');
-
-        root.setAttribute('color-scheme', `${theme}`);
-    }
-
-    useEffect(() => {
-        window.addEventListener('DOMContentLoaded', () => {
-            loadTheme(getCurrentTheme());
-        });
-    }, []);
-
     return (
         <div className={styles.container}>
             <Head>
