@@ -101,7 +101,7 @@ export default function Docs() {
                                             target="_blank"
                                             rel="noreferrer"
                                             className="text-link">Google Colab <FontAwesomeIcon
-                                            size="xs" icon={faExternalLink}/></a>) for such a project. For this, click to
+                                            size="xs" icon={faExternalLink}/></a>) for such a project. Click here to
                                             get redirected to a prepared template to help you get started.</p>
                                     </div>
                                 </a>
@@ -112,7 +112,7 @@ export default function Docs() {
                                         <FontAwesomeIcon className="ref-box-icon" icon={faPlay}></FontAwesomeIcon>
                                         <h2>How can I play the front-end version via client in browser?</h2>
                                         <p>Click here to get redirected to the index page, on which you can play the
-                                            front-end version of our game.</p>
+                                            front-end version of the game.</p>
                                     </div>
                                 </a>
 
