@@ -9,7 +9,7 @@ import {
     faCirclePlay,
     faClose,
     faCodeBranch,
-    faEllipsis
+    faEllipsis, faExternalLink
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Docs() {
@@ -213,6 +213,12 @@ export default function Docs() {
                                 </ul>
                             </li>
                         </ul>
+                        <p>
+                            For further reference and insight you can check out the API via the <a href="https://github.com/clk1006/tetris/tree/main/"
+                                                                                                   className="text-link"
+                                                                                                   target="_blank" rel="noreferrer">GitHub Repo <FontAwesomeIcon
+                            size="xs" icon={faExternalLink}/></a>.
+                        </p>
                     </div>
                 </div>
 
@@ -448,7 +454,7 @@ export default function Docs() {
                                         For a tetris there are <b>no extra score units</b> yet.
                                     </p>
                                     <p>
-                                        A move is not legal if the block in its current position would <b>go beyond the last row</b>.
+                                        A move is <b>not legal</b> if the block in its current position would <b>go beyond the last row</b>.
                                     </p>
 
                                     <hr/>
