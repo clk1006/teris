@@ -160,7 +160,7 @@ hr {
 .reference-box {
     max-width: 22vw;
 
-    margin: 24px 18px;
+    margin: 18px 18px;
     padding: 24px;
 
     border-radius: 3px;
@@ -251,7 +251,7 @@ hr {
     width: 14px;
 }
 
-@media only screen and (max-width: 1080px) {
+@media only screen and (max-width: 1200px) {
     .content-block {
         width: 80%;
     }
