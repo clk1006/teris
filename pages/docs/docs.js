@@ -63,12 +63,12 @@ export default function Docs() {
 
                 <div className="container">
                     <div className="content-block">
-                        <h1>Documentation</h1>
+                        <h1>What does this API provide?</h1>
 
                         <hr/>
 
-                        <h2>Usage structure</h2>
-                        <p>The general URL-format is important, because the API is accessed via the server.</p>
+                        <h2>Introduction</h2>
+                        <p>The general URL-format is important, because the API is accessed via server.</p>
                         <p>General URL-structure:</p>
                         <p className="code-field">
                             https://www.domain.com/url?<span className="syntax parameter">parameter</span>=<span
@@ -100,8 +100,7 @@ export default function Docs() {
                         <ul>
                             <li>
                                 <p><span className="hl">gameId</span>
-                                    outputs the game field corresponding to the id entered as value, if a corresponding
-                                    one is available.
+                                    outputs the game field corresponding to the ID entered as a value, if one is available.
                                     If an entered ID is not available, a game with the same id is created. If the
                                     request is passed without a (valid) value, the status code 404 is returned.
                                 </p>
@@ -124,8 +123,8 @@ export default function Docs() {
                                         <li>
                                             <p><b>the game field</b> containing all tiles in order from bottom left to
                                                 top right. (See <span className="tag" onClick={_ => {
-                                                    setInfoState("getState")
-                                                }
+                                                        setInfoState("getState")
+                                                    }
                                                 }>getState</span><span className="ms-marker">&#39;s tiles</span> to get more
                                                 information)</p>
                                         </li>
@@ -137,8 +136,8 @@ export default function Docs() {
                                     <li>
                                         <p>
                                             <span className="tag" onClick={_ => {
-                                                setInfoState("getState")
-                                            }
+                                                    setInfoState("getState")
+                                                }
                                             }>getState</span>returns a list in JSON format containing the objects that
                                             provide the properties of the game.
                                         </p>
@@ -348,7 +347,7 @@ export default function Docs() {
                                                     <li>
                                                         <span className="ms-marker">movesLeft</span> indicates how often
                                                         single operations can still be performed with the current block
-                                                        (that includes changes in position and rotation).
+                                                        (that includes changes in position and rotation). The initial value is 10.
                                                     </li>
                                                 </ul>
                                             </li>
@@ -429,11 +428,30 @@ export default function Docs() {
 
                                 <div className="info-content">
                                     <p>
-
+                                        If the block can be dropped legally, the move will end. Accordingly, the block will fall down.
+                                        The score will be updated according to the case. In addition, it is checked whether the upper line is exceeded.
+                                        If this is the case, the <b>game state</b> of the game (See <span className="tag" onClick={_ => {
+                                        setInfoState("getState")
+                                    }
+                                    }>getState</span><span className="ms-marker">&#47;state</span> for more information) is changed to <span className="ms-marker">true</span>.
+                                        If another request is sent except <span className="tag" onClick={_ => {
+                                            setInfoState("getState")
+                                            }
+                                        }>getState</span>, the game field will be <span className="tag" onClick={_ => {
+                                            setInfoState("reset")
+                                            }
+                                        }>reset</span>.
+                                    </p>
+                                    <p>
+                                        For each dropped block you get <b>5</b> scoring units.<br/>
+                                        For a lineclear <b>100</b> scoring units.<br/>
+                                        For a tetris there are <b>no extra score units</b> yet.
+                                    </p>
+                                    <p>
+                                        A move is not legal if the block in its current position would <b>go beyond the last row</b>.
                                     </p>
 
                                     <hr/>
-
 
                                     <h2>Example</h2>
                                     <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
@@ -478,7 +496,12 @@ export default function Docs() {
 
                                 <div className="info-content">
                                     <p>
-
+                                        <span className="ms-marker">moveLeft</span> changes the the x-position by one <b>negative unit</b>. The initial x-position is 4.
+                                        The x-position value can range between <b>0 - 9</b> and is dependent from the shape of the block being moved. If the outer block in either direction exceeds the border (the local position value), the operation is undone.
+                                        The value can therefore neither be exceeded nor undershot. In the latter case, the move will still be subtracted from the moves left (See <span className="tag" onClick={_ => {
+                                        setInfoState("getState")
+                                    }
+                                    }>getState</span><span className="ms-marker">&#47;movesLeft</span> to get more information).
                                     </p>
 
                                     <hr/>
@@ -523,7 +546,12 @@ export default function Docs() {
 
                                 <div className="info-content">
                                     <p>
-
+                                        <span className="ms-marker">moveRight</span> changes the the x-position by one <b>positive unit</b>. The initial x-position value is 4.
+                                        The x-position value can range between <b>0 - 9</b> and is dependent from the shape of the block being moved. If the outer block in either direction exceeds the border (the local position value), the operation is undone.
+                                        The value can therefore neither be exceeded nor undershot. In the latter case, the move will still be subtracted from the moves left (See <span className="tag" onClick={_ => {
+                                        setInfoState("getState")
+                                    }
+                                    }>getState</span><span className="ms-marker">&#47;movesLeft</span> to get more information).
                                     </p>
 
                                     <hr/>
@@ -568,7 +596,9 @@ export default function Docs() {
 
                                 <div className="info-content">
                                     <p>
-
+                                        <span className="ms-marker">rotLeft</span> changes the the rotation value by one <b>negative unit</b>. The initial rotation value is 0.
+                                        The rotation value ranges between <b>[0, 1, 2, 3]</b>. If the value is exceeded in one of the two directions, the input gets modulated.
+                                        The value can therefore neither be exceeded nor undershot.
                                     </p>
 
                                     <hr/>
@@ -614,7 +644,9 @@ export default function Docs() {
 
                                 <div className="info-content">
                                     <p>
-
+                                        <span className="ms-marker">rotRight</span> changes the the rotation value by one <b>positive unit</b>. The initial rotation value is 0.
+                                        The rotation value ranges between <b>[0, 1, 2, 3]</b>. If the value is exceeded in one of the two directions, the input gets modulated.
+                                        The value can therefore neither be exceeded nor undershot.
                                     </p>
 
                                     <hr/>
@@ -659,7 +691,14 @@ export default function Docs() {
                                 <hr/>
 
                                 <div className="info-content">
-                                    <p></p>
+                                    <p>
+                                        <span className="ms-marker">getId</span> initiates a new game instance with an unoccupied ID, which can be retrieved e.g.
+                                        via the request gameId or which can be used to perform other operations like move and rotate.
+                                    </p>
+                                    <p>
+                                        To use the gameId accordingly, its suggested to firstly fetch a new gameId, that is then appended to the URL-origin you are going to work with.
+                                        This is shown in the <a href="./" className="text-link">template provided</a>.
+                                    </p>
 
                                     <hr/>
 
