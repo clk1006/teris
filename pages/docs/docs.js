@@ -379,7 +379,7 @@ export default function Docs() {
 
                                     <p>The getState request would print a list looking like the following:</p>
                                     <p className="code-field">
-                                        &#47;&#47;Returns:
+                                        #returns:
                                         [0,[0,0,0,...,0],&#123;&#34;type&#34;:0,&#34;pos&#34;:4,&#34;rot&#34;:0,&#34;movesLeft&#34;:10&#125;,0,false]
                                     </p>
 
@@ -439,7 +439,7 @@ export default function Docs() {
                                     <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
                                         of the parameter would look something like this:</p>
                                     <p className="code-field">
-                                        program logics...<br/>
+                                        #program logics...<br/>
                                         tetrisServer.rotateLeft()<br/>
                                         tetrisServer.moveRight()<br/>
                                         <br/>
@@ -487,7 +487,7 @@ export default function Docs() {
                                     <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
                                         of the parameter would look something like this:</p>
                                     <p className="code-field">
-                                        program logics...<br/>
+                                        #program logics...<br/>
                                         tetrisServer.moveLeft()
                                     </p>
 
@@ -532,7 +532,7 @@ export default function Docs() {
                                     <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
                                         of the parameter would look something like this:</p>
                                     <p className="code-field">
-                                        program logics...<br/>
+                                        #program logics...<br/>
                                         tetrisServer.moveRight()
                                     </p>
 
@@ -578,7 +578,7 @@ export default function Docs() {
                                     <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
                                         of the parameter would look something like this:</p>
                                     <p className="code-field">
-                                        program logics...<br/>
+                                        #program logics...<br/>
                                         tetrisServer.rotateLeft()
                                     </p>
 
@@ -624,7 +624,7 @@ export default function Docs() {
                                     <p>Regarding the <a href="./" className="text-link">template provided</a>, the usage
                                         of the parameter would look something like this:</p>
                                     <p className="code-field">
-                                        program logics...<br/>
+                                        #program logics...<br/>
                                         tetrisServer.rotateRight()
                                     </p>
 
@@ -717,7 +717,7 @@ export default function Docs() {
 
                                     <h2>Example</h2>
                                     <p className="code-field">
-                                        program logics...<br/>
+                                        #program logics...<br/>
                                         <br/>
                                         if (gameState == true):<br/>
                                         &#12288;tetrisServer.reset()<br/>
