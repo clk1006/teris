@@ -126,7 +126,7 @@ export default function Docs() {
                                                 top right. (See <span className="tag" onClick={_ => {
                                                     setInfoState("getState")
                                                 }
-                                                }>getState</span><span className="ms-marker">'s tiles</span> to get more
+                                                }>getState</span><span className="ms-marker">&#39;s tiles</span> to get more
                                                 information)</p>
                                         </li>
                                     </ul>
