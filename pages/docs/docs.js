@@ -597,7 +597,7 @@ export default function Docs() {
                                 <div className="info-content">
                                     <p>
                                         <span className="ms-marker">rotLeft</span> changes the the rotation value by one <b>negative unit</b>. The initial rotation value is 0.
-                                        The rotation value ranges between <b>[0, 1, 2, 3]</b>. If the value is exceeded in one of the two directions, the input gets modulated.
+                                        The rotation value ranges between <b>0 - 3</b>. If the value is exceeded in one of the two directions, the input gets modulated.
                                         The value can therefore neither be exceeded nor undershot.
                                     </p>
 
@@ -645,7 +645,7 @@ export default function Docs() {
                                 <div className="info-content">
                                     <p>
                                         <span className="ms-marker">rotRight</span> changes the the rotation value by one <b>positive unit</b>. The initial rotation value is 0.
-                                        The rotation value ranges between <b>[0, 1, 2, 3]</b>. If the value is exceeded in one of the two directions, the input gets modulated.
+                                        The rotation value ranges between <b>0 - 3</b>. If the value is exceeded in one of the two directions, the input gets modulated.
                                         The value can therefore neither be exceeded nor undershot.
                                     </p>
 
