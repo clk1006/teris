@@ -195,6 +195,9 @@ module.exports = async (req, res) => {
     if(storage.current.movesLeft==0){
         req.query.type="endTurn"
     }
+    if(storage.state==1&&req.query.type!="getState"){
+        req.query.type="reset"
+    }
     let shape;
     switch (req.query.type) {
         case "getState":
@@ -204,8 +207,8 @@ module.exports = async (req, res) => {
         case "endTurn":
             let dropRes = dropBlock(storage.current, storage.tiles)
             if (!dropRes[0]) {
+                storage.state=1
                 res.status(404).send()
-
                 break
             }
             let state = updateState(storage.score, dropRes[1])
