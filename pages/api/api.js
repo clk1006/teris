@@ -214,6 +214,9 @@ module.exports = async (req, res) => {
     if(storage.current.movesLeft==0){
         req.query.type="endTurn"
     }
+    if(storage.state==1&&req.query.type!="getState"){
+        req.query.type=reset
+    }
     let shape;
     switch (req.query.type) {
         case "getState":
