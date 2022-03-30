@@ -71,10 +71,10 @@ export default function Docs() {
                         <hr/>
 
                         <h2>1. Let your program play via the server that provides the API</h2>
-                        <p>If you want to hook up your project with the server providing the API, you will need to send the requests to the originated server. The current URL to our server is:</p>
-                        <p className='code-field'>https://tetris-em.vercel.app <br/>
+                        <p>If you want to hook up your project with the server providing the API, you will need to send the requests to the originated server. The current URLs the servers are:</p>
+                        <p className='code-field'>https://tetris-em.vercel.app<br/>
                             or<br/>
-                            https://tetris-em.herokuapp.com
+                            https://tetris-em.herokuapp.com (While this one probably has got a lot less latency)
                         </p>
                         <p>Further important is the usage of a unique (custom) gameID. It is recommended following the logics of the <a href="./docs">provided template</a>, which assigns each started game of yours to an unique ID.</p>
                         <p>As soon as you are able to get an insight in your gameID, you will be able to observe the requests visually, that are send to the server. For that, you will need to append the gameID to the originated server in your browser manually as following:</p>

@@ -87,9 +87,11 @@ export default function Docs() {
                             className="syntax parameter">type</span>=<span className="syntax request">endTurn</span>
                         </p>
                         <p>Current main server:</p>
-                        <p>To access the API, you will need to use this current link as your origin.</p>
+                        <p>To access the API, you will need to use one of those current links as your origin.</p>
                         <p className="code-field">
-                            https://tetris-em.vercel.app/api/
+                            https://tetris-em.vercel.app/api/<br/>
+                            or<br/>
+                            https://tetris-em.herokuapp.com (While this one probably has got a lot less latency)
                         </p>
 
                         <hr/>
