@@ -210,18 +210,20 @@ module.exports = async (req, res) => {
         data.push({})
         index=data.length-1
     }
-    storage.current.movesLeft--
-    if(storage.current.movesLeft==0){
+    let num =req.query.num || 1;
+    storage.current.movesLeft-=num;
+    if(storage.current.movesLeft<=0){
         req.query.type="endTurn"
+        num=1;
     }
     if(storage.state==1&&req.query.type!="getState"){
-        req.query.type=reset
+        req.query.type="reset"
     }
     let shape;
     switch (req.query.type) {
         case "getState":
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0], Boolean(storage.state)])
-            storage.current.movesLeft++
+            storage.current.movesLeft+=num
             break
         case "endTurn":
             let dropRes = dropBlock(storage.current, storage.tiles)
@@ -247,48 +249,43 @@ module.exports = async (req, res) => {
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0],storage.state])
             
             break
-        case "moveLeft":
-            if (storage.current.pos > 0) {
-                storage.current.pos--
+            case "moveLeft":
+                for(let i =0;i<num;i++){
+                    if (storage.current.pos > 0) {
+                        storage.current.pos--
+                    }
+                }
                 res.status(200).json(storage.current)
-            } else {
-                res.status(404).send()
-            }
-            
-            break
-        case "moveRight":
-            shape = getShape(storage.current)
-
-            if (storage.current.pos + shape[0].length < 10) {
-                storage.current.pos++
+                break
+            case "moveRight":
+                shape = getShape(storage.current)
+                for(let i=0;i<num;i++){
+                    if (storage.current.pos + shape[0].length < 10) {
+                        storage.current.pos++
+                    }
+                }
                 res.status(200).json(storage.current)
-            } else {
-                res.status(404).send()
-            }
-
-            break
-        case "rotLeft": 
-            storage.current.rot = (storage.current.rot + 3) % 4
-            shape = getShape(storage.current)
-
-            while (storage.current.pos + shape[0].length > 10) {
-                storage.current.pos--
-            }
-
-            res.status(200).json(storage.current)
-
-            break
-        case "rotRight": 
-            storage.current.rot = (storage.current.rot + 1) % 4
-            shape = getShape(storage.current)
-
-            while (storage.current.pos + shape[0].length > 10) {
-                storage.current.pos--
-            }
-
-            res.status(200).json(storage.current)
-
-            break
+                break
+            case "rotLeft": 
+                for(let i = 0;i<num;i++){
+                    storage.current.rot = (storage.current.rot + 3) % 4
+                    shape = getShape(storage.current)
+                    while (storage.current.pos + shape[0].length > 10) {
+                        storage.current.pos--
+                    }
+                }
+                res.status(200).json(storage.current)
+                break
+            case "rotRight": 
+                for(let i = 0;i<num;i++){
+                    storage.current.rot = (storage.current.rot + 1) % 4
+                    shape = getShape(storage.current)
+                    while (storage.current.pos + shape[0].length > 10) {
+                        storage.current.pos--
+                    }
+                }
+                res.status(200).json(storage.current)
+                break
         case "getId":
             let games=copy(data)
             if(games.length==0){
