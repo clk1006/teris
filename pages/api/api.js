@@ -183,7 +183,7 @@ const updateState = (score, tiles) => {
 
 module.exports = async (req, res) => {
     let storage=copy(STORAGE_BASE)
-    let gameId=req.query.gameId || 0
+    let gameId=parseInt(req.query.gameId) || 0
     let index=0
     let rng
     if(data.filter(x=>x.gameId==gameId).length==1){
