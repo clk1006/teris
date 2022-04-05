@@ -235,28 +235,6 @@ p {
     width: 1em;
 }
 
-.pop-up-frame {
-    top: 0;
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-
-    height: 100%;
-    width: 100%;
-
-    backdrop-filter: blur(6px);
-    background-color: rgba(var(--shadow-color-1), var(--alpha-1));
-
-    transition: 0.4s;
-}
-
-.game-fail-popup {
-    height: auto;
-    width: auto;
-}
-
 .container {
     width: 100%;
 
@@ -288,46 +266,6 @@ p {
 .image-box {
     display: flex;
     flex: auto;
-}
-
-.stats-container, .bindings-container {
-    margin-bottom: 18px;
-    display: flex;
-    flex-direction: column;
-}
-
-.bindings-container .output, .stats-container .output {
-    margin-right: 3px;
-}
-
-.binding-container, .stat-container {
-    margin: 4px 0;
-}
-
-span.output {
-    user-select: all;
-
-    padding: 0 6px;
-
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
-    font-size: 18px;
-    border-radius: 3px;
-
-    color: rgba(var(--primary-color));
-    background-color: rgba(var(--primary-color), var(--alpha-1));
-}
-
-span.output:hover {
-    background-color: rgba(var(--primary-color), var(--alpha-2));
-}
-
-span.output::selection {
-    background-color: rgba(var(--primary-color), var(--alpha-3));
-}
-
-.error {
-    color: rgb(var(--primary-color));
 }
 
 .start-btn, .restart-btn {

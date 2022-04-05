@@ -4,6 +4,9 @@ import styles from '../styles/Home.module.css'
 import axios from 'axios'
 import getShape from '../lib/getShape'
 
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faBook, faCirclePlay, faCodeBranch, faEllipsis, faMoon, faRedo, faSun} from '@fortawesome/free-solid-svg-icons'
+
 const DIMENSIONS = [10, 20];
 const BLOCK_SIZE = 29;
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C", "#6610F2", "#32DE8A"];
