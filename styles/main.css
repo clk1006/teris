@@ -244,6 +244,10 @@ p {
     flex-direction: column;
 }
 
+.block h2 {
+    word-wrap: break-word;
+}
+
 .screen-container {
     margin: 0 32px 16px 0;
     padding: 24px;
