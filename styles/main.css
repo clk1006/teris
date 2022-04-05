@@ -109,7 +109,7 @@ p {
 
     box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color-1), var(--alpha-1));
 
-    border-radius: 45px; 
+    border-radius: 45px;
 
     z-index: 1;
 
@@ -219,7 +219,7 @@ p {
 }
 
 .action-btn:hover {
-    color: rgb(--text-color-500);
+    color: rgb(var(--text-color-500));
     background-color: rgba(var(--tertiary-color));
 }
 
@@ -319,36 +319,58 @@ p {
     flex-direction: column;
 }
 
-.bindings-container .output, .stats-container .output {
-    margin-right: 3px;
-}
-
 .binding-container, .stat-container {
-    margin: 4px 0;
+    margin: 5px 5px 7px 0;
 }
 
-span.output {
-    user-select: all;
+.hl {
+    padding: 4px;
 
-    padding: 0 6px;
+    color: rgb(var(--primary-color));
+    background-color: rgba(var(--primary-color), var(--alpha-1));
 
     font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 18px;
+
     border-radius: 3px;
-
-    color: rgba(var(--primary-color));
-    background-color: rgba(var(--primary-color), var(--alpha-1));
-}
-
-span.output:hover {
-    background-color: rgba(var(--primary-color), var(--alpha-2));
-}
-
-span.output::selection {
-    background-color: rgba(var(--primary-color), var(--alpha-3));
 }
 
 .error {
     color: rgb(var(--primary-color));
+}
+
+.input-field {
+    margin: 8px 12px 8px 0;
+    padding: 12px 6px;
+
+    background-color: rgb(var(--text-color-300), var(--alpha-4));
+
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+
+    border-radius: 3px;
+    border: 1px solid rgb(var(--primary-color), 0);
+
+    transition: 0.4s;
+}
+
+.input-field:focus {
+    outline: none;
+    border: 1px solid rgb(var(--primary-color));
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inline-block {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-around;
 }
