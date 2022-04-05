@@ -42,6 +42,12 @@ export default function Home() {
     const refCurr = useRef();
     const [reRender, setReRender] = useState(1);
     const [state,setState] = useState(0);
+    const [isActive, toggleActive] = useState(true);
+
+    const handleToggle = () => {
+        toggleActive(!isActive);
+    };
+    
     useEffect(() => {
         contextTiles = refTiles.current.getContext('2d');
         contextCurr = refCurr.current.getContext('2d');
@@ -132,6 +138,35 @@ export default function Home() {
             </Head>
 
             <main className={styles.main}>
+                <div className={`nav-bar ${isActive ? "" : "active"}`}>
+                    <div className="menu-icon" onClick={handleToggle}>
+                        <FontAwesomeIcon className="icon" icon={faEllipsis}/>
+                    </div>
+                    <div className="menu-opts">
+                        <a className="opt-link" href="https://github.com/clk1006/tetris" target="_blank"
+                           rel="noreferrer">
+                            <div className="menu-opt">
+                                <FontAwesomeIcon className="icon" icon={faCodeBranch}/>
+                                <span>GitHub</span>
+                            </div>
+                        </a>
+                        <a className="opt-link" href="https://tetrisui.vercel.app/docs" target="_blank"
+                           rel="noreferrer">
+                            <div className="menu-opt">
+                                <FontAwesomeIcon className="icon" icon={faBook}/>
+                                <span>Docs</span>
+                            </div>
+                        </a>
+                        <a className="opt-link action-btn" href="https://tetrisui.vercel.app" target="_blank"
+                           rel="noreferrer">
+                            <div className="menu-opt">
+                                <FontAwesomeIcon className="icon" icon={faCirclePlay}/>
+                                <span>Front-end Game</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
                 <div className="container">
                     <div className="block">
                         <div className="screen-container">
