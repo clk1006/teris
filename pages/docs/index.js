@@ -116,7 +116,7 @@ export default function Docs() {
                                     </div>
                                 </a>
 
-                                <a href="./docs/visualize">
+                                <a href="./docs/access">
                                     <div className="reference-box">
                                         <FontAwesomeIcon className="ref-box-icon" icon={faAnchor}></FontAwesomeIcon>
                                         <h2>How can I &#39;hook up&#39; my own Algorithm/AI with the server to remotely
