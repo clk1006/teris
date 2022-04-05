@@ -268,8 +268,7 @@ p {
 }
 
 .binding-container, .stat-container {
-    margin: 4px 0;
-    margin: 4px 5px 12px 0;
+    margin: 6px 5px 12px 0;
 }
 
 .hl {
