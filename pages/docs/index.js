@@ -11,7 +11,7 @@ import {
     faCodeBranch,
     faEllipsis,
     faExternalLink,
-    faPlay,
+    faPlay, faPuzzlePiece,
     faQuestion
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -76,7 +76,9 @@ export default function Docs() {
 
                         <hr/>
 
-                        <h2>Links</h2>
+                        <h2>References</h2>
+
+                        <p>Please read through the following reference-boxes. They contain all relevant information you need to know about this API.</p>
 
                         <div className="ref-container">
                             <div className="block">
@@ -84,8 +86,7 @@ export default function Docs() {
                                     <div className="reference-box">
                                         <FontAwesomeIcon className="ref-box-icon" icon={faQuestion}></FontAwesomeIcon>
                                         <h2>What does this API provide?</h2>
-                                        <p>Get redirected to the documentation, in which all available parameters of the API
-                                            are listed and explained.</p>
+                                        <p>Here you will find everything that is provided by the API.</p>
                                     </div>
                                 </a>
 
@@ -105,8 +106,7 @@ export default function Docs() {
                                             get redirected to a prepared template to help you get started.</p>
                                     </div>
                                 </a>
-                            </div>
-                            <div className="block">
+
                                 <a href="../">
                                     <div className="reference-box">
                                         <FontAwesomeIcon className="ref-box-icon" icon={faPlay}></FontAwesomeIcon>
@@ -115,7 +115,8 @@ export default function Docs() {
                                             front-end version of the game.</p>
                                     </div>
                                 </a>
-
+                            </div>
+                            <div className="block">
                                 <a href="./docs/access">
                                     <div className="reference-box">
                                         <FontAwesomeIcon className="ref-box-icon" icon={faAnchor}></FontAwesomeIcon>
@@ -123,6 +124,28 @@ export default function Docs() {
                                             control a custom game?</h2>
                                         <p>Here you will find a guide to access a (or the main) server instance for your
                                             Algorithm/AI.</p>
+                                    </div>
+                                </a>
+
+                                <a href="https://tetris-em.herokuapp.com"
+                                   target="_blank" rel="noreferrer">
+                                    <div className="reference-box">
+                                        <FontAwesomeIcon className="ref-box-icon" icon={faPuzzlePiece}></FontAwesomeIcon>
+                                        <h2>tetris-em.herokuapp.com <FontAwesomeIcon
+                                            size="xs"
+                                            icon={faExternalLink}/></h2>
+                                        <p>This link redirects you to the <b>new</b> API server.</p>
+                                    </div>
+                                </a>
+
+                                <a href="https://tetris-em.vercel.app"
+                                   target="_blank" rel="noreferrer">
+                                    <div className="reference-box">
+                                        <FontAwesomeIcon className="ref-box-icon" icon={faPuzzlePiece}></FontAwesomeIcon>
+                                        <h2>tetris-em.vercel.app <FontAwesomeIcon
+                                            size="xs"
+                                            icon={faExternalLink}/></h2>
+                                        <p>This link redirects you to the <b>old</b> API server.</p>
                                     </div>
                                 </a>
                             </div>
