@@ -267,34 +267,22 @@ p {
     flex-direction: column;
 }
 
-.bindings-container .output, .stats-container .output {
-    margin-right: 3px;
-}
-
 .binding-container, .stat-container {
     margin: 4px 0;
 }
 
-span.output {
-    user-select: all;
+.hl {
+    margin: 4px 5px 12px 0;
+    padding: 4px;
 
-    padding: 0 6px;
+    color: rgb(var(--primary-color));
+    background-color: rgba(var(--primary-color), var(--alpha-1));
 
     font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
+    font-weight: 300;
     font-size: 18px;
+
     border-radius: 3px;
-
-    color: rgba(var(--primary-color));
-    background-color: rgba(var(--primary-color), var(--alpha-1));
-}
-
-span.output:hover {
-    background-color: rgba(var(--primary-color), var(--alpha-2));
-}
-
-span.output::selection {
-    background-color: rgba(var(--primary-color), var(--alpha-3));
 }
 
 .error {

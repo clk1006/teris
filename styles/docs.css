@@ -112,10 +112,6 @@ b {
     border-radius: 3px;
 }
 
-.hl::selection {
-    background-color: rgba(var(--primary-color), var(--alpha-3));
-}
-
 .code-field {
     user-select: text;
     max-width: 100%;
