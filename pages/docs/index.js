@@ -78,7 +78,7 @@ export default function Docs() {
 
                         <h2>References</h2>
 
-                        <p>Please read through the following reference-boxes. They contain all relevant information you need to know about this API.</p>
+                        <p>Please read through the following reference-boxes. They contain all relevant information you need to know about this API and how to use it.</p>
 
                         <div className="ref-container">
                             <div className="block">
