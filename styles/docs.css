@@ -99,17 +99,7 @@ b {
 }
 
 .hl {
-    margin: 4px 4px 12px 0;
-    padding: 4px;
-
-    color: rgb(var(--primary-color));
-    background-color: rgba(var(--primary-color), var(--alpha-1));
-
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 300;
-    font-size: 18px;
-
-    border-radius: 3px;
+    margin: 4px 5px 12px 0;
 }
 
 .code-field {
