@@ -218,7 +218,7 @@ export default function Docs() {
                         <p>
                             For further reference and insight you can check out the API via the <a href="https://github.com/clk1006/tetris/tree/main/"
                                                                                                    className="text-link"
-                                                                                                   target="_blank" rel="noreferrer">GitHub Repo <FontAwesomeIcon
+                                                                                                   target="_blank" rel="noreferrer">GitHub Repository <FontAwesomeIcon
                             size="xs" icon={faExternalLink}/></a>.
                         </p>
                     </div>
