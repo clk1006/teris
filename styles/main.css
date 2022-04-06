@@ -51,7 +51,6 @@
 }
 
 * {
-    user-select: none;
     font-family: 'Lato', sans-serif;
 }
 
@@ -60,6 +59,7 @@ body {
 }
 
 h1 {
+    user-select: none;
     margin: 4px 0 24px 0;
 
     font-weight: 900;
@@ -69,6 +69,7 @@ h1 {
 }
 
 h2 {
+    user-select: none;
     margin: 4px 0 12px 0;
 
     font-weight: 700;
@@ -78,6 +79,7 @@ h2 {
 }
 
 p, span {
+    user-select: none;
     font-weight: 300;
     font-size: 18px;
 
@@ -91,6 +93,7 @@ p {
 }
 
 .nav-bar, .color-scheme-box {
+    user-select: none;
     top: 0;
     left: 0;
     position: fixed;
