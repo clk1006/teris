@@ -9,7 +9,8 @@ import {
     faCirclePlay,
     faClose,
     faCodeBranch,
-    faEllipsis, faExternalLink
+    faEllipsis, faExternalLink,
+    faMapMarkerExclamation
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Docs() {
@@ -105,6 +106,15 @@ export default function Docs() {
                                     outputs the game field corresponding to the ID entered as a value, if one is available.
                                     If an entered ID is not available, a game with the same id is created. If the
                                     request is passed without a (valid) value, the status code 404 is returned.
+                                </p>
+                                <p className="error">
+                                    <FontAwesomeIcon size="xs" icon={faMapMarkerExclamation}/> 
+                                    Please be especially careful when using this parameter, as your game can quickly interfere with (multiple) other games.
+                                    If possible, please always fall back to <span className="tag" onClick={
+                                                    _ => {
+                                                        setInfoState("reset")
+                                                    }
+                                                }>reset</span> when restarting a game.
                                 </p>
                             </li>
                             <li>
