@@ -289,7 +289,7 @@ p {
 }
 
 .error {
-    color: rgb(var(--primary-color));
+    color: rgb(229, 75, 75);
 }
 
 .device-warning {
