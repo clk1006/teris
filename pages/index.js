@@ -8,6 +8,7 @@ import {faBook, faCirclePlay, faCodeBranch, faEllipsis} from '@fortawesome/free-
 export default function Home() {
     const [gameID, setGameID] = useState(0)
     const [isActive, toggleActive] = useState(true);
+    const [inputErrorState, setInputErrorState] = useState(false);
 
     const handleToggle = () => {
         toggleActive(!isActive);
@@ -58,17 +59,23 @@ export default function Home() {
                     <div className="screen-container">
                         <h2>Please enter your gameID</h2>
                         <div className="inline-block">
-                            <input className="input-field" type="number" placeholder="id" onChange = {
+                            <input className="input-field" type="text" placeholder="id" onChange = {
                                 e => {
-                                    let id = parseInt(e.target.value);
+                                    let input = parseInt(e.target.value);
 
-                                    setGameID(id)
-
-                                    if (gameID == null) {
-                                        setGameID(0);
+                                    if (input == NaN) {
+                                        setInputErrorState(true);
+                                    } else {
+                                        setGameID(input)
+                                        setInputErrorState(false);
                                     }
+                                    
                                 }
                             }/>
+                            {
+                                inputErrorState &&
+                                <p className="error">Please enter an integer as an integer.</p>
+                            }
                             <a className="action-btn" href={
                                 "game?gameId=" + gameID
                             }>Go to game</a>
