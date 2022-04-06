@@ -233,6 +233,15 @@ p {
     box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
 }
 
+.action-btn.disabled {
+    pointer-events: none;
+
+    background-color: rgba(var(--text-color-200), 0.7);
+    box-shadow: 0 3px 0 0 rgba(var(--shadow-color-1), 0.6);
+
+    transition: 0.4s;
+}
+
 .btn-emblem {
     height: 18px;
     width: 18px;
@@ -346,6 +355,10 @@ p {
 
     background-color: rgb(var(--text-color-300), var(--alpha-4));
 
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+
     border-radius: 3px;
     border: 1px solid rgb(var(--primary-color), 0);
 
@@ -359,7 +372,9 @@ p {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    user-select: text;
+
+    appearance: none;
     margin: 0;
 }
 

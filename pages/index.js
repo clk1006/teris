@@ -8,10 +8,20 @@ import {faBook, faCirclePlay, faCodeBranch, faEllipsis} from '@fortawesome/free-
 export default function Home() {
     const [gameID, setGameID] = useState(0)
     const [isActive, toggleActive] = useState(true);
+    const [inputErrorState, setInputErrorState] = useState(2);
 
     const handleToggle = () => {
         toggleActive(!isActive);
     };
+
+    function checkForIDFormat(input) {
+        if (!isNaN(input) && input != "" && input != null) {
+            setInputErrorState(0);
+            setGameID(input)
+        } else {
+            setInputErrorState(1);
+        }
+    }
 
     return (
         <div className={styles.container}>
@@ -58,21 +68,21 @@ export default function Home() {
                     <div className="screen-container">
                         <h2>Please enter your gameID</h2>
                         <div className="inline-block">
-                            <input className="input-field" type="number" placeholder="id" onChange = {
+                            <input className="input-field" placeholder="id" onChange = {
                                 e => {
-                                    let id = parseInt(e.target.value);
+                                    let input = e.target.value;
 
-                                    setGameID(id)
-
-                                    if (gameID == null) {
-                                        setGameID(0);
-                                    }
+                                    checkForIDFormat(input)
                                 }
                             }/>
-                            <a className="action-btn" href={
+                            <a className={`action-btn ${inputErrorState != 0 && "disabled"}`} href={
                                 "game?gameId=" + gameID
                             }>Go to game</a>
                         </div>
+                        {
+                            inputErrorState == 1 &&
+                            <p className="error">Please enter a number.</p>
+                        }
                     </div>
                 </div>
             </main>
