@@ -14,6 +14,15 @@ export default function Home() {
         toggleActive(!isActive);
     };
 
+    function checkForIDFormat(input) {
+        if (!isNaN(input) && input != "" && input != null) {
+            setInputErrorState(0);
+            setGameID(input)
+        } else {
+            setInputErrorState(1);
+        }
+    }
+
     return (
         <div className={styles.container}>
             <Head>
@@ -63,12 +72,7 @@ export default function Home() {
                                 e => {
                                     let input = e.target.value;
 
-                                    if (!isNaN(input) && input != "" && input != null) {
-                                        setInputErrorState(0);
-                                        setGameID(input)
-                                    } else {
-                                        setInputErrorState(1);
-                                    }
+                                    checkForIDFormat(input)
                                 }
                             }/>
                             <a className={`action-btn ${inputErrorState != 0 && "disabled"}`} href={
