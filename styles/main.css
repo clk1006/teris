@@ -291,3 +291,31 @@ p {
 .error {
     color: rgb(var(--primary-color));
 }
+
+.device-warning {
+    margin: 0 32px 16px 0;
+    padding: 24px;
+
+    background-color: rgb(var(--box-background-color));
+
+    box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color-1), var(--alpha-1));
+
+    border: hidden;
+    border-radius: 4px;
+
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-bar {
+        display: none;
+    }
+
+    .screen-container {
+        display: none;
+    }
+
+    .device-warning {
+        display: flex;
+    }
+}

@@ -508,6 +508,10 @@ export default function Home() {
                     </div>
                 </div>
 
+                <div className="screen-container device-warning">
+                    <p className="error">Please use a device with a bigger display. This application is not designed for small medias.</p>
+                </div>
+
                 {
                     gameState == 2 &&
                     <div className="pop-up-frame">
