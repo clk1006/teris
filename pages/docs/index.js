@@ -70,9 +70,9 @@ export default function Docs() {
 
                         <h2>Description</h2>
                         <p>This project was created in the course of the teaching unit &#34;AI&#34; in the 4th semester
-                            by the computer science class 20/21/22 of the Eimsbütteler Modell.</p>
-                        <p>The project is based on a modified version of the puzzle-like computer game Tetris without a
-                            real-time factor, which can be used by both human and artificial agents. </p>
+                            by the computer science class 2021/2022 of the Eimsbütteler Modell.</p>
+                        <p>The project is a self-developed creation based on the puzzle-like computer game Tetris,
+                            which can be used by both human and artificial agents.</p>
 
                         <hr/>
 
