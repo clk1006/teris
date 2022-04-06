@@ -234,7 +234,13 @@ p {
 }
 
 .action-btn:disabled {
+    pointer-events: none;
     cursor: default;
+
+    background-color: rgb(var(--text-color-300));
+    box-shadow: 0 3px 0 0 rgb(var(--shadow-color-1));
+
+    transition: 0.4s;
 }
 
 .btn-emblem {
