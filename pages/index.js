@@ -61,9 +61,9 @@ export default function Home() {
                         <div className="inline-block">
                             <input className="input-field" type="text" placeholder="id" onChange = {
                                 e => {
-                                    let input = parseInt(e.target.value);
+                                    let input = parseInt(e.target.value) || false;
 
-                                    if (input == NaN) {
+                                    if (input === false) {
                                         setInputErrorState(true);
                                     } else {
                                         setGameID(input)
