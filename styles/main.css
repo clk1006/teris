@@ -325,5 +325,6 @@ p {
 
     .device-warning {
         display: flex;
+        flex-direction: column;
     }
 }
