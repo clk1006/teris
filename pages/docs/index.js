@@ -155,14 +155,14 @@ export default function Docs() {
 
                         <h2>Authors</h2>
                         <p>
-                            <b>Caspar Levin Kiehn</b><span>,<a href="https://github.com/clk1006"
+                            <b>Caspar Levin Kiehn</b><span>, <a href="https://github.com/clk1006"
                                                   className="text-link"
-                                                  target="_blank" rel="noreferrer"> clk1006 <FontAwesomeIcon
+                                                  target="_blank" rel="noreferrer">clk1006 <FontAwesomeIcon
                             size="xs" icon={faExternalLink}/></a> on GitHub</span>
                             <br/>
-                            <b>Jamil Osoria Peralta</b><span>,<a href="https://github.com/bananeira"
+                            <b>Jamil Osoria Peralta</b><span>, <a href="https://github.com/bananeira"
                                                   className="text-link"
-                                                  target="_blank" rel="noreferrer"> bananeira <FontAwesomeIcon
+                                                  target="_blank" rel="noreferrer">bananeira <FontAwesomeIcon
                             size="xs" icon={faExternalLink}/></a> on GitHub</span>
                         </p>
 
