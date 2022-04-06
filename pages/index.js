@@ -8,7 +8,7 @@ import {faBook, faCirclePlay, faCodeBranch, faEllipsis} from '@fortawesome/free-
 export default function Home() {
     const [gameID, setGameID] = useState(0)
     const [isActive, toggleActive] = useState(true);
-    const [inputErrorState, setInputErrorState] = useState(false);
+    const [inputErrorState, setInputErrorState] = useState(2);
 
     const handleToggle = () => {
         toggleActive(!isActive);
@@ -61,26 +61,22 @@ export default function Home() {
                         <div className="inline-block">
                             <input className="input-field" placeholder="id" onChange = {
                                 e => {
-                                    let input = parseInt(e.target.value);
+                                    let input = e.target.value;
 
-                                    if (!isNaN(input)) {
+                                    if (!isNaN(input) && input != "" && input != null) {
                                         setInputErrorState(0);
-                                    } else if (input == null) {
                                         setGameID(input)
-                                        setInputErrorState(1);
                                     } else {
-                                        setGameID(input)
-                                        setInputErrorState(2);
+                                        setInputErrorState(1);
                                     }
-                                    
                                 }
                             }/>
-                            <a className={`action-btn ${inputErrorState && 'disabled'}`} href={
+                            <a className={`action-btn ${inputErrorState != 0 && "disabled"}`} href={
                                 "game?gameId=" + gameID
                             }>Go to game</a>
                         </div>
                         {
-                            !!inputErrorState &&
+                            inputErrorState == 1 &&
                             <p className="error">Please enter a number.</p>
                         }
                     </div>
