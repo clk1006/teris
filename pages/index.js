@@ -23,6 +23,12 @@ export default function Home() {
         }
     }
 
+    function handleKeyDown(event) {
+        if (event.keyCode == 13 && inputErrorState == 0) {
+            location.href = location.origin + "/game?type=" + gameID;
+        }
+    }
+
     return (
         <div className={styles.container}>
             <Head>
@@ -68,7 +74,7 @@ export default function Home() {
                     <div className="screen-container">
                         <h2>Please enter your gameID</h2>
                         <div className="inline-block">
-                            <input className="input-field" placeholder="id" onChange = {
+                            <input className="input-field" onKeyDown={event => handleKeyDown(event)} placeholder="id" onChange = {
                                 e => {
                                     let input = e.target.value;
 
