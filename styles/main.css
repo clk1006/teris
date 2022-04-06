@@ -233,12 +233,11 @@ p {
     box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
 }
 
-.action-btn:disabled {
+.action-btn.disabled {
     pointer-events: none;
-    cursor: default;
 
-    background-color: rgb(var(--text-color-300));
-    box-shadow: 0 3px 0 0 rgb(var(--shadow-color-1));
+    background-color: rgba(var(--text-color-200), 0.7);
+    box-shadow: 0 3px 0 0 rgba(var(--shadow-color-1), 0.6);
 
     transition: 0.4s;
 }
@@ -375,7 +374,7 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     user-select: text;
 
-    -webkit-appearance: none;
+    appearance: none;
     margin: 0;
 }
 

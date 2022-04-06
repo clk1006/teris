@@ -59,15 +59,18 @@ export default function Home() {
                     <div className="screen-container">
                         <h2>Please enter your gameID</h2>
                         <div className="inline-block">
-                            <input className="input-field" type="text" placeholder="id" onChange = {
+                            <input className="input-field" placeholder="id" onChange = {
                                 e => {
-                                    let input = parseInt(e.target.value) || false;
+                                    let input = parseInt(e.target.value);
 
-                                    if (input === false) {
-                                        setInputErrorState(true);
+                                    if (!isNaN(input)) {
+                                        setInputErrorState(0);
+                                    } else if (input == null) {
+                                        setGameID(input)
+                                        setInputErrorState(1);
                                     } else {
                                         setGameID(input)
-                                        setInputErrorState(false);
+                                        setInputErrorState(2);
                                     }
                                     
                                 }
@@ -77,8 +80,8 @@ export default function Home() {
                             }>Go to game</a>
                         </div>
                         {
-                            inputErrorState &&
-                            <p className="error">Please enter an integer as an integer.</p>
+                            !!inputErrorState &&
+                            <p className="error">Please enter a number.</p>
                         }
                     </div>
                 </div>
