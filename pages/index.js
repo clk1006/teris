@@ -72,14 +72,14 @@ export default function Home() {
                                     
                                 }
                             }/>
-                            {
-                                inputErrorState &&
-                                <p className="error">Please enter an integer as an integer.</p>
-                            }
                             <a className="action-btn" href={
                                 "game?gameId=" + gameID
                             }>Go to game</a>
                         </div>
+                        {
+                            inputErrorState &&
+                            <p className="error">Please enter an integer as an integer.</p>
+                        }
                     </div>
                 </div>
             </main>
