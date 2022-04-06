@@ -108,8 +108,8 @@ export default function Docs() {
                                     request is passed without a (valid) value, the status code 404 is returned.
                                 </p>
                                 <p className="error">
-                                    <FontAwesomeIcon size="xs" icon={faExclamationTriangle}/> 
-                                    Please be especially careful when using this parameter, as your game can quickly interfere with (multiple) other games.
+                                    <FontAwesomeIcon size="xs" icon={faExclamationTriangle}/>
+                                    Please be especially careful when accessing this parameter via the public server, as your game can quickly interfere with (multiple) other games.
                                     If possible, please always fall back to <span className="tag" onClick={
                                                     _ => {
                                                         setInfoState("reset")
