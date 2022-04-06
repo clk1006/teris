@@ -25,7 +25,7 @@ export default function Home() {
 
     function handleKeyDown(event) {
         if (event.keyCode == 13 && inputErrorState == 0) {
-            location.href = location.origin + "/game?type=" + gameID;
+            location.href = location.origin + "/game?gameId=" + gameID;
         }
     }
 
