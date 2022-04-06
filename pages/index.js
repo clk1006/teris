@@ -72,7 +72,7 @@ export default function Home() {
                                     
                                 }
                             }/>
-                            <a className="action-btn" href={
+                            <a className='action-btn' disabled={inputErrorState} href={
                                 "game?gameId=" + gameID
                             }>Go to game</a>
                         </div>

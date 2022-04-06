@@ -233,6 +233,10 @@ p {
     box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
 }
 
+.action-btn:disabled {
+    cursor: default;
+}
+
 .btn-emblem {
     height: 18px;
     width: 18px;
@@ -363,6 +367,8 @@ p {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
+    user-select: text;
+
     -webkit-appearance: none;
     margin: 0;
 }
