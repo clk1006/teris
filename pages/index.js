@@ -506,10 +506,11 @@ export default function Home() {
                             </div>
                         }
                     </div>
-                </div>
-
-                <div className="screen-container device-warning">
-                    <p className="error">Please use a device with a bigger display. This application is not designed for small medias.</p>
+                    
+                    <div className="screen-container device-warning">
+                        <h2>Sorry, there is nothing to see here :/</h2>
+                        <p className="error">Please use a device with a bigger display. This application is not designed for small medias.</p>
+                    </div>
                 </div>
 
                 {

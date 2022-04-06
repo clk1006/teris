@@ -232,6 +232,11 @@ export default function Docs() {
                             size="xs" icon={faExternalLink}/></a>.
                         </p>
                     </div>
+
+                    <div className="screen-container device-warning">
+                        <h2>Sorry, there is nothing to see here :/</h2>
+                        <p className="error">Please use a device with a bigger display. This application is not designed for small medias.</p>
+                    </div>
                 </div>
 
                 {

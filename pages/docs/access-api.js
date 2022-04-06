@@ -96,6 +96,11 @@ export default function Docs() {
                         <p className="code-field">sudo docker run -p [PORT]:3000 clk1006/tetris:lastest</p>
                         <p>where [PORT] is the port on which you want your server to listen.</p>
                     </div>
+
+                    <div className="screen-container device-warning">
+                        <h2>Sorry, there is nothing to see here :/</h2>
+                        <p className="error">Please use a device with a bigger display. This application is not designed for small medias.</p>
+                    </div>
                 </div>
             </main>
         </div>

@@ -306,12 +306,20 @@ p {
     display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 560px) {
     .nav-bar {
         display: none;
     }
 
     .screen-container {
+        display: none;
+    }
+
+    .content-block {
+        display: none;
+    }
+
+    .info-content-retainer {
         display: none;
     }
 

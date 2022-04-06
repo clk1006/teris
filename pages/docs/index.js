@@ -174,6 +174,11 @@ export default function Docs() {
                                                   target="_blank" rel="noreferrer">GNU GPL Version 3 <FontAwesomeIcon
                             size="xs" icon={faExternalLink}/></a>, 29 June 2007</p>
                     </div>
+                    
+                    <div className="screen-container device-warning">
+                        <h2>Sorry, there is nothing to see here :/</h2>
+                        <p className="error">Please use a device with a bigger display. This application is not designed for small medias.</p>
+                    </div>
                 </div>
             </main>
         </div>
