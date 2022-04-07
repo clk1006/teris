@@ -188,7 +188,7 @@ export default function Docs() {
                                 <RoleBadge role="ai" roleAddSuffix="ai" name="Theo"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Viktor"/>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Viktor Sersik"/>
                             </li>
                             <li>
                                 <RoleBadge role="ai" roleAddSuffix="ai" name="Ole"/>
@@ -200,13 +200,13 @@ export default function Docs() {
                                 <RoleBadge role="ai" roleAddSuffix="ai" name="Lin"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="My"/>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Dam Huyen My"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Raul"/>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Raul Ketil Meyer-Larsen"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Felix M."/>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Felix Mohrhagen"/>
                             </li>
                             <li>
                                 <RoleBadge role="theory" name="Henrik"/>
