@@ -249,43 +249,43 @@ module.exports = async (req, res) => {
             res.status(200).json([storage.score, storage.tiles, storage.current, storage.seq[0],storage.state])
             
             break
-            case "moveLeft":
-                for(let i =0;i<num;i++){
-                    if (storage.current.pos > 0) {
-                        storage.current.pos--
-                    }
+        case "moveLeft":
+            for(let i =0;i<num;i++){
+                if (storage.current.pos > 0) {
+                    storage.current.pos--
                 }
-                res.status(200).json(storage.current)
-                break
-            case "moveRight":
+            }
+            res.status(200).json(storage.current)
+            break
+        case "moveRight":
+            shape = getShape(storage.current)
+            for(let i=0;i<num;i++){
+                if (storage.current.pos + shape[0].length < 10) {
+                    storage.current.pos++
+                }
+            }
+            res.status(200).json(storage.current)
+            break
+        case "rotLeft": 
+            for(let i = 0;i<num;i++){
+                storage.current.rot = (storage.current.rot + 3) % 4
                 shape = getShape(storage.current)
-                for(let i=0;i<num;i++){
-                    if (storage.current.pos + shape[0].length < 10) {
-                        storage.current.pos++
-                    }
+                while (storage.current.pos + shape[0].length > 10) {
+                    storage.current.pos--
                 }
-                res.status(200).json(storage.current)
-                break
-            case "rotLeft": 
-                for(let i = 0;i<num;i++){
-                    storage.current.rot = (storage.current.rot + 3) % 4
-                    shape = getShape(storage.current)
-                    while (storage.current.pos + shape[0].length > 10) {
-                        storage.current.pos--
-                    }
+            }
+            res.status(200).json(storage.current)
+            break
+        case "rotRight": 
+            for(let i = 0;i<num;i++){
+                storage.current.rot = (storage.current.rot + 1) % 4
+                shape = getShape(storage.current)
+                while (storage.current.pos + shape[0].length > 10) {
+                    storage.current.pos--
                 }
-                res.status(200).json(storage.current)
-                break
-            case "rotRight": 
-                for(let i = 0;i<num;i++){
-                    storage.current.rot = (storage.current.rot + 1) % 4
-                    shape = getShape(storage.current)
-                    while (storage.current.pos + shape[0].length > 10) {
-                        storage.current.pos--
-                    }
-                }
-                res.status(200).json(storage.current)
-                break
+            }
+            res.status(200).json(storage.current)
+            break
         case "getId":
             let games=copy(data)
             if(games.length==0){
@@ -298,7 +298,7 @@ module.exports = async (req, res) => {
                 games=games.map((x)=>parseInt(x.gameId))
                 res.status(200).send(games.reduce((a,b)=>Math.max(a,b))+1)
             }
-            storage.current.movesLeft++
+            storage.current.movesLeft+=num
         case "reset":
             storage=copy(STORAGE_BASE)
             storage.gameId=gameId
@@ -310,7 +310,7 @@ module.exports = async (req, res) => {
             res.status(200).send()
         default:
             res.status(404).send()
-            storage.current.movesLeft++
+            storage.current.movesLeft+=num
     }
     data[index]=storage
     fs.writeFile("data/storage.json",JSON.stringify(data),()=>{
