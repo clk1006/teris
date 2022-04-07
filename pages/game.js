@@ -120,7 +120,7 @@ export default function Home() {
 	});
 	useEffect(
 		() => {
-			id = setInterval(handleUpdate, 10);
+			id = setInterval(handleUpdate, 100);
 			return () => {
 				clearInterval(id);
 			};
