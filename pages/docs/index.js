@@ -148,6 +148,17 @@ export default function Docs() {
                                         <p>This link redirects you to the <b>old</b> API server.</p>
                                     </div>
                                 </a>
+
+                                <a href="https://tetris-em.herokuapp.com/game?gameId=558"
+                                   target="_blank" rel="noreferrer">
+                                    <div className="reference-box">
+                                        <FontAwesomeIcon className="ref-box-icon" icon={faPuzzlePiece}></FontAwesomeIcon>
+                                        <h2>Kind of a never ending game <FontAwesomeIcon
+                                            size="xs"
+                                            icon={faExternalLink}/></h2>
+                                        <p>This link redirects you to a <b>game worth seeing</b>.</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
 
