@@ -122,7 +122,11 @@ export default function Docs() {
                                     The parameter <span className="ms-marker">type</span> fundamentally refers to the game field and its elements, namely
                                     <ul>
                                         <li>
-                                            <p><b>the current block</b> to be moved and rotated</p>
+                                            <p><b>the current block</b> to be moved and rotated. There are 7 <span className="tag" onClick={
+                                                _ => {
+                                                    setInfoState("type")
+                                                }
+                                            }>blocktypes</span></p>
                                         </li>
                                         <li>
                                             <p><b>the next block</b> the game continues with after ending the current
@@ -794,6 +798,97 @@ export default function Docs() {
                                         <FontAwesomeIcon className="btn-emblem" icon={faCheck}></FontAwesomeIcon>
                                         Okay, got it
                                     </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                {
+                    infoState == "type" &&
+                    <div className="info-content-retainer">
+                        <div className="pop-up-info">
+                            <div className="info-content-block">
+                                <div className="pop-up-header">
+                                    <h2>reset</h2>
+                                    <button className="close-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="close-icon" icon={faClose}></FontAwesomeIcon>
+                                    </button>
+                                </div>
+
+                                <hr/>
+
+                                <div className="info-content">
+                                    <p>
+                                        There are the following <span className="ms-marker">blocktypes</span> 
+                                        with the corresponding IDs (note that the arrays are already in the correct alignment):
+                                    </p>
+                                    
+                                    <ul>
+                                        <li>
+                                            id: <span className="ms-marker">0</span>
+                                            <br/>
+                                            <p className='code-field'>
+                                                [1, 1, 1, 1]
+                                            </p>
+                                        </li>
+                                        <li>
+                                            id: <span className="ms-marker">1</span>
+                                            <br/>
+                                            <p className="code-field">
+                                                [0, 1, 0],
+                                                <br/>
+                                                [1, 1, 1]
+                                            </p>
+                                        </li>
+                                        <li>
+                                            id: <span className="ms-marker">2</span>
+                                            <br/>
+                                            <p className="code-field">
+                                                [1, 1, 0],
+                                                <br/>
+                                                [0, 1, 1]
+                                            </p>
+                                        </li>
+                                        <li>
+                                            id: <span className="ms-marker">3</span>
+                                            <br/>
+                                            <p className="code-field">
+                                                [0, 1, 1],
+                                                <br/>
+                                                [1, 1, 0]
+                                            </p>
+                                        </li>
+                                        <li>
+                                            id: <span className="ms-marker">4</span>
+                                            <br/>
+                                            <p className="code-field">
+                                                [1, 0, 0],
+                                                <br/>
+                                                [1, 1, 1]
+                                            </p>
+                                        </li>
+                                        <li>
+                                            id: <span className="ms-marker">5</span>
+                                            <br/>
+                                            <p className="code-field">
+                                                [0, 0, 1],
+                                                <br/>
+                                                [1, 1, 1]
+                                            </p>
+                                        </li>
+                                        <li>
+                                            id: <span className="ms-marker">6</span>
+                                            <br/>
+                                            <p className="code-field">
+                                                [1, 1],
+                                                <br/>
+                                                [1, 1]
+                                            </p>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
