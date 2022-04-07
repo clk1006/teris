@@ -122,11 +122,12 @@ export default function Docs() {
                                     The parameter <span className="ms-marker">type</span> fundamentally refers to the game field and its elements, namely
                                     <ul>
                                         <li>
-                                            <p><b>the current block</b> to be moved and rotated. There are 7 <span className="tag" onClick={
+                                            <p><b>the current block</b> to be moved and rotated. <br/>
+                                            There are 7 <span className="tag" onClick={
                                                 _ => {
                                                     setInfoState("type")
                                                 }
-                                            }>blocktypes</span></p>
+                                            }>blocktypes</span>:</p>
                                         </li>
                                         <li>
                                             <p><b>the next block</b> the game continues with after ending the current
@@ -889,6 +890,15 @@ export default function Docs() {
                                             </p>
                                         </li>
                                     </ul>
+
+                                    <hr/>
+
+                                    <button className="action-btn" onClick={(event) => {
+                                        setInfoState("");
+                                    }}>
+                                        <FontAwesomeIcon className="btn-emblem" icon={faCheck}></FontAwesomeIcon>
+                                        Okay, got it
+                                    </button>
                                 </div>
                             </div>
                         </div>
