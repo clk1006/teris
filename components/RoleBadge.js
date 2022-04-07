@@ -10,7 +10,7 @@ export default function RoleBadge({name, ghname, roletype, role}) {
                 role.split(" ").map(x => {
                     let roleSuffix = "";
 
-                    if (roletype != "web" && roletype != "api") {
+                    if (roletype != "web/ui" && roletype != "api") {
                         roletype = "";
                     } else {
                         roletype = roletype + " ";
