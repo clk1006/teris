@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import RoleBadge from "../../components/RoleBadge";
 import styles from '../../styles/Home.module.css';
 import {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -11,7 +12,8 @@ import {
     faCodeBranch,
     faEllipsis,
     faExternalLink,
-    faPlay, faPuzzlePiece,
+    faPlay,
+    faPuzzlePiece,
     faQuestion
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -153,18 +155,66 @@ export default function Docs() {
 
                         <hr/>
 
-                        <h2>Authors</h2>
-                        <p>
-                            <b>Caspar Levin Kiehn</b><span>, <a href="https://github.com/clk1006"
-                                                  className="text-link"
-                                                  target="_blank" rel="noreferrer">clk1006 <FontAwesomeIcon
-                            size="xs" icon={faExternalLink}/></a> on GitHub</span>
-                            <br/>
-                            <b>Jamil Osoria Peralta</b><span>, <a href="https://github.com/bananeira"
-                                                  className="text-link"
-                                                  target="_blank" rel="noreferrer">bananeira <FontAwesomeIcon
-                            size="xs" icon={faExternalLink}/></a> on GitHub</span>
-                        </p>
+                        <h2>Team</h2>
+
+                        <p>This is a project by the S4 computer science class 2021/2022 of the Eimsbütteler Modell.</p>
+
+                        <ul>
+                            <li>
+                                <RoleBadge role="author infra" name="Caspar Levin Kiehn" roletype="api" ghname="clk1006"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="author infra" name="Jamil Osoria Peralta" roletype="web" ghname="bananeira"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai infra" roleAddSuffix="ai" name="Felix Eberle"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="infra" name="Furkan Is"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="management" name="Paul-Felix"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="management" name="Elsa"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Tang"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Ben"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Theo"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Viktor"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Ole"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Felix H."/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Lin"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="My"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Raul"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" roleAddSuffix="ai" name="Felix M."/>
+                            </li>
+                            <li>
+                                <RoleBadge role="theory" name="Henrik"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="theory" name="Paul"/>
+                            </li>
+                        </ul>
 
                         <hr/>
 

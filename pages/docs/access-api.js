@@ -4,12 +4,11 @@ import {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     faBook,
-    faCirclePlay, faCode,
+    faCirclePlay,
     faCodeBranch,
     faEllipsis,
     faExternalLink,
-    faExternalLinkSquare, faQuestion,
-    faAnchor, faAngleLeft
+    faAngleLeft
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Docs() {

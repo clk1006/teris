@@ -9,7 +9,8 @@ import {
     faCirclePlay,
     faClose,
     faCodeBranch,
-    faEllipsis, faExternalLink,
+    faEllipsis,
+    faExternalLink,
     faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons';
 
