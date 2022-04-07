@@ -167,10 +167,10 @@ export default function Docs() {
                                 <RoleBadge role="author infra" name="Jamil Osoria Peralta" roletype="web" ghname="bananeira"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai infra" roleAddSuffix="ai" name="Felix Eberle"/>
+                                <RoleBadge role="ai infra" name="Felix Eberle"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai infra" roleAddSuffix="ai" name="Tang"/>
+                                <RoleBadge role="ai infra" name="Tang"/>
                             </li>
                             <li>
                                 <RoleBadge role="infra" name="Furkan Is"/>
@@ -182,31 +182,31 @@ export default function Docs() {
                                 <RoleBadge role="management" name="Elsa"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Ben"/>
+                                <RoleBadge role="ai" name="Ben"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Theo"/>
+                                <RoleBadge role="ai" name="Theo"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Viktor Sersik"/>
+                                <RoleBadge role="ai" name="Viktor Sersik"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Ole"/>
+                                <RoleBadge role="ai" name="Ole"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Felix H."/>
+                                <RoleBadge role="ai" name="Felix H."/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Lin"/>
+                                <RoleBadge role="ai" name="Lin"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Dam Huyen My"/>
+                                <RoleBadge role="ai" name="Dam Huyen My"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Raul Ketil Meyer-Larsen"/>
+                                <RoleBadge role="ai" name="Raul Ketil Meyer-Larsen"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" roleAddSuffix="ai" name="Felix Mohrhagen"/>
+                                <RoleBadge role="ai" name="Felix Mohrhagen"/>
                             </li>
                             <li>
                                 <RoleBadge role="theory" name="Henrik"/>
