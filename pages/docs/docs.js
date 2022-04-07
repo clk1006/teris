@@ -811,7 +811,7 @@ export default function Docs() {
                         <div className="pop-up-info">
                             <div className="info-content-block">
                                 <div className="pop-up-header">
-                                    <h2>reset</h2>
+                                    <h2>blocktypes</h2>
                                     <button className="close-btn" onClick={(event) => {
                                         setInfoState("");
                                     }}>
@@ -823,8 +823,7 @@ export default function Docs() {
 
                                 <div className="info-content">
                                     <p>
-                                        There are the following <span className="ms-marker">blocktypes</span> 
-                                        with the corresponding IDs (note that the arrays are already in the correct alignment):
+                                        There are the following <span className="ms-marker">blocktypes</span> with the corresponding IDs (note that the arrays are already in the correct alignment):
                                     </p>
                                     
                                     <ul>
