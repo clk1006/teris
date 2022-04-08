@@ -179,10 +179,10 @@ export default function Docs() {
                                 <RoleBadge role="management" name="Paul-Felix Korm"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" name="Ben"/>
+                                <RoleBadge role="ai" name="Ben Kleberg"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" name="Theo"/>
+                                <RoleBadge role="ai" name="Theo Töpfer"/>
                             </li>
                             <li>
                                 <RoleBadge role="ai" name="Viktor Sersik"/>
@@ -209,7 +209,7 @@ export default function Docs() {
                                 <RoleBadge role="theory" name="Henrik"/>
                             </li>
                             <li>
-                                <RoleBadge role="theory" name="Paul"/>
+                                <RoleBadge role="theory" name="Paul Mack"/>
                             </li>
                         </ul>
 
