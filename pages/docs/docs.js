@@ -80,7 +80,7 @@ export default function Docs() {
                         </p>
                         <p>Example</p>
                         <p className="code-field">
-                            https://teris-em.herokuapp.com/api/api?<span className="syntax parameter">type</span>=<span
+                            https://teris-api.herokuapp.com/api/api?<span className="syntax parameter">type</span>=<span
                             className="syntax request">getState</span>
                         </p>
                         <p className="code-field">

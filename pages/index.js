@@ -359,7 +359,7 @@ export default function Home() {
                         <a className="opt-link action-btn" href="./">
                             <div className="menu-opt">
                                 <FontAwesomeIcon className="icon" icon={faCirclePlay}/>
-                                <span>Play Tetris</span>
+                                <span>Play Teris</span>
                             </div>
                         </a>
                     </div>
