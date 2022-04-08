@@ -194,7 +194,7 @@ export default function Docs() {
                                 <RoleBadge role="ai" name="Ole"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" name="Felix H."/>
+                                <RoleBadge role="ai" name="Felix Heinenbruch"/>
                             </li>
                             <li>
                                 <RoleBadge role="ai" name="Lin"/>
