@@ -170,7 +170,7 @@ export default function Docs() {
                                 <RoleBadge role="ai infra" name="Felix Eberle"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai infra" name="Tang"/>
+                                <RoleBadge role="ai infra" name="Tang JiaSheng"/>
                             </li>
                             <li>
                                 <RoleBadge role="infra" name="Furkan Is"/>
