@@ -161,10 +161,10 @@ export default function Docs() {
 
                         <ul>
                             <li>
-                                <RoleBadge role="author infra" name="Jamil Osoria Peralta" roletype="web/ui" ghname="bananeira"/>
+                                <RoleBadge role="author infra" name="Caspar Levin Kiehn" roletype="api" ghname="clk1006"/>
                             </li>
                             <li>
-                                <RoleBadge role="author infra" name="Caspar Levin Kiehn" roletype="api" ghname="clk1006"/>
+                                <RoleBadge role="author infra" name="Jamil Osoria Peralta" roletype="web/ui" ghname="bananeira"/>
                             </li>
                             <li>
                                 <RoleBadge role="ai infra" name="Felix Eberle"/>
