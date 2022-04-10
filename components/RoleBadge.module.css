@@ -11,9 +11,14 @@
     border-radius: 3px;
 }
 
-.author {
-    color: rgb(22, 197, 115);
-    background-color: rgba(22, 197, 115, 0.22);
+.a-author {
+    color: rgb(214, 180, 76);
+    background-color: rgba(214, 180, 76, 0.22);
+}
+
+.wu-author {
+    color: rgb(22,197,115);
+    background-color: rgba(22,197,115, 0.22);
 }
 
 .infra {

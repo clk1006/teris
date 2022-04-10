@@ -9,11 +9,20 @@ export default function RoleBadge({name, ghname, roletype, role}) {
             {
                 role.split(" ").map(x => {
                     let roleSuffix = "";
+                    let roleName = x;
+                    let roleClass = "";
 
-                    if (roletype != "web/ui" && roletype != "api") {
-                        roletype = "";
-                    } else {
+                    if (roletype == "web/ui" || roletype == "api") {
+                        if (roletype == "web/ui") {
+                            roleClass = "wu-author";
+                        } else {
+                            roleClass = "a-author";
+                        }
+
                         roletype = roletype + " ";
+                    } else {
+                        roletype = "";
+                        roleClass = x;
                     }
 
                     if (x == "ai") {
@@ -21,7 +30,7 @@ export default function RoleBadge({name, ghname, roletype, role}) {
                     }
 
                     return (
-                        <span className={styles.roleBadge + " " + styles[x]}>{roletype.toUpperCase() + x.toUpperCase() + roleSuffix.toUpperCase()}</span>
+                        <span className={styles.roleBadge + " " + styles[roleClass]}>{roletype.toUpperCase() + roleName.toUpperCase() + roleSuffix.toUpperCase()}</span>
                     )
                 })
             }
