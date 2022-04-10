@@ -464,9 +464,9 @@ export default function Home() {
                                 <div className="nextElement-block"></div>
                                 <div className="info-block">
                                     <div className="info-container">
-                                        <h1>Play Tetris</h1>
+                                        <h1>Play Teris</h1>
 
-                                        <p>Click on the start button below to start tetris via client.</p>
+                                        <p>Click on the start button below to start teris via client.</p>
 
                                         <h2>Bindings</h2>
 
