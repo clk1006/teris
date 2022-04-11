@@ -110,7 +110,7 @@ export default function Docs() {
                                 </p>
                                 <p className="error">
                                     <FontAwesomeIcon size="xs" icon={faExclamationTriangle}/>
-                                    Please be especially careful when accessing this parameter via the public server, as your game can quickly interfere with (multiple) other games.
+                                    Please be especially careful when accessing this parameter via the public server, as your game may interfere with (multiple) other games.
                                     If possible, please always fall back to <span className="tag" onClick={
                                                     _ => {
                                                         setInfoState("reset")
