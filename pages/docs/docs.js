@@ -128,7 +128,7 @@ export default function Docs() {
                                                 _ => {
                                                     setInfoState("type")
                                                 }
-                                            }>blocktypes</span>:</p>
+                                            }>blocktypes</span></p>
                                         </li>
                                         <li>
                                             <p><b>the next block</b> the game continues with after ending the current
