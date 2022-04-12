@@ -161,43 +161,40 @@ export default function Docs() {
 
                         <ul>
                             <li>
-                                <RoleBadge role="author infra" name="Caspar Levin Kiehn" roletype="api" ghname="clk1006"/>
+                                <RoleBadge role="ai" name="Lin"/>
                             </li>
                             <li>
-                                <RoleBadge role="author infra" name="Jamil Osoria Peralta" roletype="web/ui" ghname="bananeira"/>
+                                <RoleBadge role="ai" name="Dam Huyen My"/>
                             </li>
                             <li>
                                 <RoleBadge role="ai infra" name="Felix Eberle"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai infra" name="Tang JiaSheng"/>
-                            </li>
-                            <li>
-                                <RoleBadge role="infra" name="Furkan Is"/>
-                            </li>
-                            <li>
-                                <RoleBadge role="management" name="Paul-Felix Korm"/>
-                            </li>
-                            <li>
-                                <RoleBadge role="ai" name="Ben Kleberg"/>
-                            </li>
-                            <li>
-                                <RoleBadge role="ai" name="Theo Töpfer"/>
-                            </li>
-                            <li>
-                                <RoleBadge role="ai" name="Viktor Sersik"/>
-                            </li>
-                            <li>
                                 <RoleBadge role="ai" name="Ole"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="theory" name="Henrik Hamann"/>
                             </li>
                             <li>
                                 <RoleBadge role="ai" name="Felix Heinenbruch"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" name="Lin"/>
+                                <RoleBadge role="infra" name="Furkan Is"/>
                             </li>
                             <li>
-                                <RoleBadge role="ai" name="Dam Huyen My"/>
+                                <RoleBadge role="ai infra" name="Tang JiaSheng"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="author infra" name="Caspar Levin Kiehn" roletype="api" ghname="clk1006"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" name="Ben Kleberg"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="management" name="Paul-Felix Korm"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="theory" name="Paul Mack"/>
                             </li>
                             <li>
                                 <RoleBadge role="ai" name="Raul Ketil Meyer-Larsen"/>
@@ -206,10 +203,13 @@ export default function Docs() {
                                 <RoleBadge role="ai" name="Felix Mohrhagen"/>
                             </li>
                             <li>
-                                <RoleBadge role="theory" name="Henrik Hamann"/>
+                                <RoleBadge role="author infra" name="Jamil Osoria Peralta" roletype="web/ui" ghname="bananeira"/>
                             </li>
                             <li>
-                                <RoleBadge role="theory" name="Paul Mack"/>
+                                <RoleBadge role="ai" name="Viktor Sersik"/>
+                            </li>
+                            <li>
+                                <RoleBadge role="ai" name="Theo Töpfer"/>
                             </li>
                         </ul>
 
