@@ -185,7 +185,7 @@ export default function Home() {
                     <div className="block">
                         <div className="screen-container">
                             <h2>Statistics</h2>
-                            <p>Score: <span className="hl">{state[0]}</span></p>
+                            <p>Score: <span className="hl">{displayScore}</span></p>
                         </div>
                     </div>
                 </div>
