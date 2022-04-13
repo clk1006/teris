@@ -127,7 +127,7 @@ export default function Home() {
 		},
 		[ handleUpdate ]
 	);
-    let displayScore = state[0].toLocaleString();
+    let displayScore = state[0].toString().toLocaleString();
     return (
         <div className={styles.container}>
             <Head>
