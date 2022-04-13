@@ -181,6 +181,12 @@ export default function Home() {
                                     width={DIMENSIONS[0] * BLOCK_SIZE + 2 * (DIMENSIONS[0] - 1)} ref={refTiles}/>
                         </div>
                     </div>
+                    <div className="block">
+                        <div className="screen-container">
+                            <h2>Statistics</h2>
+                            <p>Score: <span className="hl">{state[0]}</span></p>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
