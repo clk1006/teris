@@ -154,14 +154,14 @@ export default function Home() {
                                 <span>GitHub</span>
                             </div>
                         </a>
-                        <a className="opt-link" href="https://tetrisui.vercel.app/docs" target="_blank"
+                        <a className="opt-link" href="https://teris.vercel.app/docs" target="_blank"
                            rel="noreferrer">
                             <div className="menu-opt">
                                 <FontAwesomeIcon className="icon" icon={faBook}/>
                                 <span>Docs</span>
                             </div>
                         </a>
-                        <a className="opt-link action-btn" href="https://tetrisui.vercel.app" target="_blank"
+                        <a className="opt-link action-btn" href="https://teris.vercel.app" target="_blank"
                            rel="noreferrer">
                             <div className="menu-opt">
                                 <FontAwesomeIcon className="icon" icon={faCirclePlay}/>
