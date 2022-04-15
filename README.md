@@ -1,1 +1,1 @@
-Go to [https://tetrisui.vercel.app/docs](https://tetrisui.vercel.app/docs) to see the documentation.
+Go to [https://teris.vercel.app/docs](https://teris.vercel.app/docs) to see the documentation.
