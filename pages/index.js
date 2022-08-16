@@ -23,7 +23,8 @@ const BLOCK_BASE = "rgba(214, 215, 224)";
 let contextTiles, contextCurr;
 
 const SCORE_BLOCK = 5;
-const SCORE_CLEAR = 100;
+const SCORE_CLEAR = 20;
+
 const shuffle = (arr) => {
     let currentIndex = arr.length, randomIndex;
 
@@ -93,6 +94,8 @@ const dropBlock = (block, tiles) => {
     }
 };
 
+let clearedRows = 0;
+
 const updateState = (score, tiles) => {
     for (let row = 0; row < 20; row++) {
         let full = true;
@@ -116,7 +119,9 @@ const updateState = (score, tiles) => {
                 tiles[190 + clearCol] = 0
             }
 
-            score += SCORE_CLEAR;
+            clearedRows++;
+
+            score += SCORE_CLEAR + clearedRows^3;
             row--
         }
     }
