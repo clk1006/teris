@@ -72,9 +72,11 @@ export default function Docs() {
                 <div className="container">
                     <div className="content-block">
                         <div className="warning-box">
-                            <p className="error">
-                                There is a problem with scaling, which is untraceable due to incoherent effects within the code. Working on it ...
-                            </p>
+                            There is a problem with scaling, which is untraceable due to incoherent effects within the code. Working on it ...
+                        </div>
+
+                        <div className="warning-box yellow">
+                            Pending rework of the scoring for frontend. Note that this will not effect the scoring of your bot for now.
                         </div>
 
                         <h1>Docs</h1>
