@@ -261,3 +261,9 @@ hr {
 .nav-back {
     margin-right: 6px;
 }
+
+.warning-box {
+    padding: 2px 16px;
+    background-color: rgba(229, 75, 75, 0.075);
+    border-radius: 5px;
+}
