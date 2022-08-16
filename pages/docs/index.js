@@ -83,11 +83,7 @@ export default function Docs() {
 
                         <hr/>
 
-                        <h2>Important Notes</h2>
-
-                        <div className="warning-box">
-                            There is a problem with icon scaling, which is untraceable due to incoherent effects within the code. Working on it ...
-                        </div>
+                        <h2>Important Logs</h2>
 
                         <div className="warning-box yellow">
                             The new scoring system includes an extended calculation for line clears and is calculated as following:
@@ -98,6 +94,17 @@ export default function Docs() {
                             <br/>
                             <br/>
                             Note that this rework doesn't effect the API, with which your AI/bot runs, but only the frontend game.
+                            <br/>
+                            <br/>
+                            <b>Tue, 16th August 2022</b>
+                        </div>
+
+                        <div className="warning-box yellow">
+                            Forced down icon scaling due to excessive enlargement by not tracable causes.
+                            Sorry if you encounter problems due to this solutions.
+                            <br/>
+                            <br/>
+                            <b>Tue, 16th August 2022</b>
                         </div>
 
                         <hr/>
