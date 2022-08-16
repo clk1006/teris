@@ -10,7 +10,7 @@ import {
     faCirclePlay,
     faCode,
     faCodeBranch,
-    faEllipsis,
+    faEllipsis, faExclamationTriangle,
     faExternalLink,
     faPlay,
     faPuzzlePiece,
@@ -71,6 +71,12 @@ export default function Docs() {
 
                 <div className="container">
                     <div className="content-block">
+                        <div className="warning-box">
+                            <p className="error">
+                                There is a problem with scaling, which is untraceable due to incoherent effects within the code. Working on it ...
+                            </p>
+                        </div>
+
                         <h1>Docs</h1>
 
                         <hr/>
@@ -85,7 +91,8 @@ export default function Docs() {
 
                         <h2>References</h2>
 
-                        <p>Please read through the following reference-boxes. They contain all relevant information you need to know about this API and how to use it.</p>
+                        <p>Please read through the following reference-boxes. They contain all relevant information you
+                            need to know about this API and how to use it.</p>
 
                         <div className="ref-container">
                             <div className="block">
@@ -137,7 +144,8 @@ export default function Docs() {
                                 <a href="https://teris-api.herokuapp.com"
                                    target="_blank" rel="noreferrer">
                                     <div className="reference-box">
-                                        <FontAwesomeIcon className="ref-box-icon" icon={faPuzzlePiece}></FontAwesomeIcon>
+                                        <FontAwesomeIcon className="ref-box-icon"
+                                                         icon={faPuzzlePiece}></FontAwesomeIcon>
                                         <h2>teris-api.herokuapp.com <FontAwesomeIcon
                                             size="xs"
                                             icon={faExternalLink}/></h2>
@@ -148,7 +156,8 @@ export default function Docs() {
                                 <a href="https://teris-api.vercel.app"
                                    target="_blank" rel="noreferrer">
                                     <div className="reference-box">
-                                        <FontAwesomeIcon className="ref-box-icon" icon={faPuzzlePiece}></FontAwesomeIcon>
+                                        <FontAwesomeIcon className="ref-box-icon"
+                                                         icon={faPuzzlePiece}></FontAwesomeIcon>
                                         <h2>teris-api.vercel.app <FontAwesomeIcon
                                             size="xs"
                                             icon={faExternalLink}/></h2>
@@ -190,7 +199,8 @@ export default function Docs() {
                                 <RoleBadge role="ai infra" name="Tang JiaSheng"/>
                             </li>
                             <li>
-                                <RoleBadge role="author infra" name="Caspar Levin Kiehn" roletype="api" ghname="clk1006"/>
+                                <RoleBadge role="author infra" name="Caspar Levin Kiehn" roletype="api"
+                                           ghname="clk1006"/>
                             </li>
                             <li>
                                 <RoleBadge role="ai" name="Ben Kleberg"/>
@@ -208,7 +218,8 @@ export default function Docs() {
                                 <RoleBadge role="ai" name="Felix Mohrhagen"/>
                             </li>
                             <li>
-                                <RoleBadge role="author infra" name="Jamil Osoria Peralta" roletype="web/ui" ghname="bananeira"/>
+                                <RoleBadge role="author infra" name="Jamil Osoria Peralta" roletype="web/ui"
+                                           ghname="bananeira"/>
                             </li>
                             <li>
                                 <RoleBadge role="ai" name="Viktor Sersik"/>
@@ -226,10 +237,11 @@ export default function Docs() {
                                                   target="_blank" rel="noreferrer">GNU GPL Version 3 <FontAwesomeIcon
                             size="xs" icon={faExternalLink}/></a>, 29 June 2007</p>
                     </div>
-                    
+
                     <div className="screen-container device-warning">
                         <h2>Sorry, there is nothing to see here :/</h2>
-                        <p className="error">Please use a device with a bigger display. This application is not designed for small medias.</p>
+                        <p className="error">Please use a device with a bigger display. This application is not designed
+                            for small medias.</p>
                     </div>
                 </div>
             </main>
