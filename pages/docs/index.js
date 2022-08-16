@@ -101,7 +101,7 @@ export default function Docs() {
 
                         <div className="warning-box yellow">
                             Forced down icon scaling due to excessive enlargement by not tracable causes.
-                            Sorry if you encounter problems due to this solutions.
+                            Sorry if you encounter problems because of this solution.
                             <br/>
                             <br/>
                             <b>Tue, 16th August 2022</b>
