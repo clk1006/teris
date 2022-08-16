@@ -94,7 +94,7 @@ const dropBlock = (block, tiles) => {
     }
 };
 
-let clearedRows = 0;
+let clearedRowsInGame = 0;
 
 const updateState = (score, tiles) => {
     for (let row = 0; row < 20; row++) {
@@ -113,15 +113,16 @@ const updateState = (score, tiles) => {
                 for (let clearCol = 0; clearCol < 10; clearCol++) {
                     tiles[10 * clearRow + clearCol] = tiles[10 * (clearRow + 1) + clearCol]
                 }
+
             }
 
             for (let clearCol = 0; clearCol < 10; clearCol++) {
                 tiles[190 + clearCol] = 0
             }
 
-            clearedRows++;
+            clearedRowsInGame++;
 
-            score += SCORE_CLEAR + clearedRows^3;
+            score += SCORE_CLEAR - SCORE_BLOCK + Math.ceil(Math.log(clearedRowsInGame)^4) + clearedRowsInGame;
             row--
         }
     }
