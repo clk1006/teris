@@ -71,14 +71,6 @@ export default function Docs() {
 
                 <div className="container">
                     <div className="content-block">
-                        <div className="warning-box">
-                            There is a problem with scaling, which is untraceable due to incoherent effects within the code. Working on it ...
-                        </div>
-
-                        <div className="warning-box yellow">
-                            Pending rework of the scoring for frontend. Note that this will not effect the scoring of your bot for now.
-                        </div>
-
                         <h1>Docs</h1>
 
                         <hr/>
@@ -88,6 +80,25 @@ export default function Docs() {
                             by the computer science class 2021/2022 of the Eimsbütteler Modell.</p>
                         <p>The project is a self-developed creation based on the puzzle-like computer game Tetris,
                             which can be used by both human and artificial agents.</p>
+
+                        <hr/>
+
+                        <h2>Important Notes</h2>
+
+                        <div className="warning-box">
+                            There is a problem with icon scaling, which is untraceable due to incoherent effects within the code. Working on it ...
+                        </div>
+
+                        <div className="warning-box yellow">
+                            The new scoring system includes an extended calculation for line clears and is calculated as following:
+                            <br/>
+                            <b>
+                                base_line_clear (20) - base_block_place (5) + ln(total_cleared_lines_amount) ^ 4 + total_cleared_lines_amount;
+                            </b>
+                            <br/>
+                            <br/>
+                            Note that this rework doesn't effect the API, with which your AI/bot runs, but only the frontend game.
+                        </div>
 
                         <hr/>
 
