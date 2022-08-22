@@ -1,7 +1,7 @@
 const dbClient = require("./db.js")
 //const seedrandom=require("seedrandom")
 const SCORE_BLOCK = 5
-const SCORE_CLEAR = 100
+const SCORE_CLEAR = 20
 const STORAGE_BASE={
     id: "stoTet",
     state: 0,
@@ -144,6 +144,8 @@ const dropBlock = (block, tiles) => {
     }
 }
 
+let clearedRowsInGame = 0;
+
 const updateState = (score, tiles) => {
 
     for (let row = 0; row < 20; row++) {
@@ -168,7 +170,9 @@ const updateState = (score, tiles) => {
                 tiles[190 + clearCol] = 0
             }
 
-            score += SCORE_CLEAR
+            clearedRowsInGame++;
+
+            score += SCORE_CLEAR - SCORE_BLOCK + Math.ceil(Math.log(clearedRowsInGame)^4) + clearedRowsInGame;
             row--
         }
     }
