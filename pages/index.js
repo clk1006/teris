@@ -11,7 +11,17 @@ import pic5 from '../public/tetris5.png'
 import pic6 from '../public/tetris6.png'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBook, faCirclePlay, faCodeBranch, faEllipsis, faMoon, faRedo, faSun} from '@fortawesome/free-solid-svg-icons'
+import {
+    faArrowAltCircleDown,
+    faBook,
+    faCirclePlay,
+    faCodeBranch,
+    faEllipsis,
+    faMoon,
+    faPlusCircle,
+    faRedo,
+    faSun
+} from '@fortawesome/free-solid-svg-icons'
 
 import getShape from "../lib/getShape"
 
@@ -500,14 +510,24 @@ export default function Home() {
                                         </div>
                                     </div>
 
-                                    <button className="action-btn" onClick={(event) => {
-                                        setGameState(1);
-                                    }}>
-                                        <div className="btn-emblem">
-                                            <FontAwesomeIcon icon={faCirclePlay}/>
-                                        </div>
-                                        Start
-                                    </button>
+                                    <div className="btn-container-row">
+                                        <button className="secondary-btn" onClick={(event) => {
+                                            setGameState(3);
+                                        }}>
+                                            <div className="btn-emblem">
+                                                <FontAwesomeIcon icon={faArrowAltCircleDown}/>
+                                            </div>
+                                            Load game
+                                        </button>
+                                        <button className="action-btn" onClick={(event) => {
+                                            setGameState(1);
+                                        }}>
+                                            <div className="btn-emblem">
+                                                <FontAwesomeIcon icon={faPlusCircle}/>
+                                            </div>
+                                            New game
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         }

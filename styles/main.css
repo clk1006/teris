@@ -164,19 +164,39 @@ p {
     color: rgb(var(--text-color-500));
 }
 
-.action-btn:hover {
-    color: rgb(--text-color-500);
-    background-color: rgba(var(--tertiary-color));
-}
-
 .action-btn .icon {
     color: rgb(var(--text-color-500));
 }
 
 .action-btn:hover {
+    color: rgb(var(--text-color-500));
     background-color: rgb(var(--tertiary-color));
 
     box-shadow: 0 3px 0 0 rgb(var(--shadow-color-2));
+}
+
+.secondary-btn {
+    padding: 11px 14px;
+    border-radius: 2px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    color: rgb(var(--text-color-200));
+    background-color: rgb(var(--text-color-500));
+
+    font-weight: 300;
+    font-size: 18px;
+    border: 0 hidden;
+    border-radius: 2px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.secondary-btn:hover {
+    color: rgb(var(--text-color-050));
 }
 
 .btn-emblem {
@@ -326,4 +346,10 @@ p {
         display: flex;
         flex-direction: column;
     }
+}
+
+.btn-container-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
