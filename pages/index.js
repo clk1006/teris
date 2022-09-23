@@ -531,6 +531,22 @@ export default function Home() {
                                 </div>
                             </div>
                         }
+                        {
+                            gameState == 0 &&
+                            <div className="screen-container">
+                                <div className="nextElement-block"></div>
+                                <div className="info-block">
+                                    <div className="info-container">
+                                        <h2 className="tag">[Ad]</h2>
+                                        <h2>For scientific purposes</h2>
+
+                                        <p>
+                                            You may also visit Jamil's webpage via <a className="text-link" target="_blank" href="https://bitsage.vercel.app/">bitsage.vercel.app</a>!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     </div>
                     
                     <div className="screen-container device-warning">
