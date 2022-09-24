@@ -19,7 +19,7 @@ import {
     faEllipsis,
     faMoon,
     faPlusCircle,
-    faRedo,
+    faRedo, faSave,
     faSun
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -463,14 +463,23 @@ export default function Home() {
                                             </div>
                                         </div>
                                     </div>
-                                    <button className="action-btn" onClick={(event) => {
-                                        setGameState(0);
-                                    }}>
-                                        <div className="btn-emblem">
-                                            <FontAwesomeIcon className="icon" icon={faRedo}/>
-                                        </div>
-                                        Restart
-                                    </button>
+                                    <div className="btn-container-row">
+                                        <button className="action-btn" onClick={(event) => {
+                                            setGameState(0);
+                                        }}>
+                                            <div className="btn-emblem">
+                                                <FontAwesomeIcon className="icon" icon={faRedo}/>
+                                            </div>
+                                            Restart
+                                        </button>
+                                        <button className="secondary-btn" onClick={(event) => {
+                                            setGameState(0);
+                                        }}>
+                                            <div className="nom-btn-emblem">
+                                                <FontAwesomeIcon className="nom-icon" icon={faSave}/>
+                                            </div>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         }
