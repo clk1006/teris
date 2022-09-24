@@ -83,7 +83,7 @@ export default function Docs() {
 
                         <hr/>
 
-                        <h2>Important Logs</h2>
+                        <h2>Logs</h2>
 
                         <div className="warning-box yellow">
                             The new scoring system includes an extended calculation for line clears and is calculated as following:
@@ -101,7 +101,6 @@ export default function Docs() {
 
                         <div className="warning-box yellow">
                             Forced down icon scaling due to excessive enlargement by not tracable causes.
-                            Sorry if you encounter problems because of this solution.
                             <br/>
                             <br/>
                             <b>Tue, 16th August 2022</b>
