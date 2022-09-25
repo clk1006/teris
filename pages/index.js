@@ -132,7 +132,7 @@ const updateState = (score, tiles) => {
 
             clearedRowsInGame++;
 
-            score += SCORE_CLEAR - SCORE_BLOCK + Math.ceil(Math.log(clearedRowsInGame)^4) + clearedRowsInGame;
+            score += SCORE_CLEAR - SCORE_BLOCK + Math.ceil(Math.log(clearedRowsInGame) ^ 4) + clearedRowsInGame;
             row--
         }
     }
@@ -179,7 +179,7 @@ const DATA_BASE = {
     seq: [0, 1, 2, 3, 4, 5, 6]
 };
 let data = copy(DATA_BASE);
-let dataInput="";
+let dataInput = "";
 export default function Home() {
     const refTiles = useRef();
     const refCurr = useRef();
@@ -543,10 +543,11 @@ export default function Home() {
                             </div>
                         }
                     </div>
-                    
+
                     <div className="screen-container device-warning">
                         <h2>Sorry, there is nothing to see here :/</h2>
-                        <p className="error">Please use a device with a bigger display. This application is not designed for small medias.</p>
+                        <p className="error">Please use a device with a bigger display. This application is not designed
+                            for small medias.</p>
                     </div>
                 </div>
 
@@ -579,21 +580,30 @@ export default function Home() {
                     <div className="pop-up-frame">
                         {/* Field to enter Game which should be loaded */}
                         <div className="game-fail-popup screen-container">
-                            <div className="inline-block">
-                                <input className="input-field" placeHolder="Input game code" onChange = {(event) => {
-                                    dataInput = event.target.value;
-                                }} />
-                                <button className="action-btn" onClick={(event) => {
-                                    data=JSON.parse(dataInput);
-                                    setGameState(1);
+                            <h1>Load in your game data</h1>
+                            <p>Paste and submit your previously saved game data to load the game board.</p>
+                            <div className="btn-container-row">
+                                <div className="inline-block">
+                                    <input className="input-field" placeHolder="Input game code" onChange={(event) => {
+                                        dataInput = event.target.value;
+                                    }}/>
+                                    <button className="action-btn" onClick={(event) => {
+                                        data = JSON.parse(dataInput);
+                                        setGameState(1);
+                                    }}>
+                                        <div className="nom-btn-emblem">
+                                            <FontAwesomeIcon className="nom-icon" icon={faArrowAltCircleDown}/>
+                                        </div>
+                                    </button>
+                                </div>
+                                <button className="secondary-btn" onClick={(event) => {
+                                    !setShowInputWindow();
                                 }}>
-                                    <div className="nom-btn-emblem">
-                                        <FontAwesomeIcon className="nom-icon" icon={faArrowAltCircleDown}/>
-                                    </div>
+                                    Cancel
                                 </button>
                             </div>
                         </div>
-                        
+
                     </div>
                 }
             </main>
