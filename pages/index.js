@@ -179,12 +179,14 @@ const DATA_BASE = {
     seq: [0, 1, 2, 3, 4, 5, 6]
 };
 let data = copy(DATA_BASE);
+let dataInput="";
 export default function Home() {
     const refTiles = useRef();
     const refCurr = useRef();
     const [gameState, setGameState] = useState(false);
     const [reRender, setReRender] = useState(1);
     const [currentTheme, setCurrentTheme] = useState(0);
+    const [showInputWindow, setShowInputWindow] = useState(false);
     useEffect(() => {
         if (gameState == 1) {
             contextTiles = refTiles.current.getContext('2d');
@@ -529,7 +531,7 @@ export default function Home() {
                                             Create game
                                         </button>
                                         <button className="secondary-btn" onClick={(event) => {
-                                            setGameState(3);
+                                            setShowInputWindow(true);
                                         }}>
                                             <div className="btn-emblem">
                                                 <FontAwesomeIcon icon={faArrowAltCircleDown}/>
@@ -570,6 +572,15 @@ export default function Home() {
                                 Restart
                             </button>
                         </div>
+                    </div>
+                }
+                {
+                    showInputWindow &&
+                    <div className="pop-up-frame">
+                        {/* Field to enter Game which should be loaded */}
+                        <input onChange = {(event) => {
+                            dataInput = event.target.value;
+                        }} />
                     </div>
                 }
             </main>
