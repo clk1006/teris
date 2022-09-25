@@ -586,7 +586,7 @@ export default function Home() {
                                 let data=JSON.parse(dataInput);
                                 setGameState(1);
                             }}>
-                            Submit
+                            <FontAwesomeIcon icon={faArrowAltCircleDown}/>
                             </button>
                         </div>
                         
