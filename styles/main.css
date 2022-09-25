@@ -366,3 +366,32 @@ p {
     flex-direction: row;
     justify-content: space-between;
 }
+
+.input-field {
+    margin: 8px 12px 8px 0;
+    padding: 12px 6px;
+
+    background-color: rgb(var(--text-color-300), var(--alpha-4));
+
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+
+    border-radius: 3px;
+    border: 1px solid rgb(var(--primary-color), 0);
+
+    transition: 0.4s;
+}
+
+.input-field:focus {
+    outline: none;
+    border: 1px solid rgb(var(--primary-color));
+}
+
+.inline-block {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-around;
+}

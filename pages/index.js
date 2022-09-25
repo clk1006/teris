@@ -578,16 +578,20 @@ export default function Home() {
                     showInputWindow &&
                     <div className="pop-up-frame">
                         {/* Field to enter Game which should be loaded */}
-                        <div className="inline-block">
-                            <input className="input-field" onChange = {(event) => {
-                                dataInput = event.target.value;
-                            }} />
-                            <button className="action-btn" onClick={(event) => {
-                                let data=JSON.parse(dataInput);
-                                setGameState(1);
-                            }}>
-                            <FontAwesomeIcon icon={faArrowAltCircleDown}/>
-                            </button>
+                        <div className="game-fail-popup screen-container">
+                            <div className="inline-block">
+                                <input className="input-field" placeHolder="Input game code" onChange = {(event) => {
+                                    dataInput = event.target.value;
+                                }} />
+                                <button className="action-btn" onClick={(event) => {
+                                    data=JSON.parse(dataInput);
+                                    setGameState(1);
+                                }}>
+                                    <div className="nom-btn-emblem">
+                                        <FontAwesomeIcon className="nom-icon" icon={faArrowAltCircleDown}/>
+                                    </div>
+                                </button>
+                            </div>
                         </div>
                         
                     </div>
