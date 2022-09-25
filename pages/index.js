@@ -578,9 +578,18 @@ export default function Home() {
                     showInputWindow &&
                     <div className="pop-up-frame">
                         {/* Field to enter Game which should be loaded */}
-                        <input onChange = {(event) => {
-                            dataInput = event.target.value;
-                        }} />
+                        <div className="inline-block">
+                            <input className="input-field" onChange = {(event) => {
+                                dataInput = event.target.value;
+                            }} />
+                            <button className="action-btn" onClick={(event) => {
+                                let data=JSON.parse(dataInput);
+                                setGameState(1);
+                            }}>
+                            Submit
+                            </button>
+                        </div>
+                        
                     </div>
                 }
             </main>
