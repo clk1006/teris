@@ -10,7 +10,6 @@ import pic4 from '../public/tetris4.png'
 import pic5 from '../public/tetris5.png'
 import pic6 from '../public/tetris6.png'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-import aes from 'js-crypto-aes'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
     faArrowAltCircleDown,
@@ -36,6 +35,9 @@ let keepData = false;
 
 const SCORE_BLOCK = 5;
 const SCORE_CLEAR = 20;
+
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr(process.env.ENCRYPTION_KEY);
 
 const shuffle = (arr) => {
     let currentIndex = arr.length, randomIndex;
@@ -482,7 +484,9 @@ export default function Home() {
                                             </div>
                                             Restart
                                         </button>
-                                        <CopyToClipboard text={JSON.stringify(data)}>
+                                        <CopyToClipboard text={
+                                            cryptr.encrypt(JSON.stringify(dataInput))
+                                        }>
                                             <button className="secondary-btn">
                                                 <div className="nom-btn-emblem">
                                                     <FontAwesomeIcon className="nom-icon" icon={faSave}/>
@@ -596,9 +600,8 @@ export default function Home() {
                                     <input className="input-field" placeHolder="Input game code" onChange={(event) => {
                                         dataInput = event.target.value;
                                     }}/>
-                                    <button className="action-btn" onClick={async(event) => {
-                                        dataInput=await aes.decrypt(dataInput,process.env.ENCRYPTION_KEY)
-                                        data = JSON.parse(dataInput);
+                                    <button className="action-btn" onClick={(event) => {
+                                        data = cryptr.decrypt(encryptedData);
                                         setShowInputWindow(false);
                                         keepData = true;
                                         setGameState(1);
