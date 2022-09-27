@@ -432,5 +432,5 @@ p {
 }
 
 .force-select {
-    user-select: all;
+    user-select: text;
 }
