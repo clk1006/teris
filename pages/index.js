@@ -9,6 +9,7 @@ import pic3 from '../public/tetris3.png'
 import pic4 from '../public/tetris4.png'
 import pic5 from '../public/tetris5.png'
 import pic6 from '../public/tetris6.png'
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
@@ -31,6 +32,7 @@ const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C", "#6
 const COLOR_NEXT = "#BCBECD";
 const BLOCK_BASE = "rgba(214, 215, 224)";
 let contextTiles, contextCurr;
+let keepData = false;
 
 const SCORE_BLOCK = 5;
 const SCORE_CLEAR = 20;
@@ -191,9 +193,15 @@ export default function Home() {
         if (gameState == 1) {
             contextTiles = refTiles.current.getContext('2d');
             contextCurr = refCurr.current.getContext('2d');
-            data = copy(DATA_BASE);
-            data.seq = shuffle([0, 1, 2, 3, 4, 5, 6], data.rng);
-            data.current.type = Math.floor(Math.random() * 7);
+
+            if (!keepData) {
+                data = copy(DATA_BASE);
+                data.seq = shuffle([0, 1, 2, 3, 4, 5, 6], data.rng);
+                data.current.type = Math.floor(Math.random() * 7);
+            } else {
+                keepData = false;
+            }
+
             setReRender(reRender + 1)
         }
     }, [gameState]);
@@ -474,13 +482,13 @@ export default function Home() {
                                             </div>
                                             Restart
                                         </button>
-                                        <button className="secondary-btn" onClick={(event) => {
-                                            setGameState(0);
-                                        }}>
-                                            <div className="nom-btn-emblem">
-                                                <FontAwesomeIcon className="nom-icon" icon={faSave}/>
-                                            </div>
-                                        </button>
+                                        <CopyToClipboard text={JSON.stringify(data)}>
+                                            <button className="secondary-btn">
+                                                <div className="nom-btn-emblem">
+                                                    <FontAwesomeIcon className="nom-icon" icon={faSave}/>
+                                                </div>
+                                            </button>
+                                        </CopyToClipboard>
                                     </div>
                                 </div>
                             </div>
@@ -523,6 +531,7 @@ export default function Home() {
 
                                     <div className="btn-container-row">
                                         <button className="action-btn" onClick={(event) => {
+                                            setShowInputWindow(false);
                                             setGameState(1);
                                         }}>
                                             <div className="btn-emblem">
@@ -589,6 +598,8 @@ export default function Home() {
                                     }}/>
                                     <button className="action-btn" onClick={(event) => {
                                         data = JSON.parse(dataInput);
+                                        setShowInputWindow(false);
+                                        keepData = true;
                                         setGameState(1);
                                     }}>
                                         <div className="nom-btn-emblem">
@@ -603,7 +614,6 @@ export default function Home() {
                                 </button>
                             </div>
                         </div>
-
                     </div>
                 }
             </main>
