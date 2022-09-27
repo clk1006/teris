@@ -649,6 +649,7 @@ export default function Home() {
                                     { copied ? <span className="copied-sign">Copied to clipboard!</span>: null }
                                 </div>
                                 <button className="confirm-action-btn" onClick={(event) => {
+                                    setCopied(false);
                                     !setShowGameFieldOutputWindow();
                                 }}>
                                     Alright, thanks!
