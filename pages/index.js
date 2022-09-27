@@ -37,7 +37,7 @@ const SCORE_BLOCK = 5;
 const SCORE_CLEAR = 20;
 
 const Cryptr = require('cryptr');
-const cryptr = new Cryptr(process.env.ENCRYPTION_KEY);
+const cryptr = new Cryptr(process.env.REACT_APP_ENCRYPTION_KEY);
 
 const shuffle = (arr) => {
     let currentIndex = arr.length, randomIndex;
