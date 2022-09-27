@@ -630,7 +630,6 @@ export default function Home() {
                             <div className="btn-container-row">
                                 <div className="inline-block">
                                     <input className="input-field force-select inactive"
-                                           style="user-select: all"
                                            readOnly={true}
                                            defaultValue={
                                                encryptFromJSON(data)
