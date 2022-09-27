@@ -188,7 +188,7 @@ p {
     width: fit-content;
 
     color: rgb(var(--text-color-200));
-    background-color: rgb(var(--text-color-500));
+    background-color: rgba(var(--text-color-200), 0.12);
 
     font-weight: 300;
     font-size: 18px;
@@ -200,6 +200,7 @@ p {
 
 .secondary-btn:hover {
     color: rgb(var(--text-color-050));
+    background-color: rgba(var(--text-color-200), 0.15);
 }
 
 .btn-emblem {
