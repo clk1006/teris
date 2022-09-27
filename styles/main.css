@@ -394,3 +394,42 @@ p {
     flex-direction: row;
     align-items: baseline;
 }
+
+.confirm-action-btn {
+    padding: 11px 14px;
+    border-radius: 2px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: fit-content;
+
+    color: rgb(var(--text-color-500));
+    background-color: rgb(var(--confirm-color));
+
+    font-weight: 300;
+    font-size: 18px;
+    border: 0 hidden;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.confirm-action-btn:hover {
+    background-color: rgb(var(--confirm-color-hover));
+}
+
+.inactive {
+    color: rgb(var(--text-color-200));
+    border: none;
+}
+
+.inactive:focus {
+    color: rgb(var(--text-color-200));
+    border: none;
+}
+
+.force-select {
+    user-select: all;
+}

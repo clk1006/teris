@@ -16,7 +16,7 @@ import {
     faArrowAltCircleDown,
     faBook,
     faCirclePlay,
-    faCodeBranch,
+    faCodeBranch, faCopy,
     faEllipsis,
     faMoon,
     faPlusCircle,
@@ -182,12 +182,14 @@ const DATA_BASE = {
 };
 let data = copy(DATA_BASE);
 let dataInput = "";
+
 export default function Home() {
     const refTiles = useRef();
     const refCurr = useRef();
     const [gameState, setGameState] = useState(false);
     const [reRender, setReRender] = useState(1);
     const [showInputWindow, setShowInputWindow] = useState(false);
+    const [showGameFieldOutputWindow, setShowGameFieldOutputWindow] = useState(false);
     useEffect(() => {
         if (gameState == 1) {
             contextTiles = refTiles.current.getContext('2d');
@@ -287,55 +289,56 @@ export default function Home() {
     };
 
     const handleKeyDown = (event) => {
-        let kc = event.keyCode;
-        if (kc == 65 || kc == 37) {
-            if (data.current.pos > 0) {
-                data.current.pos--
-            }
-        } else if (kc == 68 || kc == 39) {
-            let shape = getShape(data.current);
-            if (data.current.pos + shape[0].length < 10) {
-                data.current.pos++
-            }
-        } else if (kc == 81) {
-            data.current.rot = (data.current.rot + 3) % 4;
-            shape = getShape(data.current);
+        if (!showGameFieldOutputWindow) {
+            let kc = event.keyCode;
+            if (kc == 65 || kc == 37) {
+                if (data.current.pos > 0) {
+                    data.current.pos--
+                }
+            } else if (kc == 68 || kc == 39) {
+                let shape = getShape(data.current);
+                if (data.current.pos + shape[0].length < 10) {
+                    data.current.pos++
+                }
+            } else if (kc == 81) {
+                data.current.rot = (data.current.rot + 3) % 4;
+                shape = getShape(data.current);
 
-            while (data.current.pos + shape[0].length > 10) {
-                data.current.pos--
-            }
-        } else if (kc == 69) {
-            data.current.rot = (data.current.rot + 1) % 4;
-            shape = getShape(data.current);
+                while (data.current.pos + shape[0].length > 10) {
+                    data.current.pos--
+                }
+            } else if (kc == 69) {
+                data.current.rot = (data.current.rot + 1) % 4;
+                shape = getShape(data.current);
 
-            while (data.current.pos + shape[0].length > 10) {
-                data.current.pos--
-            }
-        } else if (kc == 83 || kc == 40) {
-            let dropRes = dropBlock(data.current, data.tiles);
-            if (dropRes[0]) {
-                let state = updateState(data.score, dropRes[1]);
-                data.score = state[0] + SCORE_BLOCK;
-                data.tiles = state[1];
-                data.current.type = data.seq[0];
-                data.current.pos = 4;
-                data.current.rot = 0;
-                data.seq.shift();
-                data.state = state[2];
-                if (data.state == 1) {
+                while (data.current.pos + shape[0].length > 10) {
+                    data.current.pos--
+                }
+            } else if (kc == 83 || kc == 40) {
+                let dropRes = dropBlock(data.current, data.tiles);
+                if (dropRes[0]) {
+                    let state = updateState(data.score, dropRes[1]);
+                    data.score = state[0] + SCORE_BLOCK;
+                    data.tiles = state[1];
+                    data.current.type = data.seq[0];
+                    data.current.pos = 4;
+                    data.current.rot = 0;
+                    data.seq.shift();
+                    data.state = state[2];
+                    if (data.state == 1) {
+                        setGameState(2);
+                    }
+                    if (data.seq.length == 0) {
+                        data.seq = shuffle([0, 1, 2, 3, 4, 5, 6])
+                    }
+
+                } else {
                     setGameState(2);
+                    data.state = 1
                 }
-                if (data.seq.length == 0) {
-                    data.seq = shuffle([0, 1, 2, 3, 4, 5, 6])
-                }
-
-            } else {
-                setGameState(2);
-                data.state = 1
             }
+            setReRender(reRender + 1)
         }
-        setReRender(reRender + 1)
-
     };
 
     useEffect(() => {
@@ -481,15 +484,14 @@ export default function Home() {
                                             </div>
                                             Restart
                                         </button>
-                                        <CopyToClipboard text={
-                                            encryptFromJSON(data)
+                                        <button className="secondary-btn" onClick={(event) => {
+                                            setShowGameFieldOutputWindow(true);
+                                        }
                                         }>
-                                            <button className="secondary-btn">
-                                                <div className="nom-btn-emblem">
-                                                    <FontAwesomeIcon className="nom-icon" icon={faSave}/>
-                                                </div>
-                                            </button>
-                                        </CopyToClipboard>
+                                            <div className="nom-btn-emblem">
+                                                <FontAwesomeIcon className="nom-icon" icon={faSave}/>
+                                            </div>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -612,6 +614,42 @@ export default function Home() {
                                     !setShowInputWindow();
                                 }}>
                                     Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+                {
+                    showGameFieldOutputWindow &&
+                    <div className="pop-up-frame">
+                        {/* Field to receive Game which should be saved */}
+                        <div className="game-fail-popup screen-container">
+                            <h1>Save your game data</h1>
+                            <p>Click to copy or select and copy your game code out of the field below.</p>
+                            <p>Please save your code externally so that you can retrieve and access it next time!</p>
+                            <div className="btn-container-row">
+                                <div className="inline-block">
+                                    <input className="input-field force-select inactive"
+                                           style="user-select: all"
+                                           readOnly={true}
+                                           defaultValue={
+                                               encryptFromJSON(data)
+                                           }
+                                    />
+                                    <CopyToClipboard text={
+                                        encryptFromJSON(data)
+                                    }>
+                                        <button className="action-btn">
+                                            <div className="nom-btn-emblem">
+                                                <FontAwesomeIcon className="nom-icon" icon={faCopy}/>
+                                            </div>
+                                        </button>
+                                    </CopyToClipboard>
+                                </div>
+                                <button className="confirm-action-btn" onClick={(event) => {
+                                    !setShowGameFieldOutputWindow();
+                                }}>
+                                    Alright, thanks!
                                 </button>
                             </div>
                         </div>
