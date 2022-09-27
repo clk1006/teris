@@ -190,6 +190,7 @@ export default function Home() {
     const [reRender, setReRender] = useState(1);
     const [showInputWindow, setShowInputWindow] = useState(false);
     const [showGameFieldOutputWindow, setShowGameFieldOutputWindow] = useState(false);
+    const [copied, setCopied] = useState(false);
     useEffect(() => {
         if (gameState == 1) {
             contextTiles = refTiles.current.getContext('2d');
@@ -637,13 +638,15 @@ export default function Home() {
                                     />
                                     <CopyToClipboard text={
                                         encryptFromJSON(data)
-                                    }>
+                                    }
+                                    onCopy={() => setCopied(true)}>
                                         <button className="action-btn">
                                             <div className="nom-btn-emblem">
                                                 <FontAwesomeIcon className="nom-icon" icon={faCopy}/>
                                             </div>
                                         </button>
                                     </CopyToClipboard>
+                                    { copied ? <span className="copied-sign">Copied to clipboard!</span>: null }
                                 </div>
                                 <button className="confirm-action-btn" onClick={(event) => {
                                     !setShowGameFieldOutputWindow();
