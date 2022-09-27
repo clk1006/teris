@@ -9,6 +9,7 @@ import pic3 from '../public/tetris3.png'
 import pic4 from '../public/tetris4.png'
 import pic5 from '../public/tetris5.png'
 import pic6 from '../public/tetris6.png'
+import {encryptFromJSON, decrypt} from '../lib/crypt'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
@@ -35,9 +36,6 @@ let keepData = false;
 
 const SCORE_BLOCK = 5;
 const SCORE_CLEAR = 20;
-
-const Cryptr = require('cryptr');
-const cryptr = new Cryptr("C634882F4006CC0EB929CF4070A7F11F");
 
 const shuffle = (arr) => {
     let currentIndex = arr.length, randomIndex;
@@ -189,7 +187,6 @@ export default function Home() {
     const refCurr = useRef();
     const [gameState, setGameState] = useState(false);
     const [reRender, setReRender] = useState(1);
-    const [currentTheme, setCurrentTheme] = useState(0);
     const [showInputWindow, setShowInputWindow] = useState(false);
     useEffect(() => {
         if (gameState == 1) {
@@ -485,7 +482,7 @@ export default function Home() {
                                             Restart
                                         </button>
                                         <CopyToClipboard text={
-                                            cryptr.encrypt(JSON.stringify(dataInput))
+                                            encryptFromJSON(data)
                                         }>
                                             <button className="secondary-btn">
                                                 <div className="nom-btn-emblem">
@@ -601,9 +598,9 @@ export default function Home() {
                                         dataInput = event.target.value;
                                     }}/>
                                     <button className="action-btn" onClick={(event) => {
-                                        data = cryptr.decrypt(encryptedData);
-                                        setShowInputWindow(false);
                                         keepData = true;
+                                        data = JSON.parse(decrypt(dataInput));
+                                        setShowInputWindow(false);
                                         setGameState(1);
                                     }}>
                                         <div className="nom-btn-emblem">
