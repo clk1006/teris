@@ -598,7 +598,9 @@ export default function Home() {
                             <div className="btn-container-row">
                                 <div className="inline-block">
                                     <input className="input-field" placeHolder="Input game code" onChange={(event) => {
-                                        dataInput = event.target.value;
+                                        if (event.target.value.length > 990) {
+                                            dataInput = event.target.value;
+                                        }
                                     }}/>
                                     <button className="action-btn" onClick={(event) => {
                                         keepData = true;

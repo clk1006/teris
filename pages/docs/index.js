@@ -86,6 +86,27 @@ export default function Docs() {
                         <h2>Logs</h2>
 
                         <div className="warning-box yellow">
+                            We have implemented a more or less efficient AES encryption (with semi-private key) and
+                            overlaid it on the game code to be copied to at least partially obfuscate it, so that easier
+                            manipulation of the game score and data is obstructed.
+                            <br/>
+                            <br/>
+                            Challenge: For anyone interested, try to decrypt a viable solution from the game code. Hover for hint:
+                            <span className="yellow-spoiler">AES is a block cipher. This block cipher is a symmetrical encryption method.</span>
+                            <br/>
+                            <br/>
+                            <b>Tue, 27th September 2022</b>
+                        </div>
+
+                        <div className="warning-box yellow">
+                            We introduced a save and load system that allows users to save unfinished games
+                            and load them again at another time or share them.
+                            <br/>
+                            <br/>
+                            <b>Tue, 27th September 2022</b>
+                        </div>
+
+                        <div className="warning-box yellow">
                             The new scoring system includes an extended calculation for line clears and is calculated as following:
                             <br/>
                             <b>

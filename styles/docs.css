@@ -278,3 +278,16 @@ hr {
 svg {
     height: 14px;
 }
+
+.yellow-spoiler {
+    margin-left: 4px;
+    font-size: 16px;
+    color: transparent;
+    background-color: rgba(213, 162, 66, 0.18);
+    border-radius: 3px;
+}
+
+.yellow-spoiler:hover {
+    color: rgb(213, 162, 66);
+    background-color: transparent;
+}
