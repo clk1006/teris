@@ -55,7 +55,7 @@ p {
 
     box-shadow: 0px 12px 24px -12px rgba(var(--shadow-color-1), var(--alpha-1));
 
-    border-radius: 45px; 
+    border-radius: 45px;
 
     z-index: 1;
 
@@ -439,4 +439,24 @@ p {
     margin-left: 10px;
     font-size: 16px;
     color: rgb(var(--confirm-color));
+}
+
+.red {
+    color: rgb(229, 75, 75)
+}
+
+.orange {
+    color: rgb(222, 114, 68)
+}
+
+.green {
+    color: rgb(53, 204, 78)
+}
+
+.blue {
+    color: rgb(41, 108, 215)
+}
+
+.purple {
+    color: rgb(95, 44, 224)
 }

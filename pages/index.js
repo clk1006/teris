@@ -570,8 +570,30 @@ export default function Home() {
                         {/* Exception for clients running out of tiles */}
                         <div className="game-fail-popup screen-container">
                             <h2>Game over</h2>
-                            <p className="error">You&#39;ve reached the end of the game field, but you can surely
-                                perform better next time.</p>
+
+                            {
+                                (data.score <= 5000) ? <p className="red">Sadly, you&#39;ve already reached the end of the game field, but you can surely
+                                perform better next time.</p>: null
+                            }
+
+                            {
+                                (data.score > 5000 && data.score <= 50000) ? <p className="orange">You&#39;ve reached the end of the game field,
+                                but you can certainly fully unleash your potential in the next round!</p>: null
+                            }
+
+                            {
+                                (data.score > 50000 && data.score <= 350000) ? <p className="green">Sadly, you&#39;ve reached the end of the game field, but
+                                that was surely a remarkable score!</p>: null
+                            }
+
+                            {
+                                (data.score > 350000 && data.score <= 1250000) ? <p className="blue">Congratulations! You hit a very good score right there!</p>: null
+                            }
+
+                            {
+                                (data.score > 1250000) ? <p className="purple">That was insane! Your score is godlike :-) How much time did you invest?</p>: null
+                            }
+
                             <div className="stat-container">
                                 <span>Your score: </span>
                                 <span className="hl">{displayScore}</span>
