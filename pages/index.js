@@ -10,7 +10,7 @@ import pic4 from '../public/tetris4.png'
 import pic5 from '../public/tetris5.png'
 import pic6 from '../public/tetris6.png'
 import {CopyToClipboard} from 'react-copy-to-clipboard';
-
+import aes from 'js-crypto-aes'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
     faArrowAltCircleDown,
@@ -596,7 +596,8 @@ export default function Home() {
                                     <input className="input-field" placeHolder="Input game code" onChange={(event) => {
                                         dataInput = event.target.value;
                                     }}/>
-                                    <button className="action-btn" onClick={(event) => {
+                                    <button className="action-btn" onClick={async(event) => {
+                                        dataInput=await aes.decrypt(dataInput,process.env.ENCRYPTION_KEY)
                                         data = JSON.parse(dataInput);
                                         setShowInputWindow(false);
                                         keepData = true;
