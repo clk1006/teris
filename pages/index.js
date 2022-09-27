@@ -37,7 +37,7 @@ const SCORE_BLOCK = 5;
 const SCORE_CLEAR = 20;
 
 const Cryptr = require('cryptr');
-const cryptr = new Cryptr("C1FDF6CECFDE8E650D0797BE3683A0AF16E84A68DC512B99B63E411F95187248");
+const cryptr = new Cryptr("C634882F4006CC0EB929CF4070A7F11F");
 
 const shuffle = (arr) => {
     let currentIndex = arr.length, randomIndex;
