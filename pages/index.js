@@ -106,9 +106,7 @@ const dropBlock = (block, tiles) => {
     }
 };
 
-let clearedRowsInGame = 0;
-
-const updateState = (score, tiles) => {
+const updateState = (score, tiles, data) => {
     for (let row = 0; row < 20; row++) {
         let full = true;
 
@@ -132,9 +130,9 @@ const updateState = (score, tiles) => {
                 tiles[190 + clearCol] = 0
             }
 
-            clearedRowsInGame++;
+            data.clearedRowsInGame++;
 
-            score += SCORE_CLEAR - SCORE_BLOCK + Math.ceil(Math.log(clearedRowsInGame) ^ 4) + clearedRowsInGame;
+            score += SCORE_CLEAR - SCORE_BLOCK + Math.ceil(Math.log(data.clearedRowsInGame) ^ 4) + data.clearedRowsInGame;
             row--
         }
     }
@@ -178,7 +176,8 @@ const DATA_BASE = {
         pos: 5,
         rot: 0
     },
-    seq: [0, 1, 2, 3, 4, 5, 6]
+    seq: [0, 1, 2, 3, 4, 5, 6],
+    clearedRowsInGame: 0
 };
 let data = copy(DATA_BASE);
 let dataInput = "";
@@ -318,7 +317,7 @@ export default function Home() {
             } else if (kc == 83 || kc == 40) {
                 let dropRes = dropBlock(data.current, data.tiles);
                 if (dropRes[0]) {
-                    let state = updateState(data.score, dropRes[1]);
+                    let state = updateState(data.score, dropRes[1],data);
                     data.score = state[0] + SCORE_BLOCK;
                     data.tiles = state[1];
                     data.current.type = data.seq[0];
@@ -627,6 +626,7 @@ export default function Home() {
                                     <button className="action-btn" onClick={(event) => {
                                         keepData = true;
                                         data = JSON.parse(decrypt(dataInput));
+                                        data.clearedRowsInGame ||= 0;
                                         setShowInputWindow(false);
                                         setGameState(1);
                                     }}>
