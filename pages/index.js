@@ -360,7 +360,7 @@ export default function Home() {
 
     let seconds = data.timeSpent % 60;
     let minutes = seconds/60 % 60;
-    let hours = seconds % 60;
+    let hours = seconds/3600 % 60;
     let displayTime = padding(hours) + ":" + padding(minutes) + ":" + padding(seconds);
 
     let displayScore = data.score.toLocaleString();
@@ -472,7 +472,7 @@ export default function Home() {
                                                 <span className="hl">{displayClearedRows}</span>
                                             </div>
                                             <div className="stat-container">
-                                                <span>Total spent time: </span>
+                                                <span>Total spent time (broken): </span>
                                                 <span className="hl">{displayTime}</span>
                                             </div>
                                         </div>
