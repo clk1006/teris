@@ -451,6 +451,18 @@ export default function Home() {
                                                 <span>Current score: </span>
                                                 <span className="hl">{displayScore}</span>
                                             </div>
+                                            <div className="stat-container">
+                                                <span>Total turns: </span>
+                                                <span className="hl">{data.numberTurns}</span>
+                                            </div>
+                                            <div className="stat-container">
+                                                <span>Total cleared lines: </span>
+                                                <span className="hl">{data.clearedRowsInGame}</span>
+                                            </div>
+                                            <div className="stat-container">
+                                                <span>Total spent time for this game: </span>
+                                                <span className="hl">{data.timeSpent}</span>
+                                            </div>
                                         </div>
 
                                         <h2>Bindings</h2>
