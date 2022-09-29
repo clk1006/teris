@@ -460,7 +460,7 @@ export default function Home() {
                                                 <span className="hl">{data.clearedRowsInGame}</span>
                                             </div>
                                             <div className="stat-container">
-                                                <span>Total spent time for this game: </span>
+                                                <span>Total spent time: </span>
                                                 <span className="hl">{data.timeSpent}</span>
                                             </div>
                                         </div>
