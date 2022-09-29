@@ -353,10 +353,15 @@ export default function Home() {
         }
     });
 
+    function padding(d) {
+        return (d < 10) ? '0' + d.toString() : d.toString();
+    }
+
+
     let seconds = data.timeSpent % 60;
     let minutes = seconds/60 % 60;
     let hours = seconds % 60;
-    let displayTime = hours + ":" + minutes.toFixed(2) + ":" + seconds.toFixed(2);
+    let displayTime = hours + ":" + padding(minutes) + ":" + padding(seconds);
 
     let displayScore = data.score.toLocaleString();
 
