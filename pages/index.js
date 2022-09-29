@@ -353,6 +353,11 @@ export default function Home() {
         }
     });
 
+    let seconds = data.timeSpent % 60;
+    let minutes = seconds/60 % 60;
+    let hours = seconds % 60;
+    let displayTime = hours + ":" + minutes + ":" + seconds;
+
     let displayScore = data.score.toLocaleString();
 
     return (
@@ -461,7 +466,7 @@ export default function Home() {
                                             </div>
                                             <div className="stat-container">
                                                 <span>Total spent time: </span>
-                                                <span className="hl">{data.timeSpent}</span>
+                                                <span className="hl">{displayTime}</span>
                                             </div>
                                         </div>
 
