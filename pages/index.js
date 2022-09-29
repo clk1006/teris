@@ -364,6 +364,8 @@ export default function Home() {
     let displayTime = padding(hours) + ":" + padding(minutes) + ":" + padding(seconds);
 
     let displayScore = data.score.toLocaleString();
+    let displayClearedRows = data.clearedRowsInGame.toLocaleString();
+    let displayTurns = data.numberTurns.toLocaleString();
 
     return (
         <div className={styles.container}>
@@ -463,11 +465,11 @@ export default function Home() {
                                             </div>
                                             <div className="stat-container">
                                                 <span>Total turns: </span>
-                                                <span className="hl">{data.numberTurns}</span>
+                                                <span className="hl">{displayTurns}</span>
                                             </div>
                                             <div className="stat-container">
                                                 <span>Total cleared lines: </span>
-                                                <span className="hl">{data.clearedRowsInGame}</span>
+                                                <span className="hl">{displayClearedRows}</span>
                                             </div>
                                             <div className="stat-container">
                                                 <span>Total spent time: </span>
