@@ -356,7 +356,7 @@ export default function Home() {
     let seconds = data.timeSpent % 60;
     let minutes = seconds/60 % 60;
     let hours = seconds % 60;
-    let displayTime = hours + ":" + minutes + ":" + seconds;
+    let displayTime = hours + ":" + minutes.toFixed(2) + ":" + seconds.toFixed(2);
 
     let displayScore = data.score.toLocaleString();
 
