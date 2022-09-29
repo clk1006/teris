@@ -177,7 +177,9 @@ const DATA_BASE = {
         rot: 0
     },
     seq: [0, 1, 2, 3, 4, 5, 6],
-    clearedRowsInGame: 0
+    clearedRowsInGame: 0,
+    numberTurns: 0,
+    timeSpent: 0
 };
 let data = copy(DATA_BASE);
 let dataInput = "";
@@ -315,6 +317,7 @@ export default function Home() {
                     data.current.pos--
                 }
             } else if (kc == 83 || kc == 40) {
+                data.numberTurns++;
                 let dropRes = dropBlock(data.current, data.tiles);
                 if (dropRes[0]) {
                     let state = updateState(data.score, dropRes[1],data);
@@ -627,6 +630,8 @@ export default function Home() {
                                         keepData = true;
                                         data = JSON.parse(decrypt(dataInput));
                                         data.clearedRowsInGame ||= 0;
+                                        data.numberTurns ||= 0;
+                                        data.timeSpent ||= 0;
                                         setShowInputWindow(false);
                                         setGameState(1);
                                     }}>
