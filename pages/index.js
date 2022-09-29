@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import {useEffect, useRef, useState} from 'react'
+import {useEffect, useRef, useState,useCallback} from 'react'
 import styles from '../styles/Home.module.css'
 import pic0 from '../public/tetris0.png'
 import pic1 from '../public/tetris1.png'
@@ -33,6 +33,7 @@ const COLOR_NEXT = "#BCBECD";
 const BLOCK_BASE = "rgba(214, 215, 224)";
 let contextTiles, contextCurr;
 let keepData = false;
+let id=0;
 
 const SCORE_BLOCK = 5;
 const SCORE_CLEAR = 20;
@@ -192,6 +193,17 @@ export default function Home() {
     const [showInputWindow, setShowInputWindow] = useState(false);
     const [showGameFieldOutputWindow, setShowGameFieldOutputWindow] = useState(false);
     const [copied, setCopied] = useState(false);
+    const [timePassed,setTimePassed] = useState(0);
+    const advanceTime=useCallback(()=>{
+        setTimePassed(timePassed+1);
+        data.timeSpent++;
+    })
+    useEffect(()=>{
+        id = setInterval(advanceTime, 1000);
+        return () => {
+            clearInterval(id);
+        };
+    }, [advanceTime]);
     useEffect(() => {
         if (gameState == 1) {
             contextTiles = refTiles.current.getContext('2d');
@@ -359,8 +371,8 @@ export default function Home() {
 
 
     let seconds = data.timeSpent % 60;
-    let minutes = seconds/60 % 60;
-    let hours = seconds % 60;
+    let minutes = Math.floor(seconds/60) % 60;
+    let hours = Math.floor(seconds/3600);
     let displayTime = padding(hours) + ":" + padding(minutes) + ":" + padding(seconds);
 
     let displayScore = data.score.toLocaleString();
