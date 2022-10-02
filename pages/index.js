@@ -371,8 +371,8 @@ export default function Home() {
 
 
     let seconds = data.timeSpent % 60;
-    let minutes = Math.floor(seconds/60) % 60;
-    let hours = Math.floor(seconds/3600);
+    let minutes = Math.floor(data.timeSpent/60) % 60;
+    let hours = Math.floor(data.timeSpent/3600);
     let displayTime = padding(hours) + ":" + padding(minutes) + ":" + padding(seconds);
 
     let displayScore = data.score.toLocaleString();
