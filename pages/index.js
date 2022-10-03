@@ -18,9 +18,11 @@ import {
     faCirclePlay,
     faCodeBranch, faCopy,
     faEllipsis,
+    faL,
     faMoon,
     faPlusCircle,
     faRedo, faSave,
+    faSearch,
     faSun
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -714,7 +716,7 @@ export default function Home() {
                                 </div>
                                 <button className="confirm-action-btn" onClick={(event) => {
                                     setCopied(false);
-                                    !setShowGameFieldOutputWindow();
+                                    setShowGameFieldOutputWindow(false);
                                 }}>
                                     Alright, thanks!
                                 </button>
