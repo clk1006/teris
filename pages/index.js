@@ -199,7 +199,7 @@ export default function Home() {
     const advanceTime=useCallback(()=>{
         if(gameState==1){
             setTime(time+1);
-            data.setTime=time;
+            data.timeSpent=time;
         }
         
     },[time,gameState])
