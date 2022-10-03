@@ -200,7 +200,6 @@ export default function Home() {
         if(gameState==1){
             setTime(time+1);
             data.timeSpent=time;
-            console.log(data.timeSpent);
         }
         
     },[time,gameState])
