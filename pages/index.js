@@ -200,6 +200,7 @@ export default function Home() {
         if(gameState==1){
             setTime(time+1);
             data.timeSpent=time;
+            console.log(data.timeSpent);
         }
         
     },[time,gameState])
@@ -667,6 +668,7 @@ export default function Home() {
                                         data.numberTurns ||= 0;
                                         data.timeSpent ||= 0;
                                         setShowInputWindow(false);
+                                        setTime(data.timeSpent);
                                         setGameState(1);
                                     }}>
                                         <div className="nom-btn-emblem">
