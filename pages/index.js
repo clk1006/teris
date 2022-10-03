@@ -193,11 +193,17 @@ export default function Home() {
     const [showInputWindow, setShowInputWindow] = useState(false);
     const [showGameFieldOutputWindow, setShowGameFieldOutputWindow] = useState(false);
     const [copied, setCopied] = useState(false);
-    const [timePassed,setTimePassed] = useState(0);
+    const [time,setTime] = useState(data.timeSpent);
+    const [isActive, toggleActive] = useState(true);
+
     const advanceTime=useCallback(()=>{
-        setTimePassed(timePassed+1);
-        data.timeSpent++;
-    })
+        if(gameState==1){
+            setTime(time+1);
+            data.setTime=time;
+        }
+        
+    },[time,gameState])
+
     useEffect(()=>{
         id = setInterval(advanceTime, 1000);
         return () => {
@@ -295,9 +301,6 @@ export default function Home() {
         }
     }, [gameState, reRender]);
 
-    const [isActive, toggleActive] = useState(true);
-
-    const [theme, setTheme] = useState('')
     const handleToggle = () => {
         toggleActive(!isActive);
     };
@@ -368,12 +371,6 @@ export default function Home() {
     function padding(d) {
         return (d < 10) ? '0' + d.toString() : d.toString();
     }
-
-
-    let seconds = data.timeSpent % 60;
-    let minutes = Math.floor(data.timeSpent/60) % 60;
-    let hours = Math.floor(data.timeSpent/3600);
-    let displayTime = padding(hours) + ":" + padding(minutes) + ":" + padding(seconds);
 
     let displayScore = data.score.toLocaleString();
     let displayClearedRows = data.clearedRowsInGame.toLocaleString();
@@ -485,7 +482,7 @@ export default function Home() {
                                             </div>
                                             <div className="stat-container">
                                                 <span>Total spent time: </span>
-                                                <span className="hl">{displayTime}</span>
+                                                <span className="hl">{padding(Math.floor(time/3600)) + ":" + padding(Math.floor(time/60) % 60) + ":" + padding(time % 60)}</span>
                                             </div>
                                         </div>
 
@@ -517,6 +514,7 @@ export default function Home() {
                                     <div className="btn-container-row">
                                         <button className="action-btn" onClick={(event) => {
                                             setGameState(0);
+                                            setTime(0);
                                         }}>
                                             <div className="btn-emblem">
                                                 <FontAwesomeIcon className="icon" icon={faRedo}/>
