@@ -31,8 +31,6 @@ const BLOCK_SIZE = 29;
 const BLOCK_COLORS = ["#327AB8", "#3AD9A7", "#FFC247", "#9951B3", "#CD4C4C", "#6610F2", "#32DE8A"];
 const COLOR_NEXT = "#BCBECD";
 const BLOCK_BASE = "rgba(214, 215, 224)";
-let lineClearMult = 1;
-let lineClearScoreCalc;
 let contextTiles, contextCurr;
 let keepData = false;
 let id=0;
@@ -135,10 +133,7 @@ const updateState = (score, tiles, data) => {
 
             data.clearedRowsInGame++;
 
-            lineClearScoreCalc = SCORE_CLEAR - SCORE_BLOCK + Math.ceil(Math.log(data.clearedRowsInGame) ^ 4) + data.clearedRowsInGame;
-
-            score += lineClearScoreCalc;
-            lineClearMult = lineClearScoreCalc / SCORE_CLEAR;
+            score += SCORE_CLEAR - SCORE_BLOCK + Math.ceil(Math.log(data.clearedRowsInGame) ^ 4) + data.clearedRowsInGame;
             row--
         }
     }
@@ -489,10 +484,6 @@ export default function Home() {
                                                 <span>Total spent time: </span>
                                                 <span className="hl">{padding(Math.floor(time/3600)) + ":" + padding(Math.floor(time/60) % 60) + ":" + padding(time % 60)}</span>
                                             </div>
-                                            <div className="stat-container">
-                                                <span>Line clear multiplier: </span>
-                                                <span className="hl">{lineClearMult.toFixed(2)}</span>
-                                            </div>
                                         </div>
 
                                         <h2>Bindings</h2>
@@ -723,7 +714,7 @@ export default function Home() {
                                 </div>
                                 <button className="confirm-action-btn" onClick={(event) => {
                                     setCopied(false);
-                                    setShowGameFieldOutputWindow();
+                                    !setShowGameFieldOutputWindow();
                                 }}>
                                     Alright, thanks!
                                 </button>
