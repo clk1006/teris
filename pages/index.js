@@ -318,6 +318,7 @@ export default function Home() {
                     data.current.pos++
                 }
             } else if (kc == 81) {
+                let shape = getShape(data.current);
                 data.current.rot = (data.current.rot + 3) % 4;
                 shape = getShape(data.current);
 
@@ -325,6 +326,7 @@ export default function Home() {
                     data.current.pos--
                 }
             } else if (kc == 69) {
+                let shape = getShape(data.current);
                 data.current.rot = (data.current.rot + 1) % 4;
                 shape = getShape(data.current);
 
